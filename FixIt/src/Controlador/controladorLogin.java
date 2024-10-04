@@ -1,7 +1,6 @@
 package Controlador;
 
 import Modelo.Usuarios;
-import Vistas.EnviarcorreoE;
 import Vistas.Loginjava;
 import Vistas.dashboard;
 import java.awt.event.MouseEvent;
@@ -81,9 +80,7 @@ public class controladorLogin implements MouseInputListener {
  vista.dispose();
   
 }
-                   
-           
-        
+                       
     }
 
     @Override

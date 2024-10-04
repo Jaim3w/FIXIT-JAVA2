@@ -1,11 +1,8 @@
 package main;
 
-import Vistas.dashboard;
-import Vistas.frmProveedor;
-import Modelo.mdlProveedor;
-import Controlador.ctrlProveedor;
+import Vistas.Loginjava;
 import Vistas.frmRegistrarse;
-import Vistas.frmRegistroParte2;
+import Vistas.pantallainicio;
 import com.formdev.flatlaf.FlatLightLaf;
 
 
@@ -16,9 +13,8 @@ public class main {
         FlatLightLaf.install();
 
         java.awt.EventQueue.invokeLater(() -> {
-           frmRegistrarse.initfrmRegistrarse();
+            frmRegistrarse.initfrmRegistrarse();
         });
-        
         
         
     }

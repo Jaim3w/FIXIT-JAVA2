@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Vistas.elemetos;
 
-/**
- *
- * @author Jaimew
- */
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -23,12 +15,12 @@ public class TxtBoxRedondeado extends JTextField { // Clase pública
         try {
             // Configuración inicial del JTextField
             setOpaque(false); // Hace el JTextField transparente
-            setForeground(new Color(255, 215, 0)); // Texto dorado
+            setForeground(new Color(0x0084A0)); // Texto con color #0084A0
             setCaretColor(Color.WHITE); // Color del cursor de texto
             setFont(new Font("Segoe UI", Font.PLAIN, 16)); // Fuente y tamaño del texto
 
-            // Ajustar el borde dorado con esquinas redondeadas
-            setBorder(new RoundedBorder(new Color(255, 215, 0), 2, 15)); // Color dorado con borde redondeado
+            // Ajustar el borde con esquinas redondeadas y color #0084A0
+            setBorder(new RoundedBorder(new Color(0x0084A0), 2, 15)); // Color #0084A0 con borde redondeado
 
             // Configuraciones adicionales (puedes personalizar más si es necesario)
             setBackground(Color.BLACK); // Fondo negro

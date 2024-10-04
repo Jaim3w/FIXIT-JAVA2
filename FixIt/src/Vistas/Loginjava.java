@@ -3,6 +3,9 @@ package Vistas;
 
 import Controlador.controladorLogin;
 import Modelo.Usuarios;
+import com.formdev.flatlaf.FlatLightLaf;
+import java.awt.Color;
+import javax.swing.JFrame;
 
 /**
  *
@@ -14,8 +17,23 @@ public class Loginjava extends javax.swing.JFrame {
      * Creates new form Loginjava
      */
     public Loginjava() {
+         setUndecorated(true);
+        
+        // Configuramos FlatLaf como el LookAndFeel
+        try {
+            FlatLightLaf.setup(); // Usamos FlatLaf en su versión clara
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        // Inicializamos los componentes
         initComponents();
-        this.setLocationRelativeTo(this);
+        
+        // Aplicamos el borde redondeado al JFrame
+        setShape(new java.awt.geom.RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 50, 50)); // Bordes redondeados
+        
+        // Configuramos el color de fondo y el layout
+        setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
 
     }
     
@@ -24,8 +42,14 @@ public class Loginjava extends javax.swing.JFrame {
     Loginjava vista=new Loginjava();
         controladorLogin con=new controladorLogin(modelo, vista);
         
-        vista.setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Loginjava().setVisible(true);
+            }
+        });
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,64 +60,90 @@ public class Loginjava extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        radialGradientPanel1 = new Vistas.elemetos.RadialGradientPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txtCorreo = new Vistas.elemetos.TxtBoxRedondeado();
-        txtContra = new Vistas.elemetos.TxtBoxContrasenia();
-        btnLogin = new Vistas.elemetos.ButtonA();
+        whiteRoundedPanelF1 = new Vistas.elementosTwo.WhiteRoundedPanelF();
         btnOlvidecontra = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtContra = new Vistas.elemetos.TxtBoxContrasenia();
+        txtCorreo = new Vistas.elemetos.TxtBoxRedondeado();
+        imgExit = new javax.swing.JLabel();
+        imgMinimize = new javax.swing.JLabel();
+        btnLogin = new Vistas.elemetos.ButtonB();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        radialGradientPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        whiteRoundedPanelF1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Correo");
-        radialGradientPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
+        btnOlvidecontra.setForeground(new java.awt.Color(0, 0, 0));
+        btnOlvidecontra.setText("Olvide mi contraseña");
+        whiteRoundedPanelF1.add(btnOlvidecontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 510, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Inicio de sesion");
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Inicio de sesión");
         jLabel1.setToolTipText("");
-        radialGradientPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
+        whiteRoundedPanelF1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 180, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Correo");
+        whiteRoundedPanelF1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Contraseña");
-        radialGradientPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, -1, -1));
-        radialGradientPanel1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 310, 40));
-        radialGradientPanel1.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 310, 40));
+        whiteRoundedPanelF1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 390, -1, -1));
+        whiteRoundedPanelF1.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 390, 430, -1));
+        whiteRoundedPanelF1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 280, 430, -1));
 
-        btnLogin.setText("Iniciar Sesion");
-        radialGradientPanel1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 160, 50));
+        imgExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icexit.png"))); // NOI18N
+        imgExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgExitMouseClicked(evt);
+            }
+        });
+        whiteRoundedPanelF1.add(imgExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 10, -1, -1));
 
-        btnOlvidecontra.setText("Olvide mi contraseña");
-        radialGradientPanel1.add(btnOlvidecontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 140, -1));
+        imgMinimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icminimize.png"))); // NOI18N
+        imgMinimize.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgMinimizeMouseClicked(evt);
+            }
+        });
+        whiteRoundedPanelF1.add(imgMinimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, -1, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/logo_fixit_desktop.png"))); // NOI18N
-        radialGradientPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 0, 90, 80));
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setText("Ingresar");
+        btnLogin.setShadowColor(new java.awt.Color(0, 153, 153));
+        whiteRoundedPanelF1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 460, 170, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/Diseño sin título.png"))); // NOI18N
-        radialGradientPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 740, 500));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/l3.png"))); // NOI18N
+        whiteRoundedPanelF1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(radialGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(whiteRoundedPanelF1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(radialGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(whiteRoundedPanelF1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void imgExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgExitMouseClicked
+    System.exit(0);  // Cierra la aplicación por completo
+    }//GEN-LAST:event_imgExitMouseClicked
+
+    private void imgMinimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgMinimizeMouseClicked
+           setState(JFrame.ICONIFIED); 
+    }//GEN-LAST:event_imgMinimizeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -131,15 +181,16 @@ public class Loginjava extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public Vistas.elemetos.ButtonA btnLogin;
+    public Vistas.elemetos.ButtonB btnLogin;
     public javax.swing.JLabel btnOlvidecontra;
+    public javax.swing.JLabel imgExit;
+    public javax.swing.JLabel imgMinimize;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private Vistas.elemetos.RadialGradientPanel radialGradientPanel1;
     public Vistas.elemetos.TxtBoxContrasenia txtContra;
     public Vistas.elemetos.TxtBoxRedondeado txtCorreo;
+    public Vistas.elementosTwo.WhiteRoundedPanelF whiteRoundedPanelF1;
     // End of variables declaration//GEN-END:variables
 }
