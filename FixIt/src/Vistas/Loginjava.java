@@ -42,11 +42,8 @@ public class Loginjava extends javax.swing.JFrame {
     Loginjava vista=new Loginjava();
         controladorLogin con=new controladorLogin(modelo, vista);
         
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Loginjava().setVisible(true);
-            }
-        });
+        
+       vista.setVisible(true);
     }
     
 

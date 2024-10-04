@@ -6,6 +6,7 @@ package Vistas;
 
 import Controlador.controladorCorreo;
 import Modelo.Credenciales;
+import Modelo.Usuarios;
 
 /**
  *
@@ -24,7 +25,8 @@ public class EnviarcorreoE extends javax.swing.JFrame {
     
         Credenciales modelo=new Credenciales();
         EnviarcorreoE vista=new EnviarcorreoE();
-        controladorCorreo controlador=new controladorCorreo(modelo, vista);
+         Usuarios modelito = new Usuarios();
+        controladorCorreo controlador=new controladorCorreo(modelo, vista,modelito);
         
         vista.setVisible(true);
     }
