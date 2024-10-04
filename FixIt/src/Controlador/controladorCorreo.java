@@ -1,6 +1,3 @@
-
-
-
 package Controlador;
 
 import Modelo.Credenciales;
@@ -20,11 +17,14 @@ public class controladorCorreo implements MouseListener {
 
     private Credenciales modelo;
     private EnviarcorreoE vista;
+    private Usuarios modelito;
+    public static String correoGlobal;
   
 
-    public controladorCorreo(Credenciales modelo, EnviarcorreoE vista) {
+    public controladorCorreo(Credenciales modelo, EnviarcorreoE vista, Usuarios Modelito) {
         this.modelo = modelo;
         this.vista = vista;
+        this.modelito = Modelito;
 
         if (vista.btnenviar == null) {
             System.out.println("btnenviar es null");
@@ -43,7 +43,9 @@ public class controladorCorreo implements MouseListener {
         if (e.getSource() == vista.btnenviar) {
             System.out.println("btnenviar clickeado");
             
-            
+            System.err.println("esto es lo que le mando al setCorreo"+vista.txtCorreo.getText());
+            modelito.setCorreoElectronico(vista.txtCorreo.getText());
+            correoGlobal = vista.txtCorreo.getText();
            
 
             String recipient = vista.txtCorreo.getText();
@@ -53,6 +55,8 @@ public class controladorCorreo implements MouseListener {
             // Enviar correo
 
         if (e.getSource()== vista.btnenviar) {
+            
+            
             
             Verificar.setCorreoElectronico(vista.txtCorreo.getText());
          
