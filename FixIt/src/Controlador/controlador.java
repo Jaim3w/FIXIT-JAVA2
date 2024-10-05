@@ -54,13 +54,13 @@ public class controlador implements MouseListener {
                 return;
             }
 
-            if (Vista.txtContra.getText().length() <= 6) {
+            if (Vista.fondo.getText().length() <= 6) {
                 JOptionPane.showMessageDialog(null, "Número de caracteres insuficiente, ingrese más de 6 caracteres", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
             modelo.setCorreoElectronico(Vista.txtCorreoUser.getText());
-            modelo.setContrasena(Vista.txtContra.getText());
+            modelo.setContrasena(Vista.fondo.getText());
             modelo.setUUID_rol(mRoles.getUUID_rol());
 
             modelo.InsertarUser();

@@ -62,15 +62,15 @@ public class frmRegistrarse extends javax.swing.JFrame {
         blackRoundedPanelF1 = new Vistas.elementosTwo.BlackRoundedPanelF();
         jLabel10 = new javax.swing.JLabel();
         cbComobox = new javax.swing.JComboBox<>();
-        txtContra = new Vistas.elemetos.TxtBoxContrasenia();
         imgFixit = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        txtCorreoUser = new Vistas.elemetos.TxtBoxRedondeado();
         jLabel13 = new javax.swing.JLabel();
         btnAgregarUser = new Vistas.elemetos.ButtonA();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        txtContra = new Vistas.elemetos.txtContrasenaredondeadaamarilla();
+        txtCorreoUser = new Vistas.elemetos.txtRedondeadoamarillo();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -83,9 +83,11 @@ public class frmRegistrarse extends javax.swing.JFrame {
         jLabel10.setText("¿Como quiero Registrame?");
         blackRoundedPanelF1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 500, 210, -1));
 
+        cbComobox.setBackground(new java.awt.Color(255, 255, 255));
+        cbComobox.setForeground(new java.awt.Color(0, 0, 0));
         cbComobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbComobox.setOpaque(true);
         blackRoundedPanelF1.add(cbComobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 530, 410, 40));
-        blackRoundedPanelF1.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 420, 420, 50));
 
         imgFixit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/logo_fixit_desktop.png"))); // NOI18N
         blackRoundedPanelF1.add(imgFixit, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, 100, 90));
@@ -93,8 +95,7 @@ public class frmRegistrarse extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Correo");
-        blackRoundedPanelF1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 250, 110, -1));
-        blackRoundedPanelF1.add(txtCorreoUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 290, 410, 50));
+        blackRoundedPanelF1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 290, 110, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
@@ -119,9 +120,11 @@ public class frmRegistrarse extends javax.swing.JFrame {
             }
         });
         blackRoundedPanelF1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, -1, -1));
+        blackRoundedPanelF1.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 420, 410, 40));
+        blackRoundedPanelF1.add(txtCorreoUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 330, 410, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/imgregistrarsefondo.png"))); // NOI18N
-        blackRoundedPanelF1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/imgregistrarsefondo.png"))); // NOI18N
+        blackRoundedPanelF1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -185,14 +188,14 @@ public class frmRegistrarse extends javax.swing.JFrame {
     private Vistas.elementosTwo.BlackRoundedPanelF blackRoundedPanelF1;
     public Vistas.elemetos.ButtonA btnAgregarUser;
     public javax.swing.JComboBox<String> cbComobox;
+    public javax.swing.JLabel fondo;
     public javax.swing.JLabel imgFixit;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    public Vistas.elemetos.TxtBoxContrasenia txtContra;
-    public Vistas.elemetos.TxtBoxRedondeado txtCorreoUser;
+    public Vistas.elemetos.txtContrasenaredondeadaamarilla txtContra;
+    public Vistas.elemetos.txtRedondeadoamarillo txtCorreoUser;
     // End of variables declaration//GEN-END:variables
 }
