@@ -7,21 +7,17 @@ package Vistas;
 import Modelo.Usuarios;
 import Controlador.controlador;
 import Modelo.Roles;
+import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.extras.FlatAnimatedLafChange;
 import java.awt.Color;
+import java.awt.EventQueue;
 import javax.swing.JFrame;
 
-/**
- *
- * @author rdlfp
- */
 public class frmRegistrarse extends javax.swing.JFrame {
 
-   
-
-    /**
-     * Creates new form frmRegistrarse
-     */
     public frmRegistrarse() {
         setUndecorated(true);
         
@@ -191,7 +187,7 @@ public class frmRegistrarse extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Vistas.elementosTwo.BlackRoundedPanelF blackRoundedPanelF1;
+    public Vistas.elementosTwo.BlackRoundedPanelF blackRoundedPanelF1;
     public Vistas.elemetos.ButtonA btnAgregarUser;
     public javax.swing.JComboBox<String> cbComobox;
     public javax.swing.JLabel fondo;
