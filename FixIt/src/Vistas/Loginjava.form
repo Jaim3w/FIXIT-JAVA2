@@ -130,7 +130,7 @@
         <Component class="javax.swing.JLabel" name="imgExit">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Vistas/Imagenes/icexit.png"/>
+              <Image iconType="3" name="/Vistas/Imagenes/icexitw.png"/>
             </Property>
           </Properties>
           <Events>
@@ -148,7 +148,7 @@
         <Component class="javax.swing.JLabel" name="imgMinimize">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Vistas/Imagenes/icminimize.png"/>
+              <Image iconType="3" name="/Vistas/Imagenes/icminimizew.png"/>
             </Property>
           </Properties>
           <Events>

@@ -95,7 +95,7 @@ public class Loginjava extends javax.swing.JFrame {
         whiteRoundedPanelF1.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 390, 430, -1));
         whiteRoundedPanelF1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 280, 430, -1));
 
-        imgExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icexit.png"))); // NOI18N
+        imgExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icexitw.png"))); // NOI18N
         imgExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 imgExitMouseClicked(evt);
@@ -103,7 +103,7 @@ public class Loginjava extends javax.swing.JFrame {
         });
         whiteRoundedPanelF1.add(imgExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 10, -1, -1));
 
-        imgMinimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icminimize.png"))); // NOI18N
+        imgMinimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icminimizew.png"))); // NOI18N
         imgMinimize.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 imgMinimizeMouseClicked(evt);
