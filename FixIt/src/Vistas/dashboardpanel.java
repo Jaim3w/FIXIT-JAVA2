@@ -48,8 +48,8 @@ public class dashboardpanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         panelContent = new Vistas.elemetos.RadialGradientPanelRedondeado();
         radialGradientPanelRedondeado6 = new Vistas.elemetos.RadialGradientPanelRedondeado();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        img_perfil = new javax.swing.JLabel();
+        lbl_perfil = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout radialGradientPanelRedondeado1Layout = new javax.swing.GroupLayout(radialGradientPanelRedondeado1);
@@ -249,11 +249,11 @@ public class dashboardpanel extends javax.swing.JPanel {
 
         radialGradientPanelRedondeado6.setBackground(new java.awt.Color(8, 23, 46));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/ic_perfil.png"))); // NOI18N
+        img_perfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/ic_perfil.png"))); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Sesión iniciada como:");
+        lbl_perfil.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_perfil.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_perfil.setText("Sesión iniciada como:");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(153, 255, 255));
@@ -266,10 +266,10 @@ public class dashboardpanel extends javax.swing.JPanel {
             .addGroup(radialGradientPanelRedondeado6Layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(radialGradientPanelRedondeado6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
-                .addComponent(jLabel4)
+                .addComponent(img_perfil)
                 .addContainerGap(754, Short.MAX_VALUE))
         );
         radialGradientPanelRedondeado6Layout.setVerticalGroup(
@@ -278,12 +278,12 @@ public class dashboardpanel extends javax.swing.JPanel {
                 .addGroup(radialGradientPanelRedondeado6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(radialGradientPanelRedondeado6Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel3)
+                        .addComponent(lbl_perfil)
                         .addGap(2, 2, 2)
                         .addComponent(jLabel6))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, radialGradientPanelRedondeado6Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addComponent(jLabel4)))
+                        .addComponent(img_perfil)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -394,6 +394,17 @@ public class dashboardpanel extends javax.swing.JPanel {
     panelContent.repaint();
     }//GEN-LAST:event_lbl_ventasMouseClicked
 
+    private void lbl_perfil(java.awt.event.MouseEvent evt) {                                                      
+        frmPerfilAd us = new frmPerfilAd();
+    us.setSize(922, 703);
+    us.setLocation(0, 0);
+    
+    panelContent.removeAll();
+    panelContent.add(us, BorderLayout.CENTER);
+    panelContent.revalidate();
+    panelContent.repaint();
+    }
+    
     private void lbl_usuarios_y_empleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_usuarios_y_empleadosMouseClicked
         frmUsuarios us = new frmUsuarios();
     us.setSize(922, 703);
@@ -425,16 +436,16 @@ public class dashboardpanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel img_perfil;
     public javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel lbl_carros;
     private javax.swing.JLabel lbl_citas;
     private javax.swing.JLabel lbl_facturas;
     private javax.swing.JLabel lbl_inicio;
     private javax.swing.JLabel lbl_menuPlegable;
+    private javax.swing.JLabel lbl_perfil;
     private javax.swing.JLabel lbl_proveedores;
     private javax.swing.JLabel lbl_usuarios_y_empleados;
     private javax.swing.JLabel lbl_ventas;
