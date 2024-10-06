@@ -59,7 +59,7 @@
               <Component id="txtCodi" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Component id="btncontinuar" min="-2" pref="39" max="-2" attributes="0"/>
-              <EmptySpace pref="159" max="32767" attributes="0"/>
+              <EmptySpace pref="528" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
