@@ -90,7 +90,7 @@ public class EnviarcorreoE extends javax.swing.JFrame {
 
         btnenviar.setForeground(new java.awt.Color(0, 0, 0));
         btnenviar.setText("Enviar codigo de verificación");
-        btnenviar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnenviar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         whiteRoundedPanelF1.add(btnenviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 520, 260, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N

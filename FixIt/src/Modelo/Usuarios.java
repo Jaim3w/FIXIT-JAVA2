@@ -188,6 +188,25 @@ public class Usuarios {
         ex.printStackTrace();
     }
 }
+   
+   public boolean ValidarCorreo() {
+
+        Connection conexion = Conexion.getConexion();
+        boolean resultado = false;
+        try {
+            String sql = "Select * from Usuario where CorreoElectronico = ?";
+            PreparedStatement statement = conexion.prepareStatement(sql);
+            statement.setString(1, getCorreoElectronico());
+            ResultSet resulset = statement.executeQuery();
+            if (resulset.next()) {
+                resultado = true;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error en el modelo");
+        }
+
+        return resultado;
+    }
 
 
 }

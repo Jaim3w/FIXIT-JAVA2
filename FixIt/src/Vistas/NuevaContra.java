@@ -6,6 +6,9 @@ package Vistas;
 
 import Controlador.controladorContra;
 import Modelo.Usuarios;
+import com.formdev.flatlaf.FlatLightLaf;
+import java.awt.Color;
+import javax.swing.JFrame;
 
 /**
  *
@@ -17,7 +20,22 @@ public class NuevaContra extends javax.swing.JFrame {
      * Creates new form NuevaContra
      */
     public NuevaContra() {
+        setUndecorated(true);
+        
+         // Configuramos FlatLaf como el LookAndFeel
+        try {
+            FlatLightLaf.setup(); // Usamos FlatLaf en su versión clara
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
         initComponents();
+        
+           // Aplicamos el borde redondeado al JFrame
+        setShape(new java.awt.geom.RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 50, 50)); // Bordes redondeados
+        
+        // Configuramos el color de fondo y el layout
+        setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
     }
     
     public static void initNuevaContras(){
@@ -37,55 +55,69 @@ public class NuevaContra extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        whiteRoundedPanelF1 = new Vistas.elementosTwo.WhiteRoundedPanelF();
         jLabel2 = new javax.swing.JLabel();
-        btnActua = new javax.swing.JButton();
-        txtNueva = new javax.swing.JPasswordField();
+        txtNueva = new Vistas.elemetos.txtContrasenanegro();
+        btnActua = new Vistas.elemetos.ButtonC();
+        imgMinimize = new javax.swing.JLabel();
+        imgExit = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        whiteRoundedPanelF1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Escribe tu nueva contraseña aqui");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, -1, -1));
+        whiteRoundedPanelF1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, -1, -1));
+        whiteRoundedPanelF1.add(txtNueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 440, 330, -1));
 
-        btnActua.setText("Actualizar Contraseña");
-        btnActua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActuaActionPerformed(evt);
+        btnActua.setForeground(new java.awt.Color(0, 0, 0));
+        btnActua.setText("Actualizar contraseña");
+        btnActua.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        whiteRoundedPanelF1.add(btnActua, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 500, 145, -1));
+
+        imgMinimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icminimizew.png"))); // NOI18N
+        imgMinimize.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgMinimizeMouseClicked(evt);
             }
         });
-        jPanel1.add(btnActua, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, -1, 36));
-        jPanel1.add(txtNueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 343, 37));
+        whiteRoundedPanelF1.add(imgMinimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Actualiza tu contraseña");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, -1, -1));
+        imgExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icexitw.png"))); // NOI18N
+        imgExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgExitMouseClicked(evt);
+            }
+        });
+        whiteRoundedPanelF1.add(imgExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 10, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/recucontra3.png"))); // NOI18N
+        whiteRoundedPanelF1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE))
+            .addComponent(whiteRoundedPanelF1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(whiteRoundedPanelF1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnActuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActuaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnActuaActionPerformed
+    private void imgMinimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgMinimizeMouseClicked
+        setState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_imgMinimizeMouseClicked
+
+    private void imgExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgExitMouseClicked
+        System.exit(0);  // Cierra la aplicación por completo
+    }//GEN-LAST:event_imgExitMouseClicked
 
     /**
      * @param args the command line arguments
@@ -123,10 +155,12 @@ public class NuevaContra extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnActua;
+    public Vistas.elemetos.ButtonC btnActua;
+    public javax.swing.JLabel imgExit;
+    public javax.swing.JLabel imgMinimize;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    public javax.swing.JPasswordField txtNueva;
+    public Vistas.elemetos.txtContrasenanegro txtNueva;
+    private Vistas.elementosTwo.WhiteRoundedPanelF whiteRoundedPanelF1;
     // End of variables declaration//GEN-END:variables
 }
