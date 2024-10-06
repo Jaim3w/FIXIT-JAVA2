@@ -82,52 +82,55 @@ public class mdlPerfilAd {
         this.imgUrl = imgUrl;
     }
     
-    public void cargarDatosPerfil(int id) {
-    Connection conexion = Conexion.getConexion();  // Obtener la conexión de la misma manera que en la otra función
-    
-    String sql = "SELECT \n" +
-            "    Empleado.Dui_empleado,\n" +
-            "    Empleado.Nombre,\n" +
-            "    Empleado.Apellido,\n" +
-            "    Empleado.ImagenEmpleado,\n" +
-            "    Empleado.FechaNacimiento,\n" +
-            "    Empleado.Telefono,\n" +
-            "    Usuario.CorreoElectronico,\n" +
-            "    Usuario.Contrasena\n" +
-            "FROM \n" +
-            "    Usuario\n" +
-            "INNER JOIN \n" +
-            "    Empleado \n" +
-            "ON \n" +
-            "    Usuario.UUID_usuario = Empleado.UUID_usuario\n" +
-            "WHERE \n" +
-            "    Usuario.CorreoElectronico = 'adriel@gmail.com'";
-    
-    try (PreparedStatement pstmt = conexion.prepareStatement(sql)) {
-        pstmt.setInt(1, id);  // Si estás pasando un parámetro 'id' como se indica
-        ResultSet rs = pstmt.executeQuery();
-        
-        if (rs.next()) {
-            this.nombre = rs.getString("Nombre");
-            this.apellidos = rs.getString("Apellido");
-            this.correo = rs.getString("CorreoElectronico");
-            this.telefono = rs.getString("Telefono");
-            this.nacimiento = rs.getString("FechaNacimiento");
-            this.dui = rs.getString("Dui_empleado");
-            this.imgUrl = rs.getString("ImagenEmpleado");
-        }
-    } catch (SQLException e) {
-        e.printStackTrace();
-    } finally {
-        try {
-            if (conexion != null) {
-                conexion.close();  // Cierra la conexión
+    public void cargarDatosPerfil() {
+        Connection conexion = Conexion.getConexion();  // Obtener la conexión
+
+        String sql = "SELECT \n" +
+                "    Empleado.Dui_empleado,\n" +
+                "    Empleado.Nombre,\n" +
+                "    Empleado.Apellido,\n" +
+                "    Empleado.ImagenEmpleado,\n" +
+                "    Empleado.FechaNacimiento,\n" +
+                "    Empleado.Telefono,\n" +
+                "    Usuario.CorreoElectronico,\n" +
+                "    Usuario.Contrasena\n" +
+                "FROM \n" +
+                "    Usuario\n" +
+                "INNER JOIN \n" +
+                "    Empleado \n" +
+                "ON \n" +
+                "    Usuario.UUID_usuario = Empleado.UUID_usuario\n" +
+                "WHERE \n" +
+                "    Usuario.CorreoElectronico = ?";
+
+        try (PreparedStatement pstmt = conexion.prepareStatement(sql)) {
+            // Accedemos al correo almacenado en la clase GlobalVars
+            String correoUsuario = globalVars.correoUsuario;
+            
+            pstmt.setString(1, correoUsuario);  // Usamos el correo como parámetro en la consulta
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                this.nombre = rs.getString("Nombre");
+                this.apellidos = rs.getString("Apellido");
+                this.correo = rs.getString("CorreoElectronico");
+                this.telefono = rs.getString("Telefono");
+                this.nacimiento = rs.getString("FechaNacimiento");
+                this.dui = rs.getString("Dui_empleado");
+                this.imgUrl = rs.getString("ImagenEmpleado");
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (conexion != null) {
+                    conexion.close();  // Cierra la conexión
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
-}
 
 
 }

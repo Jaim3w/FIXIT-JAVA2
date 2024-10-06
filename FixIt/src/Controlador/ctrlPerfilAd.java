@@ -21,30 +21,32 @@ public class ctrlPerfilAd implements MouseListener, KeyListener {
     }
 
     public void cargarDatos() {
-        // Obtener la conexión usando el método estático
-        Connection conexion = Conexion.getConexion();
+    // Obtener la conexión usando el método estático
+    Connection conexion = Conexion.getConexion();
 
-        if (conexion != null) {
-            Modelo.cargarDatosPerfil(1); // Ya no es necesario pasar la conexión, asume que se obtiene internamente
+    if (conexion != null) {
+        // Llamar a cargarDatosPerfil sin pasar el id, ya que ahora usa el correo global
+        Modelo.cargarDatosPerfil(); // Ya no es necesario pasar parámetros
+        
+        // Asignar los datos obtenidos a los componentes de la vista
+        Vista.getTxtNombre().setText(Modelo.getNombre());
+        Vista.getTxtApellidos().setText(Modelo.getApellidos());
+        Vista.getTxtCorreo().setText(Modelo.getCorreo());
+        Vista.getTxtTelefono().setText(Modelo.getTelefono());
+        Vista.getTxtNacimiento().setText(Modelo.getNacimiento());
+        Vista.getTxtDui().setText(Modelo.getDui());
 
-            // Asignar los datos obtenidos a los componentes de la vista
-            Vista.getTxtNombre().setText(Modelo.getNombre());
-            Vista.getTxtApellidos().setText(Modelo.getApellidos());
-            Vista.getTxtCorreo().setText(Modelo.getCorreo());
-            Vista.getTxtTelefono().setText(Modelo.getTelefono());
-            Vista.getTxtNacimiento().setText(Modelo.getNacimiento());
-            Vista.getTxtDui().setText(Modelo.getDui());
-
-            // Cerrar la conexión
-            try {
-                conexion.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        } else {
-            System.out.println("Error al conectar a la base de datos.");
+        // Cerrar la conexión
+        try {
+            conexion.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+    } else {
+        System.out.println("Error al conectar a la base de datos.");
     }
+}
+
 
     @Override
     public void mouseClicked(MouseEvent e) {

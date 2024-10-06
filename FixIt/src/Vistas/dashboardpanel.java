@@ -318,6 +318,7 @@ public class dashboardpanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void lbl_menuPlegableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_menuPlegableMouseClicked
       
          if (menuPlegable.getX() == 0) {
@@ -394,16 +395,17 @@ public class dashboardpanel extends javax.swing.JPanel {
     panelContent.repaint();
     }//GEN-LAST:event_lbl_ventasMouseClicked
 
-    private void lbl_perfil(java.awt.event.MouseEvent evt) {                                                      
-        frmPerfilAd us = new frmPerfilAd();
-    us.setSize(922, 703);
-    us.setLocation(0, 0);
-    
-    panelContent.removeAll();
-    panelContent.add(us, BorderLayout.CENTER);
-    panelContent.revalidate();
-    panelContent.repaint();
-    }
+    private void lbl_perfilMouseClicked(java.awt.event.MouseEvent evt) {   
+        frmPerfilAd fp = new frmPerfilAd();  
+    fp.setSize(922, 703);
+    fp.setLocation(0, 0);
+
+    panelContent.removeAll(); // Limpiar el contenido anterior
+    panelContent.add(fp, BorderLayout.CENTER); // Agregar el nuevo panel
+    panelContent.revalidate(); // Validar el nuevo contenido
+    panelContent.repaint(); // Actualizar la vista
+}
+
     
     private void lbl_usuarios_y_empleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_usuarios_y_empleadosMouseClicked
         frmUsuarios us = new frmUsuarios();
