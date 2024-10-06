@@ -53,9 +53,14 @@ public class controlador implements MouseListener {
                 JOptionPane.showMessageDialog(null, "Formato de correo inválido", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 return;
             }
+             if (Vista.txtContra.getPassword().length <= 6) {
+                JOptionPane.showMessageDialog(null, "Número de caracteres insuficiente, ingrese más de 6 caracteres", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                System.out.println("Contraseña demasiado corta");
+                return;
+            }
 
             modelo.setCorreoElectronico(Vista.txtCorreoUser.getText());
-            modelo.setContrasena(Vista.fondo.getText());
+            modelo.setContrasena(Vista.txtContra.getText());
             modelo.setUUID_rol(mRoles.getUUID_rol());
 
             modelo.InsertarUser();
