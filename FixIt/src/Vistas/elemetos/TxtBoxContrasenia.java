@@ -23,7 +23,7 @@ public class TxtBoxContrasenia extends JPasswordField { // Clase pública
             // Configuración inicial del JPasswordField
             setOpaque(false); // Hace el JPasswordField transparente
             setForeground(new Color(0x0084A0)); // Texto con el color #0084A0
-            setCaretColor(Color.WHITE); // Color del cursor de texto
+            setCaretColor(Color.BLACK); // Color del cursor de texto
             setFont(new Font("Segoe UI", Font.PLAIN, 16)); // Fuente y tamaño del texto
             
             // Establecer el carácter para ocultar la contraseña

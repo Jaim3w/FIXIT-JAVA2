@@ -16,7 +16,7 @@ public class txtContrasenanegro extends JPasswordField {
             // Configuración inicial del JPasswordField
             setOpaque(false); // Hace el JPasswordField transparente
             setForeground(new Color(0x000000)); // Texto con color #FFC300
-            setCaretColor(Color.WHITE); // Color del cursor de texto
+            setCaretColor(Color.BLACK); // Color del cursor de texto
             setFont(new Font("Segoe UI", Font.PLAIN, 16)); // Fuente y tamaño del texto
 
             // Ajustar el borde con esquinas redondeadas y color negro
