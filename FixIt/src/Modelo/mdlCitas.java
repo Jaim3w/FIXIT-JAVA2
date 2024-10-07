@@ -1,20 +1,23 @@
-
 package Modelo;
-import static Modelo.Conexion.getConexion;
+
 import Vistas.frmCitas;
-import com.formdev.flatlaf.ui.FlatListCellBorder;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.UUID;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-
-/**
- *
- * @author rdlfp
- */
 public class mdlCitas {
     private String UUID_cita;
+    private String Dui_cliente;
+    private String Dui_empleado;
+    private String fecha_cita;
+    private String Hora_cita;
+    private String Descripcion;
+
+    // Getters y Setters
 
     public String getUUID_cita() {
         return UUID_cita;
@@ -63,192 +66,249 @@ public class mdlCitas {
     public void setDescripcion(String Descripcion) {
         this.Descripcion = Descripcion;
     }
-    private  String Dui_cliente;
-    private String Dui_empleado;
-    private String fecha_cita;
-    private String Hora_cita;
-    private String Descripcion;
-    
-    
-    //Funcion para agregar citas
-    
-    public void InsertarCitas(){
-    Connection conexion=Conexion.getConexion();
-        try {
-            PreparedStatement addCita=conexion.prepareStatement("insert into Cita(UUID_cita,Dui_cliente,Dui_empleado,Fecha_cita,Hora_cita,Descripcion) values(?,?,?,?,?,?)");
-            addCita.setString(1, UUID.randomUUID().toString());
-            addCita.setString(2, getDui_cliente());
-            addCita.setString(3, getDui_empleado());
-            addCita.setNString(4, getFecha_cita());
-            addCita.setString(5, getHora_cita());
-            addCita.setString(6, getDescripcion());
-            addCita.execute();
-        } catch (SQLException ex) {
-          System.out.println("este es el error"+ ex);
+
+    // Inserción de citas
+    public void insertarCitas() {
+    Connection conexion = null;
+    try {
+        conexion = Conexion.getConexion();
+        PreparedStatement addCita = conexion.prepareStatement(
+            "INSERT INTO Cita(UUID_cita, Dui_cliente, Dui_empleado, Fecha_cita, Hora_cita, Descripcion) VALUES(?, ?, ?, ?, ?, ?)"
+        );
+        addCita.setString(1, UUID.randomUUID().toString());
+        addCita.setString(2, getDui_cliente());
+        addCita.setString(3, getDui_empleado());
+        addCita.setString(4, getFecha_cita());
+        addCita.setString(5, getHora_cita());
+        addCita.setString(6, getDescripcion());
+        addCita.execute();
+        addCita.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al insertar la cita: " + ex.getMessage());
+    } finally {
+        if (conexion != null) {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
-    
-    //funcion para mostrar datos
-    
-  public void Mostrar(javax.swing.JTable tabla) {
-    Connection conexion = Conexion.getConexion(); // Usar la clase de conexión
-    DefaultTableModel model = new DefaultTableModel();
-    tabla.setModel(model);
+}
 
-    model.addColumn("UUID");
-    model.addColumn("Cliente");
-    model.addColumn("Empleado");
-    model.addColumn("Fecha");
-    model.addColumn("Hora");
-    model.addColumn("Descripción");
-
- String sql = " SELECT Cita.UUID_cita, Cliente.Nombre AS Cliente, Empleado.Nombre AS Empleado, Cita.Fecha_cita AS Fecha, Cita.Hora_cita AS  Hora, Cita.Descripcion FROM Cita INNER JOIN Cliente ON Cita.Dui_cliente = Cliente.Dui_cliente INNER JOIN Empleado ON Cita.Dui_empleado = Empleado.Dui_empleado";
-
-
-    try {
-        Statement st = conexion.createStatement();
-        ResultSet rs = st.executeQuery(sql);
-        
-        model.setRowCount(0); // Limpia la tabla antes de agregar nuevos datos
-        
-        while (rs.next()) {
-            Object[] row = new Object[6];
-            row[0] = rs.getString("UUID_cita");
-            row[1] = rs.getString("Cliente");
-            row[2] = rs.getString("Empleado");
-            row[3] = rs.getString("Fecha");
-            row[4] = rs.getString("Hora");
-            row[5] = rs.getString("Descripcion");
-            model.addRow(row);
-        }
-        
+    // Mostrar citas en tabla
+    public void mostrarCitas(JTable tabla) {
+        Connection conexion = Conexion.getConexion();
+        DefaultTableModel model = new DefaultTableModel();
         tabla.setModel(model);
-            
-            tabla.getColumnModel().getColumn(0).setMinWidth(0);
-            tabla.getColumnModel().getColumn(0).setMaxWidth(0);
-            tabla.getColumnModel().getColumn(0).setWidth(0);
-        
-        // Cierra ResultSet y Statement
-        rs.close();
-        st.close();
-    } catch (SQLException e) {
-        e.printStackTrace();
-    } finally {
+
+        model.addColumn("UUID");
+        model.addColumn("Cliente");
+        model.addColumn("Empleado");
+        model.addColumn("Fecha");
+        model.addColumn("Hora");
+        model.addColumn("Descripción");
+
+        String sql = "SELECT Cita.UUID_cita, Cliente.Nombre AS Cliente, Empleado.Nombre AS Empleado, " +
+                     "Cita.Fecha_cita, Cita.Hora_cita, Cita.Descripcion " +
+                     "FROM Cita INNER JOIN Cliente ON Cita.Dui_cliente = Cliente.Dui_cliente " +
+                     "INNER JOIN Empleado ON Cita.Dui_empleado = Empleado.Dui_empleado";
+
         try {
-            if (conexion != null) {
-                conexion.close();
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            model.setRowCount(0); // Limpia la tabla antes de agregar nuevos datos
+
+            while (rs.next()) {
+                Object[] row = new Object[6];
+                row[0] = rs.getString("UUID_cita");
+                row[1] = rs.getString("Cliente");
+                row[2] = rs.getString("Empleado");
+                row[3] = rs.getString("Fecha_cita");
+                row[4] = rs.getString("Hora_cita");
+                row[5] = rs.getString("Descripcion");
+                model.addRow(row);
             }
+            tabla.setModel(model);
+            rs.close();
+            st.close();
+            conexion.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-}
-    
-    
-    //funcion para eliminar citas
-    public void Eliminarcita(JTable tabla){
-    Connection conexion=Conexion.getConexion();
-    
-      int filaSelecionada = tabla.getSelectedRow();
-      
-      if(filaSelecionada != -1){
-      
-       String miID = tabla.getValueAt(filaSelecionada, 0).toString();
-        try {
-            String sql = "DELETE FROM Cita WHERE UUID_cita = ?";
-            PreparedStatement eliminarCita = conexion.prepareStatement(sql);
-            eliminarCita.setString(1,miID);
-            
-            eliminarCita.executeUpdate();
-            
-            System.out.println("cita Eliminada Correctamente.");
-            
-            Mostrar(tabla);
-            
-        } catch (SQLException e) {
-            System.out.println("error al eliminar Cita" + e);
-        } 
-      }
-      else System.out.println("no se econtro nada");
-      }
-    
-     
-    
-    //funcion actualizar
-   public void ActualizarCitas(JTable tabla) {
-    Connection conexion = Conexion.getConexion();
 
-    int filaSeleccionada = tabla.getSelectedRow();
+    // Eliminar cita
+    public void eliminarCita(JTable tabla) {
+        Connection conexion = Conexion.getConexion();
+        int filaSeleccionada = tabla.getSelectedRow();
 
-    if (filaSeleccionada != -1) {
-        // Obtenemos el id de la fila seleccionada (UUID_CITA)
-        String miUUId = tabla.getValueAt(filaSeleccionada, 0).toString();
-        try {
-            String sql = "UPDATE Cita SET Fecha_cita = ?, Hora_cita = ?, Descripcion = ? WHERE UUID_CITA = ?";
-            PreparedStatement actualizarCita = conexion.prepareStatement(sql);
-            
-            // Asignamos los valores de los parámetros
-            actualizarCita.setString(1, getFecha_cita());
-            actualizarCita.setString(2, getHora_cita());
-            actualizarCita.setString(3, getDescripcion());
-            actualizarCita.setString(4, miUUId); // Falta asignar el UUID_CITA como cuarto parámetro
-
-            // Ejecutamos la actualización
-            actualizarCita.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println("Este es el error en el método de actualizar: " + e);
+        if (filaSeleccionada != -1) {
+            String miID = tabla.getValueAt(filaSeleccionada, 0).toString();
+            try {
+                String sql = "DELETE FROM Cita WHERE UUID_cita = ?";
+                PreparedStatement eliminarCita = conexion.prepareStatement(sql);
+                eliminarCita.setString(1, miID);
+                eliminarCita.executeUpdate();
+                eliminarCita.close();
+                conexion.close();
+                System.out.println("Cita eliminada correctamente.");
+                mostrarCitas(tabla); // Refresca la tabla
+            } catch (SQLException e) {
+                System.out.println("Error al eliminar cita: " + e);
+            }
+        } else {
+            System.out.println("No se ha seleccionado ninguna fila.");
         }
-    } else {
-        System.out.println("No se ha seleccionado ninguna fila.");
     }
-}
 
+    // Actualizar cita
+    public void actualizarCita(JTable tabla) {
+        Connection conexion = Conexion.getConexion();
+        int filaSeleccionada = tabla.getSelectedRow();
 
-        
+        if (filaSeleccionada != -1) {
+            String miUUId = tabla.getValueAt(filaSeleccionada, 0).toString();
+            try {
+                String sql = "UPDATE Cita SET Fecha_cita = ?, Hora_cita = ?, Descripcion = ? WHERE UUID_cita = ?";
+                PreparedStatement actualizarCita = conexion.prepareStatement(sql);
+
+                actualizarCita.setString(1, getFecha_cita());
+                actualizarCita.setString(2, getHora_cita());
+                actualizarCita.setString(3, getDescripcion());
+                actualizarCita.setString(4, miUUId);
+
+                actualizarCita.executeUpdate();
+                actualizarCita.close();
+                conexion.close();
+                System.out.println("Cita actualizada correctamente.");
+            } catch (SQLException e) {
+                System.out.println("Error al actualizar cita: " + e);
+            }
+        } else {
+            System.out.println("No se ha seleccionado ninguna fila.");
+        }
+    }
     
-    public void limpiar(frmCitas vista) {
+
+    // Método para limpiar los campos
+    public void limpiarCampos(frmCitas vista) {
         vista.txtHora.setText("");   
         vista.txtFecha.setText("");
         vista.txtDEsc.setText("");
-
     }
-    
-    public void CargarDatosTabla(frmCitas vista) {
-    // Obtener la fila seleccionada de la tabla
-    int filaSeleccionada = vista.tbCitas.getSelectedRow();
 
-    if (filaSeleccionada != -1) {
-        // Obtener los valores de la fila seleccionada
-        String UUIDTB = vista.tbCitas.getValueAt(filaSeleccionada, 0).toString();
-        String DUICLTB = vista.tbCitas.getValueAt(filaSeleccionada, 1).toString();
-        String DUIEMTB = vista.tbCitas.getValueAt(filaSeleccionada, 2).toString();
-        String FechaTB = vista.tbCitas.getValueAt(filaSeleccionada, 3).toString();
-        String HoraTB = vista.tbCitas.getValueAt(filaSeleccionada, 4).toString();
-        String DescripcionTB = vista.tbCitas.getValueAt(filaSeleccionada, 5).toString();
-        
-        // Asignar los valores a los campos de texto
-        vista.txtFecha.setText(FechaTB);
-        vista.txtHora.setText(HoraTB);
-        vista.txtDEsc.setText(DescripcionTB);
+    // Cargar datos en la vista
+    public void cargarDatosEnVista(frmCitas vista) {
+        int filaSeleccionada = vista.tbCitas.getSelectedRow();
+        if (filaSeleccionada != -1) {
+            String fecha = vista.tbCitas.getValueAt(filaSeleccionada, 3).toString();
+            String hora = vista.tbCitas.getValueAt(filaSeleccionada, 4).toString();
+            String descripcion = vista.tbCitas.getValueAt(filaSeleccionada, 5).toString();
 
-        // Asignar el valor del DUI del cliente al combo box de clientes
-        for (int i = 0; i < vista.cmbCliente.getItemCount(); i++) {
-            if (vista.cmbCliente.getItemAt(i).toString().contains(DUICLTB)) {
-                vista.cmbCliente.setSelectedIndex(i);
-                break;
+            vista.txtFecha.setText(fecha);
+            vista.txtHora.setText(hora);
+            vista.txtDEsc.setText(descripcion);
+
+            // Carga de DUI cliente y empleado en los ComboBox
+            String duiCliente = vista.tbCitas.getValueAt(filaSeleccionada, 1).toString();
+            String duiEmpleado = vista.tbCitas.getValueAt(filaSeleccionada, 2).toString();
+
+            for (int i = 0; i < vista.cmbCliente.getItemCount(); i++) {
+                if (vista.cmbCliente.getItemAt(i).toString().contains(duiCliente)) {
+                    vista.cmbCliente.setSelectedIndex(i);
+                    break;
+                }
             }
-        }
 
-        // Asignar el valor del DUI del empleado al combo box de empleados
-        for (int i = 0; i < vista.cmbEmpleado.getItemCount(); i++) {
-            if (vista.cmbEmpleado.getItemAt(i).toString().contains(DUIEMTB)) {
-                vista.cmbEmpleado.setSelectedIndex(i);
-                break;
+            for (int i = 0; i < vista.cmbEmpleado.getItemCount(); i++) {
+                if (vista.cmbEmpleado.getItemAt(i).toString().contains(duiEmpleado)) {
+                    vista.cmbEmpleado.setSelectedIndex(i);
+                    break;
+                }
             }
+        } else {
+            System.out.println("No se ha seleccionado ninguna fila.");
         }
-        
-    } else {
-        System.out.println("No se ha seleccionado ninguna fila.");
     }
+
+    // Método para obtener todas las citas
+    // Método modificado para obtener todas las citas y actualizar en tiempo real
+    public ArrayList<String[]> obtenerCitasCards() {
+    ArrayList<String[]> citas = new ArrayList<>();
+    Connection conexion = Conexion.getConexion();
+    String sql = "SELECT Cita.UUID_cita, Cliente.Nombre AS Cliente, Empleado.Nombre AS Empleado, " +
+                 "Cita.Fecha_cita, Cita.Hora_cita, Cita.Descripcion " +
+                 "FROM Cita INNER JOIN Cliente ON Cita.Dui_cliente = Cliente.Dui_cliente " +
+                 "INNER JOIN Empleado ON Cita.Dui_empleado = Empleado.Dui_empleado " +
+                 "ORDER BY Cita.Fecha_cita DESC, Cita.Hora_cita DESC";  // Ordenamos por fecha y hora para mostrar las más recientes
+
+    try {
+        Statement st = conexion.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+
+        while (rs.next()) {
+            String[] cita = new String[6];
+            cita[0] = rs.getString("UUID_cita");
+            cita[1] = rs.getString("Cliente");
+            cita[2] = rs.getString("Empleado");
+            cita[3] = rs.getString("Fecha_cita");
+            cita[4] = rs.getString("Hora_cita");
+            cita[5] = rs.getString("Descripcion");
+            citas.add(cita);
+        }
+        rs.close();
+        st.close();
+        conexion.close();
+    System.out.println("Citas obtenidas: " + citas.size());
+        for (String[] cita : citas) {
+            System.out.println("Cita: " + Arrays.toString(cita));
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return citas;
+}
+
+     // Método para actualizar una cita en la base de datos
+
+    public void actualizarCitacard(String uuidCita) {
+    Connection conexion = Conexion.getConexion();
+    String sql = "UPDATE Cita SET Fecha_cita = ?, Hora_cita = ?, Descripcion = ? WHERE UUID_cita = ?";
+
+    try {
+        PreparedStatement ps = conexion.prepareStatement(sql);
+        ps.setString(1, getFecha_cita()); // Usar getter para obtener el valor
+        ps.setString(2, getHora_cita()); // Usar getter para obtener el valor
+        ps.setString(3, getDescripcion()); // Usar getter para obtener el valor
+        ps.setString(4, uuidCita);
+        ps.executeUpdate();
+        ps.close();
+        conexion.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
 }
+
+    // Método para eliminar una cita de la base de datos
+    public void eliminarCitacard(String uuidCita) {
+    Connection conexion = Conexion.getConexion();
+    String sql = "DELETE FROM Cita WHERE UUID_cita = ?";
+
+    try {
+        PreparedStatement ps = conexion.prepareStatement(sql);
+        ps.setString(1, uuidCita);
+        ps.executeUpdate();
+        ps.close();
+        conexion.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
+    
+    
+}
+
+       
