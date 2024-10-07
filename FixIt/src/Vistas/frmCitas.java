@@ -8,6 +8,7 @@ import Controlador.ctrlCitas;
 import Modelo.Clientes;
 import Modelo.Empleados;
 import Modelo.mdlCitas;
+import Vistas.elementosTwo.TransparenteRoundedPanel;
 import Vistas.elemetos.RoundedWhitePanel;
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatIntelliJLaf;
@@ -17,10 +18,9 @@ import java.awt.EventQueue;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;;
 
-public class frmCitas extends RoundedWhitePanel {
+public class frmCitas extends TransparenteRoundedPanel{
 
     public frmCitas() {
-        super(20, 20);
         initComponents();
         
         frmCitas vista = this;
@@ -101,17 +101,21 @@ public class frmCitas extends RoundedWhitePanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Seleccionar cliente");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Selecciona la fecha de cita");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Selecionar Empleado");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
         add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 170, -1));
         add(txtHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 170, -1));
 
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Elije la hora de cita");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
 
@@ -136,7 +140,7 @@ public class frmCitas extends RoundedWhitePanel {
         jScrollPane1.setViewportView(tbCitas);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, -1, 290));
-        add(calendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 460, 250));
+        add(calendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, 460, 250));
 
         btnActualizar.setText("Actualizar cita");
         add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, -1));
@@ -150,6 +154,7 @@ public class frmCitas extends RoundedWhitePanel {
         cmbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(cmbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 170, -1));
 
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Descripccion de cita");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
 

@@ -1,12 +1,31 @@
 package Vistas;
 
+import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Color;
 import desplazable.Desface;
 
 public class dashboard extends javax.swing.JFrame {
 
+
     public dashboard() {
+        setUndecorated(true);
+        
+        // Configuramos FlatLaf como el LookAndFeel
+        try {
+            FlatLightLaf.setup(); // Usamos FlatLaf en su versión clara
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        // Inicializamos los componentes
         initComponents();
+        
+        // Aplicamos el borde redondeado al JFrame
+        setShape(new java.awt.geom.RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 50, 50)); // Bordes redondeados
+        
+        // Configuramos el color de fondo y el layout
+        setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
+
 
         // Instancia del JPanel form llamado "dashboardpanel"
         dashboardpanel panel = new dashboardpanel();
@@ -38,11 +57,11 @@ public class dashboard extends javax.swing.JFrame {
         jpCallDashboardPanel.setLayout(jpCallDashboardPanelLayout);
         jpCallDashboardPanelLayout.setHorizontalGroup(
             jpCallDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1174, Short.MAX_VALUE)
+            .addGap(0, 1350, Short.MAX_VALUE)
         );
         jpCallDashboardPanelLayout.setVerticalGroup(
             jpCallDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 820, Short.MAX_VALUE)
+            .addGap(0, 840, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -57,6 +76,7 @@ public class dashboard extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

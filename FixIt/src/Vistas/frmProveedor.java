@@ -6,6 +6,7 @@ package Vistas;
 
 import Controlador.ctrlProveedor;
 import Modelo.mdlProveedor;
+import Vistas.elementosTwo.TransparenteRoundedPanel;
 import Vistas.elemetos.RoundedWhitePanel;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
@@ -16,13 +17,12 @@ import javax.swing.text.MaskFormatter;
  *
  * @author jjove
  */
-public class frmProveedor extends RoundedWhitePanel {
+public class frmProveedor extends TransparenteRoundedPanel{
 
     /**
      * Creates new form frmProveedor1
      */
     public frmProveedor() {
-         super(20, 20);
         initComponents();
         
          frmProveedor vista = this;
@@ -72,39 +72,60 @@ public class frmProveedor extends RoundedWhitePanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(153, 153, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Agregar un nuevo proveedor");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(349, 44, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Codigo de marca");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 120, -1, -1));
 
         txtCodigo.setInheritsPopupMenu(true);
+        add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 112, 200, 32));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Telefono");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(489, 120, 50, -1));
 
         txtTelefono.setInheritsPopupMenu(true);
+        add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(557, 112, 200, 32));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Representante:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 189, -1, -1));
 
         txtRepresentante.setInheritsPopupMenu(true);
+        add(txtRepresentante, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 179, 201, 36));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Correo ");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(501, 189, -1, -1));
 
         txtCorreo.setInheritsPopupMenu(true);
+        add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, 200, 36));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Marca");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(172, 243, -1, -1));
 
         txtMarca.setInheritsPopupMenu(true);
+        add(txtMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 233, 201, 36));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Direccion");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(489, 243, 50, -1));
 
         txtDireccion.setInheritsPopupMenu(true);
+        add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(557, 233, 200, 36));
 
         btnGuardarProveedor.setText("Guardar");
         btnGuardarProveedor.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -112,14 +133,20 @@ public class frmProveedor extends RoundedWhitePanel {
                 btnGuardarProveedorMouseClicked(evt);
             }
         });
+        add(btnGuardarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 308, -1, -1));
 
         btnEliminarProveedor.setText("Eliminar");
+        add(btnEliminarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 308, -1, -1));
 
         btnActualizarProveedor.setText("Actualizar");
+        add(btnActualizarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 308, -1, -1));
 
         btnLimpiarCamposProveedor.setText("Limpiar");
+        add(btnLimpiarCamposProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(588, 308, -1, -1));
 
         jLabel9.setText("Buscar:");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 352, 50, -1));
+        add(txtBuscarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 349, 687, -1));
 
         tbProveedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -139,101 +166,7 @@ public class frmProveedor extends RoundedWhitePanel {
         });
         jScrollPane2.setViewportView(tbProveedores);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(99, Short.MAX_VALUE)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtBuscarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(118, 118, 118))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel5))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(68, 68, 68)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(txtRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(135, 135, 135)
-                                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(135, 135, 135)
-                                    .addComponent(txtDireccion)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 773, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(267, 267, 267)
-                        .addComponent(btnGuardarProveedor)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEliminarProveedor)
-                        .addGap(41, 41, 41)
-                        .addComponent(btnActualizarProveedor)
-                        .addGap(35, 35, 35)
-                        .addComponent(btnLimpiarCamposProveedor))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(349, 349, 349)
-                        .addComponent(jLabel4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jLabel4)
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel6))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel10)))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel8)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEliminarProveedor)
-                    .addComponent(btnActualizarProveedor)
-                    .addComponent(btnLimpiarCamposProveedor)
-                    .addComponent(btnGuardarProveedor))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBuscarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
-        );
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 377, 773, 277));
     }// </editor-fold>//GEN-END:initComponents
 
     private void tbProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProveedoresMouseClicked
