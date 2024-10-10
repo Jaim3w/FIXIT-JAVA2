@@ -8,6 +8,7 @@ import Controlador.ctrlCitas;
 import Modelo.Clientes;
 import Modelo.Empleados;
 import Modelo.mdlCitas;
+import Vistas.elementosTwo.TransparenteRoundedPanel;
 import Vistas.elemetos.RoundedWhitePanel;
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatIntelliJLaf;
@@ -17,10 +18,9 @@ import java.awt.EventQueue;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;;
 
-public class frmCitas extends RoundedWhitePanel {
+public class frmCitas extends TransparenteRoundedPanel {
 
     public frmCitas() {
-        super(20, 20);
         initComponents();
         
         frmCitas vista = this;

@@ -351,7 +351,7 @@ public class dashboardpanel extends javax.swing.JPanel {
     }//GEN-LAST:event_lbl_inicioMouseClicked
 
     private void lbl_carrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_carrosMouseClicked
-        frmCarros cr = new frmCarros();
+        frmClientes cr = new frmClientes();
     cr.setSize(1040, 670);
     cr.setLocation(0, 0);
      setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
