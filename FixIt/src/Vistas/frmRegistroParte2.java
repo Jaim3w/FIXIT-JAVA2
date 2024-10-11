@@ -13,13 +13,6 @@ public class frmRegistroParte2 extends javax.swing.JFrame {
         
          setUndecorated(true);
         
-         // Configuramos FlatLaf como el LookAndFeel
-        try {
-            FlatLightLaf.setup(); // Usamos FlatLaf en su versión clara
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        
         initComponents();
         
            // Aplicamos el borde redondeado al JFrame

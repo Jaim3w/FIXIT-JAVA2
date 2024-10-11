@@ -21,13 +21,6 @@ public class frmRegistrarse extends javax.swing.JFrame {
     public frmRegistrarse() {
         setUndecorated(true);
         
-         // Configuramos FlatLaf como el LookAndFeel
-        try {
-            FlatLightLaf.setup(); // Usamos FlatLaf en su versión clara
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        
         initComponents();
         
          
@@ -96,6 +89,7 @@ public class frmRegistrarse extends javax.swing.JFrame {
         jLabel13.setText("Contraseña");
         blackRoundedPanelF1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 320, 110, -1));
 
+        btnAgregarUser.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregarUser.setText("Registrame");
         blackRoundedPanelF1.add(btnAgregarUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 550, 180, 50));
 
@@ -117,6 +111,7 @@ public class frmRegistrarse extends javax.swing.JFrame {
         blackRoundedPanelF1.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 350, 410, 40));
         blackRoundedPanelF1.add(txtCorreoUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 260, 410, 40));
 
+        imgFixit.setForeground(new java.awt.Color(0, 0, 0));
         imgFixit.setText("Iniciar sesión");
         blackRoundedPanelF1.add(imgFixit, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 640, 180, 50));
 

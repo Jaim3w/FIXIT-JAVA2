@@ -86,7 +86,6 @@ public class frmCitas extends TransparenteRoundedPanel {
         txtFecha = new javax.swing.JTextField();
         txtHora = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbCitas = new javax.swing.JTable();
@@ -111,14 +110,11 @@ public class frmCitas extends TransparenteRoundedPanel {
 
         jLabel2.setText("Selecionar Empleado");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, -1, -1));
-        add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, 170, -1));
-        add(txtHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, 170, -1));
+        add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, 120, -1));
+        add(txtHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, 130, -1));
 
         jLabel3.setText("Elije la hora de cita");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, -1, -1));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/agregar (2).png"))); // NOI18N
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel4.setText("Agregar cita");
@@ -137,27 +133,27 @@ public class frmCitas extends TransparenteRoundedPanel {
         ));
         jScrollPane1.setViewportView(tbCitas);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, -1, 290));
-        add(calendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 330, 120));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 670, 290));
+        add(calendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 340, 310));
 
         btnActualizar.setText("Actualizar cita");
-        add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, -1, -1));
+        add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, -1, -1));
 
         btnAddCita.setText("Agregar Cita");
-        add(btnAddCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, -1, -1));
+        add(btnAddCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, -1, -1));
 
         btnEliminar.setText("Eliminar cita");
-        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));
+        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, -1, -1));
 
         cmbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cmbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 170, -1));
+        add(cmbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 120, -1));
 
         jLabel6.setText("Descripccion de cita");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
 
         cmbEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cmbEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 250, 170, -1));
-        add(txtDEsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 170, -1));
+        add(cmbEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 250, 130, -1));
+        add(txtDEsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 170, -1));
         add(citasCardsPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -174,7 +170,6 @@ public class frmCitas extends TransparenteRoundedPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;

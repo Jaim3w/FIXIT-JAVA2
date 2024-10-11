@@ -1,11 +1,9 @@
 package Vistas;
 
 import com.formdev.flatlaf.FlatDarculaLaf;
-import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.formdev.flatlaf.FlatLaf;
-import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatAnimatedLafChange;
-import desplazable.Desface;
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -16,13 +14,6 @@ public class dashboardpanel extends javax.swing.JPanel {
 
   
     public dashboardpanel() {
-        
-        // Configuramos FlatLaf como el LookAndFeel
-        try {
-            FlatLightLaf.setup(); // Usamos FlatLaf en su versión clara
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
 
         // Inicializamos los componentes
         initComponents();        
@@ -41,9 +32,7 @@ public class dashboardpanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        menuPlegable = new Vistas.elemetos.RadialGradientPanelRedondeado();
-        jButton1 = new javax.swing.JButton();
-        radialGradientPanelRedondeado6 = new Vistas.elemetos.RadialGradientPanelRedondeado();
+        glassIcon1 = new raven.glassmorphism.GlassIcon();
         whiteRoundedPanelF1 = new Vistas.elementosTwo.WhiteRoundedPanelF();
         transparenteRoundedPanel1 = new Vistas.elementosTwo.TransparenteRoundedPanel();
         lbl_inicio = new javax.swing.JLabel();
@@ -53,6 +42,7 @@ public class dashboardpanel extends javax.swing.JPanel {
         lbl_proveedores = new javax.swing.JLabel();
         lbl_ventas = new javax.swing.JLabel();
         lbl_usuarios_y_empleados = new javax.swing.JLabel();
+        btnSwitchTheme = new javax.swing.JButton();
         panelContent = new Vistas.elementosTwo.TransparenteRoundedPanel();
         transparenteRoundedPanel2 = new Vistas.elementosTwo.TransparenteRoundedPanel();
         imgMinimize = new javax.swing.JLabel();
@@ -60,45 +50,6 @@ public class dashboardpanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-
-        menuPlegable.setBackground(new java.awt.Color(8, 23, 46));
-
-        jButton1.setText("Change calendar mode");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout menuPlegableLayout = new javax.swing.GroupLayout(menuPlegable);
-        menuPlegable.setLayout(menuPlegableLayout);
-        menuPlegableLayout.setHorizontalGroup(
-            menuPlegableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuPlegableLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(20, 20, 20))
-        );
-        menuPlegableLayout.setVerticalGroup(
-            menuPlegableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuPlegableLayout.createSequentialGroup()
-                .addGap(597, 597, 597)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        radialGradientPanelRedondeado6.setBackground(new java.awt.Color(8, 23, 46));
-
-        javax.swing.GroupLayout radialGradientPanelRedondeado6Layout = new javax.swing.GroupLayout(radialGradientPanelRedondeado6);
-        radialGradientPanelRedondeado6.setLayout(radialGradientPanelRedondeado6Layout);
-        radialGradientPanelRedondeado6Layout.setHorizontalGroup(
-            radialGradientPanelRedondeado6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1063, Short.MAX_VALUE)
-        );
-        radialGradientPanelRedondeado6Layout.setVerticalGroup(
-            radialGradientPanelRedondeado6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
 
         setBackground(new java.awt.Color(0, 0, 0));
 
@@ -209,6 +160,14 @@ public class dashboardpanel extends javax.swing.JPanel {
             }
         });
 
+        btnSwitchTheme.setText("olaqhace");
+        btnSwitchTheme.setToolTipText("");
+        btnSwitchTheme.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSwitchThemeMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout transparenteRoundedPanel1Layout = new javax.swing.GroupLayout(transparenteRoundedPanel1);
         transparenteRoundedPanel1.setLayout(transparenteRoundedPanel1Layout);
         transparenteRoundedPanel1Layout.setHorizontalGroup(
@@ -223,6 +182,10 @@ public class dashboardpanel extends javax.swing.JPanel {
                     .addComponent(lbl_ventas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbl_usuarios_y_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 15, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transparenteRoundedPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSwitchTheme)
+                .addGap(23, 23, 23))
         );
         transparenteRoundedPanel1Layout.setVerticalGroup(
             transparenteRoundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,7 +204,9 @@ public class dashboardpanel extends javax.swing.JPanel {
                 .addComponent(lbl_ventas, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_usuarios_y_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(btnSwitchTheme)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         whiteRoundedPanelF1.add(transparenteRoundedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 290, 680));
@@ -405,24 +370,6 @@ public class dashboardpanel extends javax.swing.JPanel {
     panelContent.repaint();
     }//GEN-LAST:event_lbl_usuarios_y_empleadosMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (!FlatLaf.isLafDark()) {
-            EventQueue.invokeLater(() -> {
-                FlatAnimatedLafChange.showSnapshot();
-                FlatDarculaLaf.setup();
-                FlatLaf.updateUI();
-                FlatAnimatedLafChange.hideSnapshotWithAnimation();
-            });
-        } else {
-            EventQueue.invokeLater(() -> {
-                FlatAnimatedLafChange.showSnapshot();
-                FlatIntelliJLaf.setup();
-                FlatLaf.updateUI();
-                FlatAnimatedLafChange.hideSnapshotWithAnimation();
-            });
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void imgMinimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgMinimizeMouseClicked
            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);  // Obtiene el JFrame que contiene el JPanel
     if (frame != null) {
@@ -434,11 +381,17 @@ public class dashboardpanel extends javax.swing.JPanel {
         System.exit(0);  // Cierra la aplicación por completo
     }//GEN-LAST:event_imgExitMouseClicked
 
+    private void btnSwitchThemeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSwitchThemeMouseClicked
+
+       
+    }//GEN-LAST:event_btnSwitchThemeMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnSwitchTheme;
+    private raven.glassmorphism.GlassIcon glassIcon1;
     public javax.swing.JLabel imgExit;
     public javax.swing.JLabel imgMinimize;
-    public javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -449,9 +402,7 @@ public class dashboardpanel extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_proveedores;
     private javax.swing.JLabel lbl_usuarios_y_empleados;
     private javax.swing.JLabel lbl_ventas;
-    private Vistas.elemetos.RadialGradientPanelRedondeado menuPlegable;
     public Vistas.elementosTwo.TransparenteRoundedPanel panelContent;
-    private Vistas.elemetos.RadialGradientPanelRedondeado radialGradientPanelRedondeado6;
     private Vistas.elementosTwo.TransparenteRoundedPanel transparenteRoundedPanel1;
     private Vistas.elementosTwo.TransparenteRoundedPanel transparenteRoundedPanel2;
     private Vistas.elementosTwo.WhiteRoundedPanelF whiteRoundedPanelF1;

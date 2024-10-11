@@ -18,13 +18,6 @@ public class Loginjava extends javax.swing.JFrame {
      */
     public Loginjava() {
          setUndecorated(true);
-        
-        // Configuramos FlatLaf como el LookAndFeel
-        try {
-            FlatLightLaf.setup(); // Usamos FlatLaf en su versión clara
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
 
         // Inicializamos los componentes
         initComponents();
