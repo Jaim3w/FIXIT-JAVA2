@@ -14,8 +14,11 @@ import javax.swing.SwingUtilities;
 
 public class dashboardpanel extends javax.swing.JPanel {
 
-  
+  Desface desplace;
+    
     public dashboardpanel() {
+        
+        desplace = new Desface();
         
         // Configuramos FlatLaf como el LookAndFeel
         try {
