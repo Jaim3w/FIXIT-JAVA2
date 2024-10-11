@@ -1,11 +1,26 @@
 package Modelo;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Base64;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.core5.http.ParseException;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.apache.hc.core5.http.io.entity.StringEntity;
+import org.json.JSONObject;
 
 public class mdlPerfilAd {
 
@@ -82,6 +97,59 @@ public class mdlPerfilAd {
         this.imgUrl = imgUrl;
     }
     
+    private String subirImagenImgur(File imageFile) throws IOException {
+    // Cargar la imagen y convertirla en Base64
+    byte[] fileContent = Files.readAllBytes(imageFile.toPath());
+    String encodedImage = Base64.getEncoder().encodeToString(fileContent);
+
+    // URL de la API de Imgur
+    String uploadUrl = "https://api.imgur.com/3/image";
+
+    // Crear un cliente HTTP
+    CloseableHttpClient httpClient = HttpClients.createDefault();
+    HttpPost uploadFile = new HttpPost(uploadUrl);
+
+    // Configurar las cabeceras para autenticar la API de Imgur
+    uploadFile.addHeader("Authorization", "Client-ID 8fade595e9f4606");
+
+    // Crear el JSON para el body de la petición
+    JSONObject json = new JSONObject();
+    json.put("image", encodedImage);
+
+    // Establecer el JSON como entidad de la petición
+    StringEntity entity = new StringEntity(json.toString());
+    uploadFile.setEntity(entity);
+    uploadFile.addHeader("Content-Type", "application/json");
+
+    // Declarar la respuesta
+    CloseableHttpResponse response = null;
+
+    try {
+        // Ejecutar la solicitud de subida
+        response = httpClient.execute(uploadFile);
+        
+        // Convertir la entidad de la respuesta a una cadena JSON
+        String jsonResponse = EntityUtils.toString(response.getEntity());
+
+        // Analizar la respuesta JSON para obtener la URL de la imagen
+        JSONObject responseObject = new JSONObject(jsonResponse);
+        String uploadedUrl = responseObject.getJSONObject("data").getString("link");
+
+        return uploadedUrl;
+    } catch (ParseException e) {
+        e.printStackTrace();
+        throw new IOException("Error al parsear la respuesta de la imagen: " + e.getMessage());
+    } catch (IOException e) {
+        e.printStackTrace();
+        throw new IOException("Error de entrada/salida: " + e.getMessage());
+    } finally {
+        if (response != null) {
+            response.close();
+        }
+        httpClient.close();
+        }
+    }
+    
     public void cargarDatosPerfil() {
         Connection conexion = Conexion.getConexion();  // Obtener la conexión
 
@@ -131,6 +199,74 @@ public class mdlPerfilAd {
             }
         }
     }
-
-
+    
+    public void ActualizarTel() {
+    Connection conexion = Conexion.getConexion();
+    try {
+        String sql = "UPDATE Empleado SET Telefono = ? WHERE Dui_empleado = ?";
+        PreparedStatement updateTel = conexion.prepareStatement(sql);
+        
+        updateTel.setString(1, getTelefono());
+        updateTel.setString(2, dui);
+        
+        updateTel.executeUpdate();
+        
+        JOptionPane.showMessageDialog(null, "Teléfono actualizado correctamente.");
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error al actualizar el teléfono del empleado: " + e.getMessage());
+    } finally {
+        try {
+            if (conexion != null) {
+                conexion.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            }
+        }
+    }
+    
+    public void ActualizarImg() {
+        Connection conexion = Conexion.getConexion();
+    try {
+        if (img != null) {
+        setImgUrl(subirImagenImgur(img)); // Usar la imagen seleccionada
+    } else {
+        JOptionPane.showMessageDialog(null, "Por favor selecciona una imagen antes de guardar.");
+        return; // Salir si no hay imagen seleccionada
+    }
+        
+        setImgUrl(subirImagenImgur(img));
+        
+        String sql = "UPDATE Empleado SET ImagenEmpleado = ? WHERE Dui_empleado = ?";
+        PreparedStatement updateTel = conexion.prepareStatement(sql);
+        
+        updateTel.setString(1, getImgUrl());
+        updateTel.setString(2, dui);
+        
+        updateTel.executeUpdate();
+        
+        JOptionPane.showMessageDialog(null, "Teléfono actualizado correctamente.");
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error al actualizar el teléfono del empleado: " + e.getMessage());
+    }   catch (IOException ex) {
+            Logger.getLogger(mdlPerfilAd.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        try {
+            if (conexion != null) {
+                conexion.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            }
+        }
+    
+    }
 }
+
+
+
+

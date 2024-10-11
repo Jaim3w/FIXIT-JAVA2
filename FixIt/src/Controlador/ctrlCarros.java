@@ -12,6 +12,7 @@ import Modelo.ClientesCarro;
 import Modelo.ModeloCarro;
 import Modelo.mdlCarros;
 import Vistas.frmCarros;
+import Vistas.frmPerfilAd;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -99,6 +100,7 @@ public class ctrlCarros implements MouseListener, KeyListener {
 
     @Override
    public void mouseClicked(MouseEvent e) {
+        
     // ejecución al dar clic a boton guardar
     if (e.getSource() == Vista.btnGuardarCarro) {
         // Validar que los campos no estén vacíos

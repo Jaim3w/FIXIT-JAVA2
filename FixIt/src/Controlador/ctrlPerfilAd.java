@@ -3,12 +3,20 @@ package Controlador;
 import Modelo.Conexion;
 import Modelo.mdlPerfilAd;
 import Vistas.frmPerfilAd;
+import java.awt.Image;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 public class ctrlPerfilAd implements MouseListener, KeyListener {
     private mdlPerfilAd Modelo;
@@ -50,6 +58,92 @@ public class ctrlPerfilAd implements MouseListener, KeyListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        if (e.getSource() == Vista.btnActImagen) {
+    // Crear el JFileChooser para seleccionar un archivo
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Seleccionar Imagen");
+
+        // Abrir el diálogo para seleccionar una imagen
+        int result = fileChooser.showOpenDialog(Vista);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            // Obtener el archivo seleccionado
+            File imagenSeleccionada = fileChooser.getSelectedFile();
+
+            // Establecer la imagen seleccionada en el modelo
+            Modelo.setImg(imagenSeleccionada);
+
+            // Mostrar la imagen en el JLabel lblImagenCarro
+            mostrarImagenEnLabel(imagenSeleccionada);
+
+            // Mostrar el nombre de la imagen seleccionada
+            JOptionPane.showMessageDialog(Vista, "Imagen seleccionada: " + imagenSeleccionada.getName());
+        } else {
+            JOptionPane.showMessageDialog(Vista, "No se seleccionó ninguna imagen.");
+        }
+    }
+        
+        if (e.getSource() == Vista.btnActTelefono) {
+        if (Vista.txtTelefono.getText().isEmpty())  {
+            JOptionPane.showMessageDialog(Vista, "no puedes actualizar a un dato vacio", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            try {
+                String telefono = Vista.txtTelefono.getText();
+            if (!telefono.matches("\\d{8}")) { // Verifica que solo contenga 8 dígitos
+                JOptionPane.showMessageDialog(Vista, "El teléfono debe contener exactamente 8 números", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            Modelo.setTelefono(telefono);
+
+            Modelo.ActualizarTel();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(Vista, "Error al actualizar el empleado", "Error", JOptionPane.WARNING_MESSAGE);
+            }
+        
+        }
+    }
+        
+        if (e.getSource() == Vista.btnActImagen) {
+        if (Vista..getIcon().isEmpty())  {
+            JOptionPane.showMessageDialog(Vista, "no puedes actualizar a un dato vacio", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            try {
+                String telefono = Vista.txtTelefono.getText();
+            if (!telefono.matches("\\d{8}")) { // Verifica que solo contenga 8 dígitos
+                JOptionPane.showMessageDialog(Vista, "El teléfono debe contener exactamente 8 números", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            Modelo.setTelefono(telefono);
+
+            Modelo.ActualizarTel();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(Vista, "Error al actualizar el empleado", "Error", JOptionPane.WARNING_MESSAGE);
+            }
+        
+        }
+    }
+    }
+    
+    private void mostrarImagenEnLabel(File imagen) {
+        try {
+            // Leer la imagen desde el archivo
+            BufferedImage bufferedImage = ImageIO.read(imagen);
+
+            // Crear el ImageIcon a partir de la imagen
+            ImageIcon icon = new ImageIcon(bufferedImage);
+
+            // Redimensionar la imagen para que se ajuste al JLabel
+            Image imageScaled = icon.getImage().getScaledInstance(Vista.txtImgUrl.getWidth(),
+            Vista.txtImgUrl.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon scaledIcon = new ImageIcon(imageScaled);
+
+            // Establecer la imagen en el JLabel
+            Vista.txtImgUrl.setIcon(scaledIcon);
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(Vista, "Error al cargar la imagen.");
+        }
     }
 
     @Override

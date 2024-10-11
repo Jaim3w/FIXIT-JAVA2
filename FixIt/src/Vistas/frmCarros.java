@@ -25,6 +25,7 @@ public class frmCarros extends RoundedWhitePanel {
 
         vista.setVisible(true);
     }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -162,7 +163,7 @@ public class frmCarros extends RoundedWhitePanel {
     public javax.swing.JButton btnSubirImagen;
     public javax.swing.JComboBox<String> cmbClienteCarro;
     public javax.swing.JComboBox<String> cmbModeloCarro;
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
