@@ -1,6 +1,11 @@
 package Controlador;
 
 import Modelo.Usuarios;
+<<<<<<< HEAD
+=======
+import Modelo.globalVars;
+import Vistas.EnviarcorreoE;
+>>>>>>> adriel
 import Vistas.Loginjava;
 import Vistas.dashboard;
 import java.awt.event.MouseEvent;
@@ -55,6 +60,8 @@ public class controladorLogin implements MouseInputListener {
 
             boolean comprobar = modelo.IniciarLogin();
             System.out.println("Resultado del login: " + comprobar);
+            
+            globalVars.correoUsuario = vista.txtCorreo.getText();
 
             if (comprobar) {
                 JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso", "Inicio de sesión", JOptionPane.INFORMATION_MESSAGE);

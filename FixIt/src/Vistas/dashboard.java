@@ -1,5 +1,6 @@
 package Vistas;
 
+import Modelo.globalVars;
 import java.awt.Color;
 import desplazable.Desface;
 
@@ -20,6 +21,9 @@ public class dashboard extends javax.swing.JFrame {
         // Refresca el panel para asegurarte de que se muestre correctamente
         jpCallDashboardPanel.revalidate();
         jpCallDashboardPanel.repaint();
+        
+        String correoUsuario = globalVars.correoUsuario;
+        System.out.println("El correo del usuario en sesión es: " + correoUsuario);
     }
 
     

@@ -38,6 +38,10 @@ public class controlador implements MouseListener {
             }
         });
     }
+    
+    public class correoGlobal {
+        
+    }
 
     @Override
     public void mouseClicked(MouseEvent e) {
