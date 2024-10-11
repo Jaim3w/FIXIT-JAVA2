@@ -1,10 +1,7 @@
 package Vistas;
 
-<<<<<<< HEAD
 import Modelo.globalVars;
-=======
 import com.formdev.flatlaf.FlatLightLaf;
->>>>>>> 6cd143adcee280f9bb955a55c2e36367ac1e3ff4
 import java.awt.Color;
 import desplazable.Desface;
 

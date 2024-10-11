@@ -4,17 +4,24 @@
  */
 package Vistas;
 
+import Controlador.ctrlEmpleados;
+import Modelo.Usuarios;
+import Modelo.mdlEmpleados;
 import Vistas.elementosTwo.TransparenteRoundedPanel;
 import Vistas.elemetos.RoundedWhitePanel;
 
 
 public class frmUsuarios extends TransparenteRoundedPanel{
 
-    /**
-     * Creates new form frmUsuarios
-     */
     public frmUsuarios() {
         initComponents();
+        
+        mdlEmpleados modelo = new mdlEmpleados();
+        frmUsuarios vista = this;
+        Usuarios mUsuarios = new Usuarios();
+        ctrlEmpleados controlador = new ctrlEmpleados(modelo, vista, mUsuarios);
+        
+        vista.setVisible(true);
     }
 
     /**
@@ -36,7 +43,6 @@ public class frmUsuarios extends TransparenteRoundedPanel{
         cmbCorreoEmpleado = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         btnSubirImagen = new javax.swing.JButton();
-        lblImagenEmpleado = new javax.swing.JLabel();
         btnActualizar = new Vistas.elemetos.ButtonA();
         btnGuardar = new Vistas.elemetos.ButtonA();
         btnEliminar = new Vistas.elemetos.ButtonA();
@@ -47,17 +53,20 @@ public class frmUsuarios extends TransparenteRoundedPanel{
         jLabel11 = new javax.swing.JLabel();
         txtnombre = new javax.swing.JFormattedTextField();
         txtapellido = new javax.swing.JFormattedTextField();
-        txtFecha = new com.toedter.calendar.JCalendar();
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         btnLimpiar = new Vistas.elemetos.ButtonA();
+        txtFecha = new com.toedter.calendar.JDateChooser();
+        btnNewUser = new javax.swing.JButton();
+        pnlImagen = new javax.swing.JPanel();
+        txtImagenUrl = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Empleados");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 170, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, 170, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
         jLabel3.setText("Apellidos");
@@ -69,7 +78,7 @@ public class frmUsuarios extends TransparenteRoundedPanel{
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
         jLabel5.setText("FechaNacimiento");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, -1, -1));
         add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 220, 30));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
@@ -91,8 +100,7 @@ public class frmUsuarios extends TransparenteRoundedPanel{
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, -1));
 
         btnSubirImagen.setText("Subir Imagen");
-        add(btnSubirImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 130, -1, 30));
-        add(lblImagenEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, 210, 110));
+        add(btnSubirImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 210, -1, 30));
 
         btnActualizar.setText("Actualizar");
         btnActualizar.setToolTipText("");
@@ -128,15 +136,20 @@ public class frmUsuarios extends TransparenteRoundedPanel{
         add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
         add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 220, 30));
         add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 220, 30));
-
-        txtFecha.setForeground(new java.awt.Color(255, 255, 255));
-        add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 210, 390, 140));
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 500, -1, -1));
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 666, 60, 30));
 
         btnLimpiar.setText("Limpiar");
         btnLimpiar.setToolTipText("");
         add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 120, -1));
+        add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, 220, -1));
+
+        btnNewUser.setText("jButton1");
+        add(btnNewUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 30, 30));
+
+        pnlImagen.add(txtImagenUrl);
+
+        add(pnlImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 80, 160, 110));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtduiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtduiActionPerformed
@@ -149,6 +162,7 @@ public class frmUsuarios extends TransparenteRoundedPanel{
     public Vistas.elemetos.ButtonA btnEliminar;
     public Vistas.elemetos.ButtonA btnGuardar;
     public Vistas.elemetos.ButtonA btnLimpiar;
+    public javax.swing.JButton btnNewUser;
     public javax.swing.JButton btnSubirImagen;
     public javax.swing.JComboBox<String> cmbCorreoEmpleado;
     public javax.swing.JTable dtgempleado;
@@ -164,8 +178,9 @@ public class frmUsuarios extends TransparenteRoundedPanel{
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JLabel lblImagenEmpleado;
-    public com.toedter.calendar.JCalendar txtFecha;
+    private javax.swing.JPanel pnlImagen;
+    public com.toedter.calendar.JDateChooser txtFecha;
+    public javax.swing.JLabel txtImagenUrl;
     public javax.swing.JTextField txtTelefono;
     public javax.swing.JFormattedTextField txtapellido;
     public javax.swing.JFormattedTextField txtdui;

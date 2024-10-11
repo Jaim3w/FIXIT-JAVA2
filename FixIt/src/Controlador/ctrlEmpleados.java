@@ -13,45 +13,71 @@ import Vistas.frmUsuarios;
  * @author Kevin
  */
 public class ctrlEmpleados implements MouseListener, KeyListener {
+    private mdlEmpleados Modelo;
+    private frmUsuarios Vista;
+    private Usuarios mUsuarios;
+    
+    public ctrlEmpleados(mdlEmpleados Modelo, frmUsuarios Vista, Usuarios mUsuarios){
+        this.Modelo = Modelo;
+        this.Vista = Vista;
+        this.mUsuarios = mUsuarios;
+        
+        Vista.btnGuardar.addMouseListener(this);
+        Vista.btnSubirImagen.addMouseListener(this);
+        Vista.dtgempleado.addMouseListener(this);
+        
+        this.mUsuarios.CargarComboEmpleado(Vista.cmbCorreoEmpleado);
+        
+        Vista.cmbCorreoEmpleado.addActionListener(e -> {
+            if (e.getSource() == Vista.cmbCorreoEmpleado) {
+                System.out.println("ComboBox seleccionado");
+                Usuarios selectedItem = (Usuarios) Vista.cmbCorreoEmpleado.getSelectedItem();
+                if (selectedItem != null) {
+                    String uuid = selectedItem.getUUID_usuario();
+                    mUsuarios.setUUID_usuario(uuid);
+                    System.out.println("uuid de usuario seleccionado: " + uuid);
+                } else {
+                    System.out.println("No se seleccionó ningún usuario");
+                }
+            }
+        });
+        
+        Modelo.Mostrar(Vista.dtgempleado);
+    }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (e.getSource() == Vista.dtgempleado) {
+            Modelo.cargarDatosTabla(Vista);
+        }
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 
