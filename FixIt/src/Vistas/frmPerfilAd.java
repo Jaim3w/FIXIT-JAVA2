@@ -88,8 +88,6 @@ public class frmPerfilAd extends RoundedWhitePanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        txtImgUrl.setText("jLabel9");
-
         javax.swing.GroupLayout pnlImagenLayout = new javax.swing.GroupLayout(pnlImagen);
         pnlImagen.setLayout(pnlImagenLayout);
         pnlImagenLayout.setHorizontalGroup(

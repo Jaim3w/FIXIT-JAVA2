@@ -59,41 +59,89 @@ public class ctrlPerfilAd implements MouseListener, KeyListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == Vista.btnActImagen) {
-    // Crear el JFileChooser para seleccionar un archivo
+    if (Vista.btnActImagen.getText().equals("Actualizar imagen")) {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Seleccionar Imagen");
 
-        // Abrir el diálogo para seleccionar una imagen
         int result = fileChooser.showOpenDialog(Vista);
 
         if (result == JFileChooser.APPROVE_OPTION) {
-            // Obtener el archivo seleccionado
             File imagenSeleccionada = fileChooser.getSelectedFile();
 
-            // Establecer la imagen seleccionada en el modelo
             Modelo.setImg(imagenSeleccionada);
 
-            // Mostrar la imagen en el JLabel lblImagenCarro
             mostrarImagenEnLabel(imagenSeleccionada);
 
-            // Mostrar el nombre de la imagen seleccionada
+            // Cambiar el texto del botón a "Actualizar Imagen"
+            Vista.btnActImagen.setText("Aceptar");
+
             JOptionPane.showMessageDialog(Vista, "Imagen seleccionada: " + imagenSeleccionada.getName());
         } else {
             JOptionPane.showMessageDialog(Vista, "No se seleccionó ninguna imagen.");
         }
+
+    } else if (Vista.btnActImagen.getText().equals("Aceptar")) {
+        if (Vista.txtImgUrl.getIcon() == null)  {
+            JOptionPane.showMessageDialog(Vista, "Debes seleccionar una imagen", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            try {
+                Modelo.setImg(Modelo.getImg());
+
+                Modelo.ActualizarImg();
+
+                JOptionPane.showMessageDialog(Vista, "Imagen actualizada correctamente.");
+
+                Vista.btnActImagen.setText("Seleccionar Imagen");
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(Vista, "Error al actualizar la imagen", "Error", JOptionPane.WARNING_MESSAGE);
+            }
+        }
     }
+}
+
         
         if (e.getSource() == Vista.btnActTelefono) {
-        if (Vista.txtTelefono.getText().isEmpty())  {
-            JOptionPane.showMessageDialog(Vista, "no puedes actualizar a un dato vacio", "Error", JOptionPane.ERROR_MESSAGE);
+    // Si el botón dice "Actualizar Telefono"
+    if (Vista.btnActTelefono.getText().equals("Actualizar Telefono")) {
+        Vista.txtTelefono.setEnabled(true);
+        Vista.txtTelefono.requestFocus();
+
+        Vista.btnActTelefono.setText("Aceptar");
+
+    } else if (Vista.btnActTelefono.getText().equals("Aceptar")) {
+        if (Vista.txtTelefono.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(Vista, "No puedes actualizar a un dato vacío", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             try {
                 String telefono = Vista.txtTelefono.getText();
-            if (!telefono.matches("\\d{8}")) { // Verifica que solo contenga 8 dígitos
-                JOptionPane.showMessageDialog(Vista, "El teléfono debe contener exactamente 8 números", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
+
+                if (!telefono.matches("\\d{8}")) {
+                    JOptionPane.showMessageDialog(Vista, "El teléfono debe contener exactamente 8 números", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                Modelo.setTelefono(telefono);
+                
+                Modelo.ActualizarTel();
+
+                JOptionPane.showMessageDialog(Vista, "Teléfono actualizado correctamente.");
+                Vista.txtTelefono.setEnabled(false);
+                Vista.btnActTelefono.setText("Actualizar Telefono");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(Vista, "Error al actualizar el teléfono", "Error", JOptionPane.WARNING_MESSAGE);
             }
-            Modelo.setTelefono(telefono);
+        }
+    }
+}
+
+        
+        /*if (e.getSource() == Vista.btnActImagen) {
+        if (Vista.txtImgUrl.getIcon() == null)  {
+            JOptionPane.showMessageDialog(Vista, "Debes seleccionar una imagen", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            try {
+            Modelo.setImg(Modelo.getImg());
 
             Modelo.ActualizarTel();
             } catch (Exception ex) {
@@ -101,27 +149,7 @@ public class ctrlPerfilAd implements MouseListener, KeyListener {
             }
         
         }
-    }
-        
-        if (e.getSource() == Vista.btnActImagen) {
-        if (Vista..getIcon().isEmpty())  {
-            JOptionPane.showMessageDialog(Vista, "no puedes actualizar a un dato vacio", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            try {
-                String telefono = Vista.txtTelefono.getText();
-            if (!telefono.matches("\\d{8}")) { // Verifica que solo contenga 8 dígitos
-                JOptionPane.showMessageDialog(Vista, "El teléfono debe contener exactamente 8 números", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            Modelo.setTelefono(telefono);
-
-            Modelo.ActualizarTel();
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(Vista, "Error al actualizar el empleado", "Error", JOptionPane.WARNING_MESSAGE);
-            }
-        
-        }
-    }
+    }*/
     }
     
     private void mostrarImagenEnLabel(File imagen) {
