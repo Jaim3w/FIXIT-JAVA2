@@ -59,6 +59,7 @@ public class frmCarros extends TransparenteRoundedPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         txtIngresoCarro = new javax.swing.JLabel();
+        dynamicCell1 = new swing.DynamicCell();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(922, 703));
@@ -162,6 +163,7 @@ public class frmCarros extends TransparenteRoundedPanel {
         txtIngresoCarro.setForeground(new java.awt.Color(0, 0, 0));
         txtIngresoCarro.setText("jLabel14");
         add(txtIngresoCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 90, -1));
+        add(dynamicCell1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, 250, 120));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -173,6 +175,7 @@ public class frmCarros extends TransparenteRoundedPanel {
     public javax.swing.JButton btnSubirImagen;
     public javax.swing.JComboBox<String> cmbClienteCarro;
     public javax.swing.JComboBox<String> cmbModeloCarro;
+    private swing.DynamicCell dynamicCell1;
     public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

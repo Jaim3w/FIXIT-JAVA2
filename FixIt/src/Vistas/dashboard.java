@@ -1,25 +1,13 @@
 package Vistas;
 
-<<<<<<< HEAD
 import Modelo.globalVars;
-=======
-import com.formdev.flatlaf.FlatLightLaf;
->>>>>>> 6cd143adcee280f9bb955a55c2e36367ac1e3ff4
 import java.awt.Color;
-import desplazable.Desface;
 
 public class dashboard extends javax.swing.JFrame {
 
 
     public dashboard() {
         setUndecorated(true);
-        
-        // Configuramos FlatLaf como el LookAndFeel
-        try {
-            FlatLightLaf.setup(); // Usamos FlatLaf en su versión clara
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
 
         // Inicializamos los componentes
         initComponents();

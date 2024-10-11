@@ -1,11 +1,8 @@
 package Controlador;
 
 import Modelo.Usuarios;
-<<<<<<< HEAD
-=======
 import Modelo.globalVars;
 import Vistas.EnviarcorreoE;
->>>>>>> adriel
 import Vistas.Loginjava;
 import Vistas.dashboard;
 import java.awt.event.MouseEvent;
