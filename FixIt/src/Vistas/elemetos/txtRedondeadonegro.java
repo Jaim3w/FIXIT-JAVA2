@@ -16,7 +16,7 @@ public class txtRedondeadonegro extends JTextField { // Clase pública
             // Configuración inicial del JTextField
             setOpaque(false); // Hace el JTextField transparente
             setForeground(Color.BLACK); // Texto color negro
-            setCaretColor(Color.WHITE); // Color del cursor de texto
+            setCaretColor(Color.BLACK); // Color del cursor de texto
             setFont(new Font("Segoe UI", Font.PLAIN, 16)); // Fuente y tamaño del texto
 
             // Ajustar el borde con esquinas redondeadas y color #FFC300

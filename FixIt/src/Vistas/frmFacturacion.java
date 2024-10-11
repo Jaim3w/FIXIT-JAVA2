@@ -10,13 +10,13 @@ import javax.swing.*;
 import java.awt.*;
 import Controlador.ctrlFactura;
 import Modelo.Factura;
+import Vistas.elementosTwo.TransparenteRoundedPanel;
 
 
-public class frmFacturacion extends RoundedWhitePanel {
+public class frmFacturacion extends TransparenteRoundedPanel {
 
 
     public frmFacturacion() {
-           super(20, 20);
         initComponents();
         
         frmFacturacion vista = this;
@@ -145,18 +145,22 @@ public class frmFacturacion extends RoundedWhitePanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Facturas.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        Facturas.setForeground(new java.awt.Color(0, 0, 0));
         Facturas.setText("Facturas");
         add(Facturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 170, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Fecha de vencimiento");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Factura Para");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Fecha Emision");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 110, 20));
 
@@ -169,15 +173,15 @@ public class frmFacturacion extends RoundedWhitePanel {
 
         btnActualizar.setText("Actualizar");
         btnActualizar.setToolTipText("");
-        add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 290, 120, -1));
+        add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 280, 120, -1));
 
         btnGuardar.setText("Guardar");
         btnGuardar.setToolTipText("");
-        add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 120, -1));
+        add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 120, -1));
 
         btnEliminar.setText("Eliminar");
         btnEliminar.setToolTipText("");
-        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, 120, -1));
+        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, 120, -1));
 
         tbFacturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -192,7 +196,7 @@ public class frmFacturacion extends RoundedWhitePanel {
         ));
         jScrollPane1.setViewportView(tbFacturas);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 740, 220));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 940, 220));
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 510, 30, 30));
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 370, 30, 10));
         add(txtFechaFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 220, 30));
@@ -203,18 +207,18 @@ public class frmFacturacion extends RoundedWhitePanel {
                 CalendarioVencimientoPropertyChange(evt);
             }
         });
-        add(CalendarioVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, 250, 120));
+        add(CalendarioVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 70, 340, 180));
 
         btnLimpiar.setText("Limpiar");
         btnLimpiar.setToolTipText("");
-        add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 120, -1));
+        add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 120, -1));
 
         CalendarioEmision.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 CalendarioEmisionPropertyChange(evt);
             }
         });
-        add(CalendarioEmision, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, 250, 120));
+        add(CalendarioEmision, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 360, 180));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtclienteActionPerformed

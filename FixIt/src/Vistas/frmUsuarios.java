@@ -4,16 +4,16 @@
  */
 package Vistas;
 
+import Vistas.elementosTwo.TransparenteRoundedPanel;
 import Vistas.elemetos.RoundedWhitePanel;
 
 
-public class frmUsuarios extends RoundedWhitePanel{
+public class frmUsuarios extends TransparenteRoundedPanel{
 
     /**
      * Creates new form frmUsuarios
      */
     public frmUsuarios() {
-        super(20, 20);
         initComponents();
     }
 
@@ -119,7 +119,7 @@ public class frmUsuarios extends RoundedWhitePanel{
         ));
         jScrollPane1.setViewportView(dtgempleado);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 830, 240));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 830, 220));
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 510, 30, 30));
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 370, 30, 10));
 
@@ -130,7 +130,7 @@ public class frmUsuarios extends RoundedWhitePanel{
         add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 220, 30));
 
         txtFecha.setForeground(new java.awt.Color(255, 255, 255));
-        add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 210, 250, 120));
+        add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 210, 390, 140));
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 500, -1, -1));
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 666, 60, 30));
 

@@ -4,11 +4,13 @@
  */
 package Vistas;
 
+import Vistas.elementosTwo.TransparenteRoundedPanel;
+
 /**
  *
  * @author Estudiante
  */
-public class frmModelo extends javax.swing.JPanel {
+public class frmModelo extends TransparenteRoundedPanel{
 
     /**
      * Creates new form frmModelo
