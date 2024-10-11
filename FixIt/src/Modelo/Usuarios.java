@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelo;
 
+import Controlador.controladorCorreo;
 import Vistas.frmRegistrarse;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -144,7 +141,8 @@ public class Usuarios {
         try {
             PreparedStatement smpt = conexion.prepareStatement("Update Usuario set Contrasena = ? where CorreoElectronico = ?");
             smpt.setString(1, usuario.getContrasena());
-            smpt.setString(2, usuario.getCorreoElectronico());
+            System.err.println("ESTE ES EL CORREO AL QUE LE ESTOY CACTUALIZANDO LA CONRA" + controladorCorreo.correoGlobal);
+            smpt.setString(2, controladorCorreo.correoGlobal);
             smpt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Errro al actualizar la contraseña" + e.getMessage());
@@ -190,6 +188,25 @@ public class Usuarios {
         ex.printStackTrace();
     }
 }
+   
+   public boolean ValidarCorreo() {
+
+        Connection conexion = Conexion.getConexion();
+        boolean resultado = false;
+        try {
+            String sql = "Select * from Usuario where CorreoElectronico = ?";
+            PreparedStatement statement = conexion.prepareStatement(sql);
+            statement.setString(1, getCorreoElectronico());
+            ResultSet resulset = statement.executeQuery();
+            if (resulset.next()) {
+                resultado = true;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error en el modelo");
+        }
+
+        return resultado;
+    }
 
 
 }

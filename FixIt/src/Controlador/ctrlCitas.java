@@ -1,10 +1,10 @@
-
 package Controlador;
 
 import Modelo.Clientes;
 import Modelo.Empleados;
 import Modelo.mdlCitas;
 import Vistas.frmCitas;
+import Vistas.citasCardsPanel; // Importar la vista de tarjetas
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -15,9 +15,6 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import javax.swing.JTable;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
 
 /**
  *
@@ -28,12 +25,14 @@ public class ctrlCitas implements MouseListener, KeyListener {
     private frmCitas vista;
     private Clientes modeloCliente;
     private Empleados modeloEmpleado;
+    private citasCardsPanel citasCardsPanel; // Nueva referencia al panel de tarjetas
 
-    public ctrlCitas(mdlCitas modelo, frmCitas vistas, Clientes Modelo, Empleados ModeloEm) {
+    public ctrlCitas(mdlCitas modelo, frmCitas vistas, Clientes Modelo, Empleados ModeloEm, citasCardsPanel citasCards) {
         this.modelito = modelo;
         this.vista = vistas;
         this.modeloCliente = Modelo;
         this.modeloEmpleado = ModeloEm;
+        this.citasCardsPanel = citasCards; // Inicializar el panel de tarjetas
 
         // Añadir los listeners para botones y combos
         vistas.btnAddCita.addMouseListener(this);
@@ -45,7 +44,8 @@ public class ctrlCitas implements MouseListener, KeyListener {
         ModeloEm.Cargarcombo(vistas.cmbEmpleado);
 
         // Cargar citas al iniciar
-        modelito.Mostrar(vista.tbCitas);  // Aquí cargamos todas las citas al inicio
+        modelito.mostrarCitas(vista.tbCitas);  
+        modelito.obtenerCitasCards();
 
         // Acción del combobox de Clientes
         vistas.cmbCliente.addActionListener(e -> {
@@ -136,8 +136,9 @@ public class ctrlCitas implements MouseListener, KeyListener {
                 modelito.setDescripcion(vista.txtDEsc.getText());
                 modelito.setFecha_cita(vista.txtFecha.getText());
 
-                modelito.InsertarCitas();
-                modelito.Mostrar(vista.tbCitas);  // Refrescar la tabla después de insertar
+                modelito.insertarCitas();
+                modelito.mostrarCitas(vista.tbCitas);
+                citasCardsPanel.loadCards(); // Actualizar tarjetas después de añadir
                 JOptionPane.showMessageDialog(null, "Cita registrada con éxito", "Cita registrada", JOptionPane.INFORMATION_MESSAGE);
             } catch (DateTimeParseException ex) {
                 JOptionPane.showMessageDialog(vista, "Formato de fecha u hora inválido. Use 'yyyy-MM-dd' para la fecha y 'HH:mm' para la hora.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -148,8 +149,9 @@ public class ctrlCitas implements MouseListener, KeyListener {
         }
 
         if (e.getSource() == vista.btnEliminar) {
-            modelito.Eliminarcita(vista.tbCitas);
-            modelito.Mostrar(vista.tbCitas);  // Refrescar la tabla después de eliminar
+            modelito.eliminarCita(vista.tbCitas);
+            modelito.mostrarCitas(vista.tbCitas);  // Refrescar la tabla después de eliminar
+        citasCardsPanel.loadCards(); // Actualizar tarjetas después de eliminar
         }
 
         if (e.getSource() == vista.btnActualizar) {
@@ -177,8 +179,9 @@ public class ctrlCitas implements MouseListener, KeyListener {
                 modelito.setDescripcion(vista.txtDEsc.getText());
                 modelito.setFecha_cita(vista.txtFecha.getText());
 
-                modelito.ActualizarCitas(vista.tbCitas);
-                modelito.Mostrar(vista.tbCitas);  // Refrescar la tabla después de actualizar
+                modelito.actualizarCita(vista.tbCitas);
+                modelito.mostrarCitas(vista.tbCitas);
+                citasCardsPanel.loadCards(); // Actualizar tarjetas después de actualizar
             } catch (DateTimeParseException ex) {
                 JOptionPane.showMessageDialog(vista, "Formato de fecha u hora inválido. Use 'yyyy-MM-dd' para la fecha y 'HH:mm' para la hora.", "Error", JOptionPane.ERROR_MESSAGE);
             } catch (Exception ex) {
@@ -221,4 +224,3 @@ public class ctrlCitas implements MouseListener, KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {}
 }
-

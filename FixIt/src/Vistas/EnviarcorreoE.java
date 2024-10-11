@@ -6,6 +6,10 @@ package Vistas;
 
 import Controlador.controladorCorreo;
 import Modelo.Credenciales;
+import Modelo.Usuarios;
+import com.formdev.flatlaf.FlatLightLaf;
+import java.awt.Color;
+import javax.swing.JFrame;
 
 /**
  *
@@ -15,8 +19,22 @@ public class EnviarcorreoE extends javax.swing.JFrame {
 
 
     public EnviarcorreoE() {
+        setUndecorated(true);
+        
+         // Configuramos FlatLaf como el LookAndFeel
+        try {
+            FlatLightLaf.setup(); // Usamos FlatLaf en su versión clara
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
         initComponents();
-        this.setLocationRelativeTo(this);
+        
+           // Aplicamos el borde redondeado al JFrame
+        setShape(new java.awt.geom.RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 50, 50)); // Bordes redondeados
+        
+        // Configuramos el color de fondo y el layout
+        setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
 
     }
     
@@ -24,7 +42,8 @@ public class EnviarcorreoE extends javax.swing.JFrame {
     
         Credenciales modelo=new Credenciales();
         EnviarcorreoE vista=new EnviarcorreoE();
-        controladorCorreo controlador=new controladorCorreo(modelo, vista);
+         Usuarios modelito = new Usuarios();
+        controladorCorreo controlador=new controladorCorreo(modelo, vista,modelito);
         
         vista.setVisible(true);
     }
@@ -35,44 +54,66 @@ public class EnviarcorreoE extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonA1 = new Vistas.elemetos.ButtonA();
-        jPanel1 = new javax.swing.JPanel();
+        whiteRoundedPanelF1 = new Vistas.elementosTwo.WhiteRoundedPanelF();
+        imgMinimize = new javax.swing.JLabel();
+        imgExit = new javax.swing.JLabel();
+        txtCorreo = new Vistas.elemetos.txtRedondeadonegro();
+        btnenviar = new Vistas.elemetos.ButtonC();
         jLabel1 = new javax.swing.JLabel();
-        btnenviar = new javax.swing.JButton();
-        txtCorreo = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         buttonA1.setText("buttonA1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        whiteRoundedPanelF1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 2, 24)); // NOI18N
-        jLabel1.setText("Olvide mi contraseña");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 22, 272, 45));
-
-        btnenviar.setText("Enviar codigo de recuperacion");
-        btnenviar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnenviarActionPerformed(evt);
+        imgMinimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icminimizew.png"))); // NOI18N
+        imgMinimize.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgMinimizeMouseClicked(evt);
             }
         });
-        jPanel1.add(btnenviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 265, -1, 33));
+        whiteRoundedPanelF1.add(imgMinimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, -1, -1));
 
-        txtCorreo.setToolTipText("");
-        txtCorreo.setBorder(javax.swing.BorderFactory.createTitledBorder("Correo electrónico"));
-        jPanel1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 161, 660, 70));
+        imgExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icexitw.png"))); // NOI18N
+        imgExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgExitMouseClicked(evt);
+            }
+        });
+        whiteRoundedPanelF1.add(imgExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 10, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 450));
+        txtCorreo.setName(""); // NOI18N
+        whiteRoundedPanelF1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 430, 670, 50));
+
+        btnenviar.setForeground(new java.awt.Color(0, 0, 0));
+        btnenviar.setText("Enviar codigo de verificación");
+        btnenviar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        whiteRoundedPanelF1.add(btnenviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 520, 260, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Ingresa tu correo electronico");
+        whiteRoundedPanelF1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/recucontra2.png"))); // NOI18N
+        whiteRoundedPanelF1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        getContentPane().add(whiteRoundedPanelF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1350, 840));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnenviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnenviarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnenviarActionPerformed
+    private void imgMinimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgMinimizeMouseClicked
+        setState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_imgMinimizeMouseClicked
+
+    private void imgExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgExitMouseClicked
+        System.exit(0);  // Cierra la aplicación por completo
+    }//GEN-LAST:event_imgExitMouseClicked
 
     /**
      * @param args the command line arguments
@@ -111,10 +152,13 @@ public class EnviarcorreoE extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnenviar;
+    public Vistas.elemetos.ButtonC btnenviar;
     private Vistas.elemetos.ButtonA buttonA1;
+    public javax.swing.JLabel imgExit;
+    public javax.swing.JLabel imgMinimize;
     private javax.swing.JLabel jLabel1;
-    public javax.swing.JPanel jPanel1;
-    public javax.swing.JTextField txtCorreo;
+    private javax.swing.JLabel jLabel2;
+    public Vistas.elemetos.txtRedondeadonegro txtCorreo;
+    private Vistas.elementosTwo.WhiteRoundedPanelF whiteRoundedPanelF1;
     // End of variables declaration//GEN-END:variables
 }

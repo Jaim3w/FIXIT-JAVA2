@@ -7,21 +7,36 @@ package Vistas;
 import Modelo.Usuarios;
 import Controlador.controlador;
 import Modelo.Roles;
+import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.extras.FlatAnimatedLafChange;
+import java.awt.Color;
+import java.awt.EventQueue;
+import javax.swing.JFrame;
 
-/**
- *
- * @author rdlfp
- */
 public class frmRegistrarse extends javax.swing.JFrame {
 
-   
-
-    /**
-     * Creates new form frmRegistrarse
-     */
     public frmRegistrarse() {
+        setUndecorated(true);
+        
+         // Configuramos FlatLaf como el LookAndFeel
+        try {
+            FlatLightLaf.setup(); // Usamos FlatLaf en su versión clara
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
         initComponents();
-        this.setLocationRelativeTo(null);
+        
+         
+        // Aplicamos el borde redondeado al JFrame
+        setShape(new java.awt.geom.RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 50, 50)); // Bordes redondeados
+        
+        // Configuramos el color de fondo y el layout
+        setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
+
     }
 
     public static void initfrmRegistrarse(){
@@ -40,63 +55,101 @@ public class frmRegistrarse extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        radialGradientPanel1 = new Vistas.elemetos.RadialGradientPanel();
+        blackRoundedPanelF1 = new Vistas.elementosTwo.BlackRoundedPanelF();
         jLabel10 = new javax.swing.JLabel();
         cbComobox = new javax.swing.JComboBox<>();
-        txtContra = new Vistas.elemetos.TxtBoxContrasenia();
-        imgFixit = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txtCorreoUser = new Vistas.elemetos.TxtBoxRedondeado();
         jLabel13 = new javax.swing.JLabel();
         btnAgregarUser = new Vistas.elemetos.ButtonA();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtContra = new Vistas.elemetos.txtContrasenaredondeadaamarilla();
+        txtCorreoUser = new Vistas.elemetos.txtRedondeadoamarillo();
+        imgFixit = new Vistas.elemetos.ButtonC();
+        fondo = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
         setMinimumSize(new java.awt.Dimension(730, 659));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        radialGradientPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        blackRoundedPanelF1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("¿Como quiero Registrame?");
-        radialGradientPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 210, -1));
+        jLabel10.setText("¿Ya tienes una cuenta?");
+        blackRoundedPanelF1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 610, 140, -1));
 
+        cbComobox.setBackground(new java.awt.Color(255, 255, 255));
+        cbComobox.setForeground(new java.awt.Color(0, 0, 0));
         cbComobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        radialGradientPanel1.add(cbComobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 410, 40));
-        radialGradientPanel1.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 420, 50));
-
-        imgFixit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/logo_fixit_desktop.png"))); // NOI18N
-        radialGradientPanel1.add(imgFixit, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, 120, 90));
+        cbComobox.setOpaque(true);
+        blackRoundedPanelF1.add(cbComobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 460, 410, 40));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Correo");
-        radialGradientPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 110, -1));
-
-        jLabel5.setFont(new java.awt.Font("Microsoft YaHei", 0, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Registrate con FixIT");
-        radialGradientPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, -1, -1));
-        radialGradientPanel1.add(txtCorreoUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 410, 50));
+        blackRoundedPanelF1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 220, 110, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Contraseña");
-        radialGradientPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 110, -1));
+        blackRoundedPanelF1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 320, 110, -1));
 
         btnAgregarUser.setText("Registrame");
-        radialGradientPanel1.add(btnAgregarUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, 180, 50));
+        blackRoundedPanelF1.add(btnAgregarUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 550, 180, 50));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/Diseño sin título.png"))); // NOI18N
-        radialGradientPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 510));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icexit.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        blackRoundedPanelF1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 10, -1, -1));
 
-        getContentPane().add(radialGradientPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 510));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icminimize.png"))); // NOI18N
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        blackRoundedPanelF1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, -1, -1));
+        blackRoundedPanelF1.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 350, 410, 40));
+        blackRoundedPanelF1.add(txtCorreoUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 260, 410, 40));
+
+        imgFixit.setText("Iniciar sesión");
+        blackRoundedPanelF1.add(imgFixit, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 640, 180, 50));
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/imgregistrarsefondo.png"))); // NOI18N
+        blackRoundedPanelF1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("¿Como quiero Registrame?");
+        blackRoundedPanelF1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 430, 210, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(blackRoundedPanelF1, javax.swing.GroupLayout.PREFERRED_SIZE, 1350, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(blackRoundedPanelF1, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    System.exit(0);  
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    setState(JFrame.ICONIFIED); 
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -134,16 +187,18 @@ public class frmRegistrarse extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public Vistas.elementosTwo.BlackRoundedPanelF blackRoundedPanelF1;
     public Vistas.elemetos.ButtonA btnAgregarUser;
     public javax.swing.JComboBox<String> cbComobox;
-    public javax.swing.JLabel imgFixit;
+    public javax.swing.JLabel fondo;
+    public Vistas.elemetos.ButtonC imgFixit;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
-    private Vistas.elemetos.RadialGradientPanel radialGradientPanel1;
-    public Vistas.elemetos.TxtBoxContrasenia txtContra;
-    public Vistas.elemetos.TxtBoxRedondeado txtCorreoUser;
+    private javax.swing.JLabel jLabel3;
+    public Vistas.elemetos.txtContrasenaredondeadaamarilla txtContra;
+    public Vistas.elemetos.txtRedondeadoamarillo txtCorreoUser;
     // End of variables declaration//GEN-END:variables
 }

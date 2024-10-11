@@ -5,6 +5,9 @@
 package Vistas;
 
 import Controlador.ctrlVeri;
+import com.formdev.flatlaf.FlatLightLaf;
+import java.awt.Color;
+import javax.swing.JFrame;
 
 /**
  *
@@ -16,7 +19,26 @@ public class CodigoVeri extends javax.swing.JFrame {
      * Creates new form CodigoVe
      */
     public CodigoVeri() {
+         setUndecorated(true);
+        
+        // Configuramos FlatLaf como el LookAndFeel
+        try {
+            FlatLightLaf.setup(); // Usamos FlatLaf en su versión clara
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        // Inicializamos los componentes
         initComponents();
+        
+        // Aplicamos el borde redondeado al JFrame
+        setShape(new java.awt.geom.RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 50, 50)); // Bordes redondeados
+        
+        // Configuramos el color de fondo y el layout
+        setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
+
+        
+        
     }
     
     public static void initCodigoVeri(){
@@ -36,67 +58,76 @@ public class CodigoVeri extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        whiteRoundedPanelF1 = new Vistas.elementosTwo.WhiteRoundedPanelF();
+        imgMinimize = new javax.swing.JLabel();
+        imgExit = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        txtCodi = new javax.swing.JPasswordField();
-        btncontinuar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        txtCodi = new Vistas.elemetos.txtRedondeadonegro();
+        btncontinuar = new Vistas.elemetos.ButtonC();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Codigo de verificacion");
+        whiteRoundedPanelF1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btncontinuar.setText("Continuar");
-        btncontinuar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btncontinuarActionPerformed(evt);
+        imgMinimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icminimizew.png"))); // NOI18N
+        imgMinimize.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgMinimizeMouseClicked(evt);
             }
         });
+        whiteRoundedPanelF1.add(imgMinimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, -1, -1));
 
+        imgExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icexitw.png"))); // NOI18N
+        imgExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgExitMouseClicked(evt);
+            }
+        });
+        whiteRoundedPanelF1.add(imgExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 10, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Codigo de verificacion");
+        whiteRoundedPanelF1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 390, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Ingresa el codigo de verificacion");
+        whiteRoundedPanelF1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 470, -1, -1));
+        whiteRoundedPanelF1.add(txtCodi, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 430, 290, -1));
+
+        btncontinuar.setForeground(new java.awt.Color(0, 0, 0));
+        btncontinuar.setText("Continuar");
+        btncontinuar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        whiteRoundedPanelF1.add(btncontinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 530, 140, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/recucontra4.png"))); // NOI18N
+        whiteRoundedPanelF1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(163, 163, 163)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(195, 195, 195))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(172, 172, 172))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(218, 218, 218)
-                .addComponent(btncontinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtCodi)
-                .addGap(17, 17, 17))
+            .addComponent(whiteRoundedPanelF1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(jLabel1)
-                .addGap(72, 72, 72)
-                .addComponent(jLabel2)
-                .addGap(33, 33, 33)
-                .addComponent(txtCodi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(btncontinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(159, Short.MAX_VALUE))
+            .addComponent(whiteRoundedPanelF1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btncontinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncontinuarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btncontinuarActionPerformed
+    private void imgMinimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgMinimizeMouseClicked
+        setState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_imgMinimizeMouseClicked
+
+    private void imgExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgExitMouseClicked
+        System.exit(0);  // Cierra la aplicación por completo
+    }//GEN-LAST:event_imgExitMouseClicked
 
     /**
      * @param args the command line arguments
@@ -134,9 +165,13 @@ public class CodigoVeri extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btncontinuar;
+    public Vistas.elemetos.ButtonC btncontinuar;
+    public javax.swing.JLabel imgExit;
+    public javax.swing.JLabel imgMinimize;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    public javax.swing.JPasswordField txtCodi;
+    private javax.swing.JLabel jLabel3;
+    public Vistas.elemetos.txtRedondeadonegro txtCodi;
+    private Vistas.elementosTwo.WhiteRoundedPanelF whiteRoundedPanelF1;
     // End of variables declaration//GEN-END:variables
 }

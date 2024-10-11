@@ -1,25 +1,19 @@
 package main;
 
 import Vistas.dashboard;
-import Vistas.frmProveedor;
-import Modelo.mdlProveedor;
-import Controlador.ctrlProveedor;
-import Vistas.frmRegistrarse;
-import Vistas.frmRegistroParte2;
 import com.formdev.flatlaf.FlatLightLaf;
 
-
 public class main {
-
     
     public static void main(String[] args) {
+        // Instalar el LookAndFeel FlatLightLaf
         FlatLightLaf.install();
 
+        // Ejecutar en el hilo de eventos de la interfaz gráfica (AWT Event Dispatch Thread)
         java.awt.EventQueue.invokeLater(() -> {
-           frmRegistrarse.initfrmRegistrarse();
+            // Crear una instancia del dashboard y hacerlo visible
+            dashboard db = new dashboard();
+            db.setVisible(true);
         });
-        
-        
-        
     }
 }
