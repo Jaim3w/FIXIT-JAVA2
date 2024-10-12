@@ -32,7 +32,6 @@ public class dashboardpanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        glassIcon1 = new raven.glassmorphism.GlassIcon();
         whiteRoundedPanelF1 = new Vistas.elementosTwo.WhiteRoundedPanelF();
         transparenteRoundedPanel1 = new Vistas.elementosTwo.TransparenteRoundedPanel();
         lbl_inicio = new javax.swing.JLabel();
@@ -47,9 +46,8 @@ public class dashboardpanel extends javax.swing.JPanel {
         transparenteRoundedPanel2 = new Vistas.elementosTwo.TransparenteRoundedPanel();
         imgMinimize = new javax.swing.JLabel();
         imgExit = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lbl_perfil = new javax.swing.JLabel();
+        imgFondod = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 0, 0));
 
@@ -190,7 +188,7 @@ public class dashboardpanel extends javax.swing.JPanel {
         transparenteRoundedPanel1Layout.setVerticalGroup(
             transparenteRoundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(transparenteRoundedPanel1Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addContainerGap()
                 .addComponent(lbl_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_carros, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,9 +200,9 @@ public class dashboardpanel extends javax.swing.JPanel {
                 .addComponent(lbl_proveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_ventas, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(81, 81, 81)
                 .addComponent(lbl_usuarios_y_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addComponent(btnSwitchTheme)
                 .addContainerGap(37, Short.MAX_VALUE))
         );
@@ -238,22 +236,29 @@ public class dashboardpanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icperfilw.png"))); // NOI18N
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 27, 59));
-        jLabel6.setText("Admin");
+        lbl_perfil.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_perfil.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lbl_perfil.setForeground(new java.awt.Color(0, 27, 59));
+        lbl_perfil.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl_perfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icperfilw.png"))); // NOI18N
+        lbl_perfil.setText("Inicio");
+        lbl_perfil.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 15));
+        lbl_perfil.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        lbl_perfil.setIconTextGap(20);
+        lbl_perfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_perfilMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout transparenteRoundedPanel2Layout = new javax.swing.GroupLayout(transparenteRoundedPanel2);
         transparenteRoundedPanel2.setLayout(transparenteRoundedPanel2Layout);
         transparenteRoundedPanel2Layout.setHorizontalGroup(
             transparenteRoundedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transparenteRoundedPanel2Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 756, Short.MAX_VALUE)
+            .addGroup(transparenteRoundedPanel2Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(lbl_perfil, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                .addGap(609, 609, 609)
                 .addComponent(imgMinimize)
                 .addGap(2, 2, 2)
                 .addComponent(imgExit)
@@ -262,23 +267,18 @@ public class dashboardpanel extends javax.swing.JPanel {
         transparenteRoundedPanel2Layout.setVerticalGroup(
             transparenteRoundedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(transparenteRoundedPanel2Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
                 .addGroup(transparenteRoundedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(transparenteRoundedPanel2Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(transparenteRoundedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(imgMinimize)
-                            .addComponent(imgExit)))
-                    .addGroup(transparenteRoundedPanel2Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jLabel6)))
-                .addContainerGap(48, Short.MAX_VALUE))
+                    .addComponent(lbl_perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(imgMinimize)
+                    .addComponent(imgExit))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         whiteRoundedPanelF1.add(transparenteRoundedPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 1040, 140));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/dashboardfondoblanco.png"))); // NOI18N
-        whiteRoundedPanelF1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        imgFondod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/dashboardfondoblanco.png"))); // NOI18N
+        whiteRoundedPanelF1.add(imgFondod, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -386,22 +386,31 @@ public class dashboardpanel extends javax.swing.JPanel {
        
     }//GEN-LAST:event_btnSwitchThemeMouseClicked
 
+    private void lbl_perfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_perfilMouseClicked
+          frmPerfilAd pa = new frmPerfilAd();
+    pa.setSize(1040, 670);
+    pa.setLocation(0, 0);
+     setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
+    panelContent.removeAll();
+    panelContent.add(pa, BorderLayout.CENTER);
+    panelContent.revalidate();
+    panelContent.repaint();
+    }//GEN-LAST:event_lbl_perfilMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnSwitchTheme;
-    private raven.glassmorphism.GlassIcon glassIcon1;
     public javax.swing.JLabel imgExit;
+    private javax.swing.JLabel imgFondod;
     public javax.swing.JLabel imgMinimize;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel lbl_carros;
-    private javax.swing.JLabel lbl_citas;
-    private javax.swing.JLabel lbl_facturas;
-    private javax.swing.JLabel lbl_inicio;
-    private javax.swing.JLabel lbl_proveedores;
-    private javax.swing.JLabel lbl_usuarios_y_empleados;
-    private javax.swing.JLabel lbl_ventas;
+    public javax.swing.JLabel lbl_carros;
+    public javax.swing.JLabel lbl_citas;
+    public javax.swing.JLabel lbl_facturas;
+    public javax.swing.JLabel lbl_inicio;
+    public javax.swing.JLabel lbl_perfil;
+    public javax.swing.JLabel lbl_proveedores;
+    public javax.swing.JLabel lbl_usuarios_y_empleados;
+    public javax.swing.JLabel lbl_ventas;
     public Vistas.elementosTwo.TransparenteRoundedPanel panelContent;
     private Vistas.elementosTwo.TransparenteRoundedPanel transparenteRoundedPanel1;
     private Vistas.elementosTwo.TransparenteRoundedPanel transparenteRoundedPanel2;

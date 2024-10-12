@@ -7,6 +7,7 @@ package Vistas;
 import Controlador.ctrlPerfilAd;
 import Modelo.mdlCarros;
 import Modelo.mdlPerfilAd;
+import Vistas.elementosTwo.TransparenteRoundedPanel;
 import Vistas.elemetos.RoundedWhitePanel;
 import com.sun.jdi.connect.spi.Connection;
 import javax.swing.JTextField;
@@ -15,10 +16,9 @@ import javax.swing.JTextField;
  *
  * @author Estudiante
  */
-public class frmPerfilAd extends RoundedWhitePanel {
+public class frmPerfilAd extends TransparenteRoundedPanel {
 
     public frmPerfilAd() {
-        super(20, 20);
         initComponents();
     }
     
@@ -272,7 +272,7 @@ public class frmPerfilAd extends RoundedWhitePanel {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
                         .addComponent(btnCancelar)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(194, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,7 +293,7 @@ public class frmPerfilAd extends RoundedWhitePanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
