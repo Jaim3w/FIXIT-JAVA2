@@ -189,6 +189,27 @@ public class Usuarios {
     }
 }
    
+    public void CargarComboEmpleado(JComboBox comboBox) {
+    Connection conexion = Conexion.getConexion();
+    comboBox.removeAllItems();
+    try {
+        Statement statement = conexion.createStatement();
+        ResultSet rs = statement.executeQuery("SELECT u.UUID_usuario, u.CorreoElectronico, u.Contrasena, u.UUID_rol\n" +
+                                              "FROM Usuario u\n" +
+                                              "JOIN Rol r ON u.UUID_rol = r.UUID_rol\n" +
+                                              "WHERE r.Nombre = 'Empleado'");
+        while (rs.next()) {
+            String uuid = rs.getString("UUID_usuario");
+            String uuidrol = rs.getString("UUID_rol");
+            String correo = rs.getString("CorreoElectronico");
+            String contrasena = rs.getString("Contrasena");
+            comboBox.addItem(new Usuarios(uuidrol, uuid, correo, contrasena)); // Cargar usuarios empleados
+        }
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }
+}
+   
    public boolean ValidarCorreo() {
 
         Connection conexion = Conexion.getConexion();
