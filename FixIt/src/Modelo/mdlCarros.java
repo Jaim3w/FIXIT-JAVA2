@@ -9,8 +9,11 @@ package Modelo;
  * @author Jaimew
  */
 import Vistas.frmCarros;
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,6 +24,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
 import java.util.logging.Level;
@@ -37,6 +41,8 @@ import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.json.JSONObject;
+import javax.swing.ImageIcon; // Asegúrate de importar esto
+
 
 public class mdlCarros {
     private String placa;
@@ -378,32 +384,93 @@ public class mdlCarros {
 }
 
     //funcion que carga los datos en la tabla
-    public void cargarDatosTabla (frmCarros vista) {
+    public void cargarDatosTabla(frmCarros vista) {
+    int filaSeleccionada = vista.tbListaCarros.getSelectedRow();
     
-        int filaSeleccionada = vista.tbListaCarros.getSelectedRow();
+    // Asigna los datos de la tabla a cada respectivo input cuando se le da clic a una fila
+    if (filaSeleccionada != -1) {
+        String PlacaTb = vista.tbListaCarros.getValueAt(filaSeleccionada, 0).toString();
+        String ClienteTb = vista.tbListaCarros.getValueAt(filaSeleccionada, 1).toString();
+        String ModeloTb = vista.tbListaCarros.getValueAt(filaSeleccionada, 2).toString();
+        String ColorTb = vista.tbListaCarros.getValueAt(filaSeleccionada, 3).toString();
+        String AnoTb = vista.tbListaCarros.getValueAt(filaSeleccionada, 4).toString();
+        String IngresoTb = vista.tbListaCarros.getValueAt(filaSeleccionada, 5).toString();
+        String DescripcionTb = vista.tbListaCarros.getValueAt(filaSeleccionada, 6).toString();
+        String imagenUrlTb = vista.tbListaCarros.getValueAt(filaSeleccionada, 7).toString();
         
-        //asigna los datos de la tabla a cada respectivo imput cuando se le da clic a una fila
-        if (filaSeleccionada != -1) {
-            String PlacaTb = vista.tbListaCarros.getValueAt(filaSeleccionada, 0).toString();
-            String ClienteTb = vista.tbListaCarros.getValueAt(filaSeleccionada, 1).toString();
-            String ModeloTb = vista.tbListaCarros.getValueAt(filaSeleccionada, 2).toString();
-            String ColorTb = vista.tbListaCarros.getValueAt(filaSeleccionada, 3).toString();
-            String AnoTb = vista.tbListaCarros.getValueAt(filaSeleccionada, 4).toString();
-            String IngresoTb = vista.tbListaCarros.getValueAt(filaSeleccionada, 5).toString();
-            String DescripcionTb = vista.tbListaCarros.getValueAt(filaSeleccionada, 6).toString();
-            String imagenUrlTb = vista.tbListaCarros.getValueAt(filaSeleccionada, 7).toString();
-            
-            vista.txtPlacaCarro.setText(PlacaTb);
-            vista.cmbClienteCarro.setSelectedItem(ClienteTb);
-            vista.cmbModeloCarro.setSelectedItem(ModeloTb);
-            vista.txtColorCarro.setText(ColorTb);
-            vista.txtAnoCarro.setText(AnoTb);
-            vista.txtIngresoCarro.setText(IngresoTb);
-            vista.txtDescripcionCarro.setText(DescripcionTb);
-            vista.lblImagenCarro.setText(imagenUrlTb);
+        vista.txtPlacaCarro.setText(PlacaTb);
+        vista.cmbClienteCarro.setSelectedItem(ClienteTb);
+        vista.cmbModeloCarro.setSelectedItem(ModeloTb);
+        vista.txtColorCarro.setText(ColorTb);
+        vista.txtAnoCarro.setText(AnoTb);
+        vista.txtIngresoCarro.setText(IngresoTb);
+        vista.txtDescripcionCarro.setText(DescripcionTb);
+
+        // Cargar la imagen desde la URL y mostrarla en el JLabel
+        try {
+            // Crear un ImageIcon a partir de la URL
+            ImageIcon icon = new ImageIcon(new URL(imagenUrlTb)); // URL debe ser de tipo java.net.URL
+            vista.lblImagenCarro.setIcon(icon);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            vista.lblImagenCarro.setText("Error al cargar la imagen");
         }
     }
+}
 
+    
+    public ArrayList<String[]> obtenerCarrosCards() {
+    ArrayList<String[]> carros = new ArrayList<>();
+    Connection conexion = Conexion.getConexion();
+    
+    // Utilizar el INNER JOIN proporcionado
+    String sql = "SELECT " +
+                 "c.Placa_carro, " +
+                 "c.Color, " +
+                 "c.Ano, " +
+                 "c.ImagenCarro, " +
+                 "c.FechaRegistro, " +
+                 "c.Descripcion, " +
+                 "m.Nombre AS NombreModelo, " +
+                 "cl.Nombre AS NombreCliente " +
+                 "FROM Carro c " +
+                 "INNER JOIN Modelo m ON c.UUID_modelo = m.UUID_modelo " +
+                 "INNER JOIN Cliente cl ON c.Dui_cliente = cl.Dui_cliente";
+
+    try {
+        Statement st = conexion.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+
+        while (rs.next()) {
+            String[] carro = new String[8]; // Cambiar a 8 para incluir todos los campos necesarios
+            carro[0] = rs.getString("Placa_carro");
+            carro[1] = rs.getString("NombreCliente");
+            carro[2] = rs.getString("NombreModelo");
+            carro[3] = rs.getString("Color");
+            carro[4] = rs.getString("Ano");
+            carro[5] = rs.getString("FechaRegistro");
+            carro[6] = rs.getString("Descripcion");
+            carro[7] = rs.getString("ImagenCarro");
+            carros.add(carro);
+        }
+        rs.close();
+        st.close();
+        conexion.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return carros;
+}
+private ImageIcon resizeImage(String imagePath, int width, int height) {
+    ImageIcon icon = new ImageIcon(imagePath);
+    Image img = icon.getImage(); // transform it 
+    Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH); // scale it the smooth way
+    return new ImageIcon(newImg); // transform it back
+}
+
+    
+    
     public void Buscar(String busqueda, JTable tbListaCarros) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }

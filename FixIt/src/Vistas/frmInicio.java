@@ -5,13 +5,14 @@
 package Vistas;
 
 import Vistas.elementosTwo.TransparenteRoundedPanel;
+import Vistas.elementosTwo.WhiteRoundedPanelF;
 import Vistas.elemetos.RoundedWhitePanel;
 import java.awt.Color;
 /**
  *
  * @author pc
  */
-public class frmInicio extends TransparenteRoundedPanel {
+public class frmInicio extends WhiteRoundedPanelF {
 
     /**
      * Creates new form frmInicio
@@ -31,29 +32,33 @@ public class frmInicio extends TransparenteRoundedPanel {
     private void initComponents() {
 
         transparenteRoundedPanel1 = new Vistas.elementosTwo.TransparenteRoundedPanel();
+        citasCardsPanel1 = new Vistas.citasCardsPanel();
         jLabel1 = new javax.swing.JLabel();
+        carrosCardsPanel2 = new Vistas.carrosCardsPanel();
+        whiteRoundedPanelF1 = new Vistas.elementosTwo.WhiteRoundedPanelF();
 
         setBackground(new java.awt.Color(0, 0, 0));
 
+        transparenteRoundedPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        transparenteRoundedPanel1.add(citasCardsPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Inicio :)");
+        transparenteRoundedPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 30, -1, -1));
+        transparenteRoundedPanel1.add(carrosCardsPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
 
-        javax.swing.GroupLayout transparenteRoundedPanel1Layout = new javax.swing.GroupLayout(transparenteRoundedPanel1);
-        transparenteRoundedPanel1.setLayout(transparenteRoundedPanel1Layout);
-        transparenteRoundedPanel1Layout.setHorizontalGroup(
-            transparenteRoundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(transparenteRoundedPanel1Layout.createSequentialGroup()
-                .addGap(466, 466, 466)
-                .addComponent(jLabel1)
-                .addContainerGap(498, Short.MAX_VALUE))
+        javax.swing.GroupLayout whiteRoundedPanelF1Layout = new javax.swing.GroupLayout(whiteRoundedPanelF1);
+        whiteRoundedPanelF1.setLayout(whiteRoundedPanelF1Layout);
+        whiteRoundedPanelF1Layout.setHorizontalGroup(
+            whiteRoundedPanelF1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 910, Short.MAX_VALUE)
         );
-        transparenteRoundedPanel1Layout.setVerticalGroup(
-            transparenteRoundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(transparenteRoundedPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
-                .addContainerGap(608, Short.MAX_VALUE))
+        whiteRoundedPanelF1Layout.setVerticalGroup(
+            whiteRoundedPanelF1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
+
+        transparenteRoundedPanel1.add(whiteRoundedPanelF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 600));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -69,7 +74,10 @@ public class frmInicio extends TransparenteRoundedPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Vistas.carrosCardsPanel carrosCardsPanel2;
+    private Vistas.citasCardsPanel citasCardsPanel1;
     private javax.swing.JLabel jLabel1;
     private Vistas.elementosTwo.TransparenteRoundedPanel transparenteRoundedPanel1;
+    private Vistas.elementosTwo.WhiteRoundedPanelF whiteRoundedPanelF1;
     // End of variables declaration//GEN-END:variables
 }

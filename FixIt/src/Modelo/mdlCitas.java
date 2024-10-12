@@ -237,7 +237,7 @@ public class mdlCitas {
 
     // Método para obtener todas las citas
     // Método modificado para obtener todas las citas y actualizar en tiempo real
-    public ArrayList<String[]> obtenerCitasCards() {
+     public ArrayList<String[]> obtenerCitasCards() {
     ArrayList<String[]> citas = new ArrayList<>();
     Connection conexion = Conexion.getConexion();
     String sql = "SELECT Cita.UUID_cita, Cliente.Nombre AS Cliente, Empleado.Nombre AS Empleado, " +
@@ -256,14 +256,18 @@ public class mdlCitas {
             cita[1] = rs.getString("Cliente");
             cita[2] = rs.getString("Empleado");
             cita[3] = rs.getString("Fecha_cita");
-            cita[4] = rs.getString("Hora_cita");
+            cita[4] = rs.getString("Hora_cita"); // Asegúrate que este campo tiene datos
             cita[5] = rs.getString("Descripcion");
             citas.add(cita);
+
+            // Imprime la hora para verificar que se obtiene correctamente
+            System.out.println("Hora: " + cita[4]);
         }
         rs.close();
         st.close();
         conexion.close();
-    System.out.println("Citas obtenidas: " + citas.size());
+        
+        System.out.println("Citas obtenidas: " + citas.size());
         for (String[] cita : citas) {
             System.out.println("Cita: " + Arrays.toString(cita));
         }
