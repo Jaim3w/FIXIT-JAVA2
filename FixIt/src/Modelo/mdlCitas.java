@@ -130,6 +130,9 @@ public class mdlCitas {
                 model.addRow(row);
             }
             tabla.setModel(model);
+            tabla.getColumnModel().getColumn(0).setMinWidth(0);
+            tabla.getColumnModel().getColumn(0).setMaxWidth(0);
+            tabla.getColumnModel().getColumn(0).setWidth(0);
             rs.close();
             st.close();
             conexion.close();
