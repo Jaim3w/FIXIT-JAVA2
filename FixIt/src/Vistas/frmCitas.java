@@ -16,7 +16,10 @@ import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.extras.FlatAnimatedLafChange;
 import java.awt.EventQueue;
 import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat; // Asegúrate de importar esto
+import java.util.Date; // Asegúrate de importar esto
 
 public class frmCitas extends TransparenteRoundedPanel {
 
@@ -29,7 +32,11 @@ public class frmCitas extends TransparenteRoundedPanel {
         Empleados ModeloEm = new Empleados(); 
         citasCardsPanel cards = new citasCardsPanel(); // Inicializa el panel de tarjetas
         ctrlCitas contro = new ctrlCitas(modelito, vista, Modelo, ModeloEm,cards);
+        
+        txtFecha.setEditable(false);
         vista.setVisible(true);
+        
+        
 
         // Formato para txtFecha (automáticamente añade guiones en formato yyyy-MM-dd)
         txtFecha.addKeyListener(new KeyAdapter() {
@@ -67,6 +74,11 @@ public class frmCitas extends TransparenteRoundedPanel {
                     e.consume(); // Limita el tamaño a 5 caracteres (HH:mm)
                 }
             }
+        });
+        // Agregar listener para el calendario
+        calendar1.addCalendarSelectedListener((MouseEvent evt, calendar.model.ModelDate date) -> {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            txtFecha.setText(dateFormat.format(date.toDate())); // Actualiza txtFecha con la fecha seleccionada
         });
     }
 
@@ -134,6 +146,12 @@ public class frmCitas extends TransparenteRoundedPanel {
         jScrollPane1.setViewportView(tbCitas);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 670, 290));
+
+        calendar1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                calendar1PropertyChange(evt);
+            }
+        });
         add(calendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 340, 310));
 
         btnActualizar.setText("Actualizar cita");
@@ -154,8 +172,18 @@ public class frmCitas extends TransparenteRoundedPanel {
         cmbEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(cmbEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 250, 130, -1));
         add(txtDEsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 170, -1));
-        add(citasCardsPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+        add(citasCardsPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 290, 380));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void calendar1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_calendar1PropertyChange
+
+  if ("calendar".equals(evt.getPropertyName())) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        // Actualizar el campo de texto de la fecha
+        txtFecha.setText(dateFormat.format(calendar1.getSelectedDate()));
+    } 
+
+    }//GEN-LAST:event_calendar1PropertyChange
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

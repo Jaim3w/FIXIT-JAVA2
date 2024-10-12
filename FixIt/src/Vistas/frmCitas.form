@@ -126,6 +126,9 @@
       </SubComponents>
     </Container>
     <Component class="calendar.Calendar" name="calendar1">
+      <Events>
+        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="calendar1PropertyChange"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
@@ -239,7 +242,7 @@
     <Component class="Vistas.citasCardsPanel" name="citasCardsPanel1">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="20" y="180" width="-1" height="-1"/>
+          <AbsoluteConstraints x="20" y="180" width="290" height="380"/>
         </Constraint>
       </Constraints>
     </Component>
