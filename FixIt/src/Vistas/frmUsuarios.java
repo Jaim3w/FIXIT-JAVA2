@@ -142,9 +142,12 @@ public class frmUsuarios extends TransparenteRoundedPanel{
         btnNewUser.setText("jButton1");
         add(btnNewUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 30, 30));
 
-        pnlImagen.add(txtImagenUrl);
+        pnlImagen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        add(pnlImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 80, 160, 110));
+        txtImagenUrl.setMinimumSize(new java.awt.Dimension(50, 50));
+        pnlImagen.add(txtImagenUrl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 110));
+
+        add(pnlImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 90, 160, 110));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
         jLabel5.setText("FechaNacimiento");

@@ -9,9 +9,17 @@ import Modelo.mdlEmpleados;
 import Modelo.Usuarios;
 import Vistas.Loginjava;
 import Vistas.frmUsuarios; 
+import Vistas.frmNuevoUsuario;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 
 public class ctrlEmpleados implements MouseListener, KeyListener {
     private mdlEmpleados Modelo;
@@ -26,6 +34,7 @@ public class ctrlEmpleados implements MouseListener, KeyListener {
         Vista.btnGuardar.addMouseListener(this);
         Vista.btnSubirImagen.addMouseListener(this);
         Vista.dtgempleado.addMouseListener(this);
+        Vista.btnNewUser.addMouseListener(this);
         
         this.mUsuarios.CargarComboEmpleado(Vista.cmbCorreoEmpleado);
         
@@ -48,19 +57,41 @@ public class ctrlEmpleados implements MouseListener, KeyListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        /*if (e.getSource() == Vista.btnNewUser) {
-            try {
-                frmNuevoUser.initLogin();
-                Vista.dispose();
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Error al abrir la ventana de inicio de sesión: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }*/
+        if (e.getSource() == Vista.btnNewUser) {
+            // Mostrar el nuevo JFrame
+            frmNuevoUsuario nuevoUsuarioFrame = new frmNuevoUsuario();
+            nuevoUsuarioFrame.setVisible(true); // Mostrar el JFrame
+            nuevoUsuarioFrame.setLocationRelativeTo(null); // Centrar el JFrame en la pantalla
+        }
         
         if (e.getSource() == Vista.dtgempleado) {
             Modelo.cargarDatosTabla(Vista);
         }
+        
+        if (e.getSource() == Vista.btnSubirImagen) {
+    // Crear el JFileChooser para seleccionar un archivo
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Seleccionar Imagen");
+
+        // Abrir el diálogo para seleccionar una imagen
+        int result = fileChooser.showOpenDialog(Vista);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            // Obtener el archivo seleccionado
+            File imagenSeleccionada = fileChooser.getSelectedFile();
+
+            // Establecer la imagen seleccionada en el modelo
+            Modelo.setImagenSeleccionada(imagenSeleccionada);
+
+            // Mostrar la imagen en el JLabel lblImagenCarro
+            mostrarImagenEnLabel(imagenSeleccionada);
+
+            // Mostrar el nombre de la imagen seleccionada
+            JOptionPane.showMessageDialog(Vista, "Imagen seleccionada: " + imagenSeleccionada.getName());
+        } else {
+            JOptionPane.showMessageDialog(Vista, "No se seleccionó ninguna imagen.");
+        }
+    }
         
         if (e.getSource() == Vista.btnGuardar) {
         // Validar que los campos no estén vacíos
@@ -150,6 +181,30 @@ public class ctrlEmpleados implements MouseListener, KeyListener {
             System.out.println("Error al guardar el empleado: " + ex.getMessage());
         }
     }
+        
+        
+    }
+    
+    private void mostrarImagenEnLabel(File imagen) {
+        try {
+            // Leer la imagen desde el archivo
+            BufferedImage bufferedImage = ImageIO.read(imagen);
+
+            // Crear el ImageIcon a partir de la imagen
+            ImageIcon icon = new ImageIcon(bufferedImage);
+
+            // Redimensionar la imagen para que se ajuste al JLabel
+            Image imageScaled = icon.getImage().getScaledInstance(Vista.txtImagenUrl.getWidth(),
+            Vista.txtImagenUrl.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon scaledIcon = new ImageIcon(imageScaled);
+
+            // Establecer la imagen en el JLabel
+            Vista.txtImagenUrl.setIcon(scaledIcon);
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(Vista, "Error al cargar la imagen.");
+        }
     }
 
     @Override

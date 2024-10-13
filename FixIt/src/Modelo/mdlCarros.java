@@ -405,6 +405,5 @@ public class mdlCarros {
     }
 
     public void Buscar(String busqueda, JTable tbListaCarros) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

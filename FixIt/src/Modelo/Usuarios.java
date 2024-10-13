@@ -90,6 +90,21 @@ public class Usuarios {
             System.out.println("Error en el modelo" + e);
         }
     }
+    
+    public void InsertarUserEmpleado() {
+        Connection conexion = Conexion.getConexion();
+        try {
+
+            PreparedStatement addUser = conexion.prepareStatement("Insert into Usuario(UUID_usuario, UUID_rol, CorreoElectronico, Contrasena) values(?,(SELECT UUID_rol FROM Rol WHERE Nombre = 'Empleado') ,?,?)");
+            addUser.setString(1, UUID.randomUUID().toString());
+            addUser.setString(2, getCorreoElectronico());
+            addUser.setString(3, getContrasena());
+            addUser.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Error en el modelo" + e);
+        }
+    }
 
     public boolean Verificar() {
 

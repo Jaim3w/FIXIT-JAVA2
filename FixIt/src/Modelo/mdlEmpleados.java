@@ -46,6 +46,14 @@ public class mdlEmpleados {
     private String fechaNacimiento;
     private String telefono;
 
+    public File getImagenSeleccionada() {
+        return imagenSeleccionada;
+    }
+
+    public void setImagenSeleccionada(File imagenSeleccionada) {
+        this.imagenSeleccionada = imagenSeleccionada;
+    }
+
     // Getters y Setters
     public String getDuiEmpleado() {
         return duiEmpleado;
@@ -157,11 +165,17 @@ public class mdlEmpleados {
     }
     
     public void Guardar() {
-    Connection conexion = Conexion.getConexion();
-
-        try {
+    Connection conexion = null;
+    PreparedStatement pstmt = null;
+    
+    try {
+        conexion = Conexion.getConexion();
+        
+        String urlImagen = subirImagenImgur(imagenSeleccionada);
+        setImagenEmpleado(urlImagen);
+        
         String sql = "INSERT INTO Empleado (Dui_empleado, UUID_usuario, Nombre, Apellido, ImagenEmpleado, FechaNacimiento, Telefono) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        PreparedStatement pstmt = conexion.prepareStatement(sql);
+        pstmt = conexion.prepareStatement(sql);
         pstmt.setString(1, getDuiEmpleado());
         pstmt.setString(2, getUuidUsuario());
         pstmt.setString(3, getNombre());
@@ -170,13 +184,53 @@ public class mdlEmpleados {
         pstmt.setString(6, getFechaNacimiento());
         pstmt.setString(7, getTelefono());
         pstmt.executeUpdate();
+        
+        JOptionPane.showMessageDialog(null, "Empleado guardado exitosamente.");
+        
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, "Error al guardar el Empleado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        // Cerrar la conexión en caso de error
+        try {
+            if (conexion != null) conexion.close();
+        } catch (SQLException se) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + se.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Ocurrió un error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    } finally {
+        // Asegúrate de cerrar la conexión y el PreparedStatement siempre
+        try {
+            if (pstmt != null) pstmt.close();
+            if (conexion != null) conexion.close();
+        } catch (SQLException se) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar recursos: " + se.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
-
 }
+
+    
+    public void Actualizar(JTable tabla) {
+    Connection conexion = Conexion.getConexion();
+    int filaSeleccionada = tabla.getSelectedRow();
+    if (filaSeleccionada != -1) {
+        String Dui = tabla.getValueAt(filaSeleccionada, 0).toString();
+        try {
+            String sql = "UPDATE Empleado SET UUID_usuario = ?, Nombre = ?, Apellido = ?, ImagenEmpleado = ?, FechaNacimiento = ?, Telefono = ? WHERE Dui_empleado = ?";
+            PreparedStatement updateCarro = conexion.prepareStatement(sql);
+            updateCarro.setString(2, getUuidUsuario());
+            updateCarro.setString(3, getNombre());
+            updateCarro.setString(4, getApellido());
+            updateCarro.setString(5, getImagenEmpleado());
+            updateCarro.setString(1, getFechaNacimiento());
+            updateCarro.setString(6, getTelefono());
+            updateCarro.setString(7, Dui);
+            updateCarro.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al actualizar el carro: " + e.getMessage());
+        }
+        }
+    }
     
     public void Mostrar(JTable tabla) {
     Connection conexion = Conexion.getConexion();
