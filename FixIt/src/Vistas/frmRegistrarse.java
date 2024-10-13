@@ -59,8 +59,8 @@ public class frmRegistrarse extends javax.swing.JFrame {
         txtContra = new Vistas.elemetos.txtContrasenaredondeadaamarilla();
         txtCorreoUser = new Vistas.elemetos.txtRedondeadoamarillo();
         imgFixit = new Vistas.elemetos.ButtonC();
-        fondo = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -68,7 +68,7 @@ public class frmRegistrarse extends javax.swing.JFrame {
 
         blackRoundedPanelF1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("¿Ya tienes una cuenta?");
         blackRoundedPanelF1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 610, 140, -1));
@@ -89,8 +89,9 @@ public class frmRegistrarse extends javax.swing.JFrame {
         jLabel13.setText("Contraseña");
         blackRoundedPanelF1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 320, 110, -1));
 
-        btnAgregarUser.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarUser.setForeground(new java.awt.Color(0, 0, 0));
         btnAgregarUser.setText("Registrame");
+        btnAgregarUser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         blackRoundedPanelF1.add(btnAgregarUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 550, 180, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icexit.png"))); // NOI18N
@@ -113,15 +114,16 @@ public class frmRegistrarse extends javax.swing.JFrame {
 
         imgFixit.setForeground(new java.awt.Color(0, 0, 0));
         imgFixit.setText("Iniciar sesión");
+        imgFixit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         blackRoundedPanelF1.add(imgFixit, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 640, 180, 50));
 
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/imgregistrarsefondo.png"))); // NOI18N
-        blackRoundedPanelF1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("¿Como quiero Registrame?");
         blackRoundedPanelF1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 430, 210, -1));
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/imgregistrarsefondo.png"))); // NOI18N
+        blackRoundedPanelF1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

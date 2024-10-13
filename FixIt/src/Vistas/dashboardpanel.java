@@ -1,27 +1,127 @@
 package Vistas;
 
+import Funciones.DarkLightSwitchIcon;
+import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.extras.FlatAnimatedLafChange;
-import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 public class dashboardpanel extends javax.swing.JPanel {
 
   
     public dashboardpanel() {
 
-        // Inicializamos los componentes
-        initComponents();        
-        
-        // Configuramos el color de fondo y el layout
-        setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
+         // Inicializamos los componentes
+    initComponents();        
 
+    // Configuramos el color de fondo y el layout
+    setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
+    
+     // Instalar el LookAndFeel FlatIntelliJLaf por defecto
+        try {
+            FlatIntelliJLaf.setup();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Configurar un estilo de fuente minimalista
+        Font minimalFont = new Font("SansSerif", Font.PLAIN, 14); // Fuente sencilla y moderna
+        UIManager.put("defaultFont", minimalFont); // Aplicar la fuente a todos los componentes
+
+    // Configuramos el estilo del jtSwitch
+    jtSwitch.putClientProperty(FlatClientProperties.STYLE, ""
+            + "arc:999;"
+            + "borderWidth:0;"
+            + "focusWidth:0;"
+            + "innerFocusWidth:0");
+
+    // Asignar el icono animado
+    DarkLightSwitchIcon switchIcon = new DarkLightSwitchIcon();
+    jtSwitch.setIcon(switchIcon);
+
+    // Listener para cambiar de tema con retardo
+    jtSwitch.addActionListener(new ActionListener() {
+
+        private final ScheduledExecutorService scheduled = Executors.newScheduledThreadPool(1);
+        private ScheduledFuture<?> scheduledFuture;
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (scheduledFuture != null) {
+                scheduledFuture.cancel(true);
+            }
+            scheduledFuture = scheduled.schedule(() -> {
+                changeThemes(jtSwitch.isSelected());
+            }, 500, TimeUnit.MILLISECONDS);
+        }
+    });
     }
+    
+private void changeThemes(boolean dark) {
+    if (FlatLaf.isLafDark() != dark) {
+        EventQueue.invokeLater(() -> {
+            FlatAnimatedLafChange.showSnapshot();
+            if (!dark) {
+                // Configura el tema claro
+                FlatIntelliJLaf.setup();
+
+                // Colores para el tema claro
+                UIManager.put("Component.accentColor", new Color(255, 223, 0)); // Color amarillo
+                UIManager.put("Table.alternateRowColor", new Color(255, 255, 224)); // Amarillo pálido
+                UIManager.put("Table.selectionBackground", new Color(255, 223, 0)); // Fondo amarillo en selección
+                UIManager.put("Table.selectionForeground", Color.BLACK); // Texto negro en selección
+                UIManager.put("Component.unselectedForeground", new Color(169, 169, 169)); // Texto gris cuando no está seleccionado
+                UIManager.put("Component.selectionBackground", new Color(255, 223, 0, 128)); // Fondo amarillo opaco en selección
+                
+                                UIManager.put("Label.foreground", Color.BLACK); // Texto de JLabel blanco en tema oscuro
+
+
+                // Cambiar color de borde de enfoque y seleccionado
+                UIManager.put("Component.focusedBorderColor", new Color(255, 223, 0, 128)); // Borde de enfoque amarillo opaco
+                UIManager.put("Component.selectedBorderColor", new Color(255, 223, 0, 128)); // Borde seleccionado amarillo opaco
+
+            } else {
+                // Configura el tema oscuro
+                FlatDarculaLaf.setup();
+
+                // Colores para el tema oscuro
+                UIManager.put("Component.accentColor", new Color(255, 223, 0)); // Color amarillo
+                UIManager.put("Table.alternateRowColor", new Color(50, 50, 50)); // Un color oscuro para alternar
+                UIManager.put("Table.selectionBackground", new Color(255, 223, 0)); // Fondo amarillo en selección
+                UIManager.put("Table.selectionForeground", Color.WHITE); // Texto blanco en selección
+                UIManager.put("Component.unselectedForeground", new Color(200, 200, 200)); // Texto gris claro cuando no está seleccionado
+                UIManager.put("Component.selectionBackground", new Color(255, 223, 0, 128)); // Fondo amarillo opaco en selección
+
+                // Cambiar color de borde de enfoque y seleccionado
+                UIManager.put("Component.focusedBorderColor", new Color(255, 223, 0, 128)); // Borde de enfoque amarillo opaco
+                UIManager.put("Component.selectedBorderColor", new Color(255, 223, 0, 128)); // Borde seleccionado amarillo opaco
+
+                // Asegurar que todos los JLabel sean blancos en el tema oscuro
+                UIManager.put("Label.foreground", Color.WHITE); // Texto de JLabel blanco en tema oscuro
+            }
+
+            FlatLaf.updateUI();
+            FlatAnimatedLafChange.hideSnapshotWithAnimation();
+        });
+    }
+}
+
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,12 +141,12 @@ public class dashboardpanel extends javax.swing.JPanel {
         lbl_proveedores = new javax.swing.JLabel();
         lbl_ventas = new javax.swing.JLabel();
         lbl_usuarios_y_empleados = new javax.swing.JLabel();
-        btnSwitchTheme = new javax.swing.JButton();
         panelContent = new Vistas.elementosTwo.TransparenteRoundedPanel();
         transparenteRoundedPanel2 = new Vistas.elementosTwo.TransparenteRoundedPanel();
         imgMinimize = new javax.swing.JLabel();
         imgExit = new javax.swing.JLabel();
         lbl_perfil = new javax.swing.JLabel();
+        jtSwitch = new javax.swing.JToggleButton();
         imgFondod = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 0, 0));
@@ -158,14 +258,6 @@ public class dashboardpanel extends javax.swing.JPanel {
             }
         });
 
-        btnSwitchTheme.setText("olaqhace");
-        btnSwitchTheme.setToolTipText("");
-        btnSwitchTheme.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSwitchThemeMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout transparenteRoundedPanel1Layout = new javax.swing.GroupLayout(transparenteRoundedPanel1);
         transparenteRoundedPanel1.setLayout(transparenteRoundedPanel1Layout);
         transparenteRoundedPanel1Layout.setHorizontalGroup(
@@ -180,10 +272,6 @@ public class dashboardpanel extends javax.swing.JPanel {
                     .addComponent(lbl_ventas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbl_usuarios_y_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 15, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transparenteRoundedPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSwitchTheme)
-                .addGap(23, 23, 23))
         );
         transparenteRoundedPanel1Layout.setVerticalGroup(
             transparenteRoundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,9 +290,7 @@ public class dashboardpanel extends javax.swing.JPanel {
                 .addComponent(lbl_ventas, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(81, 81, 81)
                 .addComponent(lbl_usuarios_y_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnSwitchTheme)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         whiteRoundedPanelF1.add(transparenteRoundedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 290, 680));
@@ -258,7 +344,9 @@ public class dashboardpanel extends javax.swing.JPanel {
             .addGroup(transparenteRoundedPanel2Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(lbl_perfil, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                .addGap(609, 609, 609)
+                .addGap(501, 501, 501)
+                .addComponent(jtSwitch, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(imgMinimize)
                 .addGap(2, 2, 2)
                 .addComponent(imgExit)
@@ -271,7 +359,8 @@ public class dashboardpanel extends javax.swing.JPanel {
                 .addGroup(transparenteRoundedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(imgMinimize)
-                    .addComponent(imgExit))
+                    .addComponent(imgExit)
+                    .addComponent(jtSwitch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -296,7 +385,7 @@ public class dashboardpanel extends javax.swing.JPanel {
         frmProveedor pr = new frmProveedor();
     pr.setSize(1040, 670);
     pr.setLocation(0, 0);
-    
+        setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
     panelContent.removeAll();
     panelContent.add(pr, BorderLayout.CENTER);
     panelContent.revalidate();
@@ -381,11 +470,6 @@ public class dashboardpanel extends javax.swing.JPanel {
         System.exit(0);  // Cierra la aplicación por completo
     }//GEN-LAST:event_imgExitMouseClicked
 
-    private void btnSwitchThemeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSwitchThemeMouseClicked
-
-       
-    }//GEN-LAST:event_btnSwitchThemeMouseClicked
-
     private void lbl_perfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_perfilMouseClicked
           frmPerfilAd pa = new frmPerfilAd();
     pa.setSize(1040, 670);
@@ -399,10 +483,10 @@ public class dashboardpanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnSwitchTheme;
     public javax.swing.JLabel imgExit;
     private javax.swing.JLabel imgFondod;
     public javax.swing.JLabel imgMinimize;
+    private javax.swing.JToggleButton jtSwitch;
     public javax.swing.JLabel lbl_carros;
     public javax.swing.JLabel lbl_citas;
     public javax.swing.JLabel lbl_facturas;

@@ -60,33 +60,36 @@ public class Loginjava extends javax.swing.JFrame {
         imgExit = new javax.swing.JLabel();
         imgMinimize = new javax.swing.JLabel();
         btnLogin = new Vistas.elemetos.ButtonB();
+        btnIrRegister = new Vistas.elemetos.ButtonC();
+        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         whiteRoundedPanelF1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnOlvidecontra.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnOlvidecontra.setForeground(new java.awt.Color(0, 0, 0));
         btnOlvidecontra.setText("Olvide mi contraseña");
-        whiteRoundedPanelF1.add(btnOlvidecontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 510, -1, -1));
+        whiteRoundedPanelF1.add(btnOlvidecontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 470, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Inicio de sesión");
         jLabel1.setToolTipText("");
-        whiteRoundedPanelF1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 180, -1, -1));
+        whiteRoundedPanelF1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 180, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Correo");
-        whiteRoundedPanelF1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, -1, -1));
+        whiteRoundedPanelF1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 320, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Contraseña");
-        whiteRoundedPanelF1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 390, -1, -1));
-        whiteRoundedPanelF1.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 390, 430, -1));
-        whiteRoundedPanelF1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 280, 430, -1));
+        whiteRoundedPanelF1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 430, -1, -1));
+        whiteRoundedPanelF1.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 430, 430, -1));
+        whiteRoundedPanelF1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 320, 430, -1));
 
         imgExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icexitw.png"))); // NOI18N
         imgExit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -106,10 +109,26 @@ public class Loginjava extends javax.swing.JFrame {
 
         btnLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnLogin.setText("Ingresar");
+        btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnLogin.setShadowColor(new java.awt.Color(0, 153, 153));
-        whiteRoundedPanelF1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 460, 170, -1));
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+        whiteRoundedPanelF1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 530, 170, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/l3.png"))); // NOI18N
+        btnIrRegister.setText("Registrate");
+        btnIrRegister.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnIrRegister.setShadowColor(new java.awt.Color(255, 255, 255));
+        whiteRoundedPanelF1.add(btnIrRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 600, 170, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("¿No tienes una cuenta aun?");
+        whiteRoundedPanelF1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 580, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/logingi.png"))); // NOI18N
         whiteRoundedPanelF1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -134,6 +153,10 @@ public class Loginjava extends javax.swing.JFrame {
     private void imgMinimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgMinimizeMouseClicked
            setState(JFrame.ICONIFIED); 
     }//GEN-LAST:event_imgMinimizeMouseClicked
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,6 +194,7 @@ public class Loginjava extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public Vistas.elemetos.ButtonC btnIrRegister;
     public Vistas.elemetos.ButtonB btnLogin;
     public javax.swing.JLabel btnOlvidecontra;
     public javax.swing.JLabel imgExit;
@@ -178,6 +202,7 @@ public class Loginjava extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     public Vistas.elemetos.TxtBoxContrasenia txtContra;
     public Vistas.elemetos.TxtBoxRedondeado txtCorreo;

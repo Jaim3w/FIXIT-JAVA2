@@ -59,11 +59,6 @@
                       </Group>
                       <EmptySpace min="0" pref="15" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnSwitchTheme" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -83,9 +78,7 @@
                       <Component id="lbl_ventas" min="-2" pref="70" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                       <Component id="lbl_usuarios_y_empleados" min="-2" pref="70" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnSwitchTheme" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="37" max="32767" attributes="0"/>
+                      <EmptySpace pref="78" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -308,18 +301,6 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="btnSwitchTheme">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="olaqhace"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSwitchThemeMouseClicked"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
           </SubComponents>
         </Container>
         <Container class="Vistas.elementosTwo.TransparenteRoundedPanel" name="panelContent">
@@ -358,7 +339,9 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="43" pref="43" max="-2" attributes="0"/>
                       <Component id="lbl_perfil" pref="275" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="609" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="501" max="-2" attributes="0"/>
+                      <Component id="jtSwitch" min="-2" pref="90" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="imgMinimize" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                       <Component id="imgExit" min="-2" max="-2" attributes="0"/>
@@ -374,6 +357,7 @@
                           <Component id="lbl_perfil" min="-2" pref="70" max="-2" attributes="0"/>
                           <Component id="imgMinimize" min="-2" max="-2" attributes="0"/>
                           <Component id="imgExit" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtSwitch" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="28" max="32767" attributes="0"/>
                   </Group>
@@ -437,6 +421,8 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
+            </Component>
+            <Component class="javax.swing.JToggleButton" name="jtSwitch">
             </Component>
           </SubComponents>
         </Container>

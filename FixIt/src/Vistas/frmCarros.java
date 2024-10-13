@@ -59,6 +59,7 @@ public class frmCarros extends TransparenteRoundedPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         txtIngresoCarro = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(922, 703));
@@ -155,13 +156,15 @@ public class frmCarros extends TransparenteRoundedPanel {
         add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, 70, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Placa del Vehiculo");
         add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
 
         txtIngresoCarro.setForeground(new java.awt.Color(0, 0, 0));
         txtIngresoCarro.setText("jLabel14");
         add(txtIngresoCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 90, -1));
+
+        jLabel14.setText("jLabel14");
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -178,6 +181,7 @@ public class frmCarros extends TransparenteRoundedPanel {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
