@@ -2,15 +2,52 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
+        <group/>
+=======
         <group>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Funciones/gruvbox_dark_soft.json</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Funciones/DarkLightSwitchIcon.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Funciones/carbon.json</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/main/main.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Modelo/Conexion.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/dashboardpanel.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Funciones/FlatDarkLaf.properties</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/frmCarros.java</file>
+<<<<<<< HEAD
+            <file>file:/C:/Users/caryt/OneDrive/Escritorio/EXPO2024/FIXIT-JAVA2/FixIt/src/Modelo/mdlEmpleados.java</file>
+            <file>file:/C:/Users/caryt/OneDrive/Escritorio/EXPO2024/FIXIT-JAVA2/FixIt/src/Controlador/ctrlEmpleados.java</file>
+            <file>file:/C:/Users/caryt/OneDrive/Escritorio/EXPO2024/FIXIT-JAVA2/FixIt/src/Vistas/frmUsuarios.java</file>
+=======
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/Loginjava.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/elementosTwo/TransparenteRoundedPanel.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/dashboard.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/calendar/PanelYear.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Controlador/ctrlCitas.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Modelo/mdlCitas.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/frmMarca.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/calendar/Calendar.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Modelo/Clientes.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Modelo/mdlCarros.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/calendar/PanelDay.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Modelo/Credenciales.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/frmProveedor.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/calendar/model/ModelDate.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Controlador/ctrlClientes.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/calendar/utils/CalendarCellListener.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/frmRegistrarse.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/elemetos/RadialGradientPanelRedondeado.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/frmClientes.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/elementosTwo/TransparenteRoundedPanel2.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/frmCitas.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/calendar/PanelHeader.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Controlador/ctrlCarros.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/frmFacturacion.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Modelo/Conexion.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/elementosTwo/WhiteRoundedPanelF.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/frmInicio.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/carrosCardsPanel.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/frmCarros.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Modelo/mdlProveedor.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Modelo/ClientesCarro.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/calendar/PanelMonth.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/calendar/model/ModelMonth.java</file>
+            <file>file:/C:/Users/Jaimew/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/citasCardsPanel.java</file>
+>>>>>>> 195125bce0fe614792713f060704e4c3e38278c4
         </group>
+>>>>>>> 1f7ff0b698ef14dce9c19df85305ef5a2896e4f4
     </open-files>
 </project-private>
