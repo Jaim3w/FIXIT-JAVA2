@@ -9,8 +9,8 @@ import javax.swing.JPanel;
 public class WhiteRoundedPanelF extends JPanel {
 
     public WhiteRoundedPanelF() {
-        // Establecer el color de fondo del panel según el LookAndFeel activo
-        setOpaque(false); // Importante para que el color de fondo sea transparente
+        // Establecer el panel como no opaco para que los bordes sean redondeados
+        setOpaque(false); // Importante para permitir transparencia en los bordes
     }
 
     @Override
@@ -22,14 +22,13 @@ public class WhiteRoundedPanelF extends JPanel {
         int width = getWidth();
         int height = getHeight();
 
-        // Obtén el color de fondo dinámicamente en lugar de usar un color fijo
-        Color backgroundColor = getBackground(); // Obtiene el color de fondo según el LookAndFeel
-        g2d.setColor(backgroundColor);
+        // Establecer el color de fondo a blanco
+        g2d.setColor(Color.WHITE);
 
-        // Crea una forma redondeada (ovalada)
+        // Crear una forma redondeada (ovalada)
         RoundRectangle2D roundedRectangle = new RoundRectangle2D.Double(0, 0, width, height, 50, 50);
 
-        // Establece la forma recortada para el panel
+        // Establecer la forma recortada para el panel
         g2d.clip(roundedRectangle);
 
         // Dibuja el fondo del panel con la forma redondeada
