@@ -221,15 +221,9 @@ public class ctrlCarros implements MouseListener, KeyListener {
 
         //se asegura de que no haya datos vacios porque significaria que no esta seleccionando nada
         if (e.getSource() == Vista.btnEliminarCarro) {
-            if (Vista.txtPlacaCarro.getText().isEmpty() || Vista.cmbClienteCarro.getSelectedItem() == null || Vista.cmbModeloCarro.getSelectedItem() == null
-                     || Vista.txtColorCarro.getText().isEmpty() || Vista.txtAnoCarro.getText().isEmpty()
-                    || Vista.txtDescripcionCarro.getText().isEmpty() || Vista.lblImagenCarro.getText().isEmpty())  {
-                JOptionPane.showMessageDialog(Vista, "Debes seleccionar un registro para eliminar", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                Modelo.Eliminar(Vista.tbListaCarros);
+            Modelo.Eliminar(Vista.tbListaCarros);
                 Modelo.Mostrar(Vista.tbListaCarros);
                 Modelo.limpiar(Vista);
-            }
        }
         
         //ejecuta la limpieza de campos
