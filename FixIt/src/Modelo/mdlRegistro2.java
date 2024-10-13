@@ -145,22 +145,18 @@ public class mdlRegistro2 {
         }
     }
     
-    public void Guardar() {
-    Connection conexion = Conexion.getConexion();
-
-        try {
-        // Verifica que el campo de imagen no esté vacío
-        if (imagenSeleccionada != null) {
-            setImagenUrlEmpleado(subirImagenImgur(imagenSeleccionada)); // Usar la imagen seleccionada
-        } else {
-            JOptionPane.showMessageDialog(null, "Por favor selecciona una imagen antes de guardar.");
-            return; // Salir si no hay imagen seleccionada
-        }
-
-        // Ejecuta la inserción de elementos
-        String sql = "insert into Empleado (Dui_empleado, UUID_usuario, Nombre, Apellido, ImagenEmpleado, FechaNacimiento, Telefono)\n" +
-                    " VALUES  (?, ?, ?, ?, ?, ?, ?)";
-        PreparedStatement pstmt = conexion.prepareStatement(sql);
+   public void Guardar() {
+    Connection conexion = null;
+    PreparedStatement pstmt = null;
+    
+    try {
+        conexion = Conexion.getConexion();
+        
+        String urlImagen = subirImagenImgur(imagenSeleccionada);
+        setImagenUrlEmpleado(urlImagen);
+        
+        String sql = "INSERT INTO Empleado (Dui_empleado, UUID_usuario, Nombre, Apellido, ImagenEmpleado, FechaNacimiento, Telefono) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        pstmt = conexion.prepareStatement(sql);
         pstmt.setString(1, getDuiEmpleado());
         pstmt.setString(2, getCorreoUsuario());
         pstmt.setString(3, getNombreEmpledo());
@@ -169,12 +165,28 @@ public class mdlRegistro2 {
         pstmt.setString(6, getFechaNacimiento());
         pstmt.setString(7, getTelefonoEmpleado());
         pstmt.executeUpdate();
+        
+        JOptionPane.showMessageDialog(null, "Empleado guardado exitosamente.");
+        
     } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "Error al guardar el empleado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Error al guardar el Empleado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        // Cerrar la conexión en caso de error
+        try {
+            if (conexion != null) conexion.close();
+        } catch (SQLException se) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + se.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Ocurrió un error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    } finally {
+        // Asegúrate de cerrar la conexión y el PreparedStatement siempre
+        try {
+            if (pstmt != null) pstmt.close();
+            if (conexion != null) conexion.close();
+        } catch (SQLException se) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar recursos: " + se.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
-
-    }
+}
     
 }

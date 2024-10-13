@@ -8,6 +8,7 @@ import Controlador.ctrlCitas;
 import Modelo.Clientes;
 import Modelo.Empleados;
 import Modelo.mdlCitas;
+import Vistas.elementosTwo.TransparenteRoundedPanel;
 import Vistas.elemetos.RoundedWhitePanel;
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatIntelliJLaf;
@@ -15,20 +16,27 @@ import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.extras.FlatAnimatedLafChange;
 import java.awt.EventQueue;
 import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat; // Asegúrate de importar esto
+import java.util.Date; // Asegúrate de importar esto
 
-public class frmCitas extends RoundedWhitePanel {
+public class frmCitas extends TransparenteRoundedPanel {
 
     public frmCitas() {
-        super(20, 20);
         initComponents();
         
         frmCitas vista = this;
         mdlCitas modelito = new mdlCitas();
         Clientes Modelo = new Clientes();
-        Empleados ModeloEm = new Empleados();         
-        ctrlCitas contro = new ctrlCitas(modelito, vista, Modelo, ModeloEm);
+        Empleados ModeloEm = new Empleados(); 
+        citasCardsPanel cards = new citasCardsPanel(); // Inicializa el panel de tarjetas
+        ctrlCitas contro = new ctrlCitas(modelito, vista, Modelo, ModeloEm,cards);
+        
+        txtFecha.setEditable(false);
         vista.setVisible(true);
+        
+        
 
         // Formato para txtFecha (automáticamente añade guiones en formato yyyy-MM-dd)
         txtFecha.addKeyListener(new KeyAdapter() {
@@ -67,6 +75,11 @@ public class frmCitas extends RoundedWhitePanel {
                 }
             }
         });
+        // Agregar listener para el calendario
+        calendar1.addCalendarSelectedListener((MouseEvent evt, calendar.model.ModelDate date) -> {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            txtFecha.setText(dateFormat.format(date.toDate())); // Actualiza txtFecha con la fecha seleccionada
+        });
     }
 
 
@@ -85,7 +98,6 @@ public class frmCitas extends RoundedWhitePanel {
         txtFecha = new javax.swing.JTextField();
         txtHora = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbCitas = new javax.swing.JTable();
@@ -97,26 +109,24 @@ public class frmCitas extends RoundedWhitePanel {
         jLabel6 = new javax.swing.JLabel();
         cmbEmpleado = new javax.swing.JComboBox<>();
         txtDEsc = new javax.swing.JTextField();
+        citasCardsPanel1 = new Vistas.citasCardsPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Seleccionar cliente");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, -1, -1));
 
         jLabel7.setText("Selecciona la fecha de cita");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, -1, -1));
 
         jLabel2.setText("Selecionar Empleado");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
-        add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 170, -1));
-        add(txtHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 170, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, -1, -1));
+        add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, 120, -1));
+        add(txtHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, 130, -1));
 
         jLabel3.setText("Elije la hora de cita");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/agregar (2).png"))); // NOI18N
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel4.setText("Agregar cita");
@@ -135,28 +145,45 @@ public class frmCitas extends RoundedWhitePanel {
         ));
         jScrollPane1.setViewportView(tbCitas);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, -1, 290));
-        add(calendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 460, 250));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 670, 290));
+
+        calendar1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                calendar1PropertyChange(evt);
+            }
+        });
+        add(calendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 340, 310));
 
         btnActualizar.setText("Actualizar cita");
-        add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, -1));
+        add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, -1, -1));
 
         btnAddCita.setText("Agregar Cita");
-        add(btnAddCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, -1, -1));
+        add(btnAddCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, -1, -1));
 
         btnEliminar.setText("Eliminar cita");
-        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, -1, -1));
+        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, -1, -1));
 
         cmbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cmbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 170, -1));
+        add(cmbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 120, -1));
 
         jLabel6.setText("Descripccion de cita");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
 
         cmbEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cmbEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 170, -1));
-        add(txtDEsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 170, -1));
+        add(cmbEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 250, 130, -1));
+        add(txtDEsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 170, -1));
+        add(citasCardsPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 290, 380));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void calendar1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_calendar1PropertyChange
+
+  if ("calendar".equals(evt.getPropertyName())) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        // Actualizar el campo de texto de la fecha
+        txtFecha.setText(dateFormat.format(calendar1.getSelectedDate()));
+    } 
+
+    }//GEN-LAST:event_calendar1PropertyChange
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -164,13 +191,13 @@ public class frmCitas extends RoundedWhitePanel {
     public javax.swing.JButton btnAddCita;
     public javax.swing.JButton btnEliminar;
     public calendar.Calendar calendar1;
+    private Vistas.citasCardsPanel citasCardsPanel1;
     public javax.swing.JComboBox<String> cmbCliente;
     public javax.swing.JComboBox<String> cmbEmpleado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;

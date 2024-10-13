@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 public class controlador implements MouseListener {
 
-      Usuarios modelo;
+    Usuarios modelo;
     frmRegistrarse Vista;
     Roles mRoles;
 
@@ -38,11 +38,16 @@ public class controlador implements MouseListener {
             }
         });
     }
+    
+    public class correoGlobal {
+        
+    }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == Vista.btnAgregarUser) {
-            System.out.println("se dion cliccasdfasdf");
+            System.out.println("Botón 'Agregar Usuario' clickeado");
+
             if (Vista.txtCorreoUser.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Llene los campos vacíos", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 return;
@@ -52,9 +57,9 @@ public class controlador implements MouseListener {
                 JOptionPane.showMessageDialog(null, "Formato de correo inválido", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-
-            if (Vista.txtContra.getText().length() <= 6) {
+             if (Vista.txtContra.getPassword().length <= 6) {
                 JOptionPane.showMessageDialog(null, "Número de caracteres insuficiente, ingrese más de 6 caracteres", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                System.out.println("Contraseña demasiado corta");
                 return;
             }
 
@@ -74,19 +79,23 @@ public class controlador implements MouseListener {
                 JOptionPane.showMessageDialog(null, "Error al abrir la ventana de inicio de sesión: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-        
+
         if (e.getSource() == Vista.imgFixit) {
-                Loginjava.initLogin();
-                Vista.dispose();
+            Loginjava.initLogin();
+            Vista.dispose();
         }
     }
 
     @Override
     public void mousePressed(MouseEvent e) {}
+
     @Override
     public void mouseReleased(MouseEvent e) {}
+
     @Override
     public void mouseEntered(MouseEvent e) {}
+
     @Override
     public void mouseExited(MouseEvent e) {}
 }
+

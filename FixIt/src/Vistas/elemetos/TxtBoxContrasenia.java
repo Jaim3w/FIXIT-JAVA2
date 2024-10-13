@@ -12,10 +12,6 @@ import java.awt.Insets;
 import javax.swing.JPasswordField;
 import javax.swing.border.Border;
 
-/**
- *
- * @author Jaimew
- */
 public class TxtBoxContrasenia extends JPasswordField { // Clase pública
 
     public TxtBoxContrasenia() {
@@ -26,15 +22,15 @@ public class TxtBoxContrasenia extends JPasswordField { // Clase pública
 
             // Configuración inicial del JPasswordField
             setOpaque(false); // Hace el JPasswordField transparente
-            setForeground(new Color(255, 215, 0)); // Texto dorado
-            setCaretColor(Color.WHITE); // Color del cursor de texto
+            setForeground(new Color(0x0084A0)); // Texto con el color #0084A0
+            setCaretColor(Color.BLACK); // Color del cursor de texto
             setFont(new Font("Segoe UI", Font.PLAIN, 16)); // Fuente y tamaño del texto
             
             // Establecer el carácter para ocultar la contraseña
             setEchoChar('•'); // Caracter que reemplaza los dígitos
 
-            // Ajustar el borde dorado con esquinas redondeadas
-            setBorder(new RoundedBorder(new Color(255, 215, 0), 2, 15)); // Color dorado con borde redondeado
+            // Ajustar el borde con esquinas redondeadas y color #0084A0
+            setBorder(new RoundedBorder(new Color(0x0084A0), 2, 15)); // Color #0084A0 con borde redondeado
 
             // Configuraciones adicionales (puedes personalizar más si es necesario)
             setBackground(Color.BLACK); // Fondo negro
@@ -71,4 +67,4 @@ public class TxtBoxContrasenia extends JPasswordField { // Clase pública
             g.drawRoundRect(x, y, width - 1, height - 1, radius, radius); // Borde redondeado
         }
     }
-}  
+}

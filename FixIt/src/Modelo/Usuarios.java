@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelo;
 
+import Controlador.controladorCorreo;
 import Vistas.frmRegistrarse;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -93,6 +90,21 @@ public class Usuarios {
             System.out.println("Error en el modelo" + e);
         }
     }
+    
+    public void InsertarUserEmpleado() {
+        Connection conexion = Conexion.getConexion();
+        try {
+
+            PreparedStatement addUser = conexion.prepareStatement("Insert into Usuario(UUID_usuario, UUID_rol, CorreoElectronico, Contrasena) values(?,(SELECT UUID_rol FROM Rol WHERE Nombre = 'Empleado') ,?,?)");
+            addUser.setString(1, UUID.randomUUID().toString());
+            addUser.setString(2, getCorreoElectronico());
+            addUser.setString(3, getContrasena());
+            addUser.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Error en el modelo" + e);
+        }
+    }
 
     public boolean Verificar() {
 
@@ -144,7 +156,8 @@ public class Usuarios {
         try {
             PreparedStatement smpt = conexion.prepareStatement("Update Usuario set Contrasena = ? where CorreoElectronico = ?");
             smpt.setString(1, usuario.getContrasena());
-            smpt.setString(2, usuario.getCorreoElectronico());
+            System.err.println("ESTE ES EL CORREO AL QUE LE ESTOY CACTUALIZANDO LA CONRA" + controladorCorreo.correoGlobal);
+            smpt.setString(2, controladorCorreo.correoGlobal);
             smpt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Errro al actualizar la contraseña" + e.getMessage());
@@ -190,6 +203,46 @@ public class Usuarios {
         ex.printStackTrace();
     }
 }
+   
+    public void CargarComboEmpleado(JComboBox comboBox) {
+    Connection conexion = Conexion.getConexion();
+    comboBox.removeAllItems();
+    try {
+        Statement statement = conexion.createStatement();
+        ResultSet rs = statement.executeQuery("SELECT u.UUID_usuario, u.CorreoElectronico, u.Contrasena, u.UUID_rol\n" +
+                                              "FROM Usuario u\n" +
+                                              "JOIN Rol r ON u.UUID_rol = r.UUID_rol\n" +
+                                              "WHERE r.Nombre = 'Empleado'");
+        while (rs.next()) {
+            String uuid = rs.getString("UUID_usuario");
+            String uuidrol = rs.getString("UUID_rol");
+            String correo = rs.getString("CorreoElectronico");
+            String contrasena = rs.getString("Contrasena");
+            comboBox.addItem(new Usuarios(uuidrol, uuid, correo, contrasena)); // Cargar usuarios empleados
+        }
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }
+}
+   
+   public boolean ValidarCorreo() {
+
+        Connection conexion = Conexion.getConexion();
+        boolean resultado = false;
+        try {
+            String sql = "Select * from Usuario where CorreoElectronico = ?";
+            PreparedStatement statement = conexion.prepareStatement(sql);
+            statement.setString(1, getCorreoElectronico());
+            ResultSet resulset = statement.executeQuery();
+            if (resulset.next()) {
+                resultado = true;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error en el modelo");
+        }
+
+        return resultado;
+    }
 
 
 }

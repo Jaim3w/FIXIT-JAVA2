@@ -32,6 +32,7 @@ public class controladorContra implements MouseListener {
         if (e.getSource() == vista.btnActua) {
             if (vista.txtNueva.getText().length() <= 6) {
                 JOptionPane.showMessageDialog(vista, "La contraseña debe de tener 6 o mas carcarteres");
+                
             } else {
                 modelo.setContrasena(vista.txtNueva.getText());
                 modelo.ActualizarContrasena(modelo);

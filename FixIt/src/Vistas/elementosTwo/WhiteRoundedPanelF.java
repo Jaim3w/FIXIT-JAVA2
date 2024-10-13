@@ -4,10 +4,15 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.RoundRectangle2D;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class WhiteRoundedPanelF extends JPanel {
+
+    public WhiteRoundedPanelF() {
+        // Establecer el panel como no opaco para que los bordes sean redondeados
+        setOpaque(false); // Importante para permitir transparencia en los bordes
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -17,28 +22,16 @@ public class WhiteRoundedPanelF extends JPanel {
         int width = getWidth();
         int height = getHeight();
 
-        // Establece el color de fondo como blanco
+        // Establecer el color de fondo a blanco
         g2d.setColor(Color.WHITE);
 
-        // Crea una forma redondeada (ovalada)
+        // Crear una forma redondeada (ovalada)
         RoundRectangle2D roundedRectangle = new RoundRectangle2D.Double(0, 0, width, height, 50, 50);
 
-        // Establece la forma recortada para el panel
+        // Establecer la forma recortada para el panel
         g2d.clip(roundedRectangle);
 
         // Dibuja el fondo del panel con la forma redondeada
         g2d.fillRect(0, 0, width, height);
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 400);
-
-        // Crea una instancia del panel redondeado blanco
-        WhiteRoundedPanelF panel = new WhiteRoundedPanelF();
-        frame.add(panel);
-
-        frame.setVisible(true);
     }
 }

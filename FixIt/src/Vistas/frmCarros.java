@@ -8,13 +8,13 @@ import Controlador.ctrlCarros;
 import Modelo.ClientesCarro;
 import Modelo.ModeloCarro;
 import Modelo.mdlCarros;
+import Vistas.elementosTwo.TransparenteRoundedPanel;
 import Vistas.elemetos.RoundedWhitePanel;
 
-public class frmCarros extends RoundedWhitePanel {
+public class frmCarros extends TransparenteRoundedPanel {
 
 
     public frmCarros() {
-        super(20, 20);
         initComponents();
         
         frmCarros vista = this;
@@ -25,6 +25,7 @@ public class frmCarros extends RoundedWhitePanel {
 
         vista.setVisible(true);
     }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -64,23 +65,28 @@ public class frmCarros extends RoundedWhitePanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Carros");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 170, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Color del vehiculo:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Fecha de ingreso");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Año del vehiculo");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, -1, -1));
         add(txtDescripcionCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 200, 30));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Cliente");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 40, 20));
         add(txtPlacaCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 210, 30));
@@ -93,6 +99,7 @@ public class frmCarros extends RoundedWhitePanel {
         add(cmbModeloCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 220, 30));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Descripcion");
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, -1, -1));
 
@@ -126,12 +133,13 @@ public class frmCarros extends RoundedWhitePanel {
         ));
         jScrollPane1.setViewportView(tbListaCarros);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 460, 710, 240));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, 710, 240));
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 510, 30, 30));
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 370, 30, 10));
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 540, 70, 20));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Modelo:");
         add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, -1));
         add(txtColorCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 220, 30));
@@ -139,16 +147,19 @@ public class frmCarros extends RoundedWhitePanel {
         BtnLimpiarcamposCarro.setText("limpiar");
         add(BtnLimpiarcamposCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 120, 30));
         add(txtAnoCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, 190, 30));
-        add(txtBuscarCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 410, 30));
+        add(txtBuscarCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 220, 30));
 
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Buscar");
         jLabel12.setToolTipText("");
         add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, 70, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Placa del Vehiculo");
         add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
 
+        txtIngresoCarro.setForeground(new java.awt.Color(0, 0, 0));
         txtIngresoCarro.setText("jLabel14");
         add(txtIngresoCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 90, -1));
     }// </editor-fold>//GEN-END:initComponents
@@ -162,7 +173,7 @@ public class frmCarros extends RoundedWhitePanel {
     public javax.swing.JButton btnSubirImagen;
     public javax.swing.JComboBox<String> cmbClienteCarro;
     public javax.swing.JComboBox<String> cmbModeloCarro;
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

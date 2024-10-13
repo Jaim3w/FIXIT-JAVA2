@@ -1,6 +1,3 @@
-
-
-
 package Controlador;
 
 import Modelo.Credenciales;
@@ -11,20 +8,22 @@ import Vistas.NuevaContra;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 public class controladorCorreo implements MouseListener {
-    
-    static Random random=new Random();
-    static  int numeroAle=1000 + random.nextInt(9000);
-    public static Usuarios Verificar=new Usuarios();
+
+    static Random random = new Random();
+    static int numeroAle = 1000 + random.nextInt(9000);
 
     private Credenciales modelo;
     private EnviarcorreoE vista;
-  
+    private Usuarios modelito;
+    public static String correoGlobal;
 
-    public controladorCorreo(Credenciales modelo, EnviarcorreoE vista) {
+    public controladorCorreo(Credenciales modelo, EnviarcorreoE vista, Usuarios Modelito) {
         this.modelo = modelo;
         this.vista = vista;
+        this.modelito = Modelito;
 
         if (vista.btnenviar == null) {
             System.out.println("btnenviar es null");
@@ -33,42 +32,35 @@ public class controladorCorreo implements MouseListener {
             System.out.println("MouseListener agregado a btnenviar");
         }
     }
-    
-   
-    
 
     @Override
     public void mouseClicked(MouseEvent e) {
 
         if (e.getSource() == vista.btnenviar) {
-            System.out.println("btnenviar clickeado");
-            
-            
-           
 
+            modelito.setCorreoElectronico(vista.txtCorreo.getText());
+            correoGlobal = vista.txtCorreo.getText();
             String recipient = vista.txtCorreo.getText();
             String subject = "Recuperación de contraseña";
             String content = "Este es el código de verificación: " + numeroAle;
-
-            // Enviar correo
-
-        if (e.getSource()== vista.btnenviar) {
-            
-            Verificar.setCorreoElectronico(vista.txtCorreo.getText());
-         
-          
-          
-
             EnviarCorreo.enviarCorreo(recipient, subject, content);
             System.out.println("Correo enviado a: " + recipient);
+            boolean comprobar = modelito.ValidarCorreo();
+            System.out.println("Resultado del correo: " + comprobar);
+            if (comprobar) {
+                JOptionPane.showMessageDialog(vista, "Correo enviado", "Correo Enviado", JOptionPane.INFORMATION_MESSAGE);
+                System.out.println("btnenviar clickeado");
 
-           Vistas.CodigoVeri.initCodigoVeri();
-            vista.dispose();
+                System.err.println("esto es lo que le mando al setCorreo" + vista.txtCorreo.getText());
+                Vistas.CodigoVeri.initCodigoVeri();
+                vista.dispose();
+            } else {
+                JOptionPane.showMessageDialog(vista, "credencial incorecta", "Error", JOptionPane.WARNING_MESSAGE);
+            }
+
         }
-    }
 
-   
-}
+    }
 
     @Override
     public void mousePressed(MouseEvent e) {
@@ -80,9 +72,12 @@ public class controladorCorreo implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
+        
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
+       
     }
+
 }

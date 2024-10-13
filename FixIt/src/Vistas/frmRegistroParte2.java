@@ -3,12 +3,23 @@ package Vistas;
 import Controlador.ctrlRegistro2;
 import Modelo.Usuarios;
 import Modelo.mdlRegistro2;
+import com.formdev.flatlaf.FlatLightLaf;
+import java.awt.Color;
+import javax.swing.JFrame;
 
 public class frmRegistroParte2 extends javax.swing.JFrame {
 
     public frmRegistroParte2() {
+        
+         setUndecorated(true);
+        
         initComponents();
-        this.setLocationRelativeTo(null);
+        
+           // Aplicamos el borde redondeado al JFrame
+        setShape(new java.awt.geom.RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 50, 50)); // Bordes redondeados
+        
+        // Configuramos el color de fondo y el layout
+        setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
     }
     
     public static void initfrmRegistroParte2(){
@@ -24,85 +35,123 @@ public class frmRegistroParte2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        radialGradientPanel1 = new Vistas.elemetos.RadialGradientPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txtDuiR = new Vistas.elemetos.TxtBoxRedondeado();
+        blackRoundedPanelF1 = new Vistas.elementosTwo.BlackRoundedPanelF();
         jLabel3 = new javax.swing.JLabel();
         cmbCorreoR = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        txtNombresR = new Vistas.elemetos.TxtBoxRedondeado();
         jLabel5 = new javax.swing.JLabel();
-        txtApellidosR = new Vistas.elemetos.TxtBoxRedondeado();
         jLabel6 = new javax.swing.JLabel();
-        lblImagenEmpleado = new javax.swing.JLabel();
         btnSubirImagenR = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        txtTelefonoR = new Vistas.elemetos.TxtBoxRedondeado();
-        btnGuardarR = new Vistas.elemetos.ButtonA();
         jLabel2 = new javax.swing.JLabel();
         txtFechaNacimiento = new com.toedter.calendar.JDateChooser();
+        btnGuardarR = new Vistas.elemetos.ButtonC();
+        txtDuiR = new Vistas.elemetos.txtRedondeadoamarillo();
+        txtNombresR = new Vistas.elemetos.txtRedondeadoamarillo();
+        txtApellidosR = new Vistas.elemetos.txtRedondeadoamarillo();
+        txtTelefonoR = new Vistas.elemetos.txtRedondeadoamarillo();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        lblImagenEmpleado = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        radialGradientPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        blackRoundedPanelF1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Registrarse");
-        radialGradientPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 130, 40));
-        radialGradientPanel1.add(txtDuiR, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 78, 240, 30));
-
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("D.U.I");
-        radialGradientPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 40, 10));
+        blackRoundedPanelF1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 400, -1, 10));
 
         cmbCorreoR.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        radialGradientPanel1.add(cmbCorreoR, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 250, 30));
+        blackRoundedPanelF1.add(cmbCorreoR, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 450, 330, 30));
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Correo electrónico");
-        radialGradientPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 100, -1));
-        radialGradientPanel1.add(txtNombresR, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 250, 30));
+        blackRoundedPanelF1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 460, 130, -1));
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Nombres");
-        radialGradientPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 60, 20));
-        radialGradientPanel1.add(txtApellidosR, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 250, 30));
+        blackRoundedPanelF1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 510, 70, 20));
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Apellidos");
-        radialGradientPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 60, -1));
+        blackRoundedPanelF1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 570, 70, -1));
 
-        lblImagenEmpleado.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        radialGradientPanel1.add(lblImagenEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 120, 90));
-
+        btnSubirImagenR.setBackground(new java.awt.Color(255, 255, 255));
+        btnSubirImagenR.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSubirImagenR.setForeground(new java.awt.Color(0, 0, 0));
         btnSubirImagenR.setText("Subir Imagen");
         btnSubirImagenR.setToolTipText("");
-        radialGradientPanel1.add(btnSubirImagenR, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, 30));
+        blackRoundedPanelF1.add(btnSubirImagenR, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 170, -1, 30));
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Fecha de nacimiento");
-        radialGradientPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, 140, 20));
-        radialGradientPanel1.add(txtTelefonoR, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, 250, 30));
+        blackRoundedPanelF1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 330, -1, 20));
 
-        btnGuardarR.setText("Registrarme");
-        radialGradientPanel1.add(btnGuardarR, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 450, 160, 50));
-
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Número de teléfono");
-        radialGradientPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, -1, -1));
-        radialGradientPanel1.add(txtFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 240, 30));
+        blackRoundedPanelF1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 620, -1, -1));
 
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/Diseño sin título.png"))); // NOI18N
-        radialGradientPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 540));
+        blackRoundedPanelF1.add(txtFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 330, 340, 30));
 
-        getContentPane().add(radialGradientPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 540));
+        btnGuardarR.setForeground(new java.awt.Color(0, 0, 0));
+        btnGuardarR.setText("Registrarse");
+        btnGuardarR.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        blackRoundedPanelF1.add(btnGuardarR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 680, 180, 40));
+        blackRoundedPanelF1.add(txtDuiR, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 390, 330, -1));
+        blackRoundedPanelF1.add(txtNombresR, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 510, 330, -1));
+        blackRoundedPanelF1.add(txtApellidosR, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 560, 330, -1));
+        blackRoundedPanelF1.add(txtTelefonoR, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 610, 330, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icminimize.png"))); // NOI18N
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
+        blackRoundedPanelF1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, -1, -1));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icexit.png"))); // NOI18N
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
+        blackRoundedPanelF1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 10, -1, -1));
+
+        lblImagenEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+        lblImagenEmpleado.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        lblImagenEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+        blackRoundedPanelF1.add(lblImagenEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 100, 220, 190));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        blackRoundedPanelF1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 90, 240, 210));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/imgregistrarsefondodos.png"))); // NOI18N
+        blackRoundedPanelF1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        getContentPane().add(blackRoundedPanelF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1350, 840));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        setState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel9MouseClicked
 
     /**
      * @param args the command line arguments
@@ -140,7 +189,8 @@ public class frmRegistroParte2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public Vistas.elemetos.ButtonA btnGuardarR;
+    private Vistas.elementosTwo.BlackRoundedPanelF blackRoundedPanelF1;
+    public Vistas.elemetos.ButtonC btnGuardarR;
     public javax.swing.JButton btnSubirImagenR;
     public javax.swing.JComboBox<String> cmbCorreoR;
     private javax.swing.JLabel jLabel1;
@@ -151,12 +201,13 @@ public class frmRegistroParte2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     public javax.swing.JLabel lblImagenEmpleado;
-    private Vistas.elemetos.RadialGradientPanel radialGradientPanel1;
-    public transient Vistas.elemetos.TxtBoxRedondeado txtApellidosR;
-    public Vistas.elemetos.TxtBoxRedondeado txtDuiR;
+    public Vistas.elemetos.txtRedondeadoamarillo txtApellidosR;
+    public Vistas.elemetos.txtRedondeadoamarillo txtDuiR;
     public com.toedter.calendar.JDateChooser txtFechaNacimiento;
-    public Vistas.elemetos.TxtBoxRedondeado txtNombresR;
-    public Vistas.elemetos.TxtBoxRedondeado txtTelefonoR;
+    public Vistas.elemetos.txtRedondeadoamarillo txtNombresR;
+    public Vistas.elemetos.txtRedondeadoamarillo txtTelefonoR;
     // End of variables declaration//GEN-END:variables
 }

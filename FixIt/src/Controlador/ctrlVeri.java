@@ -11,10 +11,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 import javax.swing.event.MouseInputListener;
 
-/**
- *
- * @author rdlfp
- */
+
 public class ctrlVeri implements MouseListener{
     private CodigoVeri vista;
     
