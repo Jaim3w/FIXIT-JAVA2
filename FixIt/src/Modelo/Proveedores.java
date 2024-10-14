@@ -14,38 +14,38 @@ import javax.swing.JComboBox;
  *
  * @author Kevin
  */
-public class Categorias {
+public class Proveedores {
     
-    private String UUID_item;
-    private String Nombre;
+    private String codigo;
+    private String representante;
     
-    public Categorias(){
+    public Proveedores(){
     }
     
-    public Categorias(String UUID_item, String Nombre) {
-        this.UUID_item = UUID_item;
-        this.Nombre = Nombre;
+    public Proveedores(String codigo, String representante) {
+        this.codigo = codigo;
+        this.representante = representante;
     }
     
-    public String getUUID_item() {
-        return UUID_item;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setUUID_item(String UUID_item) {
-        this.UUID_item = UUID_item;
+    public void setCodgio(String codigo) {
+        this.codigo = codigo;
     }
 
-    public String getNombre() {
-        return Nombre;
+    public String getRepresentante() {
+        return representante;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+    public void setRepresentante(String representante) {
+        this.representante = representante;
     }
     
     @Override
     public String toString() {
-        return Nombre;
+        return representante;
     }
     
     public void CargarComboCategorias(JComboBox comboBox){
@@ -53,14 +53,15 @@ public class Categorias {
         comboBox.removeAllItems();
         try {
             Statement statement = conexion.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT UUID_item, Nombre FROM CategoriaItem");
+            ResultSet rs = statement.executeQuery("SELECT Codigo_proveedor, Nombre FROM Proveedor");
             while(rs.next()){
                 String uuid = rs.getString("UUID_item");
                 String nombre = rs.getString("Nombre");
-                comboBox.addItem(new Categorias(uuid, nombre));
+                comboBox.addItem(new Proveedores(uuid, nombre));
             }
         } catch(SQLException e) {
             e.printStackTrace();
         }
     }
+    
 }

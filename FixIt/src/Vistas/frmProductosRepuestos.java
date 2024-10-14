@@ -4,6 +4,9 @@
  */
 package Vistas;
 
+import Modelo.Categorias;
+import Modelo.mdlProductosRepuestos;
+
 /**
  *
  * @author Kevin
@@ -15,8 +18,13 @@ public class frmProductosRepuestos extends javax.swing.JPanel {
      */
     public frmProductosRepuestos() {
         initComponents();
+        
+        frmProductosRepuestos vista = this;
+        mdlProductosRepuestos modelo = new mdlProductosRepuestos();
+        Categorias mCategorias = new Categorias();
+        
+        vista.setVisible(true);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
