@@ -173,7 +173,7 @@ public class dashboardpanel extends javax.swing.JPanel {
         lbl_asignaciones.setForeground(new java.awt.Color(255, 255, 255));
         lbl_asignaciones.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbl_asignaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icasignacionesalofixit2.png"))); // NOI18N
-        lbl_asignaciones.setText("Usuarios");
+        lbl_asignaciones.setText("Asignaciones");
         lbl_asignaciones.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 15));
         lbl_asignaciones.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         lbl_asignaciones.setIconTextGap(40);
@@ -311,7 +311,7 @@ public class dashboardpanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lbl_proveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_proveedoresMouseClicked
-        frmDetalleFactura pr = new frmDetalleFactura();
+        frmProveedor pr = new frmProveedor();
     pr.setSize(1040, 670);
     pr.setLocation(0, 0);
         setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
@@ -415,7 +415,14 @@ public class dashboardpanel extends javax.swing.JPanel {
     }//GEN-LAST:event_lbl_usuarios_y_empleados1MouseClicked
 
     private void lbl_asignacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_asignacionesMouseClicked
-        // TODO add your handling code here:
+ frmAsignarOrden us = new frmAsignarOrden();
+    us.setSize(1040, 670);
+    us.setLocation(0, 0);
+     setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
+    panelContent.removeAll();
+    panelContent.add(us, BorderLayout.CENTER);
+    panelContent.revalidate();
+    panelContent.repaint();
     }//GEN-LAST:event_lbl_asignacionesMouseClicked
 
 
