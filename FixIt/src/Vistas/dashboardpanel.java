@@ -411,8 +411,14 @@ public class dashboardpanel extends javax.swing.JPanel {
     }//GEN-LAST:event_lbl_perfilMouseClicked
 
     private void lbl_usuarios_y_empleados1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_usuarios_y_empleados1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lbl_usuarios_y_empleados1MouseClicked
+ frmProductosRepuestos us = new frmProductosRepuestos();
+    us.setSize(1040, 670);
+    us.setLocation(0, 0);
+     setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
+    panelContent.removeAll();
+    panelContent.add(us, BorderLayout.CENTER);
+    panelContent.revalidate();
+    panelContent.repaint();    }//GEN-LAST:event_lbl_usuarios_y_empleados1MouseClicked
 
     private void lbl_asignacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_asignacionesMouseClicked
  frmAsignarOrden us = new frmAsignarOrden();

@@ -116,15 +116,15 @@ public class frmPerfilAd extends TransparenteRoundedPanel {
         txtTelefono = new javax.swing.JTextField();
         txtNacimiento = new javax.swing.JTextField();
         txtDui = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        btnActTelefono = new javax.swing.JButton();
+        btnActTelefono = new Vistas.elemetos.ButtonWI();
         txtNombres = new javax.swing.JTextField();
         txtApellidos = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
         btnActImagen = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -148,18 +148,23 @@ public class frmPerfilAd extends TransparenteRoundedPanel {
         jLabel3.setText("Apellidos");
 
         jPanel2.setBackground(new java.awt.Color(240, 240, 240));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setForeground(new java.awt.Color(153, 153, 153));
         jLabel5.setText("Correo electrónico");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
 
         jLabel7.setForeground(new java.awt.Color(153, 153, 153));
         jLabel7.setText("Teléfono");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
 
         jLabel10.setForeground(new java.awt.Color(153, 153, 153));
         jLabel10.setText("Fecha de nacimiento");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, -1, -1));
 
         jLabel12.setForeground(new java.awt.Color(153, 153, 153));
         jLabel12.setText("D.U.I");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
 
         txtCorreo.setBackground(new java.awt.Color(240, 240, 240));
         txtCorreo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -168,6 +173,7 @@ public class frmPerfilAd extends TransparenteRoundedPanel {
         txtCorreo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtCorreo.setEnabled(false);
         txtCorreo.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        jPanel2.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 261, -1));
 
         txtTelefono.setBackground(new java.awt.Color(240, 240, 240));
         txtTelefono.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -175,6 +181,7 @@ public class frmPerfilAd extends TransparenteRoundedPanel {
         txtTelefono.setBorder(null);
         txtTelefono.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtTelefono.setEnabled(false);
+        jPanel2.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 209, -1));
 
         txtNacimiento.setBackground(new java.awt.Color(240, 240, 240));
         txtNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -187,6 +194,7 @@ public class frmPerfilAd extends TransparenteRoundedPanel {
                 txtNacimientoActionPerformed(evt);
             }
         });
+        jPanel2.add(txtNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 261, -1));
 
         txtDui.setBackground(new java.awt.Color(240, 240, 240));
         txtDui.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -194,89 +202,10 @@ public class frmPerfilAd extends TransparenteRoundedPanel {
         txtDui.setBorder(null);
         txtDui.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtDui.setEnabled(false);
+        jPanel2.add(txtDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 264, -1));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/fecha-de-nacimiento (1).png"))); // NOI18N
-        jLabel8.setPreferredSize(new java.awt.Dimension(32, 32));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/telefono (1).png"))); // NOI18N
-        jLabel4.setPreferredSize(new java.awt.Dimension(32, 32));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/arroba (1).png"))); // NOI18N
-        jLabel6.setPreferredSize(new java.awt.Dimension(32, 32));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/tarjeta-de-presentacion-con-imagen.png"))); // NOI18N
-
-        btnActTelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/lapices.png"))); // NOI18N
         btnActTelefono.setText("Actualizar telefono");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel7)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnActTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(txtNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(txtDui, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(3, 3, 3)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(60, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnActTelefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(18, 32, Short.MAX_VALUE)
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)))
-                .addGap(71, 71, 71))
-        );
+        jPanel2.add(btnActTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 190, -1));
 
         txtNombres.setBackground(new java.awt.Color(255, 255, 255));
         txtNombres.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -298,6 +227,17 @@ public class frmPerfilAd extends TransparenteRoundedPanel {
 
         btnActImagen.setText("Actualizar imagen");
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/telefono (1).png"))); // NOI18N
+        jLabel4.setPreferredSize(new java.awt.Dimension(32, 32));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/arroba (1).png"))); // NOI18N
+        jLabel6.setPreferredSize(new java.awt.Dimension(32, 32));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/fecha-de-nacimiento (1).png"))); // NOI18N
+        jLabel8.setPreferredSize(new java.awt.Dimension(32, 32));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/tarjeta-de-presentacion-con-imagen.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -305,7 +245,6 @@ public class frmPerfilAd extends TransparenteRoundedPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(119, 119, 119)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnActImagen)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pnlImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -317,19 +256,50 @@ public class frmPerfilAd extends TransparenteRoundedPanel {
                                     .addComponent(jLabel3)
                                     .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(30, 30, 30)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(btnCancelar)))
-                .addContainerGap(186, Short.MAX_VALUE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(46, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnActImagen)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel2)
+                                .addGap(101, 101, 101)
+                                .addComponent(btnCancelar)
+                                .addGap(128, 128, 128)))
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(104, 104, 104))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addComponent(btnActImagen)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addComponent(btnActImagen)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(25, 25, 25))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37)))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(pnlImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -340,8 +310,8 @@ public class frmPerfilAd extends TransparenteRoundedPanel {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(133, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -352,7 +322,7 @@ public class frmPerfilAd extends TransparenteRoundedPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnActImagen;
-    public javax.swing.JButton btnActTelefono;
+    public Vistas.elemetos.ButtonWI btnActTelefono;
     public javax.swing.JButton btnCancelar;
     public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

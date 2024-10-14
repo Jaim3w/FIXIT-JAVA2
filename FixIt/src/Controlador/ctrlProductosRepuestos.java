@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controlador;
 
 import Modelo.Categorias;
@@ -31,7 +27,7 @@ public class ctrlProductosRepuestos implements MouseListener, KeyListener {
     Vista.btnEliminarR.addMouseListener(this);
     Vista.btnActualizarR.addMouseListener(this);
     Vista.btnBuscarR.addMouseListener(this);
-    Vista.btnLimpiarR.addMouseListener(this);
+    Vista.btnLimpiarr.addMouseListener(this);
     Vista.tbListaProductosRepuestos.addMouseListener(this);
     
     //carga el contenido de los combo box
