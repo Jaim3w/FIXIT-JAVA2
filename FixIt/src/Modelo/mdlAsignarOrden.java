@@ -430,6 +430,22 @@ public class mdlAsignarOrden {
         vista.txtCliente.setText("");
     }
 
+     public mdlAsignarOrden(String uuid, String servicio, String cliente)
+    {
+        this.UUID_AsignarOrden = uuid;
+        this.Servicio = servicio;
+        this.Carro_Empleado = cliente;
+    }
+    
+    public mdlAsignarOrden() {
+
+    }
+    
+      @Override
+    public String toString()
+    {
+        return Servicio + " - " +  Carro_Empleado; // Concatenacion campos con un separador
+    }
 
       public void CargarComboAsignaciones(JComboBox comboBox){    
         Connection conexion = Conexion.getConexion();
@@ -460,21 +476,6 @@ public class mdlAsignarOrden {
     }
     
 
-    public mdlAsignarOrden(String uuid, String servicio, String cliente)
-    {
-        this.UUID_AsignarOrden = uuid;
-        this.Servicio = servicio;
-        this.Carro_Empleado = cliente;
-    }
     
-    public mdlAsignarOrden() {
-
-    }
-    
-      @Override
-    public String toString()
-    {
-        return Servicio + " - " +  Carro_Empleado; // Concatenacion campos con un separador
-    }
 } 
 

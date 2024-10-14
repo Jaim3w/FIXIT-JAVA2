@@ -174,6 +174,16 @@ Create table Auditoria(
 );
 
 
+-- Crear tabla Venta 
+CREATE TABLE Venta (
+    UUID_Venta VARCHAR2(50) PRIMARY KEY,
+    UUID_factura VARCHAR2(50) NOT NULL,
+    UUID_productoRepuesto VARCHAR2(50),
+    UUID_AsignarOrden VARCHAR2(50),
+    Subtotal NUMBER(10, 2) NOT NULL
+);
+
+
 
 
 --------------------------------------------------------------------------------------------------------------
@@ -957,9 +967,34 @@ BEGIN
 END;
 
 
-select * from empleado;
-delete from empleado where Dui_empleado = '';
-select * from Auditoria;
+
+
+-- Crear trigger para insertar en Venta cuando se inserte en DetalleFactura
+CREATE OR REPLACE TRIGGER trg_insert_venta
+AFTER INSERT ON DetalleFactura
+FOR EACH ROW
+DECLARE
+    v_precio_producto NUMBER(10, 2);
+    v_precio_servicio NUMBER(10, 2);
+    v_subtotal NUMBER(10, 2);
+BEGIN
+    -- Obtener el precio del producto o repuesto
+    SELECT Precio INTO v_precio_producto
+    FROM ProductoRepuesto
+    WHERE UUID_productoRepuesto = :NEW.UUID_productoRepuesto;
+
+    -- Obtener el precio del servicio
+    SELECT Precio INTO v_precio_servicio
+    FROM Servicio
+    WHERE UUID_servicio = (SELECT UUID_servicio FROM AsignarOrden WHERE UUID_AsignarOrden = :NEW.UUID_AsignarOrden);
+
+    -- Calcular el subtotal sumando el precio del producto/repuesto y el servicio
+    v_subtotal := v_precio_producto + v_precio_servicio;
+
+    -- Insertar en la tabla Venta
+    INSERT INTO Venta (UUID_Venta, UUID_factura, UUID_productoRepuesto, UUID_AsignarOrden, Subtotal)
+    VALUES (SYS_GUID(), :NEW.UUID_factura, :NEW.UUID_productoRepuesto, :NEW.UUID_AsignarOrden, v_subtotal);
+END;
 --------------------------------------------------------------------------------------------------------------
 
 
@@ -1194,7 +1229,6 @@ INSERT INTO Factura (UUID_factura, FacturaIdentificacion, FechaEmision, FechaVen
 VALUES (SYS_GUID(), 'Manuel', '2024-10-12','2024-10-19');
 ------------------------------------------------------------------------------------------------------------------------
 
-
 INSERT INTO DetalleFactura (UUID_DetalleFactura ,UUID_factura ,UUID_productoRepuesto ,UUID_AsignarOrden )
 VALUES (SYS_GUID(),
         (Select UUID_factura from Factura where FacturaIdentificacion = 'Carlos' ),
@@ -1303,5 +1337,23 @@ INNER JOIN ProductoRepuesto ON DetalleFactura.UUID_productoRepuesto = ProductoRe
 INNER JOIN AsignarOrden ON DetalleFactura.UUID_asignarOrden = AsignarOrden.UUID_asignarOrden 
 INNER JOIN Servicio ON AsignarOrden.UUID_servicio = Servicio.UUID_servicio;
 
-Select ProductoRepuesto.UUID_productoRepuesto, ProductoRepuesto.Nombre from ProductoRepuestoñ
+Select ProductoRepuesto.UUID_productoRepuesto, ProductoRepuesto.Nombre from ProductoRepuesto;
+
+select * from factura;
+select * from productoRepuesto;
+select * from asignarOrden;
+
+SELECT
+    Venta.UUID_Venta,
+    Factura.FacturaIdentificacion,
+    ProductoRepuesto.Nombre AS "Producto o Repuesto",
+    Servicio.Nombre AS Servicio,
+    Venta.Subtotal
+FROM
+    Venta 
+INNER JOIN ProductoRepuesto  ON Venta.UUID_productoRepuesto = ProductoRepuesto.UUID_productoRepuesto
+INNER JOIN AsignarOrden  ON Venta.UUID_AsignarOrden = AsignarOrden.UUID_AsignarOrden
+INNER JOIN Servicio  ON AsignarOrden.UUID_servicio = Servicio.UUID_servicio
+INNER JOIN Factura ON Venta.UUID_Factura = Factura.UUID_Factura
+Where FacturaIdentificacion = 'Carlos';
 
