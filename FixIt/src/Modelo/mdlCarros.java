@@ -20,13 +20,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Base64;
-import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -39,9 +37,11 @@ import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
-import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.json.JSONObject;
 import javax.swing.ImageIcon; // Asegúrate de importar esto
+import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
+import org.apache.hc.core5.http.NameValuePair;
+import org.apache.hc.core5.http.message.BasicNameValuePair;
 
 
 public class mdlCarros {
@@ -81,58 +81,40 @@ public class mdlCarros {
         return this.imagenSeleccionada;
     }
     
-    private String subirImagenImgur(File imageFile) throws IOException {
+   private String subirImagenImgur (File imageFile) throws IOException, ParseException {
     // Cargar la imagen y convertirla en Base64
     byte[] fileContent = Files.readAllBytes(imageFile.toPath());
     String encodedImage = Base64.getEncoder().encodeToString(fileContent);
-
-    // URL de la API de Imgur
-    String uploadUrl = "https://api.imgur.com/3/image";
-
+ 
+    // URL de la API de IMGBB
+    String uploadUrl = "https://api.imgbb.com/1/upload";
+ 
     // Crear un cliente HTTP
     CloseableHttpClient httpClient = HttpClients.createDefault();
     HttpPost uploadFile = new HttpPost(uploadUrl);
-
-    // Configurar las cabeceras para autenticar la API de Imgur
-    uploadFile.addHeader("Authorization", "Client-ID 8fade595e9f4606");
-
-    // Crear el JSON para el body de la petición
-    JSONObject json = new JSONObject();
-    json.put("image", encodedImage);
-
-    // Establecer el JSON como entidad de la petición
-    StringEntity entity = new StringEntity(json.toString());
-    uploadFile.setEntity(entity);
-    uploadFile.addHeader("Content-Type", "application/json");
-
-    // Declarar la respuesta
-    CloseableHttpResponse response = null;
-
-    try {
-        // Ejecutar la solicitud de subida
-        response = httpClient.execute(uploadFile);
-        
-        // Convertir la entidad de la respuesta a una cadena JSON
-        String jsonResponse = EntityUtils.toString(response.getEntity());
-
-        // Analizar la respuesta JSON para obtener la URL de la imagen
-        JSONObject responseObject = new JSONObject(jsonResponse);
-        String uploadedUrl = responseObject.getJSONObject("data").getString("link");
-
-        return uploadedUrl;
-    } catch (ParseException e) {
-        e.printStackTrace();
-        throw new IOException("Error al parsear la respuesta de la imagen: " + e.getMessage());
-    } catch (IOException e) {
-        e.printStackTrace();
-        throw new IOException("Error de entrada/salida: " + e.getMessage());
-    } finally {
-        if (response != null) {
-            response.close();
-        }
-        httpClient.close();
-        }
-    }
+ 
+    // Reemplazar por tu propia API key de IMGBB
+    String apiKey = "0bc1da3a295622b966c14cd6d1d05627";
+ 
+    // Crear el body de la solicitud con la API key y la imagen en Base64
+    List<NameValuePair> params = new ArrayList<>();
+    params.add(new BasicNameValuePair("key", apiKey));
+    params.add(new BasicNameValuePair("image", encodedImage));
+ 
+    // Establecer los parámetros como entidad del request
+    uploadFile.setEntity(new UrlEncodedFormEntity(params));
+ 
+    // Ejecutar la solicitud de subida
+    CloseableHttpResponse response = httpClient.execute(uploadFile);
+    String jsonResponse = EntityUtils.toString(response.getEntity());
+ 
+    // Analizar la respuesta JSON para obtener la URL de la imagen
+    JSONObject responseObject = new JSONObject(jsonResponse);
+    String uploadedUrl = responseObject.getJSONObject("data").getString("url");
+ 
+    response.close();
+    return uploadedUrl;
+}
    
     public String getPlaca() {
         return placa;
@@ -303,7 +285,9 @@ public class mdlCarros {
             JOptionPane.showMessageDialog(null, "Error al actualizar el carro: " + e.getMessage());
         } catch (IOException ex) {
             Logger.getLogger(mdlCarros.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            } catch (ParseException ex) {
+            Logger.getLogger(mdlCarros.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     }
 

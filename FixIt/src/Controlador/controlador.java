@@ -24,6 +24,11 @@ public class controlador implements MouseListener {
         Vista.btnAgregarUser.addMouseListener(this);
         this.mRoles.CargarComboRoles(vista.cbComobox);
 
+        // Seleccionar el primer ítem al cargar el combo box, para evitar problemas de null
+        if (vista.cbComobox.getItemCount() > 0) {
+            vista.cbComobox.setSelectedIndex(0);
+        }
+
         vista.cbComobox.addActionListener(e -> {
             if (e.getSource() == vista.cbComobox) {
                 System.out.println("ComboBox seleccionado");
@@ -37,10 +42,6 @@ public class controlador implements MouseListener {
                 }
             }
         });
-    }
-    
-    public class correoGlobal {
-        
     }
 
     @Override
@@ -57,15 +58,25 @@ public class controlador implements MouseListener {
                 JOptionPane.showMessageDialog(null, "Formato de correo inválido", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-             if (Vista.txtContra.getPassword().length <= 6) {
+
+            if (Vista.txtContra.getPassword().length <= 6) {
                 JOptionPane.showMessageDialog(null, "Número de caracteres insuficiente, ingrese más de 6 caracteres", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 System.out.println("Contraseña demasiado corta");
                 return;
             }
 
+            // Forzar la obtención del rol seleccionado, incluso si no ha habido interacción con el combo box
+            Roles selectedItem = (Roles) Vista.cbComobox.getSelectedItem();
+            if (selectedItem != null) {
+                mRoles.setUUID_rol(selectedItem.getUUID_rol());
+                modelo.setUUID_rol(mRoles.getUUID_rol());
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un rol válido", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             modelo.setCorreoElectronico(Vista.txtCorreoUser.getText());
             modelo.setContrasena(Vista.txtContra.getText());
-            modelo.setUUID_rol(mRoles.getUUID_rol());
 
             modelo.InsertarUser();
             JOptionPane.showMessageDialog(null, "Usuario registrado con éxito", "Usuario registrado", JOptionPane.INFORMATION_MESSAGE);
@@ -98,4 +109,5 @@ public class controlador implements MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {}
 }
+
 

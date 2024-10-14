@@ -5,6 +5,7 @@ import Modelo.globalVars;
 import Vistas.EnviarcorreoE;
 import Vistas.Loginjava;
 import Vistas.dashboard;
+import Vistas.frmRegistrarse;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.event.MouseInputListener;
@@ -24,6 +25,7 @@ public class controladorLogin implements MouseInputListener {
         
         this.vista.btnLogin.addMouseListener(this);
         this.vista.btnOlvidecontra.addMouseListener(this);
+        this.vista.btnIrRegister.addMouseListener(this);
     }
 
     @Override
@@ -77,6 +79,8 @@ public class controladorLogin implements MouseInputListener {
                 System.out.println("Credenciales incorrectas");
             }
         }
+        
+        
 
         if (e.getSource() == vista.btnOlvidecontra) {
     System.out.println("btnOlvidemicontra clickeado");
@@ -84,6 +88,14 @@ public class controladorLogin implements MouseInputListener {
  vista.dispose();
   
 }
+        
+         if (e.getSource() == vista.btnIrRegister){
+        
+        
+            frmRegistrarse.initfrmRegistrarse();
+            vista.dispose();
+        }
+       
                        
     }
 

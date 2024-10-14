@@ -105,11 +105,11 @@ public class frmCitas extends TransparenteRoundedPanel {
         btnActualizar = new javax.swing.JButton();
         btnAddCita = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        cmbCliente = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         cmbEmpleado = new javax.swing.JComboBox<>();
         txtDEsc = new javax.swing.JTextField();
         citasCardsPanel1 = new Vistas.citasCardsPanel();
+        cmbCliente = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -163,9 +163,6 @@ public class frmCitas extends TransparenteRoundedPanel {
         btnEliminar.setText("Eliminar cita");
         add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, -1, -1));
 
-        cmbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cmbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 120, -1));
-
         jLabel6.setText("Descripccion de cita");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
 
@@ -173,6 +170,14 @@ public class frmCitas extends TransparenteRoundedPanel {
         add(cmbEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 250, 130, -1));
         add(txtDEsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 170, -1));
         add(citasCardsPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 290, 380));
+
+        cmbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbClienteActionPerformed(evt);
+            }
+        });
+        add(cmbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 120, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void calendar1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_calendar1PropertyChange
@@ -184,6 +189,10 @@ public class frmCitas extends TransparenteRoundedPanel {
     } 
 
     }//GEN-LAST:event_calendar1PropertyChange
+
+    private void cmbClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbClienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

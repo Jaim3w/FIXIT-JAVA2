@@ -1,30 +1,23 @@
 package main;
 
-import Vistas.frmRegistrarse;
-import com.formdev.flatlaf.themes.FlatMacLightLaf;
-import javax.swing.UIManager;
-import java.awt.Font;
+import Vistas.Loginjava;
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+import java.awt.EventQueue;
 
 public class main {
 
     public static void main(String[] args) {
-        // Instalar el LookAndFeel FlatMacLightLaf
+        // Instalar el LookAndFeel FlatIntelliJLaf por defecto
         try {
-            // Cargar el LookAndFeel y aplicar las propiedades desde el archivo
-            FlatMacLightLaf.setup();
+            FlatMacDarkLaf.setup();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        // Configurar un estilo de fuente minimalista
-        Font minimalFont = new Font("SansSerif", Font.PLAIN, 14); // Fuente sencilla y moderna
-        UIManager.put("defaultFont", minimalFont); // Aplicar la fuente a todos los componentes
-
         // Ejecutar en el hilo de eventos de la interfaz gráfica (AWT Event Dispatch Thread)
-        java.awt.EventQueue.invokeLater(() -> {
+        EventQueue.invokeLater(() -> {
             // Crear el formulario de registro, lo que también inicializa todos sus componentes
-            frmRegistrarse.initfrmRegistrarse();
+            Loginjava.initLogin();
         });
     }
 }
-

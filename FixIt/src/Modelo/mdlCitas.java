@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+
 public class mdlCitas {
     private String UUID_cita;
     private String Dui_cliente;
@@ -18,7 +19,6 @@ public class mdlCitas {
     private String Descripcion;
 
     // Getters y Setters
-
     public String getUUID_cita() {
         return UUID_cita;
     }
@@ -69,32 +69,32 @@ public class mdlCitas {
 
     // Inserción de citas
     public void insertarCitas() {
-    Connection conexion = null;
-    try {
-        conexion = Conexion.getConexion();
-        PreparedStatement addCita = conexion.prepareStatement(
-            "INSERT INTO Cita(UUID_cita, Dui_cliente, Dui_empleado, Fecha_cita, Hora_cita, Descripcion) VALUES(?, ?, ?, ?, ?, ?)"
-        );
-        addCita.setString(1, UUID.randomUUID().toString());
-        addCita.setString(2, getDui_cliente());
-        addCita.setString(3, getDui_empleado());
-        addCita.setString(4, getFecha_cita());
-        addCita.setString(5, getHora_cita());
-        addCita.setString(6, getDescripcion());
-        addCita.execute();
-        addCita.close();
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al insertar la cita: " + ex.getMessage());
-    } finally {
-        if (conexion != null) {
-            try {
-                conexion.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
+        Connection conexion = null;
+        try {
+            conexion = Conexion.getConexion();
+            PreparedStatement addCita = conexion.prepareStatement(
+                "INSERT INTO Cita(UUID_cita, Dui_cliente, Dui_empleado, Fecha_cita, Hora_cita, Descripcion) VALUES(?, ?, ?, ?, ?, ?)"
+            );
+            addCita.setString(1, UUID.randomUUID().toString());
+            addCita.setString(2, getDui_cliente());
+            addCita.setString(3, getDui_empleado());
+            addCita.setString(4, getFecha_cita());
+            addCita.setString(5, getHora_cita());
+            addCita.setString(6, getDescripcion());
+            addCita.execute();
+            addCita.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al insertar la cita: " + ex.getMessage());
+        } finally {
+            if (conexion != null) {
+                try {
+                    conexion.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
-}
 
     // Mostrar citas en tabla
     public void mostrarCitas(JTable tabla) {
@@ -172,14 +172,30 @@ public class mdlCitas {
 
         if (filaSeleccionada != -1) {
             String miUUId = tabla.getValueAt(filaSeleccionada, 0).toString();
+
+            // Impresiones de depuración
+            System.out.println("DUI Cliente: " + getDui_cliente());
+            System.out.println("DUI Empleado: " + getDui_empleado());
+            System.out.println("Fecha Cita: " + getFecha_cita());
+            System.out.println("Hora Cita: " + getHora_cita());
+            System.out.println("Descripción: " + getDescripcion());
+
+            // Validaciones
+            if (getDui_cliente() == null || getDui_empleado() == null || getFecha_cita() == null || getHora_cita() == null || getDescripcion() == null) {
+                System.err.println("Uno o más valores necesarios son NULL.");
+                return; // Termina el método si hay valores nulos
+            }
+
             try {
-                String sql = "UPDATE Cita SET Fecha_cita = ?, Hora_cita = ?, Descripcion = ? WHERE UUID_cita = ?";
+                String sql = "UPDATE Cita SET dui_cliente = ?, dui_empleado = ?, Fecha_cita = ?, Hora_cita = ?, descripcion= ? WHERE UUID_cita = ?";
                 PreparedStatement actualizarCita = conexion.prepareStatement(sql);
 
-                actualizarCita.setString(1, getFecha_cita());
-                actualizarCita.setString(2, getHora_cita());
-                actualizarCita.setString(3, getDescripcion());
-                actualizarCita.setString(4, miUUId);
+                actualizarCita.setString(1, getDui_cliente());
+                actualizarCita.setString(2, getDui_empleado());
+                actualizarCita.setString(3, getFecha_cita());
+                actualizarCita.setString(4, getHora_cita());
+                actualizarCita.setString(5, getDescripcion());
+                actualizarCita.setString(6, miUUId);
 
                 actualizarCita.executeUpdate();
                 actualizarCita.close();
@@ -192,7 +208,6 @@ public class mdlCitas {
             System.out.println("No se ha seleccionado ninguna fila.");
         }
     }
-    
 
     // Método para limpiar los campos
     public void limpiarCampos(frmCitas vista) {
@@ -234,6 +249,7 @@ public class mdlCitas {
             System.out.println("No se ha seleccionado ninguna fila.");
         }
     }
+
 
     // Método para obtener todas las citas
     // Método modificado para obtener todas las citas y actualizar en tiempo real
