@@ -5,6 +5,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.UUID;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -17,6 +18,16 @@ public class mdlCitas {
     private String fecha_cita;
     private String Hora_cita;
     private String Descripcion;
+    private String nombreEmpleado;
+
+    public String getNombreEmpleado() {
+        return nombreEmpleado;
+    }
+
+    public void setNombreEmpleado(String nombreEmpleado) {
+        this.nombreEmpleado = nombreEmpleado;
+    }
+    
 
     // Getters y Setters
     public String getUUID_cita() {
@@ -330,7 +341,56 @@ public class mdlCitas {
     }
 }
 
+public void CargarComboCitas(JComboBox comboBox){    
+        Connection conexion = Conexion.getConexion();
+        comboBox.removeAllItems();
+        try{
+            Statement statement = conexion.createStatement();
+            ResultSet rs = statement.executeQuery("select cita.UUID_cita ,Empleado.nombre,Cita.Fecha_cita,Cita.Hora_cita from cita inner join Empleado on Cita.Dui_empleado = Empleado.Dui_empleado");
+            while (rs.next()) {
+                String uuid = rs.getString("UUID_Cita");
+                String nombreEmpleado = rs.getString("nombre");
+                String fecha = rs.getString("Fecha_cita");
+                String hora = rs.getString("Hora_cita");
+
+            System.out.println("UUID: " + uuid + ", Nombre: " + nombreEmpleado + ", Fecha: " + fecha + ", Hora: " + hora);
+
+                 mdlCitas cita = new mdlCitas(uuid, nombreEmpleado,fecha, hora);
+
+                comboBox.addItem(cita);       
+            }
+             // Verifica si hay elementos en el JComboBox y selecciona el primero
+        if (comboBox.getItemCount() > 0) {
+            comboBox.setSelectedIndex(0); // Selecciona el primer ítem
+        }
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();  
+        }
+    }
     
+
+    public mdlCitas(String uuid,String nombreEmpleado, String fecha_cita, String Hora_cita)
+    {
+        this.UUID_cita = uuid;
+        this.nombreEmpleado = nombreEmpleado;
+        this.fecha_cita = fecha_cita;
+        this.Hora_cita = Hora_cita;
+    }
+    
+    public mdlCitas() {
+        this.UUID_cita = "";
+        this.nombreEmpleado = "";
+        this.fecha_cita = "";
+        this.Hora_cita = "";
+    }
+    
+      @Override
+    public String toString()
+    {
+        return nombreEmpleado + " - " + fecha_cita + " - " + Hora_cita; // Concatenacion campos con un separador
+    }      
     
 }
 
