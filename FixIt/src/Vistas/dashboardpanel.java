@@ -173,7 +173,7 @@ public class dashboardpanel extends javax.swing.JPanel {
         lbl_asignaciones.setForeground(new java.awt.Color(255, 255, 255));
         lbl_asignaciones.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbl_asignaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icasignacionesalofixit2.png"))); // NOI18N
-        lbl_asignaciones.setText("Usuarios");
+        lbl_asignaciones.setText("Asignaciones");
         lbl_asignaciones.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 15));
         lbl_asignaciones.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         lbl_asignaciones.setIconTextGap(40);
