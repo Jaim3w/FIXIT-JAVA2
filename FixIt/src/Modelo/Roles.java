@@ -41,22 +41,28 @@ public class Roles {
     }
     
     
-    public void CargarComboRoles(JComboBox comboBox){
-      Connection conexion=Conexion.getConexion();
-      comboBox.removeAllItems();
-      try{
-          Statement statement=conexion.createStatement();
-          ResultSet rs=statement.executeQuery("select * from rol");
-          while(rs.next()){
-            String uuid=rs.getString("UUID_rol");
-            String nombre=rs.getString("Nombre");
-            comboBox.addItem(new Roles(uuid, nombre));
-          }
-      
-      }catch(SQLException e){
-        e.printStackTrace();
-      
-      }
+   public void CargarComboRoles(JComboBox comboBox){
+    Connection conexion = Conexion.getConexion();
+    comboBox.removeAllItems(); // Limpiar los ítems anteriores
     
+    try {
+        Statement statement = conexion.createStatement();
+        ResultSet rs = statement.executeQuery("select * from rol");
+        
+        // Cargar los elementos en el comboBox
+        while (rs.next()) {
+            String uuid = rs.getString("UUID_rol");
+            String nombre = rs.getString("Nombre");
+            comboBox.addItem(new Roles(uuid, nombre));
+        }
+        
+        // Seleccionar el primer ítem si existe
+        if (comboBox.getItemCount() > 0) {
+            comboBox.setSelectedIndex(0); // Selecciona el primer ítem
+        }
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
+}
 }

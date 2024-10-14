@@ -89,7 +89,7 @@ public class frmRegistroParte2 extends javax.swing.JFrame {
         btnSubirImagenR.setForeground(new java.awt.Color(0, 0, 0));
         btnSubirImagenR.setText("Subir Imagen");
         btnSubirImagenR.setToolTipText("");
-        blackRoundedPanelF1.add(btnSubirImagenR, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 170, -1, 30));
+        blackRoundedPanelF1.add(btnSubirImagenR, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 170, -1, 30));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -131,10 +131,10 @@ public class frmRegistroParte2 extends javax.swing.JFrame {
         lblImagenEmpleado.setBackground(new java.awt.Color(255, 255, 255));
         lblImagenEmpleado.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         lblImagenEmpleado.setForeground(new java.awt.Color(255, 255, 255));
-        blackRoundedPanelF1.add(lblImagenEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 100, 220, 190));
+        blackRoundedPanelF1.add(lblImagenEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 90, 240, 200));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        blackRoundedPanelF1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 90, 240, 210));
+        blackRoundedPanelF1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 80, 260, 220));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/imgregistrarsefondodos.png"))); // NOI18N
         blackRoundedPanelF1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

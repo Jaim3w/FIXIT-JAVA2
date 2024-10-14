@@ -1,29 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controlador;
 
 import Modelo.Categorias;
 import Modelo.mdlProductosRepuestos;
 import Vistas.frmProductosRepuestos;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.text.html.ImageView;
 
 /**
  *
@@ -44,7 +27,7 @@ public class ctrlProductosRepuestos implements MouseListener, KeyListener {
     Vista.btnEliminarR.addMouseListener(this);
     Vista.btnActualizarR.addMouseListener(this);
     Vista.btnBuscarR.addMouseListener(this);
-    Vista.btnLimpiarR.addMouseListener(this);
+    Vista.btnLimpiarr.addMouseListener(this);
     Vista.tbListaProductosRepuestos.addMouseListener(this);
     
     //carga el contenido de los combo box
@@ -66,6 +49,41 @@ public class ctrlProductosRepuestos implements MouseListener, KeyListener {
         
         Modelo.Mostrar(Vista.tbListaProductosRepuestos);
         Modelo.limpiar(Vista);
+<<<<<<< HEAD
+=======
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+>>>>>>> 61bd23c689e6e1813a0cecc94a0c772206c89ed9
     }
     
     private void guardarProdcutoRepuesto() {

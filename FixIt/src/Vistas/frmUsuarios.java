@@ -120,7 +120,7 @@ public class frmUsuarios extends TransparenteRoundedPanel{
         ));
         jScrollPane1.setViewportView(dtgempleado);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 830, 220));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 830, 220));
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 510, 30, 30));
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 370, 30, 10));
 

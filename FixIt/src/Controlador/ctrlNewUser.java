@@ -35,21 +35,25 @@ public class ctrlNewUser implements MouseListener {
                 return;
             }
 
-            if (!Vista.txtCorreoUser.getText().contains("@") || !Vista.txtCorreoUser.getText().contains(".com")) {
-                JOptionPane.showMessageDialog(null, "Formato de correo inválido", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            String correoIngresado = Vista.txtCorreoUser.getText().trim();
+            if (!correoIngresado.contains("@") || !correoIngresado.contains(".com") || !correoIngresado.equals(correoIngresado.toLowerCase())) {
+                JOptionPane.showMessageDialog(null, "Formato de correo inválido o contiene mayúsculas", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 return;
             }
+            
              if (Vista.txtContra.getPassword().length <= 6) {
                 JOptionPane.showMessageDialog(null, "Número de caracteres insuficiente, ingrese más de 6 caracteres", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 System.out.println("Contraseña demasiado corta");
                 return;
             }
-
+             
             modelo.setCorreoElectronico(Vista.txtCorreoUser.getText());
             modelo.setContrasena(Vista.txtContra.getText());
 
             modelo.InsertarUserEmpleado();
             JOptionPane.showMessageDialog(null, "Usuario registrado con éxito", "Usuario registrado", JOptionPane.INFORMATION_MESSAGE);
+        
+            Vista.dispose();
         }
     }
 

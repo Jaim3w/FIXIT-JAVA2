@@ -1,12 +1,7 @@
 package Vistas;
 
-import com.formdev.flatlaf.FlatDarculaLaf;
-import com.formdev.flatlaf.FlatLaf;
-import com.formdev.flatlaf.extras.FlatAnimatedLafChange;
-import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -15,14 +10,13 @@ public class dashboardpanel extends javax.swing.JPanel {
   
     public dashboardpanel() {
 
-        // Inicializamos los componentes
-        initComponents();        
-        
-        // Configuramos el color de fondo y el layout
-        setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
+         // Inicializamos los componentes
+    initComponents();        
 
+    // Configuramos el color de fondo y el layout
+    setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
+    
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,7 +35,8 @@ public class dashboardpanel extends javax.swing.JPanel {
         lbl_proveedores = new javax.swing.JLabel();
         lbl_ventas = new javax.swing.JLabel();
         lbl_usuarios_y_empleados = new javax.swing.JLabel();
-        btnSwitchTheme = new javax.swing.JButton();
+        lbl_usuarios_y_empleados1 = new javax.swing.JLabel();
+        lbl_asignaciones = new javax.swing.JLabel();
         panelContent = new Vistas.elementosTwo.TransparenteRoundedPanel();
         transparenteRoundedPanel2 = new Vistas.elementosTwo.TransparenteRoundedPanel();
         imgMinimize = new javax.swing.JLabel();
@@ -55,9 +50,9 @@ public class dashboardpanel extends javax.swing.JPanel {
 
         lbl_inicio.setBackground(new java.awt.Color(255, 255, 255));
         lbl_inicio.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        lbl_inicio.setForeground(new java.awt.Color(0, 27, 59));
+        lbl_inicio.setForeground(new java.awt.Color(255, 255, 255));
         lbl_inicio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbl_inicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/ichomew.png"))); // NOI18N
+        lbl_inicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/yiniciouwu.png"))); // NOI18N
         lbl_inicio.setText("Inicio");
         lbl_inicio.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 15));
         lbl_inicio.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
@@ -70,9 +65,9 @@ public class dashboardpanel extends javax.swing.JPanel {
 
         lbl_carros.setBackground(new java.awt.Color(0, 0, 0));
         lbl_carros.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        lbl_carros.setForeground(new java.awt.Color(0, 27, 59));
+        lbl_carros.setForeground(new java.awt.Color(255, 255, 255));
         lbl_carros.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbl_carros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/iccarw.png"))); // NOI18N
+        lbl_carros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/ycarrosuwu.png"))); // NOI18N
         lbl_carros.setText("Carros");
         lbl_carros.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 15));
         lbl_carros.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
@@ -85,9 +80,9 @@ public class dashboardpanel extends javax.swing.JPanel {
 
         lbl_citas.setBackground(new java.awt.Color(255, 255, 255));
         lbl_citas.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        lbl_citas.setForeground(new java.awt.Color(0, 27, 59));
+        lbl_citas.setForeground(new java.awt.Color(255, 255, 255));
         lbl_citas.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbl_citas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/iccitasw.png"))); // NOI18N
+        lbl_citas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/ycitasuwu.png"))); // NOI18N
         lbl_citas.setText("Citas");
         lbl_citas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 15));
         lbl_citas.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
@@ -100,9 +95,9 @@ public class dashboardpanel extends javax.swing.JPanel {
 
         lbl_facturas.setBackground(new java.awt.Color(255, 255, 255));
         lbl_facturas.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        lbl_facturas.setForeground(new java.awt.Color(0, 27, 59));
+        lbl_facturas.setForeground(new java.awt.Color(255, 255, 255));
         lbl_facturas.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbl_facturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icfacturacionw.png"))); // NOI18N
+        lbl_facturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/yfacturacionuwu.png"))); // NOI18N
         lbl_facturas.setText("Facturación");
         lbl_facturas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 15));
         lbl_facturas.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
@@ -115,9 +110,9 @@ public class dashboardpanel extends javax.swing.JPanel {
 
         lbl_proveedores.setBackground(new java.awt.Color(255, 255, 255));
         lbl_proveedores.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        lbl_proveedores.setForeground(new java.awt.Color(0, 27, 59));
+        lbl_proveedores.setForeground(new java.awt.Color(255, 255, 255));
         lbl_proveedores.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbl_proveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icproveedoresw.png"))); // NOI18N
+        lbl_proveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/yproveedoresuwu.png"))); // NOI18N
         lbl_proveedores.setText("Proveedores");
         lbl_proveedores.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 15));
         lbl_proveedores.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
@@ -130,9 +125,9 @@ public class dashboardpanel extends javax.swing.JPanel {
 
         lbl_ventas.setBackground(new java.awt.Color(255, 255, 255));
         lbl_ventas.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        lbl_ventas.setForeground(new java.awt.Color(0, 27, 59));
+        lbl_ventas.setForeground(new java.awt.Color(255, 255, 255));
         lbl_ventas.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbl_ventas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icstadisticsw.png"))); // NOI18N
+        lbl_ventas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/yventasuwu.png"))); // NOI18N
         lbl_ventas.setText("Ventas");
         lbl_ventas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 15));
         lbl_ventas.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
@@ -145,9 +140,9 @@ public class dashboardpanel extends javax.swing.JPanel {
 
         lbl_usuarios_y_empleados.setBackground(new java.awt.Color(255, 255, 255));
         lbl_usuarios_y_empleados.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        lbl_usuarios_y_empleados.setForeground(new java.awt.Color(0, 27, 59));
+        lbl_usuarios_y_empleados.setForeground(new java.awt.Color(255, 255, 255));
         lbl_usuarios_y_empleados.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbl_usuarios_y_empleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icusersw.png"))); // NOI18N
+        lbl_usuarios_y_empleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/yusuariosuwu.png"))); // NOI18N
         lbl_usuarios_y_empleados.setText("Usuarios");
         lbl_usuarios_y_empleados.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 15));
         lbl_usuarios_y_empleados.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
@@ -158,11 +153,33 @@ public class dashboardpanel extends javax.swing.JPanel {
             }
         });
 
-        btnSwitchTheme.setText("olaqhace");
-        btnSwitchTheme.setToolTipText("");
-        btnSwitchTheme.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbl_usuarios_y_empleados1.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_usuarios_y_empleados1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lbl_usuarios_y_empleados1.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_usuarios_y_empleados1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbl_usuarios_y_empleados1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/yInventariouwu.png"))); // NOI18N
+        lbl_usuarios_y_empleados1.setText("Inventario");
+        lbl_usuarios_y_empleados1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 15));
+        lbl_usuarios_y_empleados1.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        lbl_usuarios_y_empleados1.setIconTextGap(40);
+        lbl_usuarios_y_empleados1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSwitchThemeMouseClicked(evt);
+                lbl_usuarios_y_empleados1MouseClicked(evt);
+            }
+        });
+
+        lbl_asignaciones.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_asignaciones.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lbl_asignaciones.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_asignaciones.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbl_asignaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icasignacionesalofixit2.png"))); // NOI18N
+        lbl_asignaciones.setText("Asignaciones");
+        lbl_asignaciones.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 15));
+        lbl_asignaciones.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        lbl_asignaciones.setIconTextGap(40);
+        lbl_asignaciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_asignacionesMouseClicked(evt);
             }
         });
 
@@ -171,19 +188,18 @@ public class dashboardpanel extends javax.swing.JPanel {
         transparenteRoundedPanel1Layout.setHorizontalGroup(
             transparenteRoundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(transparenteRoundedPanel1Layout.createSequentialGroup()
-                .addGroup(transparenteRoundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(lbl_carros, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_inicio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_citas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_facturas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_proveedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_ventas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_usuarios_y_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(transparenteRoundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbl_asignaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_usuarios_y_empleados1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(transparenteRoundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(lbl_carros, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl_inicio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl_citas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl_facturas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl_proveedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl_ventas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl_usuarios_y_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 15, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transparenteRoundedPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSwitchTheme)
-                .addGap(23, 23, 23))
         );
         transparenteRoundedPanel1Layout.setVerticalGroup(
             transparenteRoundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,14 +216,16 @@ public class dashboardpanel extends javax.swing.JPanel {
                 .addComponent(lbl_proveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_ventas, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_usuarios_y_empleados1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
                 .addComponent(lbl_usuarios_y_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnSwitchTheme)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_asignaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
 
-        whiteRoundedPanelF1.add(transparenteRoundedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 290, 680));
+        whiteRoundedPanelF1.add(transparenteRoundedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 290, 690));
 
         javax.swing.GroupLayout panelContentLayout = new javax.swing.GroupLayout(panelContent);
         panelContent.setLayout(panelContentLayout);
@@ -222,14 +240,14 @@ public class dashboardpanel extends javax.swing.JPanel {
 
         whiteRoundedPanelF1.add(panelContent, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, 1040, 670));
 
-        imgMinimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icminimizew.png"))); // NOI18N
+        imgMinimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icminimize.png"))); // NOI18N
         imgMinimize.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 imgMinimizeMouseClicked(evt);
             }
         });
 
-        imgExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icexitw.png"))); // NOI18N
+        imgExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icexit.png"))); // NOI18N
         imgExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 imgExitMouseClicked(evt);
@@ -238,10 +256,10 @@ public class dashboardpanel extends javax.swing.JPanel {
 
         lbl_perfil.setBackground(new java.awt.Color(255, 255, 255));
         lbl_perfil.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        lbl_perfil.setForeground(new java.awt.Color(0, 27, 59));
+        lbl_perfil.setForeground(new java.awt.Color(255, 255, 255));
         lbl_perfil.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lbl_perfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icperfilw.png"))); // NOI18N
-        lbl_perfil.setText("Inicio");
+        lbl_perfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/yperfiluwu.png"))); // NOI18N
+        lbl_perfil.setText("Admin");
         lbl_perfil.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 15));
         lbl_perfil.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         lbl_perfil.setIconTextGap(20);
@@ -277,7 +295,7 @@ public class dashboardpanel extends javax.swing.JPanel {
 
         whiteRoundedPanelF1.add(transparenteRoundedPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 1040, 140));
 
-        imgFondod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/dashboardfondoblanco.png"))); // NOI18N
+        imgFondod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/DASHBOARDDEFINITIVOOMG.png"))); // NOI18N
         whiteRoundedPanelF1.add(imgFondod, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -296,7 +314,7 @@ public class dashboardpanel extends javax.swing.JPanel {
         frmProveedor pr = new frmProveedor();
     pr.setSize(1040, 670);
     pr.setLocation(0, 0);
-    
+        setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
     panelContent.removeAll();
     panelContent.add(pr, BorderLayout.CENTER);
     panelContent.revalidate();
@@ -381,11 +399,6 @@ public class dashboardpanel extends javax.swing.JPanel {
         System.exit(0);  // Cierra la aplicación por completo
     }//GEN-LAST:event_imgExitMouseClicked
 
-    private void btnSwitchThemeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSwitchThemeMouseClicked
-
-       
-    }//GEN-LAST:event_btnSwitchThemeMouseClicked
-
     private void lbl_perfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_perfilMouseClicked
           frmPerfilAd pa = new frmPerfilAd();
     pa.setSize(1040, 670);
@@ -397,12 +410,33 @@ public class dashboardpanel extends javax.swing.JPanel {
     panelContent.repaint();
     }//GEN-LAST:event_lbl_perfilMouseClicked
 
+    private void lbl_usuarios_y_empleados1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_usuarios_y_empleados1MouseClicked
+ frmProductosRepuestos us = new frmProductosRepuestos();
+    us.setSize(1040, 670);
+    us.setLocation(0, 0);
+     setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
+    panelContent.removeAll();
+    panelContent.add(us, BorderLayout.CENTER);
+    panelContent.revalidate();
+    panelContent.repaint();    }//GEN-LAST:event_lbl_usuarios_y_empleados1MouseClicked
+
+    private void lbl_asignacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_asignacionesMouseClicked
+ frmAsignarOrden us = new frmAsignarOrden();
+    us.setSize(1040, 670);
+    us.setLocation(0, 0);
+     setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
+    panelContent.removeAll();
+    panelContent.add(us, BorderLayout.CENTER);
+    panelContent.revalidate();
+    panelContent.repaint();
+    }//GEN-LAST:event_lbl_asignacionesMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnSwitchTheme;
     public javax.swing.JLabel imgExit;
     private javax.swing.JLabel imgFondod;
     public javax.swing.JLabel imgMinimize;
+    public javax.swing.JLabel lbl_asignaciones;
     public javax.swing.JLabel lbl_carros;
     public javax.swing.JLabel lbl_citas;
     public javax.swing.JLabel lbl_facturas;
@@ -410,6 +444,7 @@ public class dashboardpanel extends javax.swing.JPanel {
     public javax.swing.JLabel lbl_perfil;
     public javax.swing.JLabel lbl_proveedores;
     public javax.swing.JLabel lbl_usuarios_y_empleados;
+    public javax.swing.JLabel lbl_usuarios_y_empleados1;
     public javax.swing.JLabel lbl_ventas;
     public Vistas.elementosTwo.TransparenteRoundedPanel panelContent;
     private Vistas.elementosTwo.TransparenteRoundedPanel transparenteRoundedPanel1;

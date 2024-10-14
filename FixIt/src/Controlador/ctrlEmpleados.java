@@ -11,6 +11,8 @@ import Vistas.Loginjava;
 import Vistas.frmUsuarios; 
 import Vistas.frmNuevoUsuario;
 import java.awt.Image;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -35,6 +37,8 @@ public class ctrlEmpleados implements MouseListener, KeyListener {
         Vista.btnSubirImagen.addMouseListener(this);
         Vista.dtgempleado.addMouseListener(this);
         Vista.btnNewUser.addMouseListener(this);
+        Vista.btnActualizar.addMouseListener(this);
+        Vista.btnEliminar.addMouseListener(this);
         
         this.mUsuarios.CargarComboEmpleado(Vista.cmbCorreoEmpleado);
         
@@ -53,16 +57,24 @@ public class ctrlEmpleados implements MouseListener, KeyListener {
         });
         
         Modelo.Mostrar(Vista.dtgempleado);
+        Modelo.limpiar(Vista);
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == Vista.btnNewUser) {
-            // Mostrar el nuevo JFrame
             frmNuevoUsuario nuevoUsuarioFrame = new frmNuevoUsuario();
-            nuevoUsuarioFrame.setVisible(true); // Mostrar el JFrame
-            nuevoUsuarioFrame.setLocationRelativeTo(null); // Centrar el JFrame en la pantalla
+            nuevoUsuarioFrame.setVisible(true);
+            nuevoUsuarioFrame.setLocationRelativeTo(null);
+
+            nuevoUsuarioFrame.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    mUsuarios.CargarComboEmpleado(Vista.cmbCorreoEmpleado);
+                }
+            });
         }
+
         
         if (e.getSource() == Vista.dtgempleado) {
             Modelo.cargarDatosTabla(Vista);
@@ -111,13 +123,10 @@ public class ctrlEmpleados implements MouseListener, KeyListener {
             
             // Validar que el dui no exceda 9 caracteres
             String dui = Vista.txtdui.getText();
-
-            // Validar que el D.U.I. tenga exactamente 9 dígitos y solo números
             if (!dui.matches("\\d{9}")) {
                 JOptionPane.showMessageDialog(Vista, "El D.U.I. debe contener exactamente 9 dígitos numéricos", "Error", JOptionPane.ERROR_MESSAGE);
                 return; // Detener la ejecución si la validación falla
             }
-
             Modelo.setDuiEmpleado(dui);
             
             // Obtiene los usuarios del combo box
@@ -143,26 +152,26 @@ public class ctrlEmpleados implements MouseListener, KeyListener {
             
             // Convertir la fecha de JDateChooser a String
             Date fechaNacimiento = Vista.txtFecha.getDate(); // Obtener la fecha seleccionada
-            if (fechaNacimiento != null) {
-                Calendar calNacimiento = Calendar.getInstance();
-                calNacimiento.setTime(fechaNacimiento);
+                if (fechaNacimiento != null) {
+                    Calendar calNacimiento = Calendar.getInstance();
+                    calNacimiento.setTime(fechaNacimiento);
 
-                int yearNacimiento = calNacimiento.get(Calendar.YEAR);
+                    int yearNacimiento = calNacimiento.get(Calendar.YEAR);
 
-                // Validar que la fecha sea posterior al año 1930 y que no sea posterior al año 2006
-                if (yearNacimiento < 1930 || yearNacimiento > 2007) {
-                    JOptionPane.showMessageDialog(Vista, "debe ser mayor de edad y el limite de año es 1930", "Error", JOptionPane.ERROR_MESSAGE);
-                    return; // Detener si la fecha está fuera del rango
+                    // Validar que la fecha sea posterior al año 1930 y que no sea posterior al año 2007
+                    if (yearNacimiento < 1930 || yearNacimiento > 2007) {
+                        JOptionPane.showMessageDialog(Vista, "Debe ser mayor de edad y el límite de año es 1930", "Error", JOptionPane.ERROR_MESSAGE);
+                        return; // Detener si la fecha está fuera del rango
+                    }
+
+                    // Si pasa todas las validaciones, convertir la fecha a String
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    String fechaNacimientoStr = dateFormat.format(fechaNacimiento); // Convertir la fecha a String
+                    Modelo.setFechaNacimiento(fechaNacimientoStr); // Guardar la fecha como String en el modelo
+                } else {
+                    JOptionPane.showMessageDialog(Vista, "Por favor selecciona una fecha de nacimiento", "Error", JOptionPane.ERROR_MESSAGE);
+                    return; // Detener si no hay fecha seleccionada
                 }
-
-                // Si pasa todas las validaciones, convertir la fecha a String
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                String fechaNacimientoStr = dateFormat.format(fechaNacimiento); // Convertir la fecha a String
-                Modelo.setFechaNacimiento(fechaNacimientoStr); // Guardar la fecha como String en el modelo
-            } else {
-                JOptionPane.showMessageDialog(Vista, "Por favor selecciona una fecha de nacimiento", "Error", JOptionPane.ERROR_MESSAGE);
-                return; // Detener si no hay fecha seleccionada
-            }
             
             
             // Validar el teléfono (solo números y longitud de 8)
@@ -174,6 +183,8 @@ public class ctrlEmpleados implements MouseListener, KeyListener {
             Modelo.setTelefono(telefono); // Guardar el teléfono en el modelo
 
             Modelo.Guardar();
+            Modelo.limpiar(Vista);
+            Modelo.Mostrar(Vista.dtgempleado);
 
             System.out.println("empleado guardado correctamente.");
         } catch (Exception ex) {
@@ -181,6 +192,96 @@ public class ctrlEmpleados implements MouseListener, KeyListener {
             System.out.println("Error al guardar el empleado: " + ex.getMessage());
         }
     }
+        
+        if (e.getSource() == Vista.btnActualizar) {
+        if (Vista.txtdui.getText().isEmpty() || 
+            Vista.cmbCorreoEmpleado.getSelectedItem() == null || 
+            Vista.txtnombre.getText().isEmpty()|| 
+            Vista.txtapellido.getText().isEmpty() || 
+            Vista.txtFecha.getDate() == null ||
+            (Vista.txtImagenUrl.getIcon() == null && Vista.txtImagenUrl.getText().isEmpty()) ||
+            Vista.txtTelefono.getText().isEmpty())  {
+            JOptionPane.showMessageDialog(Vista, "no puedes actualizar a datos vacios", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            try {
+            System.out.println("Guardando empleado...");
+            
+            String dui = Vista.txtdui.getText();
+            if (!dui.matches("\\d{9}")) {
+                JOptionPane.showMessageDialog(Vista, "El D.U.I. debe contener exactamente 9 dígitos numéricos", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            Modelo.setDuiEmpleado(dui);
+            
+            Usuarios userSeleccionado = (Usuarios) Vista.cmbCorreoEmpleado.getSelectedItem();
+
+            Modelo.setUuidUsuario(userSeleccionado.getUUID_usuario());
+            
+            // Validar nombres (solo letras y longitud mayor a 3)
+            String nombre = Vista.txtnombre.getText();
+            if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{4,}")) { // Verifica que solo contenga letras y sea mayor a 3 caracteres
+                JOptionPane.showMessageDialog(Vista, "El nombre debe contener solo letras y tener más de 3 caracteres", "Error", JOptionPane.ERROR_MESSAGE);
+                return; // Detener la ejecución si la validación falla
+            }
+            Modelo.setNombre(nombre); // Guardar el nombre en el modelo
+
+            String apellido = Vista.txtapellido.getText();
+            if (!apellido.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{4,}")) { // Verifica que solo contenga letras y sea mayor a 3 caracteres
+                JOptionPane.showMessageDialog(Vista, "El apellido debe contener solo letras y tener más de 3 caracteres", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            Modelo.setApellido(apellido);
+                Modelo.setImagenEmpleado(Modelo.getImagenEmpleado());
+            
+            Date fechaNacimiento = Vista.txtFecha.getDate();
+                if (fechaNacimiento != null) {
+                    Calendar calNacimiento = Calendar.getInstance();
+                    calNacimiento.setTime(fechaNacimiento);
+
+                    int yearNacimiento = calNacimiento.get(Calendar.YEAR);
+
+                    if (yearNacimiento < 1930 || yearNacimiento > 2007) {
+                        JOptionPane.showMessageDialog(Vista, "Debe ser mayor de edad y el límite de año es 1930", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    String fechaNacimientoStr = dateFormat.format(fechaNacimiento);
+                    Modelo.setFechaNacimiento(fechaNacimientoStr);
+                } else {
+                    JOptionPane.showMessageDialog(Vista, "Por favor selecciona una fecha de nacimiento", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            
+            String telefono = Vista.txtTelefono.getText();
+            if (!telefono.matches("\\d{8}")) { // Verifica que solo contenga 8 dígitos
+                JOptionPane.showMessageDialog(Vista, "El teléfono debe contener exactamente 8 números", "Error", JOptionPane.ERROR_MESSAGE);
+                return; // Detener la ejecución si la validación falla
+            }
+            Modelo.setTelefono(telefono);
+
+                Modelo.Actualizar(Vista.dtgempleado);
+                Modelo.Mostrar(Vista.dtgempleado);
+                Modelo.limpiar(Vista);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(Vista, "Error al actualizar el carro", "Error", JOptionPane.WARNING_MESSAGE);
+            }
+        
+        }
+    }
+
+        //se asegura de que no haya datos vacios porque significaria que no esta seleccionando nada
+        if (e.getSource() == Vista.btnEliminar) {
+                Modelo.Eliminar(Vista.dtgempleado);
+                Modelo.Mostrar(Vista.dtgempleado);
+                Modelo.limpiar(Vista);
+            
+       }
+        
+        //ejecuta la limpieza de campos
+        if (e.getSource() == Vista.btnLimpiar) {
+            Modelo.limpiar(Vista);
+        }
         
         
     }
