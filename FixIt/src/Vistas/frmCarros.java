@@ -59,16 +59,15 @@ public class frmCarros extends TransparenteRoundedPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         txtIngresoCarro = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(922, 703));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Carros");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 170, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 50, 170, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -105,8 +104,8 @@ public class frmCarros extends TransparenteRoundedPanel {
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, -1, -1));
 
         btnSubirImagen.setText("Subir Imagen");
-        add(btnSubirImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 230, -1, -1));
-        add(lblImagenCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 200, 110));
+        add(btnSubirImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 230, -1, -1));
+        add(lblImagenCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 190, 200, 110));
 
         btnActualizarCarro.setText("Actualizar");
         btnActualizarCarro.setToolTipText("");
@@ -146,7 +145,7 @@ public class frmCarros extends TransparenteRoundedPanel {
         add(txtColorCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 220, 30));
 
         BtnLimpiarcamposCarro.setText("limpiar");
-        add(BtnLimpiarcamposCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 120, 30));
+        add(BtnLimpiarcamposCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, 120, 30));
         add(txtAnoCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, 190, 30));
         add(txtBuscarCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 220, 30));
 
@@ -162,9 +161,6 @@ public class frmCarros extends TransparenteRoundedPanel {
         txtIngresoCarro.setForeground(new java.awt.Color(0, 0, 0));
         txtIngresoCarro.setText("jLabel14");
         add(txtIngresoCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 90, -1));
-
-        jLabel14.setText("jLabel14");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -181,7 +177,6 @@ public class frmCarros extends TransparenteRoundedPanel {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
