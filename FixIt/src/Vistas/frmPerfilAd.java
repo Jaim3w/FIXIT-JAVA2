@@ -10,6 +10,8 @@ import Modelo.mdlPerfilAd;
 import Vistas.elementosTwo.TransparenteRoundedPanel;
 import Vistas.elemetos.RoundedWhitePanel;
 import com.sun.jdi.connect.spi.Connection;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
@@ -20,16 +22,19 @@ public class frmPerfilAd extends TransparenteRoundedPanel {
 
     public frmPerfilAd() {
         initComponents();
-    }
-    
-    public static void initfrmPerfilAd() {
-        frmPerfilAd vista = new frmPerfilAd();
+        
+        frmPerfilAd vista = this;
         mdlPerfilAd modelo = new mdlPerfilAd();
         ctrlPerfilAd controlador = new ctrlPerfilAd(modelo, vista);
 
         vista.setVisible(true);
     }
-    
+
+    public static void initfrmPerfilAd() {
+        
+    }
+
+    // Métodos getter para acceder a los campos de texto
     public JTextField getTxtNombre() {
         return txtNombres;
     }
@@ -53,6 +58,41 @@ public class frmPerfilAd extends TransparenteRoundedPanel {
     public JTextField getTxtDui() {
         return txtDui;
     }
+
+    public JLabel getTxtImagenUrl() {
+        return txtImgUrl;
+    }
+
+    // Métodos setter para establecer valores en los campos de texto
+    public void setTxtNombre(String nombre) {
+        txtNombres.setText(nombre);
+    }
+
+    public void setTxtApellidos(String apellidos) {
+        txtApellidos.setText(apellidos);
+    }
+
+    public void setTxtCorreo(String correo) {
+        txtCorreo.setText(correo);
+    }
+
+    public void setTxtTelefono(String telefono) {
+        txtTelefono.setText(telefono);
+    }
+
+    public void setTxtNacimiento(String nacimiento) {
+        txtNacimiento.setText(nacimiento);
+    }
+
+    public void setTxtDui(String dui) {
+        txtDui.setText(dui);
+    }
+
+    public void setTxtImagenUrl(String imagenUrl) {
+        txtImgUrl.setText(imagenUrl);
+    }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -92,17 +132,13 @@ public class frmPerfilAd extends TransparenteRoundedPanel {
         pnlImagen.setLayout(pnlImagenLayout);
         pnlImagenLayout.setHorizontalGroup(
             pnlImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlImagenLayout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
-                .addComponent(txtImgUrl, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
+            .addGroup(pnlImagenLayout.createSequentialGroup()
+                .addComponent(txtImgUrl, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlImagenLayout.setVerticalGroup(
             pnlImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlImagenLayout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(txtImgUrl, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(87, Short.MAX_VALUE))
+            .addComponent(txtImgUrl, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
         );
 
         jLabel1.setForeground(new java.awt.Color(153, 153, 153));
@@ -125,29 +161,39 @@ public class frmPerfilAd extends TransparenteRoundedPanel {
         jLabel12.setForeground(new java.awt.Color(153, 153, 153));
         jLabel12.setText("D.U.I");
 
-        txtCorreo.setEditable(false);
         txtCorreo.setBackground(new java.awt.Color(240, 240, 240));
         txtCorreo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtCorreo.setText("correo");
         txtCorreo.setBorder(null);
+        txtCorreo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtCorreo.setEnabled(false);
+        txtCorreo.setSelectedTextColor(new java.awt.Color(0, 0, 0));
 
-        txtTelefono.setEditable(false);
         txtTelefono.setBackground(new java.awt.Color(240, 240, 240));
         txtTelefono.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtTelefono.setText("telefono");
         txtTelefono.setBorder(null);
+        txtTelefono.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtTelefono.setEnabled(false);
 
-        txtNacimiento.setEditable(false);
         txtNacimiento.setBackground(new java.awt.Color(240, 240, 240));
         txtNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtNacimiento.setText("nacimiento");
         txtNacimiento.setBorder(null);
+        txtNacimiento.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtNacimiento.setEnabled(false);
+        txtNacimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNacimientoActionPerformed(evt);
+            }
+        });
 
-        txtDui.setEditable(false);
         txtDui.setBackground(new java.awt.Color(240, 240, 240));
         txtDui.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtDui.setText("dui");
         txtDui.setBorder(null);
+        txtDui.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtDui.setEnabled(false);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/fecha-de-nacimiento (1).png"))); // NOI18N
         jLabel8.setPreferredSize(new java.awt.Dimension(32, 32));
@@ -160,7 +206,7 @@ public class frmPerfilAd extends TransparenteRoundedPanel {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/tarjeta-de-presentacion-con-imagen.png"))); // NOI18N
 
-        btnActTelefono.setText("act");
+        btnActTelefono.setText("Actualizar telefono");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -232,19 +278,21 @@ public class frmPerfilAd extends TransparenteRoundedPanel {
                 .addGap(71, 71, 71))
         );
 
-        txtNombres.setEditable(false);
         txtNombres.setBackground(new java.awt.Color(255, 255, 255));
         txtNombres.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtNombres.setText("nombres");
         txtNombres.setToolTipText("");
         txtNombres.setBorder(null);
+        txtNombres.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtNombres.setEnabled(false);
         txtNombres.setMargin(new java.awt.Insets(0, 6, 2, 6));
 
-        txtApellidos.setEditable(false);
         txtApellidos.setBackground(new java.awt.Color(255, 255, 255));
         txtApellidos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtApellidos.setText("apellidos");
         txtApellidos.setBorder(null);
+        txtApellidos.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtApellidos.setEnabled(false);
 
         btnCancelar.setText("Cancelar");
 
@@ -296,6 +344,10 @@ public class frmPerfilAd extends TransparenteRoundedPanel {
                 .addContainerGap(133, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtNacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNacimientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNacimientoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

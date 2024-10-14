@@ -32,7 +32,7 @@ public class mdlPerfilAd {
     private String dui;
     private File img;
     private String imgUrl;
-    
+
     public String getNombre() {
         return nombre;
     }
@@ -96,176 +96,156 @@ public class mdlPerfilAd {
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
-    
+
+    // Método para subir la imagen a Imgur
     private String subirImagenImgur(File imageFile) throws IOException {
-    // Cargar la imagen y convertirla en Base64
-    byte[] fileContent = Files.readAllBytes(imageFile.toPath());
-    String encodedImage = Base64.getEncoder().encodeToString(fileContent);
+        byte[] fileContent = Files.readAllBytes(imageFile.toPath());
+        String encodedImage = Base64.getEncoder().encodeToString(fileContent);
 
-    // URL de la API de Imgur
-    String uploadUrl = "https://api.imgur.com/3/image";
+        String uploadUrl = "https://api.imgur.com/3/image";
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        HttpPost uploadFile = new HttpPost(uploadUrl);
 
-    // Crear un cliente HTTP
-    CloseableHttpClient httpClient = HttpClients.createDefault();
-    HttpPost uploadFile = new HttpPost(uploadUrl);
+        uploadFile.addHeader("Authorization", "Client-ID 8fade595e9f4606");
 
-    // Configurar las cabeceras para autenticar la API de Imgur
-    uploadFile.addHeader("Authorization", "Client-ID 8fade595e9f4606");
+        JSONObject json = new JSONObject();
+        json.put("image", encodedImage);
 
-    // Crear el JSON para el body de la petición
-    JSONObject json = new JSONObject();
-    json.put("image", encodedImage);
+        StringEntity entity = new StringEntity(json.toString());
+        uploadFile.setEntity(entity);
+        uploadFile.addHeader("Content-Type", "application/json");
 
-    // Establecer el JSON como entidad de la petición
-    StringEntity entity = new StringEntity(json.toString());
-    uploadFile.setEntity(entity);
-    uploadFile.addHeader("Content-Type", "application/json");
+        CloseableHttpResponse response = null;
+        try {
+            response = httpClient.execute(uploadFile);
+            String jsonResponse = EntityUtils.toString(response.getEntity());
 
-    // Declarar la respuesta
-    CloseableHttpResponse response = null;
+            JSONObject responseObject = new JSONObject(jsonResponse);
+            return responseObject.getJSONObject("data").getString("link");
 
-    try {
-        // Ejecutar la solicitud de subida
-        response = httpClient.execute(uploadFile);
-        
-        // Convertir la entidad de la respuesta a una cadena JSON
-        String jsonResponse = EntityUtils.toString(response.getEntity());
-
-        // Analizar la respuesta JSON para obtener la URL de la imagen
-        JSONObject responseObject = new JSONObject(jsonResponse);
-        String uploadedUrl = responseObject.getJSONObject("data").getString("link");
-
-        return uploadedUrl;
-    } catch (ParseException e) {
-        e.printStackTrace();
-        throw new IOException("Error al parsear la respuesta de la imagen: " + e.getMessage());
-    } catch (IOException e) {
-        e.printStackTrace();
-        throw new IOException("Error de entrada/salida: " + e.getMessage());
-    } finally {
-        if (response != null) {
-            response.close();
-        }
-        httpClient.close();
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+            throw new IOException("Error al subir la imagen: " + e.getMessage());
+        } finally {
+            if (response != null) {
+                response.close();
+            }
+            httpClient.close();
         }
     }
-    
+
+    // Método para cargar los datos del perfil
     public void cargarDatosPerfil() {
-        Connection conexion = Conexion.getConexion();  // Obtener la conexión
+    Connection conexion = Conexion.getConexion();
+    
+    // Consulta SQL con un placeholder para el correo
+    String sql = "SELECT Empleado.Dui_empleado, Empleado.Nombre, Empleado.Apellido, " +
+                 "Empleado.ImagenEmpleado, Empleado.FechaNacimiento, Empleado.Telefono, " +
+                 "Usuario.CorreoElectronico " +
+                 "FROM Usuario INNER JOIN Empleado ON Usuario.UUID_usuario = Empleado.UUID_usuario " +
+                 "WHERE Usuario.CorreoElectronico = ?";  // Usar placeholder para el correo
 
-        String sql = "SELECT \n" +
-                "    Empleado.Dui_empleado,\n" +
-                "    Empleado.Nombre,\n" +
-                "    Empleado.Apellido,\n" +
-                "    Empleado.ImagenEmpleado,\n" +
-                "    Empleado.FechaNacimiento,\n" +
-                "    Empleado.Telefono,\n" +
-                "    Usuario.CorreoElectronico,\n" +
-                "    Usuario.Contrasena\n" +
-                "FROM \n" +
-                "    Usuario\n" +
-                "INNER JOIN \n" +
-                "    Empleado \n" +
-                "ON \n" +
-                "    Usuario.UUID_usuario = Empleado.UUID_usuario\n" +
-                "WHERE \n" +
-                "    Usuario.CorreoElectronico = ?";
+    try (PreparedStatement pstmt = conexion.prepareStatement(sql)) {
+        // Obtener el correo desde globalVars
+        String correoUsuario = globalVars.correoUsuario;  
 
-        try (PreparedStatement pstmt = conexion.prepareStatement(sql)) {
-            // Accedemos al correo almacenado en la clase GlobalVars
-            String correoUsuario = globalVars.correoUsuario;
-            
-            pstmt.setString(1, correoUsuario);  // Usamos el correo como parámetro en la consulta
-            ResultSet rs = pstmt.executeQuery();
+        // Establecer el valor del correo en el PreparedStatement
+        pstmt.setString(1, correoUsuario);
 
-            if (rs.next()) {
-                this.nombre = rs.getString("Nombre");
-                this.apellidos = rs.getString("Apellido");
-                this.correo = rs.getString("CorreoElectronico");
-                this.telefono = rs.getString("Telefono");
-                this.nacimiento = rs.getString("FechaNacimiento");
-                this.dui = rs.getString("Dui_empleado");
-                this.imgUrl = rs.getString("ImagenEmpleado");
+        // Ejecutar la consulta
+        ResultSet rs = pstmt.executeQuery();
+
+        // Verificar si se encontraron datos
+        if (rs.next()) {
+            // Asignar los valores obtenidos a las variables de la clase
+            this.nombre = rs.getString("Nombre");
+            this.apellidos = rs.getString("Apellido");
+            this.correo = rs.getString("CorreoElectronico");
+            this.telefono = rs.getString("Telefono");
+            this.nacimiento = rs.getString("FechaNacimiento");
+            this.dui = rs.getString("Dui_empleado");
+            this.imgUrl = rs.getString("ImagenEmpleado");
+
+            System.out.println("Datos cargados correctamente.");
+        } else {
+            System.out.println("No se encontraron datos para el correo: " + correoUsuario);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        try {
+            if (conexion != null) {
+                conexion.close();  // Cerrar la conexión
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+}
+
+
+    // Método para actualizar el teléfono
+    public void actualizarTel() {
+        Connection conexion = Conexion.getConexion();
+        String sql = "UPDATE Empleado SET Telefono = ? WHERE Dui_empleado = ?";
+
+        try (PreparedStatement updateTel = conexion.prepareStatement(sql)) {
+            updateTel.setString(1, getTelefono());
+            updateTel.setString(2, dui);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al actualizar el teléfono: " + e.getMessage());
         } finally {
             try {
                 if (conexion != null) {
-                    conexion.close();  // Cierra la conexión
+                    conexion.close(); // Cierra la conexión para evitar fugas de recursos
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
     }
-    
-    public void ActualizarTel() {
-    Connection conexion = Conexion.getConexion();
-    try {
-        String sql = "UPDATE Empleado SET Telefono = ? WHERE Dui_empleado = ?";
-        PreparedStatement updateTel = conexion.prepareStatement(sql);
-        
-        updateTel.setString(1, getTelefono());
-        updateTel.setString(2, dui);
-        
-        updateTel.executeUpdate();
-        
-        JOptionPane.showMessageDialog(null, "Teléfono actualizado correctamente.");
-        
-    } catch (SQLException e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Error al actualizar el teléfono del empleado: " + e.getMessage());
-    } finally {
-        try {
-            if (conexion != null) {
-                conexion.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            }
-        }
-    }
-    
-    public void ActualizarImg() {
+
+
+    // Método para actualizar la imagen
+    public void actualizarImg() {
         Connection conexion = Conexion.getConexion();
-    try {
-        if (img != null) {
-        setImgUrl(subirImagenImgur(img)); // Usar la imagen seleccionada
-    } else {
-        JOptionPane.showMessageDialog(null, "Por favor selecciona una imagen antes de guardar.");
-        return; // Salir si no hay imagen seleccionada
-    }
-        
-        setImgUrl(subirImagenImgur(img));
-        
-        String sql = "UPDATE Empleado SET ImagenEmpleado = ? WHERE Dui_empleado = ?";
-        PreparedStatement updateTel = conexion.prepareStatement(sql);
-        
-        updateTel.setString(1, getImgUrl());
-        updateTel.setString(2, dui);
-        
-        updateTel.executeUpdate();
-        
-        JOptionPane.showMessageDialog(null, "Teléfono actualizado correctamente.");
-        
-    } catch (SQLException e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Error al actualizar el teléfono del empleado: " + e.getMessage());
-    }   catch (IOException ex) {
-            Logger.getLogger(mdlPerfilAd.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
+
         try {
-            if (conexion != null) {
-                conexion.close();
+            if (img != null) {
+                setImgUrl(subirImagenImgur(img));  // Subir la imagen y obtener la URL
+            } else {
+                JOptionPane.showMessageDialog(null, "Por favor selecciona una imagen antes de guardar.");
+                return;
             }
-        } catch (SQLException e) {
+
+            String sql = "UPDATE Empleado SET ImagenEmpleado = ? WHERE Dui_empleado = ?";
+            try (PreparedStatement updateImg = conexion.prepareStatement(sql)) {
+                updateImg.setString(1, getImgUrl());
+                updateImg.setString(2, dui);
+
+                int rowsAffected = updateImg.executeUpdate();
+                if (rowsAffected > 0) {
+                    JOptionPane.showMessageDialog(null, "Imagen actualizada correctamente.");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se pudo actualizar la imagen.");
+                }
+            }
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al actualizar la imagen: " + e.getMessage());
+        } finally {
+            try {
+                if (conexion != null) {
+                    conexion.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
-    
     }
 }
+
 
 
 

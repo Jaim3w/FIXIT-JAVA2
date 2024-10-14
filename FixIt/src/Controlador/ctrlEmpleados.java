@@ -11,6 +11,8 @@ import Vistas.Loginjava;
 import Vistas.frmUsuarios; 
 import Vistas.frmNuevoUsuario;
 import java.awt.Image;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -61,11 +63,18 @@ public class ctrlEmpleados implements MouseListener, KeyListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == Vista.btnNewUser) {
-            // Mostrar el nuevo JFrame
             frmNuevoUsuario nuevoUsuarioFrame = new frmNuevoUsuario();
-            nuevoUsuarioFrame.setVisible(true); // Mostrar el JFrame
-            nuevoUsuarioFrame.setLocationRelativeTo(null); // Centrar el JFrame en la pantalla
+            nuevoUsuarioFrame.setVisible(true);
+            nuevoUsuarioFrame.setLocationRelativeTo(null);
+
+            nuevoUsuarioFrame.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    mUsuarios.CargarComboEmpleado(Vista.cmbCorreoEmpleado);
+                }
+            });
         }
+
         
         if (e.getSource() == Vista.dtgempleado) {
             Modelo.cargarDatosTabla(Vista);
