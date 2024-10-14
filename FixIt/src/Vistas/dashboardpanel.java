@@ -37,6 +37,7 @@ public class dashboardpanel extends javax.swing.JPanel {
         lbl_usuarios_y_empleados = new javax.swing.JLabel();
         lbl_usuarios_y_empleados1 = new javax.swing.JLabel();
         panelContent = new Vistas.elementosTwo.TransparenteRoundedPanel();
+        lbl_asignaciones = new javax.swing.JLabel();
         transparenteRoundedPanel2 = new Vistas.elementosTwo.TransparenteRoundedPanel();
         imgMinimize = new javax.swing.JLabel();
         imgExit = new javax.swing.JLabel();
@@ -208,15 +209,40 @@ public class dashboardpanel extends javax.swing.JPanel {
 
         whiteRoundedPanelF1.add(transparenteRoundedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 290, 680));
 
+        lbl_asignaciones.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_asignaciones.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lbl_asignaciones.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_asignaciones.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbl_asignaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/yusuariosuwu.png"))); // NOI18N
+        lbl_asignaciones.setText("Usuarios");
+        lbl_asignaciones.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 15));
+        lbl_asignaciones.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        lbl_asignaciones.setIconTextGap(40);
+        lbl_asignaciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_asignacionesMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelContentLayout = new javax.swing.GroupLayout(panelContent);
         panelContent.setLayout(panelContentLayout);
         panelContentLayout.setHorizontalGroup(
             panelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1040, Short.MAX_VALUE)
+            .addGroup(panelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelContentLayout.createSequentialGroup()
+                    .addGap(382, 382, 382)
+                    .addComponent(lbl_asignaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(383, Short.MAX_VALUE)))
         );
         panelContentLayout.setVerticalGroup(
             panelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 670, Short.MAX_VALUE)
+            .addGroup(panelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelContentLayout.createSequentialGroup()
+                    .addGap(300, 300, 300)
+                    .addComponent(lbl_asignaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(300, Short.MAX_VALUE)))
         );
 
         whiteRoundedPanelF1.add(panelContent, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, 1040, 670));
@@ -395,11 +421,16 @@ public class dashboardpanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_lbl_usuarios_y_empleados1MouseClicked
 
+    private void lbl_asignacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_asignacionesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbl_asignacionesMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel imgExit;
     private javax.swing.JLabel imgFondod;
     public javax.swing.JLabel imgMinimize;
+    public javax.swing.JLabel lbl_asignaciones;
     public javax.swing.JLabel lbl_carros;
     public javax.swing.JLabel lbl_citas;
     public javax.swing.JLabel lbl_facturas;

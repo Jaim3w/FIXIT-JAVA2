@@ -184,7 +184,7 @@ public class frmCarros extends TransparenteRoundedPanel {
 
         btnSubirImagen.setText("Cargar imagen");
         btnSubirImagen.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/iccargarimagenalofito.png"))); // NOI18N
-        add(btnSubirImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 170, -1));
+        add(btnSubirImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 170, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtBuscarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarCarroActionPerformed
