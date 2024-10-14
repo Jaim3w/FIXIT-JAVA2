@@ -12,6 +12,8 @@ import Modelo.ClientesCarro;
 import Modelo.ModeloCarro;
 import Modelo.mdlCarros;
 import Vistas.frmCarros;
+import Vistas.frmClientes;
+import Vistas.frmNuevoUsuario;
 import Vistas.frmPerfilAd;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -19,6 +21,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -50,6 +54,7 @@ public class ctrlCarros implements MouseListener, KeyListener {
         Vista.btnSubirImagen.addMouseListener(this);
         Vista.txtBuscarCarro.addKeyListener(this);
         Vista.tbListaCarros.addMouseListener(this);
+        Vista.btnNewCliente.addMouseListener(this);
         
         //carga el contenido de los combo box
         this.mClientes.CargarComboClientes(Vista.cmbClienteCarro);
@@ -100,6 +105,19 @@ public class ctrlCarros implements MouseListener, KeyListener {
 
     @Override
    public void mouseClicked(MouseEvent e) {
+       
+       if (e.getSource() == Vista.btnNewCliente) {
+            frmClientes nuevoUsuarioFrame = new frmClientes();
+            nuevoUsuarioFrame.setVisible(true);
+            nuevoUsuarioFrame.setLocationRelativeTo(null);
+
+            nuevoUsuarioFrame.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    mClientes.CargarComboClientes(Vista.cmbClienteCarro);
+                }
+            });
+        }
         
     // ejecución al dar clic a boton guardar
     if (e.getSource() == Vista.btnGuardarCarro) {

@@ -13,13 +13,13 @@ import Modelo.mdlClientes;
 import Vistas.elementosTwo.TransparenteRoundedPanel;
 import Vistas.elemetos.RoundedWhitePanel;
 import java.text.ParseException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 
-public class frmClientes extends TransparenteRoundedPanel {
-
-   
+public class frmClientes extends javax.swing.JFrame {
 
     /**
      * Creates new form frmClientes
@@ -32,7 +32,11 @@ public class frmClientes extends TransparenteRoundedPanel {
         ctrlClientes controlador = new ctrlClientes(modelo, vista);
 
         vista.setVisible(true);
+        setSize(1020, 650);
+        setResizable(false);
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -135,7 +139,7 @@ public class frmClientes extends TransparenteRoundedPanel {
         btnLimpiar.setText("Limpiar");
         transparenteRoundedPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 380, 150, 50));
 
-        add(transparenteRoundedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 720));
+        add(transparenteRoundedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
