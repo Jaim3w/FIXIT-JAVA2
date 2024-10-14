@@ -81,7 +81,7 @@ Create table Modelo(
 
 Create table Empleado(
     Dui_empleado VARCHAR2(10) PRIMARY KEY,
-    UUID_usuario VARCHAR2(50) NOT NULL,
+    UUID_usuario VARCHAR2(50) NOT NULL UNIQUE,
     Nombre VARCHAR2(100) NOT NULL,
     Apellido VARCHAR2(100) NOT NULL,
     ImagenEmpleado VARCHAR2(255),
@@ -126,6 +126,7 @@ Create table AsignarOrden(
     UUID_Cita Varchar2(50) NOT NULL,
     UUID_servicio Varchar2(50) NOT NULL,
     UUID_estado Varchar2(50) NOT NULL,
+    Carro_Empleado Varchar2(50) NOT NULL,
     FechaAsignacion VARCHAR2(200) NOT NULL,
     FechaFinalizacion VARCHAR2(200) NOT NULL,
     Descripcion VARCHAR2(150) NOT NULL,
@@ -136,9 +137,11 @@ Create table AsignarOrden(
 
 Create table Factura(
     UUID_factura VARCHAR2(50) PRIMARY KEY,
+    FacturaIdentificacion Varchar2(50) NOT NULL,
     FechaEmision VARCHAR2(200) NOT NULL,
     FechaVencimiento VARCHAR2(200) NOT NULL
 );
+
 
 Create table DetalleFactura(
     UUID_DetalleFactura VARCHAR2(50) PRIMARY KEY,
@@ -194,6 +197,25 @@ insert into factura (fechaemision, fechavencimiento) values (sysdate,'25/08/2024
 select * from factura;
 
 --------------------------------------------------------------------------------------------------------------
+
+
+CREATE SEQUENCE SEQproveedor
+START WITH 1001
+INCREMENT BY 1;
+
+
+CREATE OR REPLACE TRIGGER trg_proveedor
+BEFORE INSERT ON Proveedor
+FOR EACH ROW
+BEGIN
+    -- Si la columna Codigo_proveedor es nula, se genera el valor usando la secuencia SEQproveedor
+    IF :NEW.Codigo_Proveedor IS NULL THEN
+        :NEW.Codigo_proveedor := SEQproveedor.NEXTVAL;
+    END IF;
+END;
+
+--------------------------------------------------------------------------------------------------------------
+
 
 //PROCEDIMIENTO EL CUAL ACTUALIZA CUALQUIER CAMPO DE LA TABLA DE CLIENTE 
 
@@ -1007,16 +1029,16 @@ SELECT * FROM dual;
 
 
 INSERT ALL
-    INTO Proveedor (Codigo_proveedor, Nombre, Marca, Telefono, Correo_Electronico, Direccion) 
-    VALUES ('256192789', 'Carlos', 'Alcaraz', '12835689', 'carlos.alcaraz@gmail.com', 'Bulevar Los Proceres')
-    INTO Proveedor (Codigo_proveedor, Nombre, Marca, Telefono, Correo_Electronico, Direccion) 
-    VALUES ('568355741', 'Laura', 'Bonilla', '01923578', 'laura.bonilla@gmail.com', 'Caba as avenida sur')
-    INTO Proveedor (Codigo_proveedor, Nombre, Marca, Telefono, Correo_Electronico, Direccion) 
-    VALUES ('237724542', 'Josefin', 'Martinez', '12938056', 'josefin.martinez@gmail.com', 'La Libertad avenida norte')
-    INTO Proveedor (Codigo_proveedor, Nombre, Marca, Telefono, Correo_Electronico, Direccion) 
-    VALUES ('682425140', 'David', 'Lopez', '24572313', 'david.lopez@gmail.com', 'Calle San francisco')
-    INTO Proveedor (Codigo_proveedor, Nombre, Marca, Telefono, Correo_Electronico, Direccion) 
-    VALUES ('345832463', 'Luis', 'Enrique', '23388572', 'luis.enrique@gmail.com', 'Las Arboledas')
+    INTO Proveedor (Nombre, Marca, Telefono, Correo_Electronico, Direccion) 
+    VALUES ('Carlos', 'Alcaraz', '12835689', 'carlos.alcaraz@gmail.com', 'Bulevar Los Proceres')
+    INTO Proveedor (Nombre, Marca, Telefono, Correo_Electronico, Direccion) 
+    VALUES ('Laura', 'Bonilla', '01923578', 'laura.bonilla@gmail.com', 'Caba as avenida sur')
+    INTO Proveedor (Nombre, Marca, Telefono, Correo_Electronico, Direccion) 
+    VALUES ('Josefin', 'Martinez', '12938056', 'josefin.martinez@gmail.com', 'La Libertad avenida norte')
+    INTO Proveedor (Nombre, Marca, Telefono, Correo_Electronico, Direccion) 
+    VALUES ('David', 'Lopez', '24572313', 'david.lopez@gmail.com', 'Calle San francisco')
+    INTO Proveedor (Nombre, Marca, Telefono, Correo_Electronico, Direccion) 
+    VALUES ('Luis', 'Enrique', '23388572', 'luis.enrique@gmail.com', 'Las Arboledas')
 SELECT * FROM dual;
 
 
@@ -1109,58 +1131,83 @@ select * from cliente;
 
 INSERT ALL
   INTO Cita (UUID_cita, Dui_cliente, Dui_empleado, Fecha_cita, Hora_cita, Descripcion)
-  VALUES (SYS_GUID(), '345723699', '438623602', '2024-08-01', '09:00', 'Revisión general del vehículo')
+  VALUES (SYS_GUID(), '345723699', '438623602', '2024-08-01', '09:00', 'Revision general del vehiculo')
   INTO Cita (UUID_cita, Dui_cliente, Dui_empleado, Fecha_cita, Hora_cita, Descripcion)
   VALUES (SYS_GUID(), '091345821', '234734141', '2024-08-02', '11:30', 'Cambio de aceite y filtro')
   INTO Cita (UUID_cita, Dui_cliente, Dui_empleado, Fecha_cita, Hora_cita, Descripcion)
-  VALUES (SYS_GUID(), '456789012', '527223462', '2024-08-03', '14:00', 'Alineación y balanceo de llantas')
+  VALUES (SYS_GUID(), '456789012', '527223462', '2024-08-03', '14:00', 'Alineacion y balanceo de llantas')
   INTO Cita (UUID_cita, Dui_cliente, Dui_empleado, Fecha_cita, Hora_cita, Descripcion)
-  VALUES (SYS_GUID(), '218957987', '345834343', '2024-08-04', '10:00', 'Inspección de frenos y suspensión')
+  VALUES (SYS_GUID(), '218957987', '345834343', '2024-08-04', '10:00', 'Inspeccion de frenos y suspension')
   INTO Cita (UUID_cita, Dui_cliente, Dui_empleado, Fecha_cita, Hora_cita, Descripcion)
-  VALUES (SYS_GUID(), '092438653', '534233464', '2024-08-05', '16:00', 'Reparación de sistema eléctrico')
+  VALUES (SYS_GUID(), '092438653', '534233464', '2024-08-05', '16:00', 'Reparacion de sistema electrico')
 SELECT * FROM dual;
 
 
 
-INSERT INTO AsignarOrden(UUID_AsignarOrden, UUID_cita, UUID_servicio, UUID_estado, FechaAsignacion, FechaFinalizacion, Descripcion)
+INSERT INTO AsignarOrden(UUID_AsignarOrden, UUID_cita, UUID_servicio, UUID_estado, Carro_Empleado, FechaAsignacion, FechaFinalizacion, Descripcion)
   VALUES (SYS_GUID(), 
-          (SELECT UUID_cita FROM Cita WHERE Descripcion = 'Revisión general del vehículo'), 
+          (SELECT UUID_cita FROM Cita WHERE Descripcion = 'Revision general del veh�culo'), 
           (SELECT UUID_servicio FROM Servicio WHERE Nombre = 'Diagnostico Completo'), 
-          (SELECT UUID_estado FROM EstadoAsignarOrden WHERE Nombre = 'En proceso'), 
+          (SELECT UUID_estado FROM EstadoAsignarOrden WHERE Nombre = 'En proceso'),   'Carro de Carlos',
           '25/08/2024', '30/08/2024', 'Orden de mantenimiento preventivo');
 
-
-INSERT INTO AsignarOrden (UUID_AsignarOrden, UUID_cita, UUID_servicio, UUID_estado, FechaAsignacion, FechaFinalizacion, Descripcion)
+INSERT INTO AsignarOrden (UUID_AsignarOrden, UUID_cita, UUID_servicio, UUID_estado,Carro_Empleado, FechaAsignacion, FechaFinalizacion, Descripcion)
   VALUES (SYS_GUID(), 
           (SELECT UUID_cita FROM Cita WHERE Descripcion = 'Cambio de aceite y filtro'), 
           (SELECT UUID_servicio FROM Servicio WHERE Nombre = 'Cambio de Aceite'), 
-          (SELECT UUID_estado FROM EstadoAsignarOrden WHERE Nombre = 'En proceso'), 
+          (SELECT UUID_estado FROM EstadoAsignarOrden WHERE Nombre = 'En proceso'),  'Carro de Lautaro',
           '25/08/2024', '30/08/2024', 'Cambio de aceite y frenos');
 
 
-INSERT INTO AsignarOrden (UUID_AsignarOrden, UUID_cita, UUID_servicio, UUID_estado, FechaAsignacion, FechaFinalizacion, Descripcion)
+INSERT INTO AsignarOrden (UUID_AsignarOrden, UUID_cita, UUID_servicio, UUID_estado,Carro_Empleado, FechaAsignacion, FechaFinalizacion, Descripcion)
   VALUES (SYS_GUID(), 
-          (SELECT UUID_cita FROM Cita WHERE Descripcion = 'Alineación y balanceo de llantas'), 
+          (SELECT UUID_cita FROM Cita WHERE Descripcion = 'Alineacion y balanceo de llantas'), 
           (SELECT UUID_servicio FROM Servicio WHERE Nombre = 'Alineacion y Balanceo'), 
-          (SELECT UUID_estado FROM EstadoAsignarOrden WHERE Nombre = 'Sin comenzar'), 
-          '25/08/2024', '30/08/2024', 'Alineación y balanceo carro luis');
+          (SELECT UUID_estado FROM EstadoAsignarOrden WHERE Nombre = 'Sin comenzar'),'Carro de Lionel',
+          '25/08/2024', '30/08/2024', 'Alineaci�n y balanceo carro luis');
+
+INSERT INTO AsignarOrden (UUID_AsignarOrden, UUID_cita, UUID_servicio, UUID_estado, Carro_Empleado, FechaAsignacion, FechaFinalizacion, Descripcion)
+VALUES (
+    SYS_GUID(), 
+    (SELECT UUID_cita FROM Cita WHERE Descripcion = 'Inspeccion de frenos y suspensi�n'), 
+    (SELECT UUID_servicio FROM Servicio WHERE Nombre = 'Revision de Frenos'), 
+    (SELECT UUID_estado FROM EstadoAsignarOrden WHERE Nombre = 'En proceso'), 
+    'Carro de Paulo', '25/08/2024', '30/08/2024', 'Reparaci�n de frenos'
+);
 
 
-INSERT INTO AsignarOrden (UUID_AsignarOrden, UUID_cita, UUID_servicio, UUID_estado, FechaAsignacion, FechaFinalizacion, Descripcion)
+INSERT INTO AsignarOrden (UUID_AsignarOrden, UUID_cita, UUID_servicio, UUID_estado,Carro_Empleado, FechaAsignacion, FechaFinalizacion, Descripcion)
   VALUES (SYS_GUID(), 
-          (SELECT UUID_cita FROM Cita WHERE Descripcion = 'Inspección de frenos y suspensión'), 
-          (SELECT UUID_servicio FROM Servicio WHERE Nombre = 'Revision de Frenos'), 
-          (SELECT UUID_estado FROM EstadoAsignarOrden WHERE Nombre = 'En proceso'), 
-          '25/08/2024', '30/08/2024', 'Reparación de frenos');
-
-
-INSERT INTO AsignarOrden (UUID_AsignarOrden, UUID_cita, UUID_servicio, UUID_estado, FechaAsignacion, FechaFinalizacion, Descripcion)
-  VALUES (SYS_GUID(), 
-          (SELECT UUID_cita FROM Cita WHERE Descripcion = 'Reparación de sistema eléctrico'), 
+          (SELECT UUID_cita FROM Cita WHERE Descripcion = 'Reparacion de sistema el�ctrico'), 
           (SELECT UUID_servicio FROM Servicio WHERE Nombre = 'Cambio de Bateria'), 
-          (SELECT UUID_estado FROM EstadoAsignarOrden WHERE Nombre = 'Terminado'), 
+          (SELECT UUID_estado FROM EstadoAsignarOrden WHERE Nombre = 'Terminado'), 'Carro de La fuente',
           '25/08/2024', '30/08/2024', 'Cambio de bateria y llantas');
 
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+INSERT INTO Factura (UUID_factura, FacturaIdentificacion, FechaEmision, FechaVencimiento) 
+VALUES (SYS_GUID(), 'Carlos', '2024-10-13','2024-10-20');
+
+INSERT INTO Factura (UUID_factura, FacturaIdentificacion, FechaEmision, FechaVencimiento) 
+VALUES (SYS_GUID(), 'Manuel', '2024-10-12','2024-10-19');
+------------------------------------------------------------------------------------------------------------------------
+
+
+INSERT INTO DetalleFactura (UUID_DetalleFactura ,UUID_factura ,UUID_productoRepuesto ,UUID_AsignarOrden )
+VALUES (SYS_GUID(),
+        (Select UUID_factura from Factura where FacturaIdentificacion = 'Carlos' ),
+        (Select UUID_productoRepuesto from ProductoRepuesto where Nombre = 'Aceite de motor'),
+        (Select UUID_AsignarOrden from AsignarOrden where Carro_Empleado = 'Carro de Carlos'));
+        
+    
+INSERT INTO DetalleFactura (UUID_DetalleFactura ,UUID_factura ,UUID_productoRepuesto ,UUID_AsignarOrden )
+VALUES (SYS_GUID(),
+        (Select UUID_factura from Factura where FacturaIdentificacion = 'Manuel' ),
+        (Select UUID_productoRepuesto from ProductoRepuesto where Nombre = 'Filtro de aire'),
+        (Select UUID_AsignarOrden from AsignarOrden where Carro_Empleado = 'Carro de Lionel'));
+------------------------------------------------------------------------------------------------------------------------
 
 SELECT  CategoriaItem.Nombre AS "Categoria", ProductoRepuesto.Nombre, 
 ProductoRepuesto.ImagenProductoRepuesto AS Imagen, ProductoRepuesto.Precio
@@ -1235,3 +1282,26 @@ WHERE
     Rol.Nombre = 'Administrador';
     
 commit;
+
+select * from detalleFactura;
+
+
+SELECT AsignarOrden.UUID_AsignarOrden, Empleado.Nombre AS "Asignacion para", Servicio.Nombre AS "Servicio a realizar", EstadoAsignarOrden.Nombre AS "Estado del servicio", AsignarOrden.Carro_Empleado AS "Carro del cliente a ser revisado", AsignarOrden.FechaAsignacion AS "Fecha de asignacion", AsignarOrden.FechaFinalizacion AS "Fecha de finalizacion", AsignarOrden.Descripcion FROM AsignarOrden INNER JOIN Cita ON AsignarOrden.UUID_cita = Cita.UUID_cita INNER JOIN Servicio ON AsignarOrden.UUID_servicio = Servicio.UUID_servicio INNER JOIN EstadoAsignarOrden ON AsignarOrden.UUID_estado = EstadoAsignarOrden.UUID_estado INNER JOIN Empleado ON Cita.Dui_Empleado = Empleado.Dui_Empleado;
+//WHERE Empleado.Nombre LIKE ? OR Servicio.Nombre LIKE ? OR AsignarOrden.Descripcion LIKE ? ORDER BY AsignarOrden.FechaAsignacion DESC";
+
+select cita.UUID_cita ,Empleado.nombre,Cita.Fecha_cita,Cita.Hora_cita from cita inner join Empleado on Cita.Dui_empleado = Empleado.Dui_empleado;
+
+select AsignarOrden.UUID_asignarOrden, Servicio.Nombre, AsignarOrden.Carro_Empleado from AsignarOrden Inner Join Servicio on AsignarOrden.UUID_servicio = Servicio.UUID_servicio;
+
+SELECT Cita.UUID_cita, Cliente.Nombre AS Cliente, Empleado.Nombre AS Empleado, Cita.Fecha_cita AS Fecha, Cita.Hora_cita AS  Hora, Cita.Descripcion FROM Cita INNER JOIN Cliente ON Cita.Dui_cliente = Cliente.Dui_cliente INNER JOIN Empleado ON Cita.Dui_empleado = Empleado.Dui_empleado;
+
+SELECT DetalleFactura.UUID_detalleFactura, Factura.FacturaIdentificacion AS "Factura de", ProductoRepuesto.Nombre AS "Producto o repuesto", 
+Servicio.Nombre AS "Servicio" 
+FROM DetalleFactura 
+INNER JOIN Factura ON DetalleFactura.UUID_factura = Factura.UUID_factura 
+INNER JOIN ProductoRepuesto ON DetalleFactura.UUID_productoRepuesto = ProductoRepuesto.UUID_productoRepuesto
+INNER JOIN AsignarOrden ON DetalleFactura.UUID_asignarOrden = AsignarOrden.UUID_asignarOrden 
+INNER JOIN Servicio ON AsignarOrden.UUID_servicio = Servicio.UUID_servicio;
+
+Select ProductoRepuesto.UUID_productoRepuesto, ProductoRepuesto.Nombre from ProductoRepuesto�
+

@@ -36,6 +36,7 @@ public class dashboardpanel extends javax.swing.JPanel {
         lbl_ventas = new javax.swing.JLabel();
         lbl_usuarios_y_empleados = new javax.swing.JLabel();
         lbl_usuarios_y_empleados1 = new javax.swing.JLabel();
+        lbl_asignaciones = new javax.swing.JLabel();
         panelContent = new Vistas.elementosTwo.TransparenteRoundedPanel();
         transparenteRoundedPanel2 = new Vistas.elementosTwo.TransparenteRoundedPanel();
         imgMinimize = new javax.swing.JLabel();
@@ -167,12 +168,28 @@ public class dashboardpanel extends javax.swing.JPanel {
             }
         });
 
+        lbl_asignaciones.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_asignaciones.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lbl_asignaciones.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_asignaciones.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbl_asignaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icasignacionesalofixit2.png"))); // NOI18N
+        lbl_asignaciones.setText("Asignaciones");
+        lbl_asignaciones.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 15));
+        lbl_asignaciones.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        lbl_asignaciones.setIconTextGap(40);
+        lbl_asignaciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_asignacionesMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout transparenteRoundedPanel1Layout = new javax.swing.GroupLayout(transparenteRoundedPanel1);
         transparenteRoundedPanel1.setLayout(transparenteRoundedPanel1Layout);
         transparenteRoundedPanel1Layout.setHorizontalGroup(
             transparenteRoundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(transparenteRoundedPanel1Layout.createSequentialGroup()
                 .addGroup(transparenteRoundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbl_asignaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_usuarios_y_empleados1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(transparenteRoundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(lbl_carros, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -203,10 +220,12 @@ public class dashboardpanel extends javax.swing.JPanel {
                 .addComponent(lbl_usuarios_y_empleados1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(lbl_usuarios_y_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_asignaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
 
-        whiteRoundedPanelF1.add(transparenteRoundedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 290, 680));
+        whiteRoundedPanelF1.add(transparenteRoundedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 290, 690));
 
         javax.swing.GroupLayout panelContentLayout = new javax.swing.GroupLayout(panelContent);
         panelContent.setLayout(panelContentLayout);
@@ -395,11 +414,23 @@ public class dashboardpanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_lbl_usuarios_y_empleados1MouseClicked
 
+    private void lbl_asignacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_asignacionesMouseClicked
+ frmAsignarOrden us = new frmAsignarOrden();
+    us.setSize(1040, 670);
+    us.setLocation(0, 0);
+     setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
+    panelContent.removeAll();
+    panelContent.add(us, BorderLayout.CENTER);
+    panelContent.revalidate();
+    panelContent.repaint();
+    }//GEN-LAST:event_lbl_asignacionesMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel imgExit;
     private javax.swing.JLabel imgFondod;
     public javax.swing.JLabel imgMinimize;
+    public javax.swing.JLabel lbl_asignaciones;
     public javax.swing.JLabel lbl_carros;
     public javax.swing.JLabel lbl_citas;
     public javax.swing.JLabel lbl_facturas;

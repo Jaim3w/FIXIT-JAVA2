@@ -98,39 +98,70 @@ public class frmCitas extends TransparenteRoundedPanel {
         txtFecha = new javax.swing.JTextField();
         txtHora = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbCitas = new javax.swing.JTable();
-        calendar1 = new calendar.Calendar();
-        btnActualizar = new javax.swing.JButton();
-        btnAddCita = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         cmbEmpleado = new javax.swing.JComboBox<>();
         txtDEsc = new javax.swing.JTextField();
-        citasCardsPanel1 = new Vistas.citasCardsPanel();
         cmbCliente = new javax.swing.JComboBox<>();
+        calendar1 = new calendar.Calendar();
+        jPanel1 = new javax.swing.JPanel();
+        txtBuscarCita = new Vistas.elementosTwo.MyTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbCitas = new javax.swing.JTable();
+        btnAddCita = new Vistas.elemetos.ButtonWI();
+        btnActualizar = new Vistas.elemetos.ButtonWI();
+        btnEliminar = new Vistas.elemetos.ButtonWI();
+        BtnLimpiarcamposCarro = new Vistas.elemetos.ButtonWI();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Seleccionar cliente");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Selecciona la fecha de cita");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, -1, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Selecionar Empleado");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, -1, -1));
-        add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, 120, -1));
-        add(txtHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, 130, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
+        add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 290, -1));
+        add(txtHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 290, -1));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Elije la hora de cita");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel4.setText("Agregar cita");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Descripccion de cita");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, -1, -1));
+
+        cmbEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(cmbEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 290, -1));
+        add(txtDEsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 290, -1));
+
+        cmbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbClienteActionPerformed(evt);
+            }
+        });
+        add(cmbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 290, -1));
+
+        calendar1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                calendar1PropertyChange(evt);
+            }
+        });
+        add(calendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 20, 430, 350));
+
+        txtBuscarCita.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/iconbuscar2.png"))); // NOI18N
 
         tbCitas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -145,39 +176,54 @@ public class frmCitas extends TransparenteRoundedPanel {
         ));
         jScrollPane1.setViewportView(tbCitas);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 670, 290));
+        btnAddCita.setText("Guardar");
+        btnAddCita.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icguardaraloadriel.png"))); // NOI18N
 
-        calendar1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                calendar1PropertyChange(evt);
-            }
-        });
-        add(calendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 340, 310));
+        btnActualizar.setText("Editar");
+        btnActualizar.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/iceditaralokevon.png"))); // NOI18N
 
-        btnActualizar.setText("Actualizar cita");
-        add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, -1, -1));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icborraralojosue.png"))); // NOI18N
 
-        btnAddCita.setText("Agregar Cita");
-        add(btnAddCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, -1, -1));
+        BtnLimpiarcamposCarro.setText("Limpiar");
+        BtnLimpiarcamposCarro.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/iclimpiaralojaime.png"))); // NOI18N
 
-        btnEliminar.setText("Eliminar cita");
-        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, -1, -1));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtBuscarCita, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtnLimpiarcamposCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAddCita, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBuscarCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAddCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnLimpiarcamposCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-        jLabel6.setText("Descripccion de cita");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
-
-        cmbEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cmbEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 250, 130, -1));
-        add(txtDEsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 170, -1));
-        add(citasCardsPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 290, 380));
-
-        cmbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbClienteActionPerformed(evt);
-            }
-        });
-        add(cmbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 120, -1));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 1000, 280));
     }// </editor-fold>//GEN-END:initComponents
 
     private void calendar1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_calendar1PropertyChange
@@ -196,21 +242,22 @@ public class frmCitas extends TransparenteRoundedPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnActualizar;
-    public javax.swing.JButton btnAddCita;
-    public javax.swing.JButton btnEliminar;
+    public Vistas.elemetos.ButtonWI BtnLimpiarcamposCarro;
+    public Vistas.elemetos.ButtonWI btnActualizar;
+    public Vistas.elemetos.ButtonWI btnAddCita;
+    public Vistas.elemetos.ButtonWI btnEliminar;
     public calendar.Calendar calendar1;
-    private Vistas.citasCardsPanel citasCardsPanel1;
     public javax.swing.JComboBox<String> cmbCliente;
     public javax.swing.JComboBox<String> cmbEmpleado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tbCitas;
+    public Vistas.elementosTwo.MyTextField txtBuscarCita;
     public javax.swing.JTextField txtDEsc;
     public javax.swing.JTextField txtFecha;
     public javax.swing.JTextField txtHora;

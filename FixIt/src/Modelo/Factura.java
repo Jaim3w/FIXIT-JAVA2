@@ -8,16 +8,28 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.UUID;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class Factura {
     
+        private String UUID_factura;
     private String FacturaIdentificacion;
     private String FechaEmision;
     private String FechaVencimiento;
 
+    public String getUUID_factura() {
+        return UUID_factura;
+    }
+
+    public void setUUID_factura(String UUID_factura) {
+        this.UUID_factura = UUID_factura;
+    }
+
+    
+    
     public String getFacturaIdentificacion() {
         return FacturaIdentificacion;
     }
@@ -191,5 +203,45 @@ public class Factura {
             vista.txtFechaVencimiento.setText(VencimientoDeTB);
         }
     } 
+    
+    
+    public Factura(){
+        
+    }
+    
+    public Factura(String uuid, String cliente)
+    {
+        this.UUID_factura = uuid;
+        this.FacturaIdentificacion = cliente;
+    }
+    
+      @Override
+    public String toString()
+    {
+        return FacturaIdentificacion;
+    }
+    
+    
+    public void CargarComboFactura(JComboBox comboBox){    
+        Connection conexion = Conexion.getConexion();
+        comboBox.removeAllItems();
+        try{
+            Statement statement = conexion.createStatement();
+            ResultSet rs = statement.executeQuery("Select * from Factura");
+            while (rs.next()) {
+                String uuid = rs.getString("UUID_factura");
+                String nombre = rs.getString("FacturaIdentificacion");
+                comboBox.addItem(new Factura(uuid,nombre)); 
+                
+                if (comboBox.getItemCount() > 0) {
+            comboBox.setSelectedIndex(0); // Selecciona el primer ítem
+        }
+            }
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();  
+        }
+    }
     
 }
