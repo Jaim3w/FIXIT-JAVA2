@@ -121,67 +121,72 @@ public class frmFacturacion extends TransparenteRoundedPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Facturas = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtcliente = new javax.swing.JFormattedTextField();
-        btnActualizar = new Vistas.elemetos.ButtonA();
-        btnGuardar = new Vistas.elemetos.ButtonA();
-        btnEliminar = new Vistas.elemetos.ButtonA();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbFacturas = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         txtFechaFactura = new javax.swing.JFormattedTextField();
         txtFechaVencimiento = new javax.swing.JFormattedTextField();
         CalendarioVencimiento = new com.toedter.calendar.JCalendar();
-        btnLimpiar = new Vistas.elemetos.ButtonA();
         CalendarioEmision = new com.toedter.calendar.JCalendar();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbFacturas = new javax.swing.JTable();
+        btnLimpiar = new Vistas.elemetos.ButtonWI();
+        btnGuardar = new Vistas.elemetos.ButtonWI();
+        btnActualizar = new Vistas.elemetos.ButtonWI();
+        btnEliminar = new Vistas.elemetos.ButtonWI();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(922, 703));
         setPreferredSize(new java.awt.Dimension(922, 703));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Facturas.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        Facturas.setForeground(new java.awt.Color(0, 0, 0));
-        Facturas.setText("Facturas");
-        add(Facturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 170, -1));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Fecha de vencimiento");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 300, -1));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Factura Para");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 250, -1));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Fecha Emision");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 110, 20));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 300, 20));
 
         txtcliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtclienteActionPerformed(evt);
             }
         });
-        add(txtcliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 220, 30));
+        add(txtcliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 410, 30));
+        add(txtFechaFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 410, 30));
+        add(txtFechaVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 410, 30));
 
-        btnActualizar.setText("Actualizar");
-        btnActualizar.setToolTipText("");
-        add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 280, 120, -1));
+        CalendarioVencimiento.setForeground(new java.awt.Color(255, 255, 255));
+        CalendarioVencimiento.setDecorationBackgroundColor(new java.awt.Color(255, 255, 255));
+        CalendarioVencimiento.setSundayForeground(new java.awt.Color(0, 0, 0));
+        CalendarioVencimiento.setWeekdayForeground(new java.awt.Color(153, 153, 153));
+        CalendarioVencimiento.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                CalendarioVencimientoPropertyChange(evt);
+            }
+        });
+        add(CalendarioVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 170, 480, 180));
 
-        btnGuardar.setText("Guardar");
-        btnGuardar.setToolTipText("");
-        add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 120, -1));
-
-        btnEliminar.setText("Eliminar");
-        btnEliminar.setToolTipText("");
-        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, 120, -1));
+        CalendarioEmision.setForeground(new java.awt.Color(255, 255, 255));
+        CalendarioEmision.setDecorationBackgroundColor(new java.awt.Color(255, 255, 255));
+        CalendarioEmision.setSundayForeground(new java.awt.Color(0, 0, 0));
+        CalendarioEmision.setWeekdayForeground(new java.awt.Color(153, 153, 153));
+        CalendarioEmision.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                CalendarioEmisionPropertyChange(evt);
+            }
+        });
+        add(CalendarioEmision, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 480, 160));
 
         tbFacturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -196,29 +201,53 @@ public class frmFacturacion extends TransparenteRoundedPanel {
         ));
         jScrollPane1.setViewportView(tbFacturas);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 940, 220));
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 510, 30, 30));
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 370, 30, 10));
-        add(txtFechaFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 220, 30));
-        add(txtFechaVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 220, 30));
-
-        CalendarioVencimiento.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                CalendarioVencimientoPropertyChange(evt);
-            }
-        });
-        add(CalendarioVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 70, 340, 180));
-
         btnLimpiar.setText("Limpiar");
-        btnLimpiar.setToolTipText("");
-        add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 120, -1));
+        btnLimpiar.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/iclimpiaralojaime.png"))); // NOI18N
 
-        CalendarioEmision.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                CalendarioEmisionPropertyChange(evt);
-            }
-        });
-        add(CalendarioEmision, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 360, 180));
+        btnGuardar.setText("Guardar");
+        btnGuardar.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icguardaraloadriel.png"))); // NOI18N
+
+        btnActualizar.setText("Editar");
+        btnActualizar.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/iceditaralokevon.png"))); // NOI18N
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icborraralojosue.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 950, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(174, 174, 174)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(11, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
+        );
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 1000, 300));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtclienteActionPerformed
@@ -264,16 +293,14 @@ if ("calendar".equals(evt.getPropertyName())) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public com.toedter.calendar.JCalendar CalendarioEmision;
     public com.toedter.calendar.JCalendar CalendarioVencimiento;
-    private javax.swing.JLabel Facturas;
-    public Vistas.elemetos.ButtonA btnActualizar;
-    public Vistas.elemetos.ButtonA btnEliminar;
-    public Vistas.elemetos.ButtonA btnGuardar;
-    public Vistas.elemetos.ButtonA btnLimpiar;
+    public Vistas.elemetos.ButtonWI btnActualizar;
+    public Vistas.elemetos.ButtonWI btnEliminar;
+    public Vistas.elemetos.ButtonWI btnGuardar;
+    public Vistas.elemetos.ButtonWI btnLimpiar;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tbFacturas;
     public javax.swing.JFormattedTextField txtFechaFactura;
