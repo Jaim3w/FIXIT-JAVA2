@@ -23,6 +23,9 @@ public class Usuarios {
     private String Contrasena;
     private String UUID_rol;
 
+    public String getCorreo() {
+        return CorreoElectronico;
+    }
 
     //getters y setters
     public String getUUID_usuario() {
@@ -69,7 +72,7 @@ public class Usuarios {
     // Sobrescribir el método toString para mostrar el correo electrónico en el ComboBox
     @Override
     public String toString() {
-        return this.getCorreoElectronico(); // O cualquier otro campo relevante
+        return this.getCorreo(); // O cualquier otro campo relevante
     }
 
    
@@ -206,24 +209,25 @@ public class Usuarios {
    
     public void CargarComboEmpleado(JComboBox comboBox) {
     Connection conexion = Conexion.getConexion();
-    comboBox.removeAllItems();
+    comboBox.removeAllItems(); // Limpia el ComboBox
     try {
         Statement statement = conexion.createStatement();
-        ResultSet rs = statement.executeQuery("SELECT u.UUID_usuario, u.CorreoElectronico, u.Contrasena, u.UUID_rol\n" +
-                                              "FROM Usuario u\n" +
-                                              "JOIN Rol r ON u.UUID_rol = r.UUID_rol\n" +
+        ResultSet rs = statement.executeQuery("SELECT u.UUID_usuario, u.CorreoElectronico, u.Contrasena, u.UUID_rol " +
+                                              "FROM Usuario u " +
+                                              "JOIN Rol r ON u.UUID_rol = r.UUID_rol " +
                                               "WHERE r.Nombre = 'Empleado'");
         while (rs.next()) {
             String uuid = rs.getString("UUID_usuario");
             String uuidrol = rs.getString("UUID_rol");
             String correo = rs.getString("CorreoElectronico");
             String contrasena = rs.getString("Contrasena");
-            comboBox.addItem(new Usuarios(uuidrol, uuid, correo, contrasena)); // Cargar usuarios empleados
+            comboBox.addItem(new Usuarios(uuidrol, uuid, correo, contrasena)); // Agrega objetos Usuarios
         }
     } catch (SQLException ex) {
         ex.printStackTrace();
     }
 }
+
    
    public boolean ValidarCorreo() {
 

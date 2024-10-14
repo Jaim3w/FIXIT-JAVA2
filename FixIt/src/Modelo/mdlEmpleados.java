@@ -214,22 +214,66 @@ public class mdlEmpleados {
     int filaSeleccionada = tabla.getSelectedRow();
     if (filaSeleccionada != -1) {
         String Dui = tabla.getValueAt(filaSeleccionada, 0).toString();
+        
         try {
+            // Aquí verifica si la imagen ha sido seleccionada nuevamente
+            String nuevaImagen = imagenSeleccionada != null ? subirImagenImgur(imagenSeleccionada) : getImagenEmpleado();
+            setImagenEmpleado(nuevaImagen);  // Actualiza la URL de la imagen
+
             String sql = "UPDATE Empleado SET UUID_usuario = ?, Nombre = ?, Apellido = ?, ImagenEmpleado = ?, FechaNacimiento = ?, Telefono = ? WHERE Dui_empleado = ?";
-            PreparedStatement updateCarro = conexion.prepareStatement(sql);
-            updateCarro.setString(2, getUuidUsuario());
-            updateCarro.setString(3, getNombre());
-            updateCarro.setString(4, getApellido());
-            updateCarro.setString(5, getImagenEmpleado());
-            updateCarro.setString(1, getFechaNacimiento());
-            updateCarro.setString(6, getTelefono());
-            updateCarro.setString(7, Dui);
-            updateCarro.executeUpdate();
+            PreparedStatement updateEmpleado = conexion.prepareStatement(sql);
+            updateEmpleado.setString(1, getUuidUsuario());
+            updateEmpleado.setString(2, getNombre());
+            updateEmpleado.setString(3, getApellido());
+            updateEmpleado.setString(4, getImagenEmpleado());  // Asegura que se actualice con la nueva URL de la imagen
+            updateEmpleado.setString(5, getFechaNacimiento());
+            updateEmpleado.setString(6, getTelefono());
+            updateEmpleado.setString(7, Dui);
+
+            // Ejecuta la actualización
+            updateEmpleado.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Empleado actualizado exitosamente.");
+
         } catch (SQLException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error al actualizar el carro: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al actualizar el empleado: " + e.getMessage());
+        } catch (IOException ex) {
+            Logger.getLogger(mdlEmpleados.class.getName()).log(Level.SEVERE, null, ex);
         }
+    } else {
+        JOptionPane.showMessageDialog(null, "Por favor, selecciona un empleado para actualizar.");
+    }
+}
+
+    
+    public void Eliminar(JTable tabla) {
+        Connection conexion = Conexion.getConexion();
+
+        int filaSeleccionada = tabla.getSelectedRow();
+
+        String miId = tabla.getValueAt(filaSeleccionada, 0).toString();
+        
+        //elimina los datos que contenga la fila con la placa que se selecciono
+        try {
+            String sql = "delete from Empleado where Dui_empleado = ?";
+            PreparedStatement deleteCarro = conexion.prepareStatement(sql);
+            deleteCarro.setString(1, miId);
+            deleteCarro.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("este es el error metodo de eliminar" + e);
         }
+    }
+    
+    //limpia los campos poniendolos sin texto o sin elementos cargados
+    public void limpiar(frmUsuarios vista) {
+        vista.txtdui.setText("");
+        vista.cmbCorreoEmpleado.setSelectedItem("Elige un correo");
+        vista.txtnombre.setText("");
+        vista.txtapellido.setText("");
+        vista.txtImagenUrl.setText("");
+        vista.txtImagenUrl.setIcon(null);
+        vista.txtTelefono.setText("");
+        vista.txtFecha.setDate(null);
     }
     
     public void Mostrar(JTable tabla) {
@@ -277,35 +321,37 @@ public class mdlEmpleados {
 }
 
     //funcion que carga los datos en la tabla
-    public void cargarDatosTabla (frmUsuarios vista) {
+    public void cargarDatosTabla(frmUsuarios vista) {
+    int filaSeleccionada = vista.dtgempleado.getSelectedRow();
     
-        int filaSeleccionada = vista.dtgempleado.getSelectedRow();
+    // Asigna los datos de la tabla a cada respectivo input cuando se le da clic a una fila
+    if (filaSeleccionada != -1) {
+        String DuiTb = vista.dtgempleado.getValueAt(filaSeleccionada, 0).toString();
+        String CorreoTb = vista.dtgempleado.getValueAt(filaSeleccionada, 1).toString();
+        String NombreTb = vista.dtgempleado.getValueAt(filaSeleccionada, 2).toString();
+        String ApellidoTb = vista.dtgempleado.getValueAt(filaSeleccionada, 3).toString();
+        String ImagenTb = vista.dtgempleado.getValueAt(filaSeleccionada, 4).toString();
+        String FechaTb = vista.dtgempleado.getValueAt(filaSeleccionada, 5).toString();
+        String TelefonoTb = vista.dtgempleado.getValueAt(filaSeleccionada, 6).toString();
         
-        //asigna los datos de la tabla a cada respectivo imput cuando se le da clic a una fila
-        if (filaSeleccionada != -1) {
-            String DuiTb = vista.dtgempleado.getValueAt(filaSeleccionada, 0).toString();
-            String CorreoTb = vista.dtgempleado.getValueAt(filaSeleccionada, 1).toString();
-            String NombreTb = vista.dtgempleado.getValueAt(filaSeleccionada, 2).toString();
-            String ApellidoTb = vista.dtgempleado.getValueAt(filaSeleccionada, 3).toString();
-            String ImagenTb = vista.dtgempleado.getValueAt(filaSeleccionada, 4).toString();
-            String FechaTb = vista.dtgempleado.getValueAt(filaSeleccionada, 5).toString();
-            String TelefonoTb = vista.dtgempleado.getValueAt(filaSeleccionada, 6).toString();
-            
-            vista.txtdui.setText(DuiTb);
-            vista.cmbCorreoEmpleado.setSelectedItem(CorreoTb);
-            vista.txtnombre.setText(NombreTb);
-            vista.txtapellido.setText(ApellidoTb);
-            vista.txtImagenUrl.setText(ImagenTb);
-            vista.txtTelefono.setText(TelefonoTb);
-            
+        // Asigna los datos a los campos de la vista
+        vista.txtdui.setText(DuiTb);
+        vista.txtnombre.setText(NombreTb);
+        vista.txtapellido.setText(ApellidoTb);
+        vista.txtImagenUrl.setText(ImagenTb);
+        vista.txtTelefono.setText(TelefonoTb);
+        
+        if (FechaTb != null && !FechaTb.isEmpty()) {
             SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            Date fechaConvertida = formatoFecha.parse(FechaTb);
-            vista.txtFecha.setDate(fechaConvertida);
-        }   catch (java.text.ParseException ex) {
+            try {
+                Date fechaConvertida = formatoFecha.parse(FechaTb);
+                vista.txtFecha.setDate(fechaConvertida);
+            } catch (java.text.ParseException ex) {
                 Logger.getLogger(mdlEmpleados.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } else {
+            vista.txtFecha.setDate(null);
         }
     }
-    
+}
 }
