@@ -99,15 +99,15 @@ public class mdlInventario {
         tabla.setModel(model);
 
         model.addColumn("UUID_DetalleProveedor");
-        model.addColumn("Producto o Repuesto");
-        model.addColumn("Proveedor");
+        model.addColumn("ProductoNombre");
+        model.addColumn("ProveedorNombre");
         model.addColumn("Cantidad");
         model.addColumn("Fecha de suministro");
 
-        String sql = "SELECT dp.UUID_DetalleProveedor, dp.Cantidad, dp.FechaSuministro, pr.Nombre, p.Nombre " +
-                       "FROM DetalleProveedor dp " +
-                       "INNER JOIN ProductoRepuesto pr ON dp.UUID_productoRepuesto = pr.UUID_productoRepuesto " +
-                       "INNER JOIN Proveedor p ON dp.Codigo_proveedor = p.Codigo_proveedor";
+        String sql = "SELECT dp.UUID_DetalleProveedor, dp.Cantidad, dp.FechaSuministro, pr.Nombre AS ProductoNombre, p.Nombre AS ProveedorNombre " +
+               "FROM DetalleProveedor dp " +
+               "INNER JOIN ProductoRepuesto pr ON dp.UUID_productoRepuesto = pr.UUID_productoRepuesto " +
+               "INNER JOIN Proveedor p ON dp.Codigo_proveedor = p.Codigo_proveedor";
 
         try {
             Statement st = conexion.createStatement();
@@ -115,13 +115,13 @@ public class mdlInventario {
             model.setRowCount(0); 
 
             while (rs.next()) {
-                Object[] row = new Object[6];
-                row[0] = rs.getString("UUID_DetalleProveedor");
-                row[1] = rs.getString("Producto o Repuesto");
-                row[2] = rs.getString("Proveedor");
-                row[3] = rs.getString("Cantidad");
-                row[4] = rs.getString("Fecha de suministro");
-                model.addRow(row);
+    Object[] row = new Object[5]; // Cambia a 5 porque ahora hay 5 columnas
+              row[0] = rs.getString("UUID_DetalleProveedor");
+              row[1] = rs.getString("ProductoNombre"); // Cambia aquí
+              row[2] = rs.getString("ProveedorNombre"); // Cambia aquí
+              row[3] = rs.getString("Cantidad");
+              row[4] = rs.getString("FechaSuministro");
+              model.addRow(row);
             }
             tabla.setModel(model);
             tabla.getColumnModel().getColumn(0).setMinWidth(0);

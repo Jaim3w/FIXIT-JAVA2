@@ -414,7 +414,7 @@ public class dashboardpanel extends javax.swing.JPanel {
     }//GEN-LAST:event_lbl_perfilMouseClicked
 
     private void lbl_usuarios_y_empleados1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_usuarios_y_empleados1MouseClicked
-    frmProductosRepuestos sw = new frmProductosRepuestos();
+    frmInventario sw = new frmInventario();
     sw .setSize(1040, 670);
     sw .setLocation(0, 0);
     setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
