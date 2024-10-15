@@ -97,35 +97,28 @@ public class ctrlDetalleFactura implements MouseListener, KeyListener {
     try {
         System.out.println("Guardando detalle...");
 
-        // Verificar si hay elementos en el JComboBox de Factura y seleccionar el primero si no hay selección
-        if (Vista.cmbFactura.getItemCount() > 0) {
-                    Vista.cmbFactura.setSelectedIndex(0);
-                }
-
-        // Verificar si hay elementos en el JComboBox de ProductoRepuesto y seleccionar el primero si no hay selección
-        if (Vista.cmbProductoRepuesto.getItemCount() > 0) {
-                    Vista.cmbProductoRepuesto.setSelectedIndex(0);
-                }
-
-        // Verificar si hay elementos en el JComboBox de AsignarOrden y seleccionar el primero si no hay selección
-        if (Vista.cmbAsignarOrden.getItemCount() > 0) {
-                    Vista.cmbAsignarOrden.setSelectedIndex(0);
-                }
-
-        // Asignar los valores de la vista al modelo
+        if(Vista.cmbFactura.getSelectedIndex() != -1 &&
+            Vista.cmbProductoRepuesto.getSelectedIndex() != -1 &&
+           Vista.cmbAsignarOrden.getSelectedIndex() != -1){
+        
         Modelo.setUUID_factura(ModeloFac.getUUID_factura());
         Modelo.setUUID_productoRepuesto(ModeloProducto.getUUID_productoRepuesto());
         Modelo.setUUID_AsignarOrden(ModeloOrden.getUUID_AsignarOrden());
 
-        // Guardar la asignación
         Modelo.InsertarDetalleFactura();
-        Modelo.Mostrar(Vista.tbDetalleFactura);
-
+                Modelo.Mostrar(Vista.tbDetalleFactura);
+                
+                } else {
+                JOptionPane.showMessageDialog(Vista, "Seleccione todos los elementos.", "Error", JOptionPane.WARNING_MESSAGE);
+            }
+   
     } catch (Exception ex) {
         JOptionPane.showMessageDialog(Vista, "Dato ingresado erróneo", "Error", JOptionPane.WARNING_MESSAGE);
         System.out.println("Error al guardar la asignación: " + ex.getMessage());
     }
 }
+      
+      
 
 if (e.getSource() == Vista.btnEliminar) {
     int filaSeleccionada = Vista.tbDetalleFactura.getSelectedRow(); // Obtiene el índice de la fila seleccionada
@@ -173,5 +166,5 @@ if (e.getSource() == Vista.tbDetalleFactura) {
 
     @Override
     public void keyReleased(KeyEvent e) {
-    }    
+    }   
 }
