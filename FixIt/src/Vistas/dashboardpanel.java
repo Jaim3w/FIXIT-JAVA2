@@ -51,7 +51,6 @@ public class dashboardpanel extends javax.swing.JPanel {
         lbl_citas = new javax.swing.JLabel();
         lbl_facturas = new javax.swing.JLabel();
         lbl_proveedores = new javax.swing.JLabel();
-        lbl_ventas = new javax.swing.JLabel();
         lbl_usuarios_y_empleados = new javax.swing.JLabel();
         lbl_usuarios_y_empleados1 = new javax.swing.JLabel();
         lbl_asignaciones = new javax.swing.JLabel();
@@ -141,21 +140,6 @@ public class dashboardpanel extends javax.swing.JPanel {
             }
         });
 
-        lbl_ventas.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_ventas.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        lbl_ventas.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_ventas.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbl_ventas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/yventasuwu.png"))); // NOI18N
-        lbl_ventas.setText("Ventas");
-        lbl_ventas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 15));
-        lbl_ventas.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        lbl_ventas.setIconTextGap(40);
-        lbl_ventas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbl_ventasMouseClicked(evt);
-            }
-        });
-
         lbl_usuarios_y_empleados.setBackground(new java.awt.Color(255, 255, 255));
         lbl_usuarios_y_empleados.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lbl_usuarios_y_empleados.setForeground(new java.awt.Color(255, 255, 255));
@@ -215,7 +199,6 @@ public class dashboardpanel extends javax.swing.JPanel {
                         .addComponent(lbl_citas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lbl_facturas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lbl_proveedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbl_ventas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lbl_usuarios_y_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 15, Short.MAX_VALUE))
         );
@@ -233,14 +216,12 @@ public class dashboardpanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_proveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbl_ventas, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_usuarios_y_empleados1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(lbl_usuarios_y_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_asignaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addGap(96, 96, 96))
         );
 
         whiteRoundedPanelF1.add(transparenteRoundedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 290, 690));
@@ -384,17 +365,6 @@ public class dashboardpanel extends javax.swing.JPanel {
     panelContent.repaint();
     }//GEN-LAST:event_lbl_facturasMouseClicked
 
-    private void lbl_ventasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_ventasMouseClicked
-        frmVentas vt = new frmVentas();
-    vt.setSize(1040, 670);
-    vt.setLocation(0, 0);
-     setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
-    panelContent.removeAll();
-    panelContent.add(vt, BorderLayout.CENTER);
-    panelContent.revalidate();
-    panelContent.repaint();
-    }//GEN-LAST:event_lbl_ventasMouseClicked
-
     private void lbl_usuarios_y_empleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_usuarios_y_empleadosMouseClicked
     frmUsuarios us = new frmUsuarios();
     us.setSize(1040, 670);
@@ -444,7 +414,7 @@ public class dashboardpanel extends javax.swing.JPanel {
     }//GEN-LAST:event_lbl_perfilMouseClicked
 
     private void lbl_usuarios_y_empleados1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_usuarios_y_empleados1MouseClicked
-    frmProductosRepuestos sw = new frmProductosRepuestos();
+    frmInventario sw = new frmInventario();
     sw .setSize(1040, 670);
     sw .setLocation(0, 0);
     setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
@@ -478,7 +448,6 @@ public class dashboardpanel extends javax.swing.JPanel {
     public javax.swing.JLabel lbl_proveedores;
     public javax.swing.JLabel lbl_usuarios_y_empleados;
     public javax.swing.JLabel lbl_usuarios_y_empleados1;
-    public javax.swing.JLabel lbl_ventas;
     public Vistas.elementosTwo.TransparenteRoundedPanel panelContent;
     private Vistas.elementosTwo.TransparenteRoundedPanel transparenteRoundedPanel1;
     private Vistas.elementosTwo.TransparenteRoundedPanel transparenteRoundedPanel2;

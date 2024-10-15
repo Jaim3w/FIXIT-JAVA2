@@ -1,36 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package Vistas;
-
 
 import Controlador.ctrlProductosRepuestos;
 import Controlador.ctrlProveedor;
 import Modelo.Categorias;
 import Modelo.mdlProductosRepuestos;
-
 import Vistas.elementosTwo.TransparenteRoundedPanel;
 
-/**
- *
- * @author Kevin
- */
 public class frmProductosRepuestos extends TransparenteRoundedPanel {
 
-    /**
-     * Creates new form Repuestos
-     */
     public frmProductosRepuestos() {
         initComponents();
         
-        frmProductosRepuestos vista = this;
+        // Crear las instancias necesarias
         mdlProductosRepuestos modelo = new mdlProductosRepuestos();
         Categorias mCategorias = new Categorias();
-         ctrlProductosRepuestos controlador = new ctrlProductosRepuestos(modelo, vista, mCategorias);
-        
-        vista.setVisible(true);
+        ctrlProductosRepuestos controlador = new ctrlProductosRepuestos(modelo, this, mCategorias);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -177,5 +163,20 @@ public class frmProductosRepuestos extends TransparenteRoundedPanel {
     public javax.swing.JTextField txtNombreR;
     public javax.swing.JTextField txtPrecioR;
     // End of variables declaration//GEN-END:variables
+
+    public void setLocationRelativeTo(Object object) {
+    if (object instanceof java.awt.Component) {
+        java.awt.Component parent = (java.awt.Component) object;
+        int x = parent.getX() + (parent.getWidth() - this.getWidth()) / 2;
+        int y = parent.getY() + (parent.getHeight() - this.getHeight()) / 2;
+        this.setLocation(x, y);
+    } else {
+        // Centra el panel en la pantalla
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (screenSize.width - this.getWidth()) / 2;
+        int y = (screenSize.height - this.getHeight()) / 2;
+        this.setLocation(x, y);
+    }
+}
 
 }

@@ -39,55 +39,70 @@ public class frmInventario extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         cmbProdcutosRepuestos = new javax.swing.JComboBox<>();
         cmbProveedores = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         txtCantidad = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         calendar2 = new calendar.Calendar();
-        jLabel5 = new javax.swing.JLabel();
-        btnGuardarInventario = new javax.swing.JButton();
-        btnActualizarInventario = new javax.swing.JButton();
-        btnBorrarInventario = new javax.swing.JButton();
-        btnLimpiarInventario = new javax.swing.JButton();
-        txtBuscarInventario = new javax.swing.JTextField();
-        btnBuscarInventario = new javax.swing.JButton();
+        txtFechaInventario = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbInventario = new javax.swing.JTable();
-        txtFechaInventario = new javax.swing.JTextField();
+        btnGuardarInventario = new Vistas.elemetos.ButtonWI();
+        btnActualizarInventario = new Vistas.elemetos.ButtonWI();
+        btnBorrarInventario = new Vistas.elemetos.ButtonWI();
+        btnLimpiarInventario = new Vistas.elemetos.ButtonWI();
+        btnBuscarInventario = new Vistas.elemetos.ButtonWI();
+        txtBuscarInventario = new Vistas.elementosTwo.MyTextField();
+        btnProductosRepuestos = new Vistas.elemetos.ButtonWI();
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("INVENTARIO");
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cmbProdcutosRepuestos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(cmbProdcutosRepuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 271, 32));
 
         cmbProveedores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel2.setText("Producto o Repuesto:");
-
-        jLabel3.setText("Proovedor:");
-
-        jLabel4.setText("Cantidad:");
+        add(cmbProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 271, 32));
+        add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 271, 32));
 
         calendar2.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 calendar2PropertyChange(evt);
             }
         });
+        add(calendar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(618, 90, 390, 340));
 
-        jLabel5.setText("Ultima fecha de suministro:");
+        txtFechaInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaInventarioActionPerformed(evt);
+            }
+        });
+        add(txtFechaInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 271, 32));
 
-        btnGuardarInventario.setText("Guardar");
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Producto o Repuesto");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, -1, -1));
 
-        btnActualizarInventario.setText("Actualizar");
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Proveedor:");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, -1, -1));
 
-        btnBorrarInventario.setText("Borrar");
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Cantidad:");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, -1, -1));
 
-        btnLimpiarInventario.setText("Limpiar");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Ultima fecha de suministro:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, -1, -1));
 
-        btnBuscarInventario.setText("Buscar");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tbInventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -102,93 +117,35 @@ public class frmInventario extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tbInventario);
 
-        txtFechaInventario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechaInventarioActionPerformed(evt);
-            }
-        });
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 62, 938, 200));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(calendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2)
-                            .addComponent(cmbProdcutosRepuestos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmbProveedores, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtCantidad)
-                            .addComponent(jLabel5)
-                            .addComponent(txtFechaInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(btnBuscarInventario)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnGuardarInventario)
-                                .addGap(80, 80, 80)
-                                .addComponent(btnActualizarInventario)
-                                .addGap(76, 76, 76)
-                                .addComponent(btnBorrarInventario)
-                                .addGap(81, 81, 81)
-                                .addComponent(btnLimpiarInventario))
-                            .addComponent(txtBuscarInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 802, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(367, 367, 367)
-                        .addComponent(jLabel1)))
-                .addContainerGap(78, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbProdcutosRepuestos, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
-                        .addGap(3, 3, 3)
-                        .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtFechaInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(calendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardarInventario)
-                    .addComponent(btnActualizarInventario)
-                    .addComponent(btnBorrarInventario)
-                    .addComponent(btnLimpiarInventario))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBuscarInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
+        btnGuardarInventario.setText("Guardar");
+        btnGuardarInventario.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icguardaraloadriel.png"))); // NOI18N
+        jPanel1.add(btnGuardarInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 15, 150, -1));
+
+        btnActualizarInventario.setText("Editar");
+        btnActualizarInventario.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/iceditaralokevon.png"))); // NOI18N
+        jPanel1.add(btnActualizarInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(498, 15, 150, -1));
+
+        btnBorrarInventario.setText("Eliminar");
+        btnBorrarInventario.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icborraralojosue.png"))); // NOI18N
+        jPanel1.add(btnBorrarInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(654, 15, 150, -1));
+
+        btnLimpiarInventario.setText("Limpiar");
+        btnLimpiarInventario.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/iclimpiaralojaime.png"))); // NOI18N
+        jPanel1.add(btnLimpiarInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 15, 150, -1));
+
+        btnBuscarInventario.setText("Buscar");
+        jPanel1.add(btnBuscarInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 15, 80, -1));
+
+        txtBuscarInventario.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/iconbuscar2.png"))); // NOI18N
+        jPanel1.add(txtBuscarInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 20, 234, -1));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 980, -1));
+
+        btnProductosRepuestos.setText("Crear Producto o Repuesto");
+        btnProductosRepuestos.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icguardaraloadriel.png"))); // NOI18N
+        add(btnProductosRepuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 30, 210, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void calendar2PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_calendar2PropertyChange
@@ -206,22 +163,23 @@ public class frmInventario extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnActualizarInventario;
-    public javax.swing.JButton btnBorrarInventario;
-    public javax.swing.JButton btnBuscarInventario;
-    public javax.swing.JButton btnGuardarInventario;
-    public javax.swing.JButton btnLimpiarInventario;
+    public Vistas.elemetos.ButtonWI btnActualizarInventario;
+    public Vistas.elemetos.ButtonWI btnBorrarInventario;
+    public Vistas.elemetos.ButtonWI btnBuscarInventario;
+    public Vistas.elemetos.ButtonWI btnGuardarInventario;
+    public Vistas.elemetos.ButtonWI btnLimpiarInventario;
+    public Vistas.elemetos.ButtonWI btnProductosRepuestos;
     public calendar.Calendar calendar2;
     public javax.swing.JComboBox<String> cmbProdcutosRepuestos;
     public javax.swing.JComboBox<String> cmbProveedores;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tbInventario;
-    public javax.swing.JTextField txtBuscarInventario;
+    public Vistas.elementosTwo.MyTextField txtBuscarInventario;
     public javax.swing.JTextField txtCantidad;
     public javax.swing.JTextField txtFechaInventario;
     // End of variables declaration//GEN-END:variables

@@ -55,7 +55,7 @@ public class Proveedores {
             Statement statement = conexion.createStatement();
             ResultSet rs = statement.executeQuery("SELECT Codigo_proveedor, Nombre FROM Proveedor");
             while(rs.next()){
-                String uuid = rs.getString("UUID_item");
+                String uuid = rs.getString("Codigo_proveedor");
                 String nombre = rs.getString("Nombre");
                 comboBox.addItem(new Proveedores(uuid, nombre));
             }
