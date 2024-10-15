@@ -39,6 +39,7 @@ import org.json.JSONObject;
  * @author Kevin
  */
 public class mdlProductosRepuestos {
+    private String uuid_ProductoRepuesto;
     private String item;
     private String nombre;
     private int precio; 
@@ -124,11 +125,19 @@ public class mdlProductosRepuestos {
         }
     }
     
+    public String getUUID_ProductoRepuesto() {
+        return uuid_ProductoRepuesto;
+    }
+
+    public void setUUID_ProductoRepuesto(String uuid_ProductoRepuesto) {
+        this.uuid_ProductoRepuesto = uuid_ProductoRepuesto;
+    }
+    
     public String getItem() {
         return item;
     }
 
-    public void setItem(String placa) {
+    public void setItem(String item) {
         this.item = item;
     }
     
@@ -136,7 +145,7 @@ public class mdlProductosRepuestos {
         return nombre;
     }
 
-    public void setNombre(String placa) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     } 
     
@@ -144,7 +153,7 @@ public class mdlProductosRepuestos {
         return precio;
     }
 
-    public void setPrecio(int placa) {
+    public void setPrecio(int precio) {
         this.precio = precio;
     }
     
@@ -254,7 +263,7 @@ public class mdlProductosRepuestos {
     public void Mostrar(JTable tabla) {
         Connection conexion = Conexion.getConexion();
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(new Object[]{"UUID", "Nombre", "Precio", "Imagen", "UUID Item"});
+        modelo.setColumnIdentifiers(new Object[]{"UUID_productoRepuesto", "Nombre", "Precio", "Imagen", "UUID Item"});
 
         try {
             String sql = "SELECT ProductoRepuesto.UUID_productoRepuesto, ProductoRepuesto.Nombre, ProductoRepuesto.ImagenProductoRepuesto, CategoriaItem.Nombre AS CategoriaNombre, ProductoRepuesto.Precio FROM ProductoRepuesto INNER JOIN CategoriaItem ON ProductoRepuesto.UUID_item = CategoriaItem.UUID_item ORDER BY ProductoRepuesto.Nombre";
@@ -263,6 +272,7 @@ public class mdlProductosRepuestos {
 
             while (rs.next()) {
                 modelo.addRow(new Object[]{
+                    rs.getString("UUID_productoRepuesto"),
                     rs.getString("Nombre"),
                     rs.getString("Precio"),
                     rs.getString("ImagenProductoRepuesto"),
