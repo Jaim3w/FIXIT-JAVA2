@@ -1,10 +1,7 @@
 
 package Modelo;
 
-import Vistas.frmModelo;
-import java.io.IOException;
-import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
+import Vistas.frmMarca;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,21 +12,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import org.apache.hc.core5.http.ParseException;
 
-
-public class mdlModelo {
-    private String uuidModelo;
+public class mdlMarca {
     private String uuidMarca;
     private String Nombre;
-
-    public String getUuidModelo() {
-        return uuidModelo;
-    }
-
-    public void setUuidModelo(String uuidModelo) {
-        this.uuidModelo = uuidModelo;
-    }
+    private String Descripcion;
 
     public String getUuidMarca() {
         return uuidMarca;
@@ -46,19 +33,27 @@ public class mdlModelo {
     public void setNombre(String Nombre) {
         this.Nombre = Nombre;
     }
+
+    public String getDescripcion() {
+        return Descripcion;
+    }
+
+    public void setDescripcion(String Descripcion) {
+        this.Descripcion = Descripcion;
+    }
     
     public void Guardar() {
         Connection conexion = Conexion.getConexion();
 
         try {
-            String sql = "INSERT INTO Modelo (UUID_modelo, UUID_marca, nombre) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO Marca (UUID_marca, Nombre, Descripcion) VALUES (?, ?, ?)";
             PreparedStatement pstmt = conexion.prepareStatement(sql);
             pstmt.setString(1, UUID.randomUUID().toString());
-            pstmt.setString(2, getUuidMarca());
-            pstmt.setString(3, getNombre());
+            pstmt.setString(2, getNombre());
+            pstmt.setString(3, getDescripcion());
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al guardar el carro: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al guardar la marca: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Ocurrió un error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
@@ -69,14 +64,14 @@ public class mdlModelo {
     Connection conexion = Conexion.getConexion();
     int filaSeleccionada = tabla.getSelectedRow();
     if (filaSeleccionada != -1) {
-        String modeloName = tabla.getValueAt(filaSeleccionada, 0).toString();
+        String uuid = tabla.getValueAt(filaSeleccionada, 0).toString();
         try {
-            String sql = "UPDATE Modelo SET Nombre = ?, UUID_marca = ? WHERE UUID_modelo = ?";
-            PreparedStatement updateCarro = conexion.prepareStatement(sql);
-            updateCarro.setString(1, getNombre());
-            updateCarro.setString(2, getUuidMarca());
-            updateCarro.setString(3, modeloName);
-            updateCarro.executeUpdate();
+            String sql = "UPDATE Marca SET Nombre = ?, Descripcion = ? WHERE UUID_marca = ?";
+            PreparedStatement updateMarca = conexion.prepareStatement(sql);
+            updateMarca.setString(1, getNombre());
+            updateMarca.setString(2, getDescripcion());
+            updateMarca.setString(3, uuid);
+            updateMarca.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error al actualizar el carro: " + e.getMessage());
@@ -90,7 +85,7 @@ public class mdlModelo {
         String miId = tabla.getValueAt(filaSeleccionada, 0).toString();
         
         try {
-            String sql = "delete from Modelo where Nombre = ?";
+            String sql = "delete from Marca where Nombre = ?";
             PreparedStatement deleteModelo = conexion.prepareStatement(sql);
             deleteModelo.setString(1, miId);
             deleteModelo.executeUpdate();
@@ -100,31 +95,28 @@ public class mdlModelo {
     }
     
     //limpia los campos poniendolos sin texto o sin elementos cargados
-    public void limpiar(frmModelo vista) {
+    public void limpiar(frmMarca vista) {
         vista.txtNombre.setText("");
-        vista.cmbMarca.setSelectedItem(null);
+        vista.txtDescripcion.setText("");
     }
     
     public void Buscar(JTable tabla, JTextField miTextField) {
         Connection conexion = Conexion.getConexion();
 
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(new Object[]{"Marca", "Modelo"});
+        modelo.setColumnIdentifiers(new Object[]{"Marca", "Descripcion"});
         
         //busca todos los datos con un inner join basandose en la placa
         try {
-            String sql = "SELECT Marca.Nombre AS NombreMarca, Modelo.Nombre AS NombreModelo\n" +
-                        "FROM Modelo\n" +
-                        "INNER JOIN Marca ON Modelo.UUID_marca = Marca.UUID_marca\n" +
-                        "WHERE Modelo.Nombre LIKE ? OR Marca.Nombre LIKE ?";
+            String sql = "SELECT from Marca WHERE Nombre LIKE ? ";
             PreparedStatement buscarModelo = conexion.prepareStatement(sql);
             buscarModelo.setString(1, miTextField.getText());
             ResultSet rs = buscarModelo.executeQuery();
 
             while (rs.next()) {
                 modelo.addRow(new Object[]{
-                    rs.getString("NombreMarca"),
-                    rs.getString("NombreModelo"),
+                    rs.getString("Nombre"),
+                    rs.getString("Descripcion"),
                 });
             }
 
@@ -137,22 +129,19 @@ public class mdlModelo {
     public void Mostrar(JTable tabla) {
     Connection conexion = Conexion.getConexion();
     DefaultTableModel modelo = new DefaultTableModel();
-    modelo.setColumnIdentifiers(new Object[]{"Marca", "Modelo"});
+    modelo.setColumnIdentifiers(new Object[]{"Marca", "Descripcion"});
     
     try {
         // Consulta a ejecutar
-        String query = "SELECT Marca.Nombre AS NombreMarca, Modelo.Nombre AS NombreModelo\n" +
-                        "FROM Modelo\n" +
-                        "INNER JOIN Marca ON Modelo.UUID_marca = Marca.UUID_marca";
+        String query = "SELECT Nombre, Descripcion from Marca";
         
         Statement statement = conexion.createStatement();
         ResultSet rs = statement.executeQuery(query);
         
         while (rs.next()) {
             modelo.addRow(new Object[]{
-                rs.getString("NombreMarca"),
-                rs.getString("NombreModelo"),
-                
+                rs.getString("Nombre"),
+                rs.getString("Descripcion"),
             });
         }
         tabla.setModel(modelo);
@@ -162,15 +151,15 @@ public class mdlModelo {
     }
 }
     
-    public void cargarDatosTabla(frmModelo vista) {
-    int filaSeleccionada = vista.tbModelos.getSelectedRow();
+    public void cargarDatosTabla(frmMarca vista) {
+    int filaSeleccionada = vista.tbMarcas.getSelectedRow();
     
     if (filaSeleccionada != -1) {
-        String marcaTb = vista.tbModelos.getValueAt(filaSeleccionada, 0).toString();
-        String modeloTb = vista.tbModelos.getValueAt(filaSeleccionada, 1).toString();
+        String marcaTb = vista.tbMarcas.getValueAt(filaSeleccionada, 0).toString();
+        String descripcionTb = vista.tbMarcas.getValueAt(filaSeleccionada, 1).toString();
         
         vista.txtNombre.setText(marcaTb);
-        vista.cmbMarca.setSelectedItem(modeloTb);
+        vista.txtDescripcion.setText(descripcionTb);
     }
 }
 }

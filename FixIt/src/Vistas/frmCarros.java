@@ -54,7 +54,6 @@ public class frmCarros extends TransparenteRoundedPanel {
         jLabel13 = new javax.swing.JLabel();
         txtIngresoCarro = new javax.swing.JLabel();
         btnSubirImagen = new Vistas.elemetos.ButtonWI();
-        btnNewCliente = new javax.swing.JButton();
         btnNewModelo = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -184,9 +183,6 @@ public class frmCarros extends TransparenteRoundedPanel {
         btnSubirImagen.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/iccargarimagenalofito.png"))); // NOI18N
         add(btnSubirImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 170, -1));
 
-        btnNewCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/mas.png"))); // NOI18N
-        add(btnNewCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 30, 30));
-
         btnNewModelo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/mas.png"))); // NOI18N
         add(btnNewModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 30, 30));
     }// </editor-fold>//GEN-END:initComponents
@@ -201,7 +197,6 @@ public class frmCarros extends TransparenteRoundedPanel {
     public Vistas.elemetos.ButtonWI btnActualizarCarro;
     public Vistas.elemetos.ButtonWI btnEliminarCarro;
     public Vistas.elemetos.ButtonWI btnGuardarCarro;
-    public javax.swing.JButton btnNewCliente;
     public javax.swing.JButton btnNewModelo;
     public Vistas.elemetos.ButtonWI btnSubirImagen;
     public javax.swing.JComboBox<String> cmbClienteCarro;

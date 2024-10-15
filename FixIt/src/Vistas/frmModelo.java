@@ -11,7 +11,7 @@ import Vistas.elementosTwo.TransparenteRoundedPanel;
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 
-public class frmModelo extends javax.swing.JFrame{
+public class frmModelo extends JFrame{
 
     public frmModelo() {
         initComponents();
@@ -22,7 +22,7 @@ public class frmModelo extends javax.swing.JFrame{
         ctrlModelo controlador = new ctrlModelo(modelo, vista, mMarca);
         
         vista.setVisible(true);
-        setSize(1020, 720);
+        setSize(690, 400);
         setResizable(false);
     }
     
@@ -116,12 +116,12 @@ public class frmModelo extends javax.swing.JFrame{
 
         jLabel4.setText("Buscar:");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(224, Short.MAX_VALUE)
+                .addContainerGap(223, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(249, 249, 249))
             .addGroup(layout.createSequentialGroup()
