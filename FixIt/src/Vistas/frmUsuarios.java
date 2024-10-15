@@ -60,6 +60,9 @@ public class frmUsuarios extends TransparenteRoundedPanel{
         txtImagenUrl = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtFecha = new com.toedter.calendar.JDateChooser();
+        btnClientes = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -137,7 +140,7 @@ public class frmUsuarios extends TransparenteRoundedPanel{
         add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 120, -1));
 
         btnSubirImagen.setText("Subir Imagen");
-        add(btnSubirImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 210, -1, 30));
+        add(btnSubirImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, -1, 30));
 
         btnNewUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/mas.png"))); // NOI18N
         add(btnNewUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 30, 30));
@@ -147,12 +150,21 @@ public class frmUsuarios extends TransparenteRoundedPanel{
         txtImagenUrl.setMinimumSize(new java.awt.Dimension(50, 50));
         pnlImagen.add(txtImagenUrl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 110));
 
-        add(pnlImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 90, 160, 110));
+        add(pnlImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 160, 110));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
         jLabel5.setText("FechaNacimiento");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, -1, -1));
-        add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, 220, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, -1, -1));
+        add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 220, -1));
+
+        btnClientes.setText("Ver clientes");
+        add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 240, 100, 30));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/cliente (1).png"))); // NOI18N
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 140, -1, -1));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/fondo.png"))); // NOI18N
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 100, 180, 210));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtduiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtduiActionPerformed
@@ -162,6 +174,7 @@ public class frmUsuarios extends TransparenteRoundedPanel{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public Vistas.elemetos.ButtonA btnActualizar;
+    public javax.swing.JButton btnClientes;
     public Vistas.elemetos.ButtonA btnEliminar;
     public Vistas.elemetos.ButtonA btnGuardar;
     public Vistas.elemetos.ButtonA btnLimpiar;
@@ -172,6 +185,8 @@ public class frmUsuarios extends TransparenteRoundedPanel{
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -5,8 +5,10 @@
 package Modelo;
 
 import Vistas.frmUsuarios;
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,6 +23,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -308,7 +311,7 @@ public class mdlEmpleados {
 }
 
     //funcion que carga los datos en la tabla
-    public void cargarDatosTabla(frmUsuarios vista) {
+ public void cargarDatosTabla(frmUsuarios vista) {
     int filaSeleccionada = vista.dtgempleado.getSelectedRow();
     
     // Asigna los datos de la tabla a cada respectivo input cuando se le da clic a una fila
@@ -328,6 +331,19 @@ public class mdlEmpleados {
         vista.txtImagenUrl.setText(ImagenTb);
         vista.txtTelefono.setText(TelefonoTb);
         
+        // Cargar la imagen desde la URL y mostrarla en el JLabel
+        try {
+            URL url = new URL(ImagenTb);
+            ImageIcon icon = new ImageIcon(url);
+            
+            // Redimensionar la imagen si es necesario
+            Image img = icon.getImage().getScaledInstance(vista.txtImagenUrl.getWidth(), vista.txtImagenUrl.getHeight(), Image.SCALE_SMOOTH);
+            vista.txtImagenUrl.setIcon(new ImageIcon(img));
+        } catch (Exception e) {
+            vista.txtImagenUrl.setText("Imagen no disponible");
+            e.printStackTrace();
+        }
+
         if (FechaTb != null && !FechaTb.isEmpty()) {
             SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
             try {

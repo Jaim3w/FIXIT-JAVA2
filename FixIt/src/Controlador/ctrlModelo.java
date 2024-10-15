@@ -4,11 +4,14 @@ package Controlador;
 import Modelo.ClientesCarro;
 import Modelo.ModeloCarro;
 import Modelo.mdlModelo;
+import Vistas.frmMarca;
 import Vistas.frmModelo;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 
 
@@ -26,8 +29,11 @@ public class ctrlModelo implements MouseListener, KeyListener {
         vista.btnActualizar.addMouseListener(this);
         vista.btnEliminar.addMouseListener(this);
         vista.btnLimpiar.addMouseListener(this);
+        vista.tbModelos.addMouseListener(this);
+        vista.txtBuscar.addKeyListener(this);
+        vista.btnNewMarca.addMouseListener(this);
         
-        this.mMarcas.CargarComboModelos(vista.cmbMarca);
+        this.mMarcas.CargarComboMarcas(vista.cmbMarca);
         vista.cmbMarca.addActionListener(e -> {
             if (e.getSource() == vista.cmbMarca) {
                 System.out.println("ComboBox seleccionado");
@@ -48,6 +54,23 @@ public class ctrlModelo implements MouseListener, KeyListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        
+        if (e.getSource() == vista.btnNewMarca) {
+            frmMarca nuevoMarcaFrame = new frmMarca();
+            nuevoMarcaFrame.setLocationRelativeTo(null);
+            nuevoMarcaFrame.setVisible(true);
+
+            vista.dispose();
+            
+            nuevoMarcaFrame.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    // Refrescar la lista de modelos si es necesario
+                    mMarcas.CargarComboMarcas(vista.cmbMarca);
+                }
+            });
+        }
+        
         if (e.getSource() == vista.btnAgregar) {
         // Validar que los campos no estén vacíos
         if (vista.txtNombre.getText().isEmpty() || vista.cmbMarca.getSelectedItem() == null) {
