@@ -1,21 +1,37 @@
 package Vistas;
 
+import Controlador.ctrlDash;
+import Modelo.mdlDash;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 public class dashboardpanel extends javax.swing.JPanel {
-
   
     public dashboardpanel() {
 
          // Inicializamos los componentes
-    initComponents();        
+    initComponents();
+    
+    mdlDash modelo = new mdlDash();
+    dashboardpanel vista = this;
+    ctrlDash con = new ctrlDash(modelo, vista);
 
     // Configuramos el color de fondo y el layout
     setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
     
+    }
+    
+    public JLabel getTxtNombre() {
+        return lbl_perfil;
+    }
+    
+    public void setTxtNombre(String nombre) {
+        lbl_perfil.setText(nombre);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -378,7 +394,7 @@ public class dashboardpanel extends javax.swing.JPanel {
     }//GEN-LAST:event_lbl_ventasMouseClicked
 
     private void lbl_usuarios_y_empleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_usuarios_y_empleadosMouseClicked
-        frmUsuarios us = new frmUsuarios();
+    frmUsuarios us = new frmUsuarios();
     us.setSize(1040, 670);
     us.setLocation(0, 0);
      setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
@@ -396,11 +412,26 @@ public class dashboardpanel extends javax.swing.JPanel {
     }//GEN-LAST:event_imgMinimizeMouseClicked
 
     private void imgExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgExitMouseClicked
-        System.exit(0);  // Cierra la aplicación por completo
+          
+                int confirmacion = JOptionPane.showConfirmDialog(
+                    null, 
+                    "¿Estás seguro de que deseas cerrar sesión?", 
+                    "Confirmar cierre de sesión", 
+                    JOptionPane.YES_NO_OPTION
+                );
+
+                // Verificar la respuesta del usuario
+                if (confirmacion == JOptionPane.YES_OPTION) {
+                    // Si elige "Sí", redirigir a la pantalla de login
+                    Loginjava.initLogin();
+                    SwingUtilities.getWindowAncestor(this.imgExit).dispose();
+                } 
+                // Si elige "No", simplemente se cierra el cuadro de diálogo y no ocurre nada
+            
     }//GEN-LAST:event_imgExitMouseClicked
 
     private void lbl_perfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_perfilMouseClicked
-          frmPerfilAd pa = new frmPerfilAd();
+    frmPerfilAd pa = new frmPerfilAd();
     pa.setSize(1040, 670);
     pa.setLocation(0, 0);
      setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
@@ -411,8 +442,14 @@ public class dashboardpanel extends javax.swing.JPanel {
     }//GEN-LAST:event_lbl_perfilMouseClicked
 
     private void lbl_usuarios_y_empleados1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_usuarios_y_empleados1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lbl_usuarios_y_empleados1MouseClicked
+    frmProductosRepuestos sw = new frmProductosRepuestos();
+    sw .setSize(1040, 670);
+    sw .setLocation(0, 0);
+    setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
+    panelContent.removeAll();
+    panelContent.add(sw, BorderLayout.CENTER);
+    panelContent.revalidate();
+    panelContent.repaint();    }//GEN-LAST:event_lbl_usuarios_y_empleados1MouseClicked
 
     private void lbl_asignacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_asignacionesMouseClicked
  frmAsignarOrden us = new frmAsignarOrden();

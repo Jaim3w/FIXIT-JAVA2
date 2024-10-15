@@ -142,7 +142,7 @@ public class mdlClientes {
                     rs.getString("Apellido"), 
                     rs.getString("Contrasena"), 
                     rs.getString("Correo_Electronico"), 
-                    rs.getString("Correo_Electronico")});
+                    rs.getString("Telefono")});
             }
             //Asignamos el nuevo modelo lleno a la tabla
             tabla.setModel(modelo);

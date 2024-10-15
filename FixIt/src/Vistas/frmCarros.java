@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package Vistas;
 
 import Controlador.ctrlCarros;
@@ -58,6 +54,7 @@ public class frmCarros extends TransparenteRoundedPanel {
         jLabel13 = new javax.swing.JLabel();
         txtIngresoCarro = new javax.swing.JLabel();
         btnSubirImagen = new Vistas.elemetos.ButtonWI();
+        btnNewModelo = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(922, 703));
@@ -132,13 +129,13 @@ public class frmCarros extends TransparenteRoundedPanel {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Fecha de ingreso");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, -1, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Año del vehiculo");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, -1, -1));
-        add(txtDescripcionCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 220, 30));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, -1, -1));
+        add(txtDescripcionCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 220, 30));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -156,11 +153,11 @@ public class frmCarros extends TransparenteRoundedPanel {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Descripcion");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, -1, -1));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, -1, -1));
 
         lblImagenCarro.setBackground(new java.awt.Color(255, 255, 255));
         lblImagenCarro.setForeground(new java.awt.Color(255, 255, 255));
-        add(lblImagenCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 40, 290, 230));
+        add(lblImagenCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 40, 290, 230));
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 110, -1, -1));
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 510, 30, 30));
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 370, 30, 10));
@@ -171,7 +168,7 @@ public class frmCarros extends TransparenteRoundedPanel {
         jLabel11.setText("Modelo:");
         add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
         add(txtColorCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 220, 30));
-        add(txtAnoCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 220, 30));
+        add(txtAnoCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, 220, 30));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
@@ -180,11 +177,14 @@ public class frmCarros extends TransparenteRoundedPanel {
 
         txtIngresoCarro.setForeground(new java.awt.Color(255, 255, 255));
         txtIngresoCarro.setText("jLabel14");
-        add(txtIngresoCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 90, -1));
+        add(txtIngresoCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, 90, -1));
 
         btnSubirImagen.setText("Cargar imagen");
         btnSubirImagen.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/iccargarimagenalofito.png"))); // NOI18N
-        add(btnSubirImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 170, -1));
+        add(btnSubirImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 170, -1));
+
+        btnNewModelo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/mas.png"))); // NOI18N
+        add(btnNewModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 30, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtBuscarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarCarroActionPerformed
@@ -197,6 +197,7 @@ public class frmCarros extends TransparenteRoundedPanel {
     public Vistas.elemetos.ButtonWI btnActualizarCarro;
     public Vistas.elemetos.ButtonWI btnEliminarCarro;
     public Vistas.elemetos.ButtonWI btnGuardarCarro;
+    public javax.swing.JButton btnNewModelo;
     public Vistas.elemetos.ButtonWI btnSubirImagen;
     public javax.swing.JComboBox<String> cmbClienteCarro;
     public javax.swing.JComboBox<String> cmbModeloCarro;

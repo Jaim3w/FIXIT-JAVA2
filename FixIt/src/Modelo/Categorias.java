@@ -53,7 +53,7 @@ public class Categorias {
         comboBox.removeAllItems();
         try {
             Statement statement = conexion.createStatement();
-            ResultSet rs = statement.executeQuery("select UUID_item, Nombre from CategoriaItem");
+            ResultSet rs = statement.executeQuery("SELECT UUID_item, Nombre FROM CategoriaItem");
             while(rs.next()){
                 String uuid = rs.getString("UUID_item");
                 String nombre = rs.getString("Nombre");

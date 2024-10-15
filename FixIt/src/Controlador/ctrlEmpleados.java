@@ -8,9 +8,12 @@ import javax.swing.JOptionPane;
 import Modelo.mdlEmpleados;
 import Modelo.Usuarios;
 import Vistas.Loginjava;
+import Vistas.frmClientes;
 import Vistas.frmUsuarios; 
 import Vistas.frmNuevoUsuario;
 import java.awt.Image;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -35,6 +38,7 @@ public class ctrlEmpleados implements MouseListener, KeyListener {
         Vista.btnSubirImagen.addMouseListener(this);
         Vista.dtgempleado.addMouseListener(this);
         Vista.btnNewUser.addMouseListener(this);
+        Vista.btnClientes.addMouseListener(this);
         Vista.btnActualizar.addMouseListener(this);
         Vista.btnEliminar.addMouseListener(this);
         
@@ -61,18 +65,30 @@ public class ctrlEmpleados implements MouseListener, KeyListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == Vista.btnNewUser) {
-            // Mostrar el nuevo JFrame
             frmNuevoUsuario nuevoUsuarioFrame = new frmNuevoUsuario();
-            nuevoUsuarioFrame.setVisible(true); // Mostrar el JFrame
-            nuevoUsuarioFrame.setLocationRelativeTo(null); // Centrar el JFrame en la pantalla
+            nuevoUsuarioFrame.setVisible(true);
+            nuevoUsuarioFrame.setLocationRelativeTo(null);
+
+            nuevoUsuarioFrame.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    mUsuarios.CargarComboEmpleado(Vista.cmbCorreoEmpleado);
+                }
+            });
         }
+        
+        if (e.getSource() == Vista.btnClientes) {
+            frmClientes nuevoClientesFrame = new frmClientes();
+            nuevoClientesFrame.setVisible(true);
+            nuevoClientesFrame.setLocationRelativeTo(null);
+        }
+
         
         if (e.getSource() == Vista.dtgempleado) {
             Modelo.cargarDatosTabla(Vista);
         }
         
         if (e.getSource() == Vista.btnSubirImagen) {
-    // Crear el JFileChooser para seleccionar un archivo
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Seleccionar Imagen");
 
