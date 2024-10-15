@@ -968,33 +968,44 @@ END;
 
 
 
-
 -- Crear trigger para insertar en Venta cuando se inserte en DetalleFactura
-CREATE OR REPLACE TRIGGER trg_insert_venta
-AFTER INSERT ON DetalleFactura
+CREATE OR REPLACE TRIGGER trg_insert_delete_venta
+AFTER INSERT OR DELETE ON DetalleFactura
 FOR EACH ROW
 DECLARE
     v_precio_producto NUMBER(10, 2);
     v_precio_servicio NUMBER(10, 2);
     v_subtotal NUMBER(10, 2);
 BEGIN
-    -- Obtener el precio del producto o repuesto
-    SELECT Precio INTO v_precio_producto
-    FROM ProductoRepuesto
-    WHERE UUID_productoRepuesto = :NEW.UUID_productoRepuesto;
+    -- Acción para inserciones
+    IF INSERTING THEN
+        -- Obtener el precio del producto o repuesto
+        SELECT Precio INTO v_precio_producto
+        FROM ProductoRepuesto
+        WHERE UUID_productoRepuesto = :NEW.UUID_productoRepuesto;
 
-    -- Obtener el precio del servicio
-    SELECT Precio INTO v_precio_servicio
-    FROM Servicio
-    WHERE UUID_servicio = (SELECT UUID_servicio FROM AsignarOrden WHERE UUID_AsignarOrden = :NEW.UUID_AsignarOrden);
+        -- Obtener el precio del servicio
+        SELECT Precio INTO v_precio_servicio
+        FROM Servicio
+        WHERE UUID_servicio = (SELECT UUID_servicio FROM AsignarOrden WHERE UUID_AsignarOrden = :NEW.UUID_AsignarOrden);
 
-    -- Calcular el subtotal sumando el precio del producto/repuesto y el servicio
-    v_subtotal := v_precio_producto + v_precio_servicio;
+        -- Calcular el subtotal sumando el precio del producto/repuesto y el servicio
+        v_subtotal := v_precio_producto + v_precio_servicio;
 
-    -- Insertar en la tabla Venta
-    INSERT INTO Venta (UUID_Venta, UUID_factura, UUID_productoRepuesto, UUID_AsignarOrden, Subtotal)
-    VALUES (SYS_GUID(), :NEW.UUID_factura, :NEW.UUID_productoRepuesto, :NEW.UUID_AsignarOrden, v_subtotal);
+        -- Insertar en la tabla Venta
+        INSERT INTO Venta (UUID_Venta, UUID_factura, UUID_productoRepuesto, UUID_AsignarOrden, Subtotal)
+        VALUES (SYS_GUID(), :NEW.UUID_factura, :NEW.UUID_productoRepuesto, :NEW.UUID_AsignarOrden, v_subtotal);
+
+    -- Acción para eliminaciones
+    ELSIF DELETING THEN
+        -- Eliminar el registro correspondiente en la tabla Venta
+        DELETE FROM Venta
+        WHERE UUID_factura = :OLD.UUID_factura
+          AND UUID_productoRepuesto = :OLD.UUID_productoRepuesto
+          AND UUID_AsignarOrden = :OLD.UUID_AsignarOrden;
+    END IF;
 END;
+
 --------------------------------------------------------------------------------------------------------------
 
 
@@ -1339,9 +1350,7 @@ INNER JOIN Servicio ON AsignarOrden.UUID_servicio = Servicio.UUID_servicio;
 
 Select ProductoRepuesto.UUID_productoRepuesto, ProductoRepuesto.Nombre from ProductoRepuesto;
 
-select * from factura;
-select * from productoRepuesto;
-select * from asignarOrden;
+
 
 SELECT
     Venta.UUID_Venta,
@@ -1357,3 +1366,18 @@ INNER JOIN Servicio  ON AsignarOrden.UUID_servicio = Servicio.UUID_servicio
 INNER JOIN Factura ON Venta.UUID_Factura = Factura.UUID_Factura
 Where FacturaIdentificacion = 'Carlos';
 
+select * from venta;
+
+SELECT Factura.FacturaIdentificacion AS "Factura de",ProductoRepuesto.Nombre AS "Producto o Repuesto", Servicio.Nombre AS "Servicio",  Venta.Subtotal As "Subtotal",
+SUM(Venta.Subtotal) OVER (PARTITION BY Factura.FacturaIdentificacion) AS "Total a pagar" FROM  Venta 
+INNER JOIN ProductoRepuesto ON Venta.UUID_productoRepuesto = ProductoRepuesto.UUID_productoRepuesto 
+INNER JOIN AsignarOrden ON Venta.UUID_AsignarOrden = AsignarOrden.UUID_AsignarOrden 
+INNER JOIN Servicio ON AsignarOrden.UUID_servicio = Servicio.UUID_servicio 
+INNER JOIN Factura ON Venta.UUID_Factura = Factura.UUID_Factura;
+
+delete from venta where uuid_Factura = '5B2AE9632E934601BB502DE6D92BA6C2'
+
+select * from detalleFactura;
+select * from Venta;
+
+commit;

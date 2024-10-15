@@ -356,7 +356,7 @@ public class dashboardpanel extends javax.swing.JPanel {
     }//GEN-LAST:event_lbl_citasMouseClicked
 
     private void lbl_facturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_facturasMouseClicked
-    frmDetalleFactura fr = new frmDetalleFactura();
+    frmFacturacion fr = new frmFacturacion();
     fr.setSize(1040, 670);
     fr.setLocation(0, 0);
      setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
