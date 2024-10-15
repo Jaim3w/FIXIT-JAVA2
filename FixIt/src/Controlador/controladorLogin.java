@@ -25,7 +25,6 @@ public class controladorLogin implements MouseInputListener {
         
         this.vista.btnLogin.addMouseListener(this);
         this.vista.btnOlvidecontra.addMouseListener(this);
-        this.vista.btnIrRegister.addMouseListener(this);
     }
 
     @Override
@@ -89,12 +88,6 @@ public class controladorLogin implements MouseInputListener {
   
 }
         
-         if (e.getSource() == vista.btnIrRegister){
-        
-        
-            frmRegistrarse.initfrmRegistrarse();
-            vista.dispose();
-        }
        
                        
     }
