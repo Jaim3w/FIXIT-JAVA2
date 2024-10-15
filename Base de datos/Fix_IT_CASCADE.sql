@@ -896,7 +896,7 @@ BEGIN
             USER,
             SYSDATE,
             :NEW.UUID_DetalleFactura,
-            NULL
+            'Detalle uuid=' || :NEW.UUID_detalleFactura 
         );
         
     ELSIF DELETING THEN
@@ -915,7 +915,7 @@ BEGIN
             USER,
             SYSDATE,
             :OLD.UUID_DetalleFactura,
-            NULL
+            'Detalle uuid=' || :OLD.UUID_detalleFactura 
         );
     END IF;
 END;
@@ -1188,11 +1188,11 @@ INSERT ALL
   VALUES (SYS_GUID(), '092438653', '534233464', '2024-08-05', '16:00', 'Reparacion de sistema electrico')
 SELECT * FROM dual;
 
-
+select * from cita;
 
 INSERT INTO AsignarOrden(UUID_AsignarOrden, UUID_cita, UUID_servicio, UUID_estado, Carro_Empleado, FechaAsignacion, FechaFinalizacion, Descripcion)
   VALUES (SYS_GUID(), 
-          (SELECT UUID_cita FROM Cita WHERE Descripcion = 'Revision general del vehículo'), 
+          (SELECT UUID_cita FROM Cita WHERE Descripcion = 'Revision general del vehiculo'), 
           (SELECT UUID_servicio FROM Servicio WHERE Nombre = 'Diagnostico Completo'), 
           (SELECT UUID_estado FROM EstadoAsignarOrden WHERE Nombre = 'En proceso'),   'Carro de Carlos',
           '25/08/2024', '30/08/2024', 'Orden de mantenimiento preventivo');
@@ -1215,7 +1215,7 @@ INSERT INTO AsignarOrden (UUID_AsignarOrden, UUID_cita, UUID_servicio, UUID_esta
 INSERT INTO AsignarOrden (UUID_AsignarOrden, UUID_cita, UUID_servicio, UUID_estado, Carro_Empleado, FechaAsignacion, FechaFinalizacion, Descripcion)
 VALUES (
     SYS_GUID(), 
-    (SELECT UUID_cita FROM Cita WHERE Descripcion = 'Inspeccion de frenos y suspensión'), 
+    (SELECT UUID_cita FROM Cita WHERE Descripcion = 'Inspeccion de frenos y suspension'), 
     (SELECT UUID_servicio FROM Servicio WHERE Nombre = 'Revision de Frenos'), 
     (SELECT UUID_estado FROM EstadoAsignarOrden WHERE Nombre = 'En proceso'), 
     'Carro de Paulo', '25/08/2024', '30/08/2024', 'Reparación de frenos'
@@ -1224,12 +1224,10 @@ VALUES (
 
 INSERT INTO AsignarOrden (UUID_AsignarOrden, UUID_cita, UUID_servicio, UUID_estado,Carro_Empleado, FechaAsignacion, FechaFinalizacion, Descripcion)
   VALUES (SYS_GUID(), 
-          (SELECT UUID_cita FROM Cita WHERE Descripcion = 'Reparacion de sistema eléctrico'), 
+          (SELECT UUID_cita FROM Cita WHERE Descripcion = 'Reparacion de sistema electrico'), 
           (SELECT UUID_servicio FROM Servicio WHERE Nombre = 'Cambio de Bateria'), 
           (SELECT UUID_estado FROM EstadoAsignarOrden WHERE Nombre = 'Terminado'), 'Carro de La fuente',
           '25/08/2024', '30/08/2024', 'Cambio de bateria y llantas');
-
-
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -1375,7 +1373,7 @@ INNER JOIN AsignarOrden ON Venta.UUID_AsignarOrden = AsignarOrden.UUID_AsignarOr
 INNER JOIN Servicio ON AsignarOrden.UUID_servicio = Servicio.UUID_servicio 
 INNER JOIN Factura ON Venta.UUID_Factura = Factura.UUID_Factura;
 
-delete from venta where uuid_Factura = '5B2AE9632E934601BB502DE6D92BA6C2'
+delete from venta where uuid_Factura = '5B2AE9632E934601BB502DE6D92BA6C2';
 
 select * from detalleFactura;
 select * from Venta;
