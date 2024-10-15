@@ -57,8 +57,8 @@ public class frmCarros extends TransparenteRoundedPanel {
         txtAnoCarro = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         txtIngresoCarro = new javax.swing.JLabel();
-        btnSubirImagen = new Vistas.elemetos.ButtonWI();
         btnNewCliente = new javax.swing.JButton();
+        btnSubirImagen = new Vistas.elemetos.ButtonWI();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(922, 703));
@@ -183,12 +183,13 @@ public class frmCarros extends TransparenteRoundedPanel {
         txtIngresoCarro.setText("jLabel14");
         add(txtIngresoCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, 90, -1));
 
-        btnSubirImagen.setText("Cargar imagen");
-        btnSubirImagen.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/iccargarimagenalofito.png"))); // NOI18N
-        add(btnSubirImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 170, -1));
-
+        btnNewCliente.setBackground(new java.awt.Color(255, 255, 255));
         btnNewCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/mas.png"))); // NOI18N
         add(btnNewCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 30, 30));
+
+        btnSubirImagen.setText("Cargar imagen");
+        btnSubirImagen.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/iccargarimagenalofito.png"))); // NOI18N
+        add(btnSubirImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 270, 220, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtBuscarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarCarroActionPerformed
