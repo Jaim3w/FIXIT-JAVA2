@@ -3,45 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/caryt/OneDrive/Escritorio/EXPO2024/FIXIT-JAVA2/FixIt/src/Vistas/dashboard.java</file>
-            <file>file:/C:/Users/caryt/OneDrive/Escritorio/EXPO2024/FIXIT-JAVA2/FixIt/src/Vistas/Loginjava.java</file>
             <file>file:/C:/Users/caryt/OneDrive/Escritorio/EXPO2024/FIXIT-JAVA2/FixIt/src/Controlador/ctrlEmpleados.java</file>
             <file>file:/C:/Users/caryt/OneDrive/Escritorio/EXPO2024/FIXIT-JAVA2/FixIt/src/Modelo/mdlPerfilAd.java</file>
             <file>file:/C:/Users/caryt/OneDrive/Escritorio/EXPO2024/FIXIT-JAVA2/FixIt/src/Vistas/frmClientes.java</file>
             <file>file:/C:/Users/caryt/OneDrive/Escritorio/EXPO2024/FIXIT-JAVA2/FixIt/src/Vistas/frmUsuarios.java</file>
             <file>file:/C:/Users/caryt/OneDrive/Escritorio/EXPO2024/FIXIT-JAVA2/FixIt/src/Controlador/ctrlModelo.java</file>
+            <file>file:/C:/Users/caryt/OneDrive/Escritorio/EXPO2024/FIXIT-JAVA2/FixIt/src/Modelo/Usuarios.java</file>
             <file>file:/C:/Users/caryt/OneDrive/Escritorio/EXPO2024/FIXIT-JAVA2/FixIt/src/Vistas/dashboardpanel.java</file>
             <file>file:/C:/Users/caryt/OneDrive/Escritorio/EXPO2024/FIXIT-JAVA2/FixIt/src/Modelo/mdlDash.java</file>
             <file>file:/C:/Users/caryt/OneDrive/Escritorio/EXPO2024/FIXIT-JAVA2/FixIt/src/Modelo/Conexion.java</file>
+            <file>file:/C:/Users/caryt/OneDrive/Escritorio/EXPO2024/FIXIT-JAVA2/FixIt/src/Modelo/globalVars.java</file>
             <file>file:/C:/Users/caryt/OneDrive/Escritorio/EXPO2024/FIXIT-JAVA2/FixIt/src/Controlador/ctrlDash.java</file>
+            <file>file:/C:/Users/caryt/OneDrive/Escritorio/EXPO2024/FIXIT-JAVA2/FixIt/src/Modelo/mdlEmpleados.java</file>
+            <file>file:/C:/Users/caryt/OneDrive/Escritorio/EXPO2024/FIXIT-JAVA2/FixIt/src/Controlador/controladorLogin.java</file>
             <file>file:/C:/Users/caryt/OneDrive/Escritorio/EXPO2024/FIXIT-JAVA2/FixIt/src/Controlador/ctrlPerfilAd.java</file>
             <file>file:/C:/Users/caryt/OneDrive/Escritorio/EXPO2024/FIXIT-JAVA2/FixIt/src/Vistas/frmPerfilAd.java</file>
-=======
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/frmMarca.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Modelo/mdlCitas.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Modelo/mdlPerfilAd.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Modelo/mdlEmpleados.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/frmRegistroParte2.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Modelo/mdlCarros.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Controlador/ctrlCitas.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/frmInicio.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/frmModelo.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/main/main.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/citasCardsPanel.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Modelo/Conexion.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/frmCarros.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Controlador/ctrlEmpleados.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/frmAsignarOrden.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/frmPerfilAd.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Controlador/ctrlPerfilAd.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/dashboard.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Controlador/ctrlDash.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/frmNuevoUsuario.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/frmUsuarios.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/dashboardpanel.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Modelo/mdlRegistro2.java</file>
->>>>>>> f52180fc8b1021090bcd5af0ec36ff58de3a13bb
         </group>
     </open-files>
 </project-private>
