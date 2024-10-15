@@ -9,6 +9,8 @@ import Vistas.frmRegistrarse;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.event.MouseInputListener;
+import main.main;
+import static main.main.main;
 
 public class controladorLogin implements MouseInputListener {
     Usuarios modelo;

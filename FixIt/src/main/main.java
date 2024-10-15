@@ -62,22 +62,28 @@ public class main {
         }
   // Ejecutar en el hilo de eventos de la interfaz gráfica (AWT Event Dispatch Thread)
         EventQueue.invokeLater(() -> {
-           if (esPrimerUso()) {
-        System.out.println("Es el primer uso. Mostrando formulario de registro.");
-        frmRegistrarse.initfrmRegistrarse(); // Formulario de registro
-    } else {
-        System.out.println("No es el primer uso. Mostrando pantalla de login.");
-        Loginjava.initLogin(); // Pantalla de inicio de sesión
-    }
-        });
+        if (esPrimerUso()) {
+            System.out.println("Es el primer uso. Mostrando formulario de registro.");
+            frmRegistrarse.initfrmRegistrarse(); // Asegúrate de que esto muestre el formulario
+        } else {
+            System.out.println("No es el primer uso. Mostrando pantalla de login.");
+            Loginjava.initLogin(); // Asegúrate de que esto también muestre la pantalla de inicio de sesión
+        }
+    });
     }
 
     // Método para verificar si es el primer uso
     public static boolean esPrimerUso() {
     Properties propiedades = new Properties();
-    File archivo = new File("config.properties"); // Cambia a la ruta absoluta si es necesario
+    File archivo = new File("config.properties"); // Cambia la ruta si es necesario
 
     System.out.println("Intentando leer el archivo de propiedades en: " + archivo.getAbsolutePath());
+
+    // Verificamos si el archivo existe
+    if (!archivo.exists()) {
+        System.out.println("Archivo de propiedades no encontrado. Asumiendo que es primer uso.");
+        return true; // Asumimos que es el primer uso
+    }
 
     try (FileInputStream fis = new FileInputStream(archivo)) {
         propiedades.load(fis);

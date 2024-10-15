@@ -43,6 +43,7 @@ public class frmRegistrarse extends javax.swing.JFrame {
 
 
     public static void initfrmRegistrarse(){
+    main.establecerPrimerUso(true); // Cambiamos a false después de registrar
         Usuarios modelo = new Usuarios();
         frmRegistrarse vista = new frmRegistrarse();
         Roles mRoles = new Roles();

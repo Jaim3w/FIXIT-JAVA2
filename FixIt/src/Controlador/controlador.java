@@ -8,6 +8,9 @@ import Vistas.frmRegistroParte2;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Properties;
 import javax.swing.JOptionPane;
 import main.main;
 import static main.main.establecerPrimerUso;
@@ -46,7 +49,15 @@ public class controlador implements MouseListener {
             }
         });
     }
-
+public static void finalizarRegistro() {
+    Properties propiedades = new Properties();
+    propiedades.setProperty("primerUso", "false");
+    try (FileOutputStream fos = new FileOutputStream("config.properties")) {
+        propiedades.store(fos, null);
+    } catch (IOException e) {
+        System.out.println("Error al guardar el archivo de propiedades: " + e.getMessage());
+    }
+}
     
     
     private void btnAgregarUserActionPerformed(ActionEvent evt) {
@@ -100,6 +111,7 @@ public class controlador implements MouseListener {
             modelo.InsertarUser();
             JOptionPane.showMessageDialog(null, "Usuario registrado con éxito", "Usuario registrado", JOptionPane.INFORMATION_MESSAGE);
             establecerPrimerUso(false);
+            finalizarRegistro();
 
             // Abrir la ventana de inicio de sesión
             try {
