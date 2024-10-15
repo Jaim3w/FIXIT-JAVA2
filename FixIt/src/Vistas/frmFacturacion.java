@@ -13,7 +13,7 @@ import Modelo.Factura;
 import Vistas.elementosTwo.TransparenteRoundedPanel;
 
 
-public class frmFacturacion extends TransparenteRoundedPanel {
+public class frmFacturacion extends JFrame {
 
 
     public frmFacturacion() {

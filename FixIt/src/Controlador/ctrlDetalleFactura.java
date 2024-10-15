@@ -7,10 +7,15 @@ import Vistas.frmDetalleFactura;
 import Modelo.Factura;
 import Modelo.ProductoRep;
 import Modelo.mdlAsignarOrden;
+import Vistas.frmFacturacion;
+import Vistas.frmReporte;
+import Vistas.frmReporteFram;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 
 public class ctrlDetalleFactura implements MouseListener, KeyListener {
@@ -41,6 +46,8 @@ public class ctrlDetalleFactura implements MouseListener, KeyListener {
         Vista.btnAgregar.addMouseListener(this);
         Vista.btnEliminar.addMouseListener(this);
         Vista.btnCargar.addMouseListener(this);
+        Vista.btnNuevaFactura.addMouseListener(this);
+        Vista.btnImprimirFac.addMouseListener(this);
         
         Modelo1.CargarComboFactura(Vista.cmbFactura);
         Modelo2.CargarProductosRep(Vista.cmbProductoRepuesto);
@@ -92,6 +99,27 @@ public class ctrlDetalleFactura implements MouseListener, KeyListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        
+        if (e.getSource() == Vista.btnNuevaFactura) {
+            frmFacturacion nuevoModeloFrame = new frmFacturacion();
+            nuevoModeloFrame.setLocationRelativeTo(null);
+            nuevoModeloFrame.setVisible(true);
+
+            nuevoModeloFrame.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    // Refrescar la lista de modelos si es necesario
+                    ModeloFac.CargarComboFactura(Vista.cmbFactura);
+                }
+            });
+        }
+        
+        if (e.getSource() == Vista.btnImprimirFac) {
+            frmReporteFram nuevoImprimirFacFrame = new frmReporteFram();
+            //nuevoImprimirFacFrame.setLocationRelativeTo(null);
+            nuevoImprimirFacFrame.setVisible(true);
+        }
+        
       if (e.getSource() == Vista.btnAgregar) {
     // Verificar si los campos de texto están vacíos
     try {
