@@ -139,7 +139,7 @@ public class frmUsuarios extends TransparenteRoundedPanel{
         btnSubirImagen.setText("Subir Imagen");
         add(btnSubirImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 210, -1, 30));
 
-        btnNewUser.setText("jButton1");
+        btnNewUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/mas.png"))); // NOI18N
         add(btnNewUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 30, 30));
 
         pnlImagen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

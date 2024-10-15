@@ -8,9 +8,14 @@ public class Conexion {
     private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
     //private static final String USUARIO = "jaimedb";
     //private static final String CONTRASENA = "qatar24";
+<<<<<<< HEAD
+    private static final String USUARIO = "fixit";
+    private static final String CONTRASENA = "fixit";
+=======
 
     private static final String USUARIO = "jaimedb";
     private static final String CONTRASENA = "qatar24";
+>>>>>>> dd9285cacde026360eb58248bb4ae89cc8a478a0
 
     public static Connection getConexion() {
         try {

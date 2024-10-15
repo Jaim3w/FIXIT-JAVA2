@@ -32,7 +32,7 @@ public class frmClientes extends javax.swing.JFrame {
         ctrlClientes controlador = new ctrlClientes(modelo, vista);
 
         vista.setVisible(true);
-        setSize(1020, 650);
+        setSize(1020, 720);
         setResizable(false);
     }
     
@@ -116,7 +116,7 @@ public class frmClientes extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbClientes);
 
-        transparenteRoundedPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 1030, 270));
+        transparenteRoundedPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, 880, 250));
         transparenteRoundedPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 40, 190, -1));
 
         jLabel8.setText("Contraseña ");

@@ -12,9 +12,7 @@ import Modelo.ClientesCarro;
 import Modelo.ModeloCarro;
 import Modelo.mdlCarros;
 import Vistas.frmCarros;
-import Vistas.frmClientes;
-import Vistas.frmNuevoUsuario;
-import Vistas.frmPerfilAd;
+import Vistas.frmModelo;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -54,7 +52,7 @@ public class ctrlCarros implements MouseListener, KeyListener {
         Vista.btnSubirImagen.addMouseListener(this);
         Vista.txtBuscarCarro.addKeyListener(this);
         Vista.tbListaCarros.addMouseListener(this);
-        Vista.btnNewCliente.addMouseListener(this);
+        Vista.btnNewModelo.addMouseListener(this);
         
         //carga el contenido de los combo box
         this.mClientes.CargarComboClientes(Vista.cmbClienteCarro);
@@ -104,20 +102,21 @@ public class ctrlCarros implements MouseListener, KeyListener {
     }
 
     @Override
-   public void mouseClicked(MouseEvent e) {
-       
-       if (e.getSource() == Vista.btnNewCliente) {
-            frmClientes nuevoUsuarioFrame = new frmClientes();
-            nuevoUsuarioFrame.setVisible(true);
-            nuevoUsuarioFrame.setLocationRelativeTo(null);
+    public void mouseClicked(MouseEvent e) {
+        if (e.getSource() == Vista.btnNewModelo) {
+            frmModelo nuevoModeloFrame = new frmModelo();
+            nuevoModeloFrame.setLocationRelativeTo(null);
+            nuevoModeloFrame.setVisible(true);
 
-            nuevoUsuarioFrame.addWindowListener(new WindowAdapter() {
+            nuevoModeloFrame.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosed(WindowEvent e) {
-                    mClientes.CargarComboClientes(Vista.cmbClienteCarro);
+                    // Refrescar la lista de modelos si es necesario
+                    mModelo.CargarComboModelos(Vista.cmbModeloCarro);
                 }
             });
         }
+
         
     // ejecución al dar clic a boton guardar
     if (e.getSource() == Vista.btnGuardarCarro) {
