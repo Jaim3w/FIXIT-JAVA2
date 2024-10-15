@@ -131,6 +131,8 @@ public class frmAsignarOrden extends TransparenteRoundedPanel {
         add(txtFechaAsignacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 210, 30));
         add(txtFechaFinalizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 70, 330, 30));
 
+        CalendarioFechaAsignacion.setSundayForeground(new java.awt.Color(0, 0, 0));
+        CalendarioFechaAsignacion.setWeekdayForeground(new java.awt.Color(0, 0, 0));
         CalendarioFechaAsignacion.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 CalendarioFechaAsignacionPropertyChange(evt);

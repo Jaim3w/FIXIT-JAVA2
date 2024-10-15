@@ -245,6 +245,14 @@
       </Constraints>
     </Component>
     <Component class="com.toedter.calendar.JCalendar" name="CalendarioFechaAsignacion">
+      <Properties>
+        <Property name="sundayForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="0" type="rgb"/>
+        </Property>
+        <Property name="weekdayForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="0" type="rgb"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="CalendarioFechaAsignacionPropertyChange"/>
       </Events>
