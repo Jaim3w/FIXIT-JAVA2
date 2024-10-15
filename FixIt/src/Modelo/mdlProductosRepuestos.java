@@ -20,8 +20,10 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,12 +34,15 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.core5.http.NameValuePair;
 import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.io.entity.StringEntity;
+import org.apache.hc.core5.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
 public class mdlProductosRepuestos {
@@ -74,58 +79,40 @@ public void setImgProductoRepuestoUrl(String imgProductoRepuestoUrl) {
         return this.imagenSeleccionada;
     }
     
-    private String subirImagenImgur(File imageFile) throws IOException {
+    private String subirImagenImgur (File imageFile) throws IOException, ParseException {
     // Cargar la imagen y convertirla en Base64
     byte[] fileContent = Files.readAllBytes(imageFile.toPath());
     String encodedImage = Base64.getEncoder().encodeToString(fileContent);
-
-    // URL de la API de Imgur
-    String uploadUrl = "https://api.imgur.com/3/image";
-
+ 
+    // URL de la API de IMGBB
+    String uploadUrl = "https://api.imgbb.com/1/upload";
+ 
     // Crear un cliente HTTP
     CloseableHttpClient httpClient = HttpClients.createDefault();
     HttpPost uploadFile = new HttpPost(uploadUrl);
-
-    // Configurar las cabeceras para autenticar la API de Imgur
-    uploadFile.addHeader("Authorization", "Client-ID 8fade595e9f4606");
-
-    // Crear el JSON para el body de la petición
-    JSONObject json = new JSONObject();
-    json.put("image", encodedImage);
-
-    // Establecer el JSON como entidad de la petición
-    StringEntity entity = new StringEntity(json.toString());
-    uploadFile.setEntity(entity);
-    uploadFile.addHeader("Content-Type", "application/json");
-
-    // Declarar la respuesta
-    CloseableHttpResponse response = null;
-
-    try {
-        // Ejecutar la solicitud de subida
-        response = httpClient.execute(uploadFile);
-        
-        // Convertir la entidad de la respuesta a una cadena JSON
-        String jsonResponse = EntityUtils.toString(response.getEntity());
-
-        // Analizar la respuesta JSON para obtener la URL de la imagen
-        JSONObject responseObject = new JSONObject(jsonResponse);
-        String uploadedUrl = responseObject.getJSONObject("data").getString("link");
-
-        return uploadedUrl;
-    } catch (ParseException e) {
-        e.printStackTrace();
-        throw new IOException("Error al parsear la respuesta de la imagen: " + e.getMessage());
-    } catch (IOException e) {
-        e.printStackTrace();
-        throw new IOException("Error de entrada/salida: " + e.getMessage());
-    } finally {
-        if (response != null) {
-            response.close();
-        }
-        httpClient.close();
-        }
-    }
+ 
+    // Reemplazar por tu propia API key de IMGBB
+    String apiKey = "0bc1da3a295622b966c14cd6d1d05627";
+ 
+    // Crear el body de la solicitud con la API key y la imagen en Base64
+    List<NameValuePair> params = new ArrayList<>();
+    params.add(new BasicNameValuePair("key", apiKey));
+    params.add(new BasicNameValuePair("image", encodedImage));
+ 
+    // Establecer los parámetros como entidad del request
+    uploadFile.setEntity(new UrlEncodedFormEntity(params));
+ 
+    // Ejecutar la solicitud de subida
+    CloseableHttpResponse response = httpClient.execute(uploadFile);
+    String jsonResponse = EntityUtils.toString(response.getEntity());
+ 
+    // Analizar la respuesta JSON para obtener la URL de la imagen
+    JSONObject responseObject = new JSONObject(jsonResponse);
+    String uploadedUrl = responseObject.getJSONObject("data").getString("url");
+ 
+    response.close();
+    return uploadedUrl;
+}
     
     public String getUUID_ProductoRepuesto() {
         return uuid_ProductoRepuesto;
@@ -231,7 +218,7 @@ public void setImgProductoRepuestoUrl(String imgProductoRepuestoUrl) {
         }
     }
     
-    public void Actualizar(JTable tabla) {
+    public void Actualizar(JTable tabla) throws ParseException {
         Connection conexion = Conexion.getConexion();
         int filaSeleccionada = tabla.getSelectedRow();
         if (filaSeleccionada != -1) {
@@ -319,7 +306,7 @@ public void setImgProductoRepuestoUrl(String imgProductoRepuestoUrl) {
         }
     }
     
- public void cargarDatosTabla(frmProductosRepuestos vista) {
+public void cargarDatosTabla(frmProductosRepuestos vista) {
     int filaSeleccionada = vista.tbListaProductosRepuestos.getSelectedRow();
     if (filaSeleccionada != -1) {
         String nombreTb = vista.tbListaProductosRepuestos.getValueAt(filaSeleccionada, 1).toString();
@@ -330,28 +317,38 @@ public void setImgProductoRepuestoUrl(String imgProductoRepuestoUrl) {
         vista.txtNombreR.setText(nombreTb);
         vista.txtPrecioR.setText(precioTb);
 
-        // Comprobar el URL antes de usarlo
+        // Verificar que la URL de la imagen no esté vacía o nula
         if (imagenUrlTb == null || imagenUrlTb.trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "No hay URL de imagen disponible.");
+            vista.imgR.setIcon(null);  // Limpiar la imagen previa
             return;
         }
 
         // Código para cargar la imagen
         try {
-            BufferedImage imagen = ImageIO.read(new URL(imagenUrlTb));
-            ImageIcon icon = new ImageIcon(imagen.getScaledInstance(vista.imgR.getWidth(), vista.imgR.getHeight(), Image.SCALE_SMOOTH));
-            vista.imgR.setIcon(icon);
+            URL url = new URL(imagenUrlTb);
+            BufferedImage imagen = ImageIO.read(url);
+            
+            if (imagen != null) {
+                ImageIcon icon = new ImageIcon(imagen.getScaledInstance(vista.imgR.getWidth(), vista.imgR.getHeight(), Image.SCALE_SMOOTH));
+                vista.imgR.setIcon(icon);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo cargar la imagen desde la URL proporcionada.");
+                vista.imgR.setIcon(null);  // Limpiar la imagen previa
+            }
         } catch (IOException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error al cargar la imagen: " + e.getMessage());
+            vista.imgR.setIcon(null);  // Limpiar la imagen previa en caso de error
         }
     } else {
         System.out.println("No se ha seleccionado ninguna fila.");
     }
 }
 
+
     public void Buscar(String busqueda, JTable tbListaProductosRepuestos) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
     }
     
 }

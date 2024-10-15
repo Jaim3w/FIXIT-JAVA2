@@ -134,8 +134,6 @@ public void actualizarImagen(String imageUrl) {
     private void initComponents() {
 
         pnlImagen = new javax.swing.JPanel();
-        txtImgUrl = new javax.swing.JLabel();
-        lbImagen = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -154,25 +152,23 @@ public void actualizarImagen(String imageUrl) {
         btnActTelefono = new javax.swing.JButton();
         txtNombres = new javax.swing.JTextField();
         txtApellidos = new javax.swing.JTextField();
-        btnCancelar = new javax.swing.JButton();
         btnActImagen = new javax.swing.JButton();
+        lbImagen = new javax.swing.JLabel();
+        txtImgUrl = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlImagen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        pnlImagen.add(txtImgUrl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 210));
-        pnlImagen.add(lbImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 220, 216));
-
         add(pnlImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 230, -1));
 
         jLabel1.setForeground(new java.awt.Color(153, 153, 153));
         jLabel1.setText("Nombres");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 365, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, -1, -1));
 
         jLabel3.setForeground(new java.awt.Color(153, 153, 153));
         jLabel3.setText("Apellidos");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 447, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 390, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(240, 240, 240));
 
@@ -190,6 +186,7 @@ public void actualizarImagen(String imageUrl) {
 
         txtCorreo.setBackground(new java.awt.Color(240, 240, 240));
         txtCorreo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtCorreo.setForeground(new java.awt.Color(0, 0, 0));
         txtCorreo.setText("correo");
         txtCorreo.setBorder(null);
         txtCorreo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -198,6 +195,7 @@ public void actualizarImagen(String imageUrl) {
 
         txtTelefono.setBackground(new java.awt.Color(240, 240, 240));
         txtTelefono.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtTelefono.setForeground(new java.awt.Color(0, 0, 0));
         txtTelefono.setText("telefono");
         txtTelefono.setBorder(null);
         txtTelefono.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -205,6 +203,7 @@ public void actualizarImagen(String imageUrl) {
 
         txtNacimiento.setBackground(new java.awt.Color(240, 240, 240));
         txtNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNacimiento.setForeground(new java.awt.Color(0, 0, 0));
         txtNacimiento.setText("nacimiento");
         txtNacimiento.setBorder(null);
         txtNacimiento.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -217,6 +216,7 @@ public void actualizarImagen(String imageUrl) {
 
         txtDui.setBackground(new java.awt.Color(240, 240, 240));
         txtDui.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtDui.setForeground(new java.awt.Color(0, 0, 0));
         txtDui.setText("dui");
         txtDui.setBorder(null);
         txtDui.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -295,7 +295,7 @@ public void actualizarImagen(String imageUrl) {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(18, 32, Short.MAX_VALUE)
+                        .addGap(18, 18, Short.MAX_VALUE)
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtDui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -305,29 +305,30 @@ public void actualizarImagen(String imageUrl) {
                 .addGap(33, 33, 33))
         );
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 137, -1, -1));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, -1, 350));
 
         txtNombres.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNombres.setForeground(new java.awt.Color(0, 0, 0));
         txtNombres.setText("nombres");
         txtNombres.setToolTipText("");
         txtNombres.setBorder(null);
         txtNombres.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtNombres.setEnabled(false);
         txtNombres.setMargin(new java.awt.Insets(0, 6, 2, 6));
-        add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 387, 192, -1));
+        add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 192, -1));
 
         txtApellidos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtApellidos.setForeground(new java.awt.Color(0, 0, 0));
         txtApellidos.setText("apellidos");
         txtApellidos.setBorder(null);
         txtApellidos.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtApellidos.setEnabled(false);
-        add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 469, 192, -1));
-
-        btnCancelar.setText("Cancelar");
-        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(785, 137, -1, 35));
+        add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 192, -1));
 
         btnActImagen.setText("Actualizar imagen");
-        add(btnActImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 108, -1, -1));
+        add(btnActImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, -1, -1));
+        add(lbImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 220, 216));
+        add(txtImgUrl, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 230, 210));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNacimientoActionPerformed
@@ -338,7 +339,6 @@ public void actualizarImagen(String imageUrl) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnActImagen;
     public javax.swing.JButton btnActTelefono;
-    public javax.swing.JButton btnCancelar;
     public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
