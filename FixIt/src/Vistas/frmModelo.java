@@ -108,7 +108,7 @@ public class frmModelo extends JFrame{
         ));
         jScrollPane1.setViewportView(tbModelos);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 760, 230));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 760, 190));
         getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 113, 320, 30));
 
         cmbMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
