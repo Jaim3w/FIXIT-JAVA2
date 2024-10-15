@@ -60,7 +60,6 @@ public class Loginjava extends javax.swing.JFrame {
         imgExit = new javax.swing.JLabel();
         imgMinimize = new javax.swing.JLabel();
         btnLogin = new Vistas.elemetos.ButtonB();
-        btnIrRegister = new Vistas.elemetos.ButtonC();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -117,11 +116,6 @@ public class Loginjava extends javax.swing.JFrame {
             }
         });
         whiteRoundedPanelF1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 530, 170, -1));
-
-        btnIrRegister.setText("Registrate");
-        btnIrRegister.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnIrRegister.setShadowColor(new java.awt.Color(255, 255, 255));
-        whiteRoundedPanelF1.add(btnIrRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 600, 170, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -194,7 +188,6 @@ public class Loginjava extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public Vistas.elemetos.ButtonC btnIrRegister;
     public Vistas.elemetos.ButtonB btnLogin;
     public javax.swing.JLabel btnOlvidecontra;
     public javax.swing.JLabel imgExit;

@@ -64,7 +64,7 @@ public class ctrlRegistro2 implements MouseListener {
         }
         // Se ejecuta si no hay campos vacíos
         try {
-            System.out.println("Guardando empleado...");
+            System.out.println("Guardando admin...");
             
             // Validar que el dui no exceda 9 caracteres
             String dui = Vista.txtDuiR.getText();
@@ -132,7 +132,7 @@ public class ctrlRegistro2 implements MouseListener {
 
             Modelo.Guardar();
 
-            System.out.println("empleado guardado correctamente.");
+            System.out.println("admin guardado correctamente.");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(Vista, "Error al guardar el empleado: " + ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
             System.out.println("Error al guardar el empleado: " + ex.getMessage());

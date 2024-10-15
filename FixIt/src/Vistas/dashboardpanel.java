@@ -1,6 +1,7 @@
 package Vistas;
 
 import Controlador.ctrlDash;
+import Modelo.Conexion;
 import Modelo.mdlDash;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,7 +20,8 @@ public class dashboardpanel extends javax.swing.JPanel {
     
     mdlDash modelo = new mdlDash();
     dashboardpanel vista = this;
-    ctrlDash con = new ctrlDash(modelo, vista);
+    Conexion conn = new Conexion();
+    ctrlDash con = new ctrlDash(modelo, vista, conn);
 
     // Configuramos el color de fondo y el layout
     setBackground(new Color(0, 0, 0, 0)); // Fondo transparente

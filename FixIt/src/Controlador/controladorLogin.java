@@ -9,6 +9,8 @@ import Vistas.frmRegistrarse;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.event.MouseInputListener;
+import main.main;
+import static main.main.main;
 
 public class controladorLogin implements MouseInputListener {
     Usuarios modelo;
@@ -25,7 +27,6 @@ public class controladorLogin implements MouseInputListener {
         
         this.vista.btnLogin.addMouseListener(this);
         this.vista.btnOlvidecontra.addMouseListener(this);
-        this.vista.btnIrRegister.addMouseListener(this);
     }
 
     @Override
@@ -89,12 +90,6 @@ public class controladorLogin implements MouseInputListener {
   
 }
         
-         if (e.getSource() == vista.btnIrRegister){
-        
-        
-            frmRegistrarse.initfrmRegistrarse();
-            vista.dispose();
-        }
        
                        
     }

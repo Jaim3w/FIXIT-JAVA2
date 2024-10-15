@@ -272,7 +272,7 @@ public class mdlEmpleados {
     modelo.setColumnIdentifiers(new Object[]{"D.U.I", "Correo electronico", "Nombre", "Apellido", "Imagen", "Fecha de nacimiento", "Telefono"});
     
     try {
-        // Consulta a ejecutar
+        // Consulta a ejecutar, que ahora filtra por el rol de empleado
         String query = "SELECT \n" +
                        "    Empleado.Dui_empleado,\n" +
                        "    Usuario.CorreoElectronico,\n" +
@@ -286,7 +286,13 @@ public class mdlEmpleados {
                        "INNER JOIN \n" +
                        "    Empleado \n" +
                        "ON \n" +
-                       "    Usuario.UUID_usuario = Empleado.UUID_usuario";
+                       "    Usuario.UUID_usuario = Empleado.UUID_usuario\n" +
+                       "INNER JOIN \n" +
+                       "    Rol \n" +
+                       "ON \n" +
+                       "    Usuario.UUID_rol = Rol.UUID_rol\n" +
+                       "WHERE \n" +
+                       "    Rol.Nombre = 'Empleado'";
         
         Statement statement = conexion.createStatement();
         ResultSet rs = statement.executeQuery(query);
@@ -300,7 +306,6 @@ public class mdlEmpleados {
                 rs.getString("ImagenEmpleado"), 
                 rs.getString("FechaNacimiento"), 
                 rs.getString("Telefono"), 
-                
             });
         }
         tabla.setModel(modelo);
