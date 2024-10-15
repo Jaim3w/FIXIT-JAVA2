@@ -7,6 +7,7 @@ package Vistas;
 import Modelo.Usuarios;
 import Controlador.controlador;
 import Modelo.Roles;
+import static Vistas.frmRegistrarse.main;
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.formdev.flatlaf.FlatLaf;
@@ -14,7 +15,13 @@ import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatAnimatedLafChange;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Properties;
 import javax.swing.JFrame;
+import main.main;
 
 public class frmRegistrarse extends javax.swing.JFrame {
 
@@ -31,6 +38,9 @@ public class frmRegistrarse extends javax.swing.JFrame {
         setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
 
     }
+    
+    
+
 
     public static void initfrmRegistrarse(){
         Usuarios modelo = new Usuarios();
