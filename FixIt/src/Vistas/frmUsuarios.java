@@ -48,7 +48,6 @@ public class frmUsuarios extends TransparenteRoundedPanel{
         txtapellido = new javax.swing.JFormattedTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        btnSubirImagen = new javax.swing.JButton();
         btnNewUser = new javax.swing.JButton();
         pnlImagen = new javax.swing.JPanel();
         txtImagenUrl = new javax.swing.JLabel();
@@ -64,6 +63,7 @@ public class frmUsuarios extends TransparenteRoundedPanel{
         btnActualizar = new Vistas.elemetos.ButtonWI();
         btnEliminar = new Vistas.elemetos.ButtonWI();
         btnLimpiar = new Vistas.elemetos.ButtonWI();
+        btnSubirImagen = new Vistas.elemetos.ButtonWI();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -71,7 +71,7 @@ public class frmUsuarios extends TransparenteRoundedPanel{
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Crear nuevo empleado");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 200, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 200, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -115,35 +115,32 @@ public class frmUsuarios extends TransparenteRoundedPanel{
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 500, -1, -1));
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 666, 60, 30));
 
-        btnSubirImagen.setText("Subir Imagen");
-        add(btnSubirImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, -1, 30));
-
         btnNewUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/crearuser.png"))); // NOI18N
         add(btnNewUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 50, 30));
 
         pnlImagen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtImagenUrl.setMinimumSize(new java.awt.Dimension(50, 50));
-        pnlImagen.add(txtImagenUrl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 110));
+        pnlImagen.add(txtImagenUrl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 180));
 
-        add(pnlImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 160, 110));
+        add(pnlImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 30, 240, 180));
 
         btnClientes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnClientes.setForeground(new java.awt.Color(255, 255, 255));
         btnClientes.setText("Ver clientes");
-        add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 106, 110, 100));
+        add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 230, 110, 100));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("FechaNacimiento");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, -1, -1));
-        add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 220, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, -1, -1));
+        add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 220, -1));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/cliente (1).png"))); // NOI18N
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 120, -1, -1));
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 240, -1, -1));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/fondo.png"))); // NOI18N
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 100, 210, 110));
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 220, 210, 110));
 
         dtgempleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -205,6 +202,10 @@ public class frmUsuarios extends TransparenteRoundedPanel{
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 980, 290));
+
+        btnSubirImagen.setText("Cargar imagen");
+        btnSubirImagen.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/iccargarimagenalofito.png"))); // NOI18N
+        add(btnSubirImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, 170, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtduiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtduiActionPerformed
@@ -219,7 +220,7 @@ public class frmUsuarios extends TransparenteRoundedPanel{
     public Vistas.elemetos.ButtonWI btnGuardar;
     public Vistas.elemetos.ButtonWI btnLimpiar;
     public javax.swing.JButton btnNewUser;
-    public javax.swing.JButton btnSubirImagen;
+    public Vistas.elemetos.ButtonWI btnSubirImagen;
     public javax.swing.JComboBox<String> cmbCorreoEmpleado;
     public javax.swing.JTable dtgempleado;
     private javax.swing.JLabel jLabel1;
