@@ -3,10 +3,18 @@ package Controlador;
 import Modelo.Categorias;
 import Modelo.mdlProductosRepuestos;
 import Vistas.frmProductosRepuestos;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -49,41 +57,6 @@ public class ctrlProductosRepuestos implements MouseListener, KeyListener {
         
         Modelo.Mostrar(Vista.tbListaProductosRepuestos);
         Modelo.limpiar(Vista);
-<<<<<<< HEAD
-=======
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
->>>>>>> 61bd23c689e6e1813a0cecc94a0c772206c89ed9
     }
     
     private void guardarProdcutoRepuesto() {
@@ -186,7 +159,7 @@ public class ctrlProductosRepuestos implements MouseListener, KeyListener {
        }
         
         //ejecuta la limpieza de campos
-        if (e.getSource() == Vista.btnLimpiarR) {
+        if (e.getSource() == Vista.btnLimpiarr) {
             Modelo.limpiar(Vista);
         }
         

@@ -4,12 +4,11 @@
  */
 package Vistas;
 
-<<<<<<< HEAD
+
 import Modelo.Categorias;
 import Modelo.mdlProductosRepuestos;
-=======
+
 import Vistas.elementosTwo.TransparenteRoundedPanel;
->>>>>>> 61bd23c689e6e1813a0cecc94a0c772206c89ed9
 
 /**
  *
@@ -22,7 +21,6 @@ public class frmProductosRepuestos extends TransparenteRoundedPanel {
      */
     public frmProductosRepuestos() {
         initComponents();
-        
         frmProductosRepuestos vista = this;
         mdlProductosRepuestos modelo = new mdlProductosRepuestos();
         Categorias mCategorias = new Categorias();
@@ -175,4 +173,5 @@ public class frmProductosRepuestos extends TransparenteRoundedPanel {
     public javax.swing.JTextField txtNombreR;
     public javax.swing.JTextField txtPrecioR;
     // End of variables declaration//GEN-END:variables
+
 }
