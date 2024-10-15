@@ -9,6 +9,7 @@ import Modelo.mdlAsignarOrden;
 import Modelo.Servicios;
 import Modelo.EstadoAsignarOrden;
 import Modelo.mdlCitas;
+import Vistas.elementosTwo.TransparenteRoundedPanel;
 import com.toedter.calendar.JCalendar;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -19,7 +20,7 @@ import java.util.Date;
  *
  * @author jjove
  */
-public class frmAsignarOrden extends javax.swing.JPanel {
+public class frmAsignarOrden extends TransparenteRoundedPanel {
 
     /**
      * Creates new form frmAsignarOrden
@@ -74,80 +75,81 @@ public class frmAsignarOrden extends javax.swing.JPanel {
         btnActualizar = new Vistas.elemetos.ButtonWI();
         btnEliminar = new Vistas.elemetos.ButtonWI();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(0, 0, 0));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/crearuser.png"))); // NOI18N
         jLabel1.setText("Crear una asignacion de tarea para un empleado");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 390, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Cita seleccionada para hacer el servicio:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 108, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Servicio a realizar:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 164, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Estado del trabajo a realizar:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 217, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Carro del cliente:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Límite de entrega:");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 99, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Descripcion:");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, -1, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 140, -1, -1));
 
         cmbCita.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cmbCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 101, 210, 37));
+        add(cmbCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 210, 30));
 
         cmbServicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cmbServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 157, 210, 35));
+        add(cmbServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 210, 30));
 
         cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cmbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 210, 210, 37));
+        add(cmbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 210, 30));
 
         txtDescripcion.setColumns(20);
         txtDescripcion.setRows(5);
         jScrollPane1.setViewportView(txtDescripcion);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(651, 145, -1, -1));
-        add(txtFechaAsignacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 322, 210, 37));
-        add(txtFechaFinalizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(652, 94, 234, 33));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 120, 330, 60));
+        add(txtFechaAsignacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 210, 30));
+        add(txtFechaFinalizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 70, 330, 30));
 
         CalendarioFechaAsignacion.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 CalendarioFechaAsignacionPropertyChange(evt);
             }
         });
-        add(CalendarioFechaAsignacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, 329, 133));
+        add(CalendarioFechaAsignacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 200, 329, 180));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Fecha a seleccionar (hoy) :");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 249, -1, -1));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, -1, -1));
 
         txtCliente.setActionCommand("<Not Set>");
-        add(txtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 265, 210, 38));
+        add(txtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 210, 30));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Fecha de trabajo asignado:");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 329, -1, -1));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, -1, -1));
 
         tbAsignaciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -179,20 +181,19 @@ public class frmAsignarOrden extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 950, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(15, 15, 15)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 950, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(135, 135, 135))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
