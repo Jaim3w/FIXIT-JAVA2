@@ -5,8 +5,9 @@ import Controlador.ctrlProveedor;
 import Modelo.Categorias;
 import Modelo.mdlProductosRepuestos;
 import Vistas.elementosTwo.TransparenteRoundedPanel;
+import javax.swing.JFrame;
 
-public class frmProductosRepuestos extends TransparenteRoundedPanel {
+public class frmProductosRepuestos extends JFrame {
 
     public frmProductosRepuestos() {
         initComponents();
@@ -15,6 +16,10 @@ public class frmProductosRepuestos extends TransparenteRoundedPanel {
         mdlProductosRepuestos modelo = new mdlProductosRepuestos();
         Categorias mCategorias = new Categorias();
         ctrlProductosRepuestos controlador = new ctrlProductosRepuestos(modelo, this, mCategorias);
+        
+        this.setVisible(true);
+        setSize (1040, 670);
+        setResizable(false);
     }
 
     /**
