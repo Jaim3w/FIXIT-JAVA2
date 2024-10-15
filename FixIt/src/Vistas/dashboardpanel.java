@@ -378,7 +378,7 @@ public class dashboardpanel extends javax.swing.JPanel {
     }//GEN-LAST:event_lbl_ventasMouseClicked
 
     private void lbl_usuarios_y_empleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_usuarios_y_empleadosMouseClicked
-        frmUsuarios us = new frmUsuarios();
+    frmUsuarios us = new frmUsuarios();
     us.setSize(1040, 670);
     us.setLocation(0, 0);
      setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
@@ -400,7 +400,7 @@ public class dashboardpanel extends javax.swing.JPanel {
     }//GEN-LAST:event_imgExitMouseClicked
 
     private void lbl_perfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_perfilMouseClicked
-          frmPerfilAd pa = new frmPerfilAd();
+    frmPerfilAd pa = new frmPerfilAd();
     pa.setSize(1040, 670);
     pa.setLocation(0, 0);
      setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
@@ -411,12 +411,12 @@ public class dashboardpanel extends javax.swing.JPanel {
     }//GEN-LAST:event_lbl_perfilMouseClicked
 
     private void lbl_usuarios_y_empleados1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_usuarios_y_empleados1MouseClicked
- frmProductosRepuestos us = new frmProductosRepuestos();
-    us.setSize(1040, 670);
-    us.setLocation(0, 0);
-     setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
+    frmProductosRepuestos sw = new frmProductosRepuestos();
+    sw .setSize(1040, 670);
+    sw .setLocation(0, 0);
+    setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
     panelContent.removeAll();
-    panelContent.add(us, BorderLayout.CENTER);
+    panelContent.add(sw, BorderLayout.CENTER);
     panelContent.revalidate();
     panelContent.repaint();    }//GEN-LAST:event_lbl_usuarios_y_empleados1MouseClicked
 
