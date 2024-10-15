@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/frmAsignarOrden.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Controlador/ctrlPerfilAd.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Modelo/mdlEmpleados.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Modelo/mdlCarros.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/main/main.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Modelo/Conexion.java</file>
-            <file>file:/C:/Users/pc/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/dashboardpanel.java</file>
+            <file>file:/C:/Users/Kevin/Desktop/FIXIT-JAVA2/FixIt/src/Modelo/Conexion.java</file>
+            <file>file:/C:/Users/Kevin/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/frmInventario.java</file>
+            <file>file:/C:/Users/Kevin/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/frmCarros.java</file>
+            <file>file:/C:/Users/Kevin/Desktop/FIXIT-JAVA2/FixIt/src/Vistas/frmProductosRepuestos.java</file>
         </group>
     </open-files>
 </project-private>
