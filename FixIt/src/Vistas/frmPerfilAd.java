@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package Vistas;
 
 import Controlador.ctrlPerfilAd;
@@ -133,9 +129,7 @@ public void actualizarImagen(String imageUrl) {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlImagen = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        btnActTelefono = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -149,40 +143,42 @@ public void actualizarImagen(String imageUrl) {
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btnActTelefono = new javax.swing.JButton();
         txtNombres = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         txtApellidos = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         btnActImagen = new javax.swing.JButton();
         lbImagen = new javax.swing.JLabel();
         txtImgUrl = new javax.swing.JLabel();
 
+        btnActTelefono.setBackground(new java.awt.Color(204, 204, 204));
+        btnActTelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/iceditaralokevon.png"))); // NOI18N
+
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlImagen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(pnlImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 230, -1));
-
-        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel1.setText("Nombres");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, -1, -1));
-
-        jLabel3.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel3.setText("Apellidos");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 390, -1, -1));
-
         jPanel2.setBackground(new java.awt.Color(240, 240, 240));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(153, 153, 153));
         jLabel5.setText("Correo electrónico");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(153, 153, 153));
         jLabel7.setText("Teléfono");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(153, 153, 153));
         jLabel10.setText("Fecha de nacimiento");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
 
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(153, 153, 153));
         jLabel12.setText("D.U.I");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
 
         txtCorreo.setBackground(new java.awt.Color(240, 240, 240));
         txtCorreo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -192,6 +188,7 @@ public void actualizarImagen(String imageUrl) {
         txtCorreo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtCorreo.setEnabled(false);
         txtCorreo.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        jPanel2.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 261, -1));
 
         txtTelefono.setBackground(new java.awt.Color(240, 240, 240));
         txtTelefono.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -200,6 +197,7 @@ public void actualizarImagen(String imageUrl) {
         txtTelefono.setBorder(null);
         txtTelefono.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtTelefono.setEnabled(false);
+        jPanel2.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 175, -1));
 
         txtNacimiento.setBackground(new java.awt.Color(240, 240, 240));
         txtNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -213,6 +211,7 @@ public void actualizarImagen(String imageUrl) {
                 txtNacimientoActionPerformed(evt);
             }
         });
+        jPanel2.add(txtNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 261, -1));
 
         txtDui.setBackground(new java.awt.Color(240, 240, 240));
         txtDui.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -221,114 +220,61 @@ public void actualizarImagen(String imageUrl) {
         txtDui.setBorder(null);
         txtDui.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtDui.setEnabled(false);
+        jPanel2.add(txtDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 264, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/fecha-de-nacimiento (1).png"))); // NOI18N
         jLabel8.setPreferredSize(new java.awt.Dimension(32, 32));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, -1, 53));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/telefono (1).png"))); // NOI18N
         jLabel4.setPreferredSize(new java.awt.Dimension(32, 32));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/arroba (1).png"))); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(32, 32));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 35, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/tarjeta-de-presentacion-con-imagen.png"))); // NOI18N
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, -1, -1));
 
-        btnActTelefono.setText("Actualizar telefono");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel7)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnActTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(txtNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(txtDui, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(3, 3, 3)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(52, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnActTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)))
-                .addGap(33, 33, 33))
-        );
-
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, -1, 350));
-
+        txtNombres.setBackground(new java.awt.Color(240, 240, 240));
         txtNombres.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtNombres.setForeground(new java.awt.Color(0, 0, 0));
+        txtNombres.setForeground(new java.awt.Color(255, 255, 255));
         txtNombres.setText("nombres");
         txtNombres.setToolTipText("");
         txtNombres.setBorder(null);
         txtNombres.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtNombres.setEnabled(false);
         txtNombres.setMargin(new java.awt.Insets(0, 6, 2, 6));
-        add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 192, -1));
+        jPanel2.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 300, -1));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel3.setText("Apellidos");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 160, -1));
+
+        txtApellidos.setBackground(new java.awt.Color(240, 240, 240));
         txtApellidos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtApellidos.setForeground(new java.awt.Color(0, 0, 0));
+        txtApellidos.setForeground(new java.awt.Color(255, 255, 255));
         txtApellidos.setText("apellidos");
         txtApellidos.setBorder(null);
         txtApellidos.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtApellidos.setEnabled(false);
-        add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 192, -1));
+        jPanel2.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 300, -1));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel1.setText("Nombres");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 160, -1));
+
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 480, 460));
+
+        btnActImagen.setBackground(new java.awt.Color(204, 204, 204));
+        btnActImagen.setForeground(new java.awt.Color(0, 0, 0));
         btnActImagen.setText("Actualizar imagen");
-        add(btnActImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, -1, -1));
-        add(lbImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 220, 216));
-        add(txtImgUrl, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 230, 210));
+        add(btnActImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, -1, -1));
+        add(lbImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 220, 216));
+        add(txtImgUrl, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 230, 210));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNacimientoActionPerformed
@@ -351,7 +297,6 @@ public void actualizarImagen(String imageUrl) {
     private javax.swing.JLabel jLabel8;
     public javax.swing.JPanel jPanel2;
     public javax.swing.JLabel lbImagen;
-    public javax.swing.JPanel pnlImagen;
     public javax.swing.JTextField txtApellidos;
     public javax.swing.JTextField txtCorreo;
     public javax.swing.JTextField txtDui;
