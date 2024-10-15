@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import Modelo.mdlEmpleados;
 import Modelo.Usuarios;
 import Vistas.Loginjava;
+import Vistas.frmClientes;
 import Vistas.frmUsuarios; 
 import Vistas.frmNuevoUsuario;
 import java.awt.Image;
@@ -37,6 +38,7 @@ public class ctrlEmpleados implements MouseListener, KeyListener {
         Vista.btnSubirImagen.addMouseListener(this);
         Vista.dtgempleado.addMouseListener(this);
         Vista.btnNewUser.addMouseListener(this);
+        Vista.btnClientes.addMouseListener(this);
         Vista.btnActualizar.addMouseListener(this);
         Vista.btnEliminar.addMouseListener(this);
         
@@ -74,6 +76,12 @@ public class ctrlEmpleados implements MouseListener, KeyListener {
                 }
             });
         }
+        
+        if (e.getSource() == Vista.btnClientes) {
+            frmClientes nuevoClientesFrame = new frmClientes();
+            nuevoClientesFrame.setVisible(true);
+            nuevoClientesFrame.setLocationRelativeTo(null);
+        }
 
         
         if (e.getSource() == Vista.dtgempleado) {
@@ -81,7 +89,6 @@ public class ctrlEmpleados implements MouseListener, KeyListener {
         }
         
         if (e.getSource() == Vista.btnSubirImagen) {
-    // Crear el JFileChooser para seleccionar un archivo
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Seleccionar Imagen");
 

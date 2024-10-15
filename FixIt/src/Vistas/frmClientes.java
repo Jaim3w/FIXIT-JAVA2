@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 
-public class frmClientes extends javax.swing.JFrame {
+public class frmClientes extends JFrame {
 
     /**
      * Creates new form frmClientes
