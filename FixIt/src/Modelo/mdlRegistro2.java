@@ -97,7 +97,7 @@ public class mdlRegistro2 {
         this.telefonoEmpleado = telefonoEmpleado;
     }
     
-   private String subirImagenImgur (File imageFile) throws IOException, ParseException {
+     private String subirImagenImgur (File imageFile) throws IOException, ParseException {
     // Cargar la imagen y convertirla en Base64
     byte[] fileContent = Files.readAllBytes(imageFile.toPath());
     String encodedImage = Base64.getEncoder().encodeToString(fileContent);
