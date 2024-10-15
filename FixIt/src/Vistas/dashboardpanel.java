@@ -1,21 +1,39 @@
 package Vistas;
 
+import Controlador.ctrlDash;
+import Modelo.Conexion;
+import Modelo.mdlDash;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 public class dashboardpanel extends javax.swing.JPanel {
-
   
     public dashboardpanel() {
 
          // Inicializamos los componentes
-    initComponents();        
+    initComponents();
+    
+    mdlDash modelo = new mdlDash();
+    dashboardpanel vista = this;
+    Conexion conn = new Conexion();
+    ctrlDash con = new ctrlDash(modelo, vista, conn);
 
     // Configuramos el color de fondo y el layout
     setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
     
+    }
+    
+    public JLabel getTxtNombre() {
+        return lbl_perfil;
+    }
+    
+    public void setTxtNombre(String nombre) {
+        lbl_perfil.setText(nombre);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -396,7 +414,22 @@ public class dashboardpanel extends javax.swing.JPanel {
     }//GEN-LAST:event_imgMinimizeMouseClicked
 
     private void imgExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgExitMouseClicked
-        System.exit(0);  // Cierra la aplicación por completo
+          
+                int confirmacion = JOptionPane.showConfirmDialog(
+                    null, 
+                    "¿Estás seguro de que deseas cerrar sesión?", 
+                    "Confirmar cierre de sesión", 
+                    JOptionPane.YES_NO_OPTION
+                );
+
+                // Verificar la respuesta del usuario
+                if (confirmacion == JOptionPane.YES_OPTION) {
+                    // Si elige "Sí", redirigir a la pantalla de login
+                    Loginjava.initLogin();
+                    SwingUtilities.getWindowAncestor(this.imgExit).dispose();
+                } 
+                // Si elige "No", simplemente se cierra el cuadro de diálogo y no ocurre nada
+            
     }//GEN-LAST:event_imgExitMouseClicked
 
     private void lbl_perfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_perfilMouseClicked

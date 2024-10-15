@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Factura_fixit" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cb491e17-1996-42bf-920a-d5b4a8c71434">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexion"/>
+	<parameter name="identificador" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT Factura.FacturaIdentificacion AS "Factura de",ProductoRepuesto.Nombre AS "Producto o Repuesto", Servicio.Nombre AS "Servicio",  Venta.Subtotal As "Subtotal",
+SUM(Venta.Subtotal) OVER (PARTITION BY Factura.FacturaIdentificacion) AS "Total a pagar" FROM  Venta 
+INNER JOIN ProductoRepuesto ON Venta.UUID_productoRepuesto = ProductoRepuesto.UUID_productoRepuesto 
+INNER JOIN AsignarOrden ON Venta.UUID_AsignarOrden = AsignarOrden.UUID_AsignarOrden 
+INNER JOIN Servicio ON AsignarOrden.UUID_servicio = Servicio.UUID_servicio 
+INNER JOIN Factura ON Venta.UUID_Factura = Factura.UUID_Factura
+WHERE FACTURAIDENTIFICACION = $P{identificador}]]>
+	</queryString>
+	<field name="Factura de" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Factura de"/>
+		<property name="com.jaspersoft.studio.field.label" value="Factura de"/>
+	</field>
+	<field name="Producto o Repuesto" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Producto o Repuesto"/>
+		<property name="com.jaspersoft.studio.field.label" value="Producto o Repuesto"/>
+	</field>
+	<field name="Servicio" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Servicio"/>
+		<property name="com.jaspersoft.studio.field.label" value="Servicio"/>
+	</field>
+	<field name="Subtotal" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Subtotal"/>
+		<property name="com.jaspersoft.studio.field.label" value="Subtotal"/>
+	</field>
+	<field name="Total a pagar" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Total a pagar"/>
+		<property name="com.jaspersoft.studio.field.label" value="Total a pagar"/>
+	</field>
+	<variable name="V_sub_sum" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{Subtotal}]]></variableExpression>
+	</variable>
+	<variable name="totalGeneral" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{Subtotal}]]></variableExpression>
+	</variable>
+	<variable name="totalCount" class="java.lang.Integer" resetType="Group" resetGroup="Total a pagar" incrementType="Group" incrementGroup="Total a pagar" calculation="Count"/>
+	<variable name="GROUP_RECORD_COUNT" class="java.lang.Integer" resetType="Group" resetGroup="Total a pagar" incrementType="Group" incrementGroup="Total a pagar" calculation="Count"/>
+	<variable name="totalGeneralAcumulado" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{Subtotal}]]></variableExpression>
+	</variable>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{Factura de}]]></groupExpression>
+		<groupHeader>
+			<band height="33">
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="122" height="32" forecolor="#666666" backcolor="#E6E6E6" uuid="eaa86c42-796f-481f-b2a0-7fd1e83013fd"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Factura de]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="123" y="0" width="455" height="32" forecolor="#050505" backcolor="#E6E6E6" uuid="af8efc97-1164-4ca9-8295-33ddbebdb024"/>
+					<textElement>
+						<font size="24" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Factura de}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="-20" y="32" width="595" height="1" forecolor="#666666" uuid="ae1fce9a-412e-41c6-b3db-c95ee7b12580"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<groupExpression><![CDATA[$F{Producto o Repuesto}]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<textField>
+					<reportElement x="123" y="0" width="445" height="32" forecolor="#050505" uuid="60f3bfcc-741a-4426-851e-91a9c8ff5670"/>
+					<textElement>
+						<font size="22" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Producto o Repuesto}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="7" width="130" height="20" forecolor="#666666" uuid="d2f90d00-bd03-402d-9907-ae709ffa4933"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Producto o Repuesto]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group3">
+		<groupExpression><![CDATA[$F{Servicio}]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<textField>
+					<reportElement x="124" y="0" width="455" height="32" forecolor="#050505" uuid="b953b3ec-775b-49b5-9993-d03767d6b26f"/>
+					<textElement>
+						<font size="20" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Servicio}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="c6f412d2-214a-4323-b225-f1d29ddda6f2"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Servicio]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group4">
+		<groupExpression><![CDATA[$F{Subtotal}]]></groupExpression>
+		<groupHeader>
+			<band height="100">
+				<textField>
+					<reportElement x="125" y="0" width="455" height="32" forecolor="#050505" uuid="a8e62ada-26a0-4a33-a502-8273893c4391"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Subtotal}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="0ba29451-cc1b-472b-af65-adabab2d7a06"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Subtotal]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="452" y="32" width="100" height="30" uuid="4fd9d3f5-7680-416e-82cc-fb67e8b6687a">
+						<printWhenExpression><![CDATA[$V{totalGeneral} != null]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new BigDecimal($V{totalGeneralAcumulado}.toString()).add(new BigDecimal($F{Subtotal}.toString()))
+]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="394" y="32" width="100" height="30" uuid="5a84db1f-f493-4fa7-9992-eb4d892b7459">
+						<printWhenExpression><![CDATA[$V{totalGeneral} != null]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<text><![CDATA[Subtotal:]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Total a pagar">
+		<groupExpression><![CDATA[$F{Total a pagar}]]></groupExpression>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-21" width="595" height="92" forecolor="#050505" backcolor="#050505" uuid="52d1f938-9d46-495a-b6c5-578477e1fdb5"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFF708" uuid="47303dd8-5acb-405c-8d82-de4c96fa78d4"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[FIXIT]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="9b967e61-302e-4cae-93e0-1a26da57ffa1"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="3d7af439-af63-4d0a-9d44-4bc74ebf9454"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="e4f805cf-2534-4870-901d-36fc59179417"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="eb7eec45-f1b6-4b3c-b4e7-932f16a13158"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="b6ddfc4f-2767-474c-8e02-72d514d540eb"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
