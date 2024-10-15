@@ -302,12 +302,11 @@ public void actualizarImagen(String imageUrl) {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2)))
-                .addGap(255, 255, 255))
+                .addGap(33, 33, 33))
         );
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, -1, 350));
 
-        txtNombres.setBackground(new java.awt.Color(255, 255, 255));
         txtNombres.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtNombres.setForeground(new java.awt.Color(0, 0, 0));
         txtNombres.setText("nombres");
@@ -318,7 +317,6 @@ public void actualizarImagen(String imageUrl) {
         txtNombres.setMargin(new java.awt.Insets(0, 6, 2, 6));
         add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 192, -1));
 
-        txtApellidos.setBackground(new java.awt.Color(255, 255, 255));
         txtApellidos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtApellidos.setForeground(new java.awt.Color(0, 0, 0));
         txtApellidos.setText("apellidos");
