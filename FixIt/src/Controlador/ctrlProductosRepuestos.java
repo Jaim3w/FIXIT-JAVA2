@@ -36,6 +36,7 @@ public class ctrlProductosRepuestos implements MouseListener, KeyListener {
     Vista.btnActualizarR.addMouseListener(this);
     Vista.btnBuscarR.addMouseListener(this);
     Vista.btnLimpiarr.addMouseListener(this);
+    Vista.btnAgregarImgR.addMouseListener(this);
     Vista.tbListaProductosRepuestos.addMouseListener(this);
     
     //carga el contenido de los combo box
@@ -54,9 +55,7 @@ public class ctrlProductosRepuestos implements MouseListener, KeyListener {
                 }
             }
         });
-        
-        Modelo.Mostrar(Vista.tbListaProductosRepuestos);
-        Modelo.limpiar(Vista);
+       Modelo.Mostrar(Vista.tbListaProductosRepuestos);
     }
     
     private void guardarProdcutoRepuesto() {
@@ -65,37 +64,8 @@ public class ctrlProductosRepuestos implements MouseListener, KeyListener {
     
     @Override
    public void mouseClicked(MouseEvent e) {
-    // ejecución al dar clic a boton guardar
-    if (e.getSource() == Vista.btnAgregarR) {
-        // Validar que los campos no estén vacíos
-        if (Vista.txtNombreR.getText().isEmpty() || Vista.cmbCategoria.getSelectedItem() == null
-                || Vista.txtPrecioR.getText().isEmpty() || Vista.imgR.getIcon() == null) {
-            JOptionPane.showMessageDialog(Vista, "Debes llenar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
-            return; // Detener la ejecución si hay campos vacíos
-        }
-    }
-    
-    try {
-        System.out.println("Guardando Repuesto o Producto...");
-    
-        Categorias categoriaSeleccionada = (Categorias) Vista.cmbCategoria.getSelectedItem();
-
-            Modelo.setItem(categoriaSeleccionada.getUUID_item());
-            Modelo.setNombre(Vista.txtNombreR.getText());
-            Modelo.setImagenSeleccionada(Modelo.getImagenSeleccionada());
-            Modelo.setPrecio(Integer.parseInt(Vista.txtPrecioR.getText()));
-
-            Modelo.Guardar();
-            Modelo.Mostrar(Vista.tbListaProductosRepuestos);
-            Modelo.limpiar(Vista);
-            
-            System.out.println("Repuesto o Prodcuto guardado correctamente.");
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(Vista, "Error al guardar el Repuesto o Prodcuto: " + ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
-            System.out.println("Error al guardar el Repuesto o Prodcuto: " + ex.getMessage());
-        }
-    
-     if (e.getSource() == Vista.btnAgregarImgR) {
+       
+       if (e.getSource() == Vista.btnAgregarImgR) {
     // Crear el JFileChooser para seleccionar un archivo
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Seleccionar Imagen");
@@ -119,25 +89,62 @@ public class ctrlProductosRepuestos implements MouseListener, KeyListener {
             JOptionPane.showMessageDialog(Vista, "No se seleccionó ninguna imagen.");
         }
       }
+       
+    // ejecución al dar clic a boton guardar
+    if (e.getSource() == Vista.btnAgregarR) {
+    // Validar que los campos no estén vacíos
+    if (Vista.txtNombreR.getText().isEmpty() || Vista.cmbCategoria.getSelectedItem() == null || Vista.txtPrecioR.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(Vista, "Debes llenar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+        return; // Detener la ejecución si hay campos vacíos
+    }
+
+    try {
+        System.out.println("Guardando Repuesto o Producto...");
+        
+        // Obtener la categoría seleccionada
+        Categorias categoriaSeleccionada = (Categorias) Vista.cmbCategoria.getSelectedItem();
+        if (categoriaSeleccionada == null) {
+            throw new Exception("Selecciona una categoría válida.");
+        }
+
+        // Establecer los valores en el modelo
+        Modelo.setItem(categoriaSeleccionada.getUUID_item());
+        Modelo.setNombre(Vista.txtNombreR.getText());
+        Modelo.setPrecio(Double.parseDouble(Vista.txtPrecioR.getText()));
+
+        // Asegúrate de que se haya seleccionado una imagen
+        if (Modelo.getImagenSeleccionada() == null) {
+            throw new Exception("Debes seleccionar una imagen.");
+        }
+
+        Modelo.Guardar();
+        Modelo.Mostrar(Vista.tbListaProductosRepuestos);
+        Modelo.limpiar(Vista);
+        
+        System.out.println("Repuesto o Producto guardado correctamente.");
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(Vista, "Error al guardar el Repuesto o Producto: " + ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
+        System.out.println("Error al guardar el Repuesto o Producto: " + ex.getMessage());
+    }
+}
+    
      
-     if (e.getSource() == Vista.btnActualizarR) {
-        if (Vista.txtNombreR.getText().isEmpty() || Vista.cmbCategoria.getSelectedItem() == null
-                || Vista.txtPrecioR.getText().isEmpty() || Vista.imgR.getIcon() == null) {
-            JOptionPane.showMessageDialog(Vista, "No se puede actulizar campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
+     
+      if (e.getSource() == Vista.btnActualizarR) {
+        if (Vista.txtNombreR.getText().isEmpty() || Vista.txtPrecioR.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(Vista, "No se puede actualizar campos vacíos", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         } else {
             try {
-
                 Categorias categoriaSeleccionada = (Categorias) Vista.cmbCategoria.getSelectedItem();
-
-                Modelo.setItem(categoriaSeleccionada.getUUID_item());               
+                Modelo.setItem(categoriaSeleccionada.getUUID_item());
 
                 if (Modelo.getImagenSeleccionada() != null) {
                     Modelo.setImagenSeleccionada(Modelo.getImagenSeleccionada());
                 }
 
-            Modelo.setNombre(Vista.txtNombreR.getText());
-            Modelo.setPrecio(Integer.parseInt(Vista.txtPrecioR.getText()));
+                Modelo.setNombre(Vista.txtNombreR.getText());
+                Modelo.setPrecio(Double.parseDouble(Vista.txtPrecioR.getText()));
 
                 Modelo.Actualizar(Vista.tbListaProductosRepuestos);
                 Modelo.Mostrar(Vista.tbListaProductosRepuestos);
@@ -146,29 +153,30 @@ public class ctrlProductosRepuestos implements MouseListener, KeyListener {
                 JOptionPane.showMessageDialog(Vista, "Error al actualizar el Producto o Repuesto", "Error", JOptionPane.WARNING_MESSAGE);
             }
         }
-        
-        if (e.getSource() == Vista.btnEliminarR) {
-            if (Vista.txtNombreR.getText().isEmpty() || Vista.cmbCategoria.getSelectedItem() == null
-                || Vista.txtPrecioR.getText().isEmpty() || Vista.imgR.getIcon() == null) {
-            JOptionPane.showMessageDialog(Vista, "No se puede eliminar campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                Modelo.Eliminar(Vista.tbListaProductosRepuestos);
-                Modelo.Mostrar(Vista.tbListaProductosRepuestos);
-                Modelo.limpiar(Vista);
-            }
-       }
-        
-        //ejecuta la limpieza de campos
-        if (e.getSource() == Vista.btnLimpiarr) {
+    }
+
+    // Lógica de eliminación
+    if (e.getSource() == Vista.btnEliminarR) {
+        try {
+            Modelo.Eliminar(Vista.tbListaProductosRepuestos);
+            Modelo.Mostrar(Vista.tbListaProductosRepuestos);
             Modelo.limpiar(Vista);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(Vista, "Error al eliminar el Producto o Repuesto: " + ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
         }
-        
-        //carga los datos en la tabla
-        if (e.getSource() == Vista.tbListaProductosRepuestos) {
-            Modelo.cargarDatosTabla(Vista);
-          }
-      }
+    }
+
+    // Limpieza de campos
+    if (e.getSource() == Vista.btnLimpiarr) {
+        Modelo.limpiar(Vista);
+    }
+
+    // Carga los datos en la tabla
+    if (e.getSource() == Vista.tbListaProductosRepuestos) {
+        Modelo.cargarDatosTabla(Vista);
+    }
    }
+   
    
      private void mostrarImagenEnLabel(File imagen) {
         try {

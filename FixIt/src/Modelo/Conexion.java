@@ -6,9 +6,17 @@ import java.sql.*;
 public class Conexion {
     
     private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
+<<<<<<< HEAD
 
     private static final String USUARIO = "fixit";
     private static final String CONTRASENA = "fixit";
+=======
+    //private static final String USUARIO = "jaimedb";
+    //private static final String CONTRASENA = "qatar24";
+
+    private static final String USUARIO = "fixit2";
+    private static final String CONTRASENA = "fixit2";
+>>>>>>> b51442254135cd59814de4359c16ff44b0431d42
 
     public static Connection getConexion() {
         try {

@@ -5,6 +5,8 @@
 package Vistas;
 
 
+import Controlador.ctrlProductosRepuestos;
+import Controlador.ctrlProveedor;
 import Modelo.Categorias;
 import Modelo.mdlProductosRepuestos;
 
@@ -21,9 +23,11 @@ public class frmProductosRepuestos extends TransparenteRoundedPanel {
      */
     public frmProductosRepuestos() {
         initComponents();
+        
         frmProductosRepuestos vista = this;
         mdlProductosRepuestos modelo = new mdlProductosRepuestos();
         Categorias mCategorias = new Categorias();
+         ctrlProductosRepuestos controlador = new ctrlProductosRepuestos(modelo, vista, mCategorias);
         
         vista.setVisible(true);
     }

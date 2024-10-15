@@ -4,6 +4,10 @@
  */
 package Vistas;
 
+import Controlador.ctrlInventario;
+import Modelo.ProductosRepuestos;
+import Modelo.mdlInventario;
+import Modelo.Proveedores;
 import java.text.SimpleDateFormat;
 
 /**
@@ -17,6 +21,13 @@ public class frmInventario extends javax.swing.JPanel {
      */
     public frmInventario() {
         initComponents();
+        frmInventario vista = this;
+        mdlInventario modelo = new mdlInventario();
+        ProductosRepuestos mProductosRepuestos = new ProductosRepuestos();
+        Proveedores mProveedor = new Proveedores();
+        ctrlInventario controlador = new ctrlInventario(modelo, vista, mProductosRepuestos, mProveedor);
+        
+        vista.setVisible(true);
     }
 
     /**
