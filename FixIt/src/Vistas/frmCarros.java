@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package Vistas;
 
 import Controlador.ctrlCarros;
@@ -59,6 +55,7 @@ public class frmCarros extends TransparenteRoundedPanel {
         txtIngresoCarro = new javax.swing.JLabel();
         btnSubirImagen = new Vistas.elemetos.ButtonWI();
         btnNewCliente = new javax.swing.JButton();
+        btnNewModelo = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(922, 703));
@@ -189,6 +186,9 @@ public class frmCarros extends TransparenteRoundedPanel {
 
         btnNewCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/mas.png"))); // NOI18N
         add(btnNewCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 30, 30));
+
+        btnNewModelo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/mas.png"))); // NOI18N
+        add(btnNewModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 30, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtBuscarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarCarroActionPerformed
@@ -202,6 +202,7 @@ public class frmCarros extends TransparenteRoundedPanel {
     public Vistas.elemetos.ButtonWI btnEliminarCarro;
     public Vistas.elemetos.ButtonWI btnGuardarCarro;
     public javax.swing.JButton btnNewCliente;
+    public javax.swing.JButton btnNewModelo;
     public Vistas.elemetos.ButtonWI btnSubirImagen;
     public javax.swing.JComboBox<String> cmbClienteCarro;
     public javax.swing.JComboBox<String> cmbModeloCarro;

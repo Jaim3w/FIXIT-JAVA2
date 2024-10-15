@@ -19,6 +19,27 @@ public class ModeloCarro {
     private String UUID_modelo;
     private String NombreModelo;
     
+    private String uuidMarca;
+    private String NombreMarca;
+
+    public String getUuidMarca() {
+        return uuidMarca;
+    }
+
+    public void setUuidMarca(String uuidMarca) {
+        this.uuidMarca = uuidMarca;
+    }
+
+    public String getNombreMarca() {
+        return NombreMarca;
+    }
+
+    public void setNombreMarca(String NombreMarca) {
+        this.NombreMarca = NombreMarca;
+    }
+    
+    
+    
     public ModeloCarro() {
         
     }
@@ -57,6 +78,22 @@ public class ModeloCarro {
             ResultSet rs = statement.executeQuery("select UUID_modelo, Nombre from Modelo");
             while(rs.next()){
                 String uuid = rs.getString("UUID_modelo");
+                String nombre = rs.getString("Nombre");
+                comboBox.addItem(new ModeloCarro(uuid, nombre));
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void CargarComboMarcas(JComboBox comboBox){
+        Connection conexion = Conexion.getConexion();
+        comboBox.removeAllItems();
+        try {
+            Statement statement = conexion.createStatement();
+            ResultSet rs = statement.executeQuery("select UUID_marca, Nombre from Marca");
+            while(rs.next()){
+                String uuid = rs.getString("UUID_marca");
                 String nombre = rs.getString("Nombre");
                 comboBox.addItem(new ModeloCarro(uuid, nombre));
             }
