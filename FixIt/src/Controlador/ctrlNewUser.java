@@ -23,6 +23,7 @@ public class ctrlNewUser implements MouseListener {
         this.Vista = vista;
         
         Vista.btnAgregarUser.addMouseListener(this);
+        Vista.btnCancelar.addMouseListener(this);
     }
 
     @Override
@@ -53,6 +54,10 @@ public class ctrlNewUser implements MouseListener {
             modelo.InsertarUserEmpleado();
             JOptionPane.showMessageDialog(null, "Usuario registrado con éxito", "Usuario registrado", JOptionPane.INFORMATION_MESSAGE);
         
+            Vista.dispose();
+        }
+        
+        if (e.getSource() == Vista.btnCancelar) {
             Vista.dispose();
         }
     }

@@ -14,38 +14,40 @@ import javax.swing.JComboBox;
  *
  * @author Kevin
  */
-public class Categorias {
+public class ProductosRepuestos {
     
-    private String UUID_item;
-    private String Nombre;
+    private String UUID_productoRepuesto;
+    private String nombre;
     
-    public Categorias(){
+    public ProductosRepuestos(){
+}
+    
+    public ProductosRepuestos(String UUID_prodcutosRepuestos, String nombre) {
+        
+    this.UUID_productoRepuesto = UUID_prodcutosRepuestos;
+    this.nombre = nombre;
+  
     }
     
-    public Categorias(String UUID_item, String Nombre) {
-        this.UUID_item = UUID_item;
-        this.Nombre = Nombre;
-    }
-    
-    public String getUUID_item() {
-        return UUID_item;
-    }
-
-    public void setUUID_item(String UUID_item) {
-        this.UUID_item = UUID_item;
+    public String getUUID_ProductoRepuesto() {
+        return UUID_productoRepuesto;
     }
 
+    public void setUUID_ProductoRepuesto(String UUID_productoRepuesto) {
+        this.UUID_productoRepuesto = UUID_productoRepuesto;
+    }
+    
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
     @Override
     public String toString() {
-        return Nombre;
+        return nombre;
     }
     
     public void CargarComboCategorias(JComboBox comboBox){
@@ -53,14 +55,15 @@ public class Categorias {
         comboBox.removeAllItems();
         try {
             Statement statement = conexion.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT UUID_item, Nombre FROM CategoriaItem");
+            ResultSet rs = statement.executeQuery("SELECT UUID_productoRepuesto, Nombre FROM ProductoRepuesto");
             while(rs.next()){
-                String uuid = rs.getString("UUID_item");
+                String uuid = rs.getString("UUID_productoRepuesto");
                 String nombre = rs.getString("Nombre");
-                comboBox.addItem(new Categorias(uuid, nombre));
+                comboBox.addItem(new ProductosRepuestos(uuid, nombre));
             }
         } catch(SQLException e) {
             e.printStackTrace();
         }
     }
+        
 }

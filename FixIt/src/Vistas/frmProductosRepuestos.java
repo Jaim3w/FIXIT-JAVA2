@@ -4,6 +4,12 @@
  */
 package Vistas;
 
+
+import Controlador.ctrlProductosRepuestos;
+import Controlador.ctrlProveedor;
+import Modelo.Categorias;
+import Modelo.mdlProductosRepuestos;
+
 import Vistas.elementosTwo.TransparenteRoundedPanel;
 
 /**
@@ -17,8 +23,14 @@ public class frmProductosRepuestos extends TransparenteRoundedPanel {
      */
     public frmProductosRepuestos() {
         initComponents();
+        
+        frmProductosRepuestos vista = this;
+        mdlProductosRepuestos modelo = new mdlProductosRepuestos();
+        Categorias mCategorias = new Categorias();
+         ctrlProductosRepuestos controlador = new ctrlProductosRepuestos(modelo, vista, mCategorias);
+        
+        vista.setVisible(true);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -165,4 +177,5 @@ public class frmProductosRepuestos extends TransparenteRoundedPanel {
     public javax.swing.JTextField txtNombreR;
     public javax.swing.JTextField txtPrecioR;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -1,7 +1,9 @@
 package Modelo;
 
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,6 +13,8 @@ import java.sql.SQLException;
 import java.util.Base64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
@@ -21,6 +25,12 @@ import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.json.JSONObject;
+import Vistas.frmPerfilAd;
+import java.util.ArrayList;
+import java.util.List;
+import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
+import org.apache.hc.core5.http.NameValuePair;
+import org.apache.hc.core5.http.message.BasicNameValuePair;
 
 public class mdlPerfilAd {
 
@@ -97,42 +107,43 @@ public class mdlPerfilAd {
         this.imgUrl = imgUrl;
     }
 
+    
+    
     // Método para subir la imagen a Imgur
-    private String subirImagenImgur(File imageFile) throws IOException {
-        byte[] fileContent = Files.readAllBytes(imageFile.toPath());
-        String encodedImage = Base64.getEncoder().encodeToString(fileContent);
-
-        String uploadUrl = "https://api.imgur.com/3/image";
-        CloseableHttpClient httpClient = HttpClients.createDefault();
-        HttpPost uploadFile = new HttpPost(uploadUrl);
-
-        uploadFile.addHeader("Authorization", "Client-ID 8fade595e9f4606");
-
-        JSONObject json = new JSONObject();
-        json.put("image", encodedImage);
-
-        StringEntity entity = new StringEntity(json.toString());
-        uploadFile.setEntity(entity);
-        uploadFile.addHeader("Content-Type", "application/json");
-
-        CloseableHttpResponse response = null;
-        try {
-            response = httpClient.execute(uploadFile);
-            String jsonResponse = EntityUtils.toString(response.getEntity());
-
-            JSONObject responseObject = new JSONObject(jsonResponse);
-            return responseObject.getJSONObject("data").getString("link");
-
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
-            throw new IOException("Error al subir la imagen: " + e.getMessage());
-        } finally {
-            if (response != null) {
-                response.close();
-            }
-            httpClient.close();
-        }
-    }
+   private String subirImagenImgur (File imageFile) throws IOException, ParseException {
+    // Cargar la imagen y convertirla en Base64
+    byte[] fileContent = Files.readAllBytes(imageFile.toPath());
+    String encodedImage = Base64.getEncoder().encodeToString(fileContent);
+ 
+    // URL de la API de IMGBB
+    String uploadUrl = "https://api.imgbb.com/1/upload";
+ 
+    // Crear un cliente HTTP
+    CloseableHttpClient httpClient = HttpClients.createDefault();
+    HttpPost uploadFile = new HttpPost(uploadUrl);
+ 
+    // Reemplazar por tu propia API key de IMGBB
+    String apiKey = "0bc1da3a295622b966c14cd6d1d05627";
+ 
+    // Crear el body de la solicitud con la API key y la imagen en Base64
+    List<NameValuePair> params = new ArrayList<>();
+    params.add(new BasicNameValuePair("key", apiKey));
+    params.add(new BasicNameValuePair("image", encodedImage));
+ 
+    // Establecer los parámetros como entidad del request
+    uploadFile.setEntity(new UrlEncodedFormEntity(params));
+ 
+    // Ejecutar la solicitud de subida
+    CloseableHttpResponse response = httpClient.execute(uploadFile);
+    String jsonResponse = EntityUtils.toString(response.getEntity());
+ 
+    // Analizar la respuesta JSON para obtener la URL de la imagen
+    JSONObject responseObject = new JSONObject(jsonResponse);
+    String uploadedUrl = responseObject.getJSONObject("data").getString("url");
+ 
+    response.close();
+    return uploadedUrl;
+}
 
     // Método para cargar los datos del perfil
     public void cargarDatosPerfil() {
@@ -165,6 +176,8 @@ public class mdlPerfilAd {
             this.nacimiento = rs.getString("FechaNacimiento");
             this.dui = rs.getString("Dui_empleado");
             this.imgUrl = rs.getString("ImagenEmpleado");
+this.imgUrl = rs.getString("ImagenEmpleado");
+System.out.println("URL de la imagen: " + this.imgUrl); // Verifica la URL
 
             System.out.println("Datos cargados correctamente.");
         } else {
@@ -182,7 +195,19 @@ public class mdlPerfilAd {
         }
     }
 }
-
+public void cargarImagenPerfil(frmPerfilAd Vista, String imgUrl) {
+    try {
+        // Cargar la imagen desde la URL
+        Image image = ImageIO.read(new URL(imgUrl));
+        // Redimensionar la imagen si es necesario
+        Image scaledImage = image.getScaledInstance(100, 100, Image.SCALE_SMOOTH); // Cambia el tamaño según lo necesites
+        // Asignar la imagen a un JLabel
+        Vista.lbImagen.setIcon(new ImageIcon(scaledImage));
+    } catch (IOException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error al cargar la imagen: " + e.getMessage());
+    }
+}
 
     // Método para actualizar el teléfono
     public void actualizarTel() {
@@ -208,7 +233,7 @@ public class mdlPerfilAd {
 
 
     // Método para actualizar la imagen
-    public void actualizarImg() {
+    public void actualizarImg() throws ParseException {
         Connection conexion = Conexion.getConexion();
 
         try {

@@ -13,6 +13,7 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -29,7 +30,38 @@ public class ctrlPerfilAd implements MouseListener, KeyListener {
     
         vista.btnActImagen.addMouseListener(this);
         vista.btnActTelefono.addMouseListener(this);
+        Vista.txtImgUrl.setVisible(false);
+
     }
+    
+    
+  public void actualizarImagenPerfil(String imageUrl) {
+    if (esUrlValido(imageUrl)) {
+        cargarImagenPerfil(imageUrl);  // Solo carga la imagen si el URL es válido
+    } else {
+        Vista.lbImagen.setText("URL de imagen no válido.");  // Mensaje si el URL es inválido
+    }
+}
+    
+    public void cargarImagenPerfil(String urlImagen) {
+    try {
+        // Descargar la imagen desde la URL
+        URL url = new URL(urlImagen);
+        Image imagen = ImageIO.read(url);
+
+        // Escalar la imagen al tamaño del JLabel
+        Image imagenEscalada = imagen.getScaledInstance(Vista.lbImagen.getWidth(), Vista.lbImagen.getHeight(), Image.SCALE_SMOOTH);
+
+        // Asignar la imagen escalada al JLabel
+        Vista.lbImagen.setIcon(new ImageIcon(imagenEscalada));
+
+        // Opcional: Remover cualquier texto que se pueda mostrar
+        Vista.lbImagen.setText("");
+    } catch (Exception e) {
+        e.printStackTrace();
+        Vista.lbImagen.setText("Error al cargar la imagen.");
+    }
+}
 
     // Método para cargar los datos iniciales desde el modelo a la vista
     public void cargarDatos() {
@@ -47,6 +79,21 @@ public class ctrlPerfilAd implements MouseListener, KeyListener {
         Vista.getTxtDui().setText(Modelo.getDui());
         Vista.getTxtImagenUrl().setText(Modelo.getImgUrl());
 
+        // Validar el URL antes de cargar la imagen
+         Vista.txtImgUrl.addComponentListener(new java.awt.event.ComponentAdapter() {
+            @Override
+            public void componentResized(java.awt.event.ComponentEvent e) {
+                // Validar el URL antes de cargar la imagen
+                String urlImagen = Modelo.getImgUrl();  // Obtén el URL de la imagen desde el modelo
+
+                if (esUrlValido(urlImagen)) {
+                    cargarImagenPerfil(urlImagen);  // Solo carga la imagen si el URL es válido
+                } else {
+                    Vista.txtImgUrl.setText("URL de imagen no válido.");  // Muestra un mensaje de error si el URL no es válido
+                }
+            }
+        });
+
         try {
             conexion.close();  // Cerrar la conexión
         } catch (SQLException e) {
@@ -56,6 +103,16 @@ public class ctrlPerfilAd implements MouseListener, KeyListener {
         System.out.println("Error al conectar a la base de datos.");
     }
 }
+    // Método para validar si el URL es válido
+public boolean esUrlValido(String urlImagen) {
+    try {
+        new URL(urlImagen).toURI();  // Intenta crear una URI a partir del URL
+        return true;  // Si no lanza una excepción, el URL es válido
+    } catch (Exception e) {
+        return false;  // Si lanza una excepción, el URL no es válido
+    }
+}
+
 
 
     // Método para manejar la selección y actualización de imágenes
@@ -81,40 +138,47 @@ public class ctrlPerfilAd implements MouseListener, KeyListener {
     // Implementación del evento mouseClicked para el botón de imagen y teléfono
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (e.getSource() == Vista.btnActImagen) {
-            if (Vista.btnActImagen.getText().equals("Actualizar imagen")) {
-                JFileChooser fileChooser = new JFileChooser();
-                fileChooser.setDialogTitle("Seleccionar Imagen");
+       if (e.getSource() == Vista.btnActImagen) {
 
-                int result = fileChooser.showOpenDialog(Vista);
-                if (result == JFileChooser.APPROVE_OPTION) {
-                    File imagenSeleccionada = fileChooser.getSelectedFile();
+        if (Vista.btnActImagen.getText().equals("Actualizar imagen")) {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setDialogTitle("Seleccionar Imagen");
+            
 
-                    Modelo.setImg(imagenSeleccionada);  // Guardar la imagen en el modelo
-                    mostrarImagenEnLabel(imagenSeleccionada);  // Mostrarla en la vista
+            int result = fileChooser.showOpenDialog(Vista);
+            if (result == JFileChooser.APPROVE_OPTION) {
+                File imagenSeleccionada = fileChooser.getSelectedFile();
 
-                    Vista.btnActImagen.setText("Aceptar");  // Cambiar el texto del botón
-                    JOptionPane.showMessageDialog(Vista, "Imagen seleccionada: " + imagenSeleccionada.getName());
-                } else {
-                    JOptionPane.showMessageDialog(Vista, "No se seleccionó ninguna imagen.");
-                }
+                Modelo.setImg(imagenSeleccionada);  // Guardar la imagen en el modelo
+                mostrarImagenEnLabel(imagenSeleccionada);  // Mostrarla en la vista
 
-            } else if (Vista.btnActImagen.getText().equals("Aceptar")) {
-                if (Vista.txtImgUrl.getIcon() == null) {
-                    JOptionPane.showMessageDialog(Vista, "Debes seleccionar una imagen", "Error", JOptionPane.ERROR_MESSAGE);
-                } else {
-                    try {
-                        Modelo.setImg(Modelo.getImg());  // Establecer imagen en el modelo
-                        Modelo.actualizarImg();  // Actualizar la imagen en la base de datos
+                Vista.btnActImagen.setText("Aceptar");  // Cambiar el texto del botón
+                JOptionPane.showMessageDialog(Vista, "Imagen seleccionada: " + imagenSeleccionada.getName());
 
-                        JOptionPane.showMessageDialog(Vista, "Imagen actualizada correctamente.");
-                        Vista.btnActImagen.setText("Seleccionar Imagen");
+                // Ocultar el JLabel lbImagen
+                Vista.lbImagen.setVisible(false); // Asegúrate de que lbImagen esté correctamente referenciado
+                Vista.txtImgUrl.setVisible(true);
 
-                    } catch (Exception ex) {
-                        JOptionPane.showMessageDialog(Vista, "Error al actualizar la imagen", "Error", JOptionPane.WARNING_MESSAGE);
-                    }
+            } else {
+                JOptionPane.showMessageDialog(Vista, "No se seleccionó ninguna imagen.");
+            }
+
+        } else if (Vista.btnActImagen.getText().equals("Aceptar")) {
+            if (Vista.txtImgUrl.getIcon() == null) {
+                JOptionPane.showMessageDialog(Vista, "Debes seleccionar una imagen", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                try {
+                    Modelo.setImg(Modelo.getImg());  // Establecer imagen en el modelo
+                    Modelo.actualizarImg();  // Actualizar la imagen en la base de datos
+
+                    JOptionPane.showMessageDialog(Vista, "Imagen actualizada correctamente.");
+                    Vista.btnActImagen.setText("Seleccionar Imagen");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(Vista, "Error al actualizar la imagen", "Error", JOptionPane.WARNING_MESSAGE);
                 }
             }
+        }
         }
 
         // Actualización del teléfono
@@ -156,7 +220,9 @@ public class ctrlPerfilAd implements MouseListener, KeyListener {
             }
         }
     }
+        
 }
+    
 
     // Implementaciones vacías de los métodos no utilizados
     @Override
