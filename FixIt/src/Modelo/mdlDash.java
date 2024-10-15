@@ -8,6 +8,15 @@ import java.sql.SQLException;
 public class mdlDash {
     public String nombre;
     public String correo;
+    public String rol;
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
 
     public String getNombre() {
         return nombre;
@@ -23,6 +32,30 @@ public class mdlDash {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+    
+    public void cargarRol(Connection connection, String correoUsuario) {
+        String query = "SELECT r.Nombre FROM Usuario u JOIN Rol r ON u.UUID_rol = r.UUID_rol WHERE u.CorreoElectronico = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, correoUsuario); // Usar el correo del usuario proporcionado
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // Verificamos si se obtuvo un resultado
+            if (resultSet.next()) {
+                rol = resultSet.getString("Nombre"); // Asignar el nombre del rol
+                if (rol != null && !rol.isEmpty()) {
+                    System.out.println("Rol recibido: " + rol); // Confirmación de que se ha recibido el rol
+                    globalVars.NombreRol = rol; // Almacenar en la variable global
+                } else {
+                    System.out.println("El rol está vacío o nulo.");
+                }
+            } else {
+                System.out.println("No se encontró ningún rol para el usuario con correo: " + correoUsuario);
+            }
+        } catch (Exception e) {
+            e.printStackTrace(); // Manejo de excepciones
+        }
     }
     
     public void cargarNombreEmpleadoPorCorreo() {
