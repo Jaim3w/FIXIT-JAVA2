@@ -101,6 +101,7 @@ public class frmRegistroParte2 extends javax.swing.JFrame {
         jLabel2.setText("Número de teléfono");
         blackRoundedPanelF1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 620, -1, -1));
 
+        txtFechaNacimiento.setBackground(new java.awt.Color(255, 255, 255));
         blackRoundedPanelF1.add(txtFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 330, 340, 30));
 
         btnGuardarR.setForeground(new java.awt.Color(0, 0, 0));

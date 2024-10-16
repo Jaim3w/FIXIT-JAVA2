@@ -82,38 +82,38 @@ public class frmClientes extends JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Dui del cliente");
+        jLabel2.setText("Dui del cliente:");
         transparenteRoundedPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 100, 20));
         transparenteRoundedPanel1.add(txtduicliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 310, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Nombre ");
+        jLabel3.setText("Nombre:");
         transparenteRoundedPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
         transparenteRoundedPanel1.add(txtNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 310, -1));
         transparenteRoundedPanel1.add(txtApellidoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 310, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Apellido ");
+        jLabel4.setText("Apellido: ");
         transparenteRoundedPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, -1, -1));
         transparenteRoundedPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, 320, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Correo Electronico ");
+        jLabel6.setText("Correo electrónico: ");
         transparenteRoundedPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 130, -1));
         transparenteRoundedPanel1.add(txtCorreoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 320, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Telefono ");
+        jLabel7.setText("Teléfono: ");
         transparenteRoundedPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 90, -1));
         transparenteRoundedPanel1.add(txtTelefonoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, 320, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Contraseña ");
+        jLabel8.setText("Contraseña: ");
         transparenteRoundedPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, 70, -1));
 
         tbClientes.setModel(new javax.swing.table.DefaultTableModel(

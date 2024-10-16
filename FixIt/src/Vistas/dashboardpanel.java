@@ -55,6 +55,7 @@ public class dashboardpanel extends javax.swing.JPanel {
         lbl_usuarios_y_empleados1 = new javax.swing.JLabel();
         lbl_asignaciones = new javax.swing.JLabel();
         panelContent = new Vistas.elementosTwo.TransparenteRoundedPanel();
+        jLabel1 = new javax.swing.JLabel();
         transparenteRoundedPanel2 = new Vistas.elementosTwo.TransparenteRoundedPanel();
         imgMinimize = new javax.swing.JLabel();
         imgExit = new javax.swing.JLabel();
@@ -226,15 +227,24 @@ public class dashboardpanel extends javax.swing.JPanel {
 
         whiteRoundedPanelF1.add(transparenteRoundedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 290, 690));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel1.setText("¡Bienvenido de vuelta!");
+
         javax.swing.GroupLayout panelContentLayout = new javax.swing.GroupLayout(panelContent);
         panelContent.setLayout(panelContentLayout);
         panelContentLayout.setHorizontalGroup(
             panelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1040, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelContentLayout.createSequentialGroup()
+                .addContainerGap(274, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(258, 258, 258))
         );
         panelContentLayout.setVerticalGroup(
             panelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 670, Short.MAX_VALUE)
+            .addGroup(panelContentLayout.createSequentialGroup()
+                .addGap(294, 294, 294)
+                .addComponent(jLabel1)
+                .addContainerGap(312, Short.MAX_VALUE))
         );
 
         whiteRoundedPanelF1.add(panelContent, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, 1040, 670));
@@ -439,6 +449,7 @@ public class dashboardpanel extends javax.swing.JPanel {
     public javax.swing.JLabel imgExit;
     private javax.swing.JLabel imgFondod;
     public javax.swing.JLabel imgMinimize;
+    private javax.swing.JLabel jLabel1;
     public javax.swing.JLabel lbl_asignaciones;
     public javax.swing.JLabel lbl_carros;
     public javax.swing.JLabel lbl_citas;

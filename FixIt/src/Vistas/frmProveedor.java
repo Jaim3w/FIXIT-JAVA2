@@ -75,7 +75,7 @@ public class frmProveedor extends TransparenteRoundedPanel{
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Codigo de marca");
+        jLabel10.setText("Codígo de marca:");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
 
         txtCodigo.setInheritsPopupMenu(true);
@@ -83,7 +83,7 @@ public class frmProveedor extends TransparenteRoundedPanel{
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Telefono");
+        jLabel6.setText("Teléfono:");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 50, -1));
 
         txtTelefono.setInheritsPopupMenu(true);
@@ -99,7 +99,7 @@ public class frmProveedor extends TransparenteRoundedPanel{
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Correo ");
+        jLabel7.setText("Correo: ");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, -1, -1));
 
         txtCorreo.setInheritsPopupMenu(true);
@@ -107,7 +107,7 @@ public class frmProveedor extends TransparenteRoundedPanel{
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Marca");
+        jLabel5.setText("Marca:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, -1, -1));
 
         txtMarca.setInheritsPopupMenu(true);
@@ -115,7 +115,7 @@ public class frmProveedor extends TransparenteRoundedPanel{
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Direccion");
+        jLabel8.setText("Dirección:");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 230, 50, -1));
 
         txtDireccion.setInheritsPopupMenu(true);

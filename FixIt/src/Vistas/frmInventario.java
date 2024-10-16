@@ -8,6 +8,7 @@ import Controlador.ctrlInventario;
 import Modelo.ProductosRepuestos;
 import Modelo.mdlInventario;
 import Modelo.Proveedores;
+import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 
 /**
@@ -28,6 +29,13 @@ public class frmInventario extends javax.swing.JPanel {
         ctrlInventario controlador = new ctrlInventario(modelo, vista, mProductosRepuestos, mProveedor);
         
         vista.setVisible(true);
+        
+        
+        
+        calendar2.addCalendarSelectedListener((MouseEvent evt, calendar.model.ModelDate date) -> {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            txtFechaInventario.setText(dateFormat.format(date.toDate())); // Actualiza txtFecha con la fecha seleccionada
+        });
     }
 
     /**
@@ -149,8 +157,7 @@ public class frmInventario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void calendar2PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_calendar2PropertyChange
-
-        if ("calendar".equals(evt.getPropertyName())) {
+          if ("calendar".equals(evt.getPropertyName())) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             // Actualizar el campo de texto de la fecha
             txtFechaInventario.setText(dateFormat.format(calendar2.getSelectedDate()));

@@ -36,12 +36,12 @@ public class frmNuevoUsuario extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Correo electronico");
+        jLabel1.setText("Correo electronico:");
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Contraseña");
+        jLabel2.setText("Contraseña:");
 
         btnAgregarUser.setText("Guardar");
         btnAgregarUser.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icagregarempleado.png"))); // NOI18N
