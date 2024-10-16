@@ -123,24 +123,24 @@ public class frmCarros extends TransparenteRoundedPanel {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Color del vehiculo:");
+        jLabel3.setText("Color del vehículo:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Fecha de ingreso");
+        jLabel7.setText("Fecha de ingreso:");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Año del vehiculo");
+        jLabel5.setText("Año del vehículo:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, -1, -1));
         add(txtDescripcionCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 220, 30));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Cliente");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 40, 20));
+        jLabel10.setText("Cliente:");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 50, 20));
         add(txtPlacaCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 220, 30));
 
         cmbClienteCarro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -152,7 +152,7 @@ public class frmCarros extends TransparenteRoundedPanel {
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Descripcion");
+        jLabel9.setText("Descripción:");
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, -1, -1));
 
         lblImagenCarro.setBackground(new java.awt.Color(255, 255, 255));
@@ -172,7 +172,7 @@ public class frmCarros extends TransparenteRoundedPanel {
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Placa del Vehiculo");
+        jLabel13.setText("Placa del Vehículo:");
         add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
 
         txtIngresoCarro.setForeground(new java.awt.Color(255, 255, 255));

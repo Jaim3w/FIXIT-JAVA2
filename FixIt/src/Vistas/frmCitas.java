@@ -122,12 +122,12 @@ public class frmCitas extends TransparenteRoundedPanel {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Selecciona la fecha de cita");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
+        jLabel7.setText("Selecciona la fecha de la cita");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Selecionar Empleado");
+        jLabel2.setText("Selecionar empleado");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
         add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 290, -1));
         add(txtHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 290, -1));
@@ -140,11 +140,11 @@ public class frmCitas extends TransparenteRoundedPanel {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Descripccion de cita");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, -1));
 
         cmbEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(cmbEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 290, -1));
-        add(txtDEsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 290, -1));
+        add(txtDEsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 290, -1));
 
         cmbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbCliente.addActionListener(new java.awt.event.ActionListener() {

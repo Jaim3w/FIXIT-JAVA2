@@ -36,28 +36,22 @@ public class frmInicio extends TransparenteRoundedPanel {
         carrosCardsPanel1 = new Vistas.carrosCardsPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 0, 0));
 
         transparenteRoundedPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        transparenteRoundedPanel1.add(citasCardsPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 980, 120));
-        transparenteRoundedPanel1.add(carrosCardsPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 980, -1));
+        transparenteRoundedPanel1.add(citasCardsPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 980, 120));
+        transparenteRoundedPanel1.add(carrosCardsPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 980, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Coches agregados recientemente:");
-        transparenteRoundedPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+        transparenteRoundedPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Citas pendientes por realizarse:");
-        transparenteRoundedPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("¡Bienvenido de vuelta!");
-        transparenteRoundedPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, -1, -1));
+        transparenteRoundedPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -77,7 +71,6 @@ public class frmInicio extends TransparenteRoundedPanel {
     private Vistas.citasCardsPanel citasCardsPanel1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private Vistas.elementosTwo.TransparenteRoundedPanel transparenteRoundedPanel1;
     // End of variables declaration//GEN-END:variables
 }

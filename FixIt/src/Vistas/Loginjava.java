@@ -29,7 +29,7 @@ public class Loginjava extends javax.swing.JFrame {
         // Configuramos el color de fondo y el layout
         setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
         
-setIconImage(new ImageIcon("C:\\Users\\Jaimew\\Desktop\\FIXIT-JAVA2\\FixIt\\src\\Vistas\\Imagenes\\LogitoFixit.png").getImage());
+          setIconImage(new ImageIcon("C:\\Users\\pc\\Desktop\\FIXIT-JAVA2\\FixIt\\src\\Vistas\\Imagenes\\LogitoFixit.png").getImage());
 
     }
     
@@ -63,7 +63,6 @@ setIconImage(new ImageIcon("C:\\Users\\Jaimew\\Desktop\\FIXIT-JAVA2\\FixIt\\src\
         imgExit = new javax.swing.JLabel();
         imgMinimize = new javax.swing.JLabel();
         btnLogin = new Vistas.elemetos.ButtonB();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -72,7 +71,7 @@ setIconImage(new ImageIcon("C:\\Users\\Jaimew\\Desktop\\FIXIT-JAVA2\\FixIt\\src\
 
         btnOlvidecontra.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnOlvidecontra.setForeground(new java.awt.Color(0, 0, 0));
-        btnOlvidecontra.setText("Olvide mi contraseña");
+        btnOlvidecontra.setText("Olvidé mi contraseña");
         whiteRoundedPanelF1.add(btnOlvidecontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 470, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
@@ -119,11 +118,6 @@ setIconImage(new ImageIcon("C:\\Users\\Jaimew\\Desktop\\FIXIT-JAVA2\\FixIt\\src\
             }
         });
         whiteRoundedPanelF1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 530, 170, -1));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("¿No tienes una cuenta aun?");
-        whiteRoundedPanelF1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 580, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/logingi.png"))); // NOI18N
         whiteRoundedPanelF1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -198,7 +192,6 @@ setIconImage(new ImageIcon("C:\\Users\\Jaimew\\Desktop\\FIXIT-JAVA2\\FixIt\\src\
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     public Vistas.elemetos.TxtBoxContrasenia txtContra;
     public Vistas.elemetos.TxtBoxRedondeado txtCorreo;

@@ -163,22 +163,22 @@ public void actualizarImagen(String imageUrl) {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(153, 153, 153));
         jLabel5.setText("Correo electrónico");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(153, 153, 153));
         jLabel7.setText("Teléfono");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(153, 153, 153));
         jLabel10.setText("Fecha de nacimiento");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(153, 153, 153));
         jLabel12.setText("D.U.I");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
 
         txtCorreo.setBackground(new java.awt.Color(240, 240, 240));
         txtCorreo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -188,7 +188,7 @@ public void actualizarImagen(String imageUrl) {
         txtCorreo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtCorreo.setEnabled(false);
         txtCorreo.setSelectedTextColor(new java.awt.Color(0, 0, 0));
-        jPanel2.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 261, -1));
+        jPanel2.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 261, -1));
 
         txtTelefono.setBackground(new java.awt.Color(240, 240, 240));
         txtTelefono.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -197,7 +197,7 @@ public void actualizarImagen(String imageUrl) {
         txtTelefono.setBorder(null);
         txtTelefono.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtTelefono.setEnabled(false);
-        jPanel2.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 175, -1));
+        jPanel2.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 175, -1));
 
         txtNacimiento.setBackground(new java.awt.Color(240, 240, 240));
         txtNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -211,7 +211,7 @@ public void actualizarImagen(String imageUrl) {
                 txtNacimientoActionPerformed(evt);
             }
         });
-        jPanel2.add(txtNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 261, -1));
+        jPanel2.add(txtNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 261, -1));
 
         txtDui.setBackground(new java.awt.Color(240, 240, 240));
         txtDui.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -220,22 +220,22 @@ public void actualizarImagen(String imageUrl) {
         txtDui.setBorder(null);
         txtDui.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtDui.setEnabled(false);
-        jPanel2.add(txtDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 264, -1));
+        jPanel2.add(txtDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 264, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/fecha-de-nacimiento (1).png"))); // NOI18N
         jLabel8.setPreferredSize(new java.awt.Dimension(32, 32));
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, -1, 53));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, -1, 53));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/telefono (1).png"))); // NOI18N
         jLabel4.setPreferredSize(new java.awt.Dimension(32, 32));
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/arroba (1).png"))); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(32, 32));
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 35, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, 35, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/tarjeta-de-presentacion-con-imagen.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 350, -1, -1));
 
         txtNombres.setBackground(new java.awt.Color(240, 240, 240));
         txtNombres.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -246,12 +246,12 @@ public void actualizarImagen(String imageUrl) {
         txtNombres.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtNombres.setEnabled(false);
         txtNombres.setMargin(new java.awt.Insets(0, 6, 2, 6));
-        jPanel2.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 300, -1));
+        jPanel2.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 300, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 153, 153));
         jLabel3.setText("Apellidos");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 160, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 160, -1));
 
         txtApellidos.setBackground(new java.awt.Color(240, 240, 240));
         txtApellidos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -260,20 +260,20 @@ public void actualizarImagen(String imageUrl) {
         txtApellidos.setBorder(null);
         txtApellidos.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtApellidos.setEnabled(false);
-        jPanel2.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 300, -1));
+        jPanel2.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 300, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 153, 153));
         jLabel1.setText("Nombres");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 160, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 160, -1));
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 480, 460));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 480, 430));
 
         btnActImagen.setBackground(new java.awt.Color(204, 204, 204));
         btnActImagen.setForeground(new java.awt.Color(0, 0, 0));
         btnActImagen.setText("Actualizar imagen");
-        add(btnActImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, -1, -1));
-        add(lbImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 220, 216));
+        add(btnActImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, -1, -1));
+        add(lbImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 220, 216));
         add(txtImgUrl, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 230, 210));
     }// </editor-fold>//GEN-END:initComponents
 

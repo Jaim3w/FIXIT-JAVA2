@@ -37,7 +37,8 @@ public class frmRegistrarse extends javax.swing.JFrame {
         
         // Configuramos el color de fondo y el layout
         setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
-setIconImage(new ImageIcon("C:\\Users\\Jaimew\\Desktop\\FIXIT-JAVA2\\FixIt\\src\\Vistas\\Imagenes\\LogitoFixit.png").getImage());
+setIconImage(new ImageIcon("C:\\Users\\pc\\Desktop\\FIXIT-JAVA2\\FixIt\\src\\Vistas\\Imagenes\\LogitoFixit.png").getImage());
+
 
 
     }

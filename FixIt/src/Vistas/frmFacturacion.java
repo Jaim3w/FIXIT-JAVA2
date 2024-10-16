@@ -137,34 +137,35 @@ public class frmFacturacion extends JFrame {
         btnActualizar = new Vistas.elemetos.ButtonWI();
         btnEliminar = new Vistas.elemetos.ButtonWI();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setMinimumSize(new java.awt.Dimension(922, 703));
-        setPreferredSize(new java.awt.Dimension(922, 703));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setMinimumSize(new java.awt.Dimension(1040, 670));
+        setPreferredSize(new java.awt.Dimension(1040, 670));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Fecha de vencimiento");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 300, -1));
+        jLabel3.setText("Fecha de vencimiento:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 300, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Factura Para");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 250, -1));
+        jLabel7.setText("Factura para:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 250, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Fecha Emision");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 300, 20));
+        jLabel10.setText("Fecha Emisión:");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 300, 20));
 
         txtcliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtclienteActionPerformed(evt);
             }
         });
-        add(txtcliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 410, 30));
-        add(txtFechaFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 410, 30));
-        add(txtFechaVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 410, 30));
+        getContentPane().add(txtcliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 410, 30));
+        getContentPane().add(txtFechaFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 410, 30));
+        getContentPane().add(txtFechaVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 410, 30));
 
         CalendarioVencimiento.setForeground(new java.awt.Color(255, 255, 255));
         CalendarioVencimiento.setDecorationBackgroundColor(new java.awt.Color(255, 255, 255));
@@ -175,7 +176,7 @@ public class frmFacturacion extends JFrame {
                 CalendarioVencimientoPropertyChange(evt);
             }
         });
-        add(CalendarioVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 170, 480, 180));
+        getContentPane().add(CalendarioVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 170, 480, 180));
 
         CalendarioEmision.setForeground(new java.awt.Color(255, 255, 255));
         CalendarioEmision.setDecorationBackgroundColor(new java.awt.Color(255, 255, 255));
@@ -186,7 +187,7 @@ public class frmFacturacion extends JFrame {
                 CalendarioEmisionPropertyChange(evt);
             }
         });
-        add(CalendarioEmision, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 480, 160));
+        getContentPane().add(CalendarioEmision, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 480, 160));
 
         tbFacturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -247,7 +248,7 @@ public class frmFacturacion extends JFrame {
                 .addGap(19, 19, 19))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 1000, 300));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 1000, 300));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtclienteActionPerformed

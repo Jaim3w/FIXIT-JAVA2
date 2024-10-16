@@ -2,6 +2,7 @@ package Vistas;
 
 import Modelo.globalVars;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 public class dashboard extends javax.swing.JFrame {
 
@@ -34,6 +35,10 @@ public class dashboard extends javax.swing.JFrame {
         
         String correoUsuario = globalVars.correoUsuario;
         System.out.println("El correo del usuario en sesión es: " + correoUsuario);
+        
+        setIconImage(new ImageIcon("C:\\Users\\pc\\Desktop\\FIXIT-JAVA2\\FixIt\\src\\Vistas\\Imagenes\\LogitoFixit.png").getImage());
+
+        
     }
 
     

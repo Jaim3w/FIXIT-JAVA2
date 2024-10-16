@@ -82,7 +82,7 @@ public class frmAsignarOrden extends TransparenteRoundedPanel {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/crearuser.png"))); // NOI18N
         jLabel1.setText("Crear una asignacion de tarea para un empleado");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 390, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -111,7 +111,8 @@ public class frmAsignarOrden extends TransparenteRoundedPanel {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Descripcion:");
+        jLabel7.setText("Descripción:");
+        jLabel7.setToolTipText("");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 140, -1, -1));
 
         cmbCita.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -131,6 +132,8 @@ public class frmAsignarOrden extends TransparenteRoundedPanel {
         add(txtFechaAsignacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 210, 30));
         add(txtFechaFinalizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 70, 330, 30));
 
+        CalendarioFechaAsignacion.setBackground(new java.awt.Color(255, 255, 255));
+        CalendarioFechaAsignacion.setForeground(new java.awt.Color(255, 255, 255));
         CalendarioFechaAsignacion.setSundayForeground(new java.awt.Color(0, 0, 0));
         CalendarioFechaAsignacion.setWeekdayForeground(new java.awt.Color(0, 0, 0));
         CalendarioFechaAsignacion.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
