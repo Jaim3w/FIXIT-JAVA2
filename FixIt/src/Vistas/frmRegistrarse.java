@@ -49,8 +49,7 @@ setIconImage(new ImageIcon("C:\\Users\\pc\\Desktop\\FIXIT-JAVA2\\FixIt\\src\\Vis
     public static void initfrmRegistrarse(){
         Usuarios modelo = new Usuarios();
         frmRegistrarse vista = new frmRegistrarse();
-        Roles mRoles = new Roles();
-        controlador con = new controlador(modelo, vista, mRoles);
+        controlador con = new controlador(modelo, vista);
         vista.setVisible(true);
     }
     /**
@@ -64,7 +63,6 @@ setIconImage(new ImageIcon("C:\\Users\\pc\\Desktop\\FIXIT-JAVA2\\FixIt\\src\\Vis
 
         blackRoundedPanelF1 = new Vistas.elementosTwo.BlackRoundedPanelF();
         jLabel10 = new javax.swing.JLabel();
-        cbComobox = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         btnAgregarUser = new Vistas.elemetos.ButtonA();
@@ -73,8 +71,9 @@ setIconImage(new ImageIcon("C:\\Users\\pc\\Desktop\\FIXIT-JAVA2\\FixIt\\src\\Vis
         txtContra = new Vistas.elemetos.txtContrasenaredondeadaamarilla();
         txtCorreoUser = new Vistas.elemetos.txtRedondeadoamarillo();
         imgFixit = new Vistas.elemetos.ButtonC();
-        jLabel11 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -86,12 +85,6 @@ setIconImage(new ImageIcon("C:\\Users\\pc\\Desktop\\FIXIT-JAVA2\\FixIt\\src\\Vis
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("¿Ya tienes una cuenta?");
         blackRoundedPanelF1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 610, 140, -1));
-
-        cbComobox.setBackground(new java.awt.Color(255, 255, 255));
-        cbComobox.setForeground(new java.awt.Color(0, 0, 0));
-        cbComobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbComobox.setOpaque(true);
-        blackRoundedPanelF1.add(cbComobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 460, 410, 40));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -131,13 +124,17 @@ setIconImage(new ImageIcon("C:\\Users\\pc\\Desktop\\FIXIT-JAVA2\\FixIt\\src\\Vis
         imgFixit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         blackRoundedPanelF1.add(imgFixit, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 640, 180, 50));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("¿Como quiero Registrame?");
-        blackRoundedPanelF1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 430, 210, -1));
+        jLabel1.setForeground(new java.awt.Color(176, 176, 176));
+        jLabel1.setText("Asegurate de estas ingresando los datos correctos");
+        blackRoundedPanelF1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 460, -1, -1));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/imgregistrarsefondo.png"))); // NOI18N
         blackRoundedPanelF1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("La primer cuenta, se creara como administrador");
+        blackRoundedPanelF1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 440, 310, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -200,9 +197,9 @@ setIconImage(new ImageIcon("C:\\Users\\pc\\Desktop\\FIXIT-JAVA2\\FixIt\\src\\Vis
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public Vistas.elementosTwo.BlackRoundedPanelF blackRoundedPanelF1;
     public Vistas.elemetos.ButtonA btnAgregarUser;
-    public javax.swing.JComboBox<String> cbComobox;
     public javax.swing.JLabel fondo;
     public Vistas.elemetos.ButtonC imgFixit;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

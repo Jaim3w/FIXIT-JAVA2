@@ -5,7 +5,6 @@ import Modelo.Usuarios;
 import Vistas.Loginjava;
 import Vistas.frmRegistrarse;
 import Vistas.frmRegistroParte2;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.FileOutputStream;
@@ -18,41 +17,14 @@ public class controlador implements MouseListener {
 
     Usuarios modelo;
     frmRegistrarse Vista;
-    Roles mRoles;
 
-    public controlador(Usuarios modelo, frmRegistrarse vista, Roles mRoles) {
+    public controlador(Usuarios modelo, frmRegistrarse vista) {
         this.modelo = modelo;
         this.Vista = vista;
-        this.mRoles = mRoles;
 
         Vista.imgFixit.addMouseListener(this);
         Vista.btnAgregarUser.addMouseListener(this);
-        this.mRoles.CargarComboRoles(vista.cbComobox);
-
-        // Seleccionar el primer ítem al cargar el combo box, para evitar problemas de null
-        if (vista.cbComobox.getItemCount() > 0) {
-            vista.cbComobox.setSelectedIndex(0);
-        }
-
-        vista.cbComobox.addActionListener(e -> {
-            if (e.getSource() == vista.cbComobox) {
-                System.out.println("ComboBox seleccionado");
-                Roles selectedItem = (Roles) vista.cbComobox.getSelectedItem();
-                if (selectedItem != null) {
-                    String UUID = selectedItem.getUUID_rol();
-                    mRoles.setUUID_rol(UUID);
-                    System.out.println("Rol seleccionado UUID: " + UUID);
-                } else {
-                    System.out.println("No se seleccionó ningún rol");
-                }
-            }
-        });
     }
-
-    
-    
-   
-
     
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -75,23 +47,12 @@ public class controlador implements MouseListener {
                 return;
             }
 
-            // Forzar la obtención del rol seleccionado, incluso si no ha habido interacción con el combo box
-            Roles selectedItem = (Roles) Vista.cbComobox.getSelectedItem();
-            if (selectedItem != null) {
-                mRoles.setUUID_rol(selectedItem.getUUID_rol());
-                modelo.setUUID_rol(mRoles.getUUID_rol());
-            } else {
-                JOptionPane.showMessageDialog(null, "Seleccione un rol válido", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
             modelo.setCorreoElectronico(Vista.txtCorreoUser.getText());
             modelo.setContrasena(Vista.txtContra.getText());
 
             modelo.InsertarUser();
             JOptionPane.showMessageDialog(null, "Usuario registrado con éxito", "Usuario registrado", JOptionPane.INFORMATION_MESSAGE);
 
-            // Abrir la ventana de inicio de sesión
             try {
                 frmRegistroParte2.initfrmRegistroParte2();
                 Vista.dispose();

@@ -82,11 +82,10 @@ public class Usuarios {
         Connection conexion = Conexion.getConexion();
         try {
 
-            PreparedStatement addUser = conexion.prepareStatement("Insert into Usuario(UUID_usuario,UUID_rol,CorreoElectronico,Contrasena) values(?,?,?,?)");
+            PreparedStatement addUser = conexion.prepareStatement("Insert into Usuario(UUID_usuario,UUID_rol,CorreoElectronico,Contrasena) values(?,(SELECT UUID_rol FROM Rol WHERE Nombre = 'Administrador') ,?,?)");
             addUser.setString(1, UUID.randomUUID().toString());
-            addUser.setString(2, getUUID_rol());
-            addUser.setString(3, getCorreoElectronico());
-            addUser.setString(4, getContrasena());
+            addUser.setString(2, getCorreoElectronico());
+            addUser.setString(3, getContrasena());
             addUser.executeUpdate();
 
         } catch (SQLException e) {
