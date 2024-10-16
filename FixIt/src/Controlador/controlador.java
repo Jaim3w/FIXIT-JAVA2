@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.util.Properties;
 import javax.swing.JOptionPane;
 import main.main;
-import static main.main.establecerPrimerUso;
 
 public class controlador implements MouseListener {
 
@@ -49,31 +48,12 @@ public class controlador implements MouseListener {
             }
         });
     }
-public static void finalizarRegistro() {
-    Properties propiedades = new Properties();
-    propiedades.setProperty("primerUso", "false");
-    try (FileOutputStream fos = new FileOutputStream("config.properties")) {
-        propiedades.store(fos, null);
-    } catch (IOException e) {
-        System.out.println("Error al guardar el archivo de propiedades: " + e.getMessage());
-    }
-}
+
     
     
-    private void btnAgregarUserActionPerformed(ActionEvent evt) {
-    // Simular la lógica de registro
-    boolean registroExitoso = true; // Cambia esto según la lógica real
+   
 
-    if (registroExitoso) {
-        main.establecerPrimerUso(false); // Cambiar a no primer uso
-        System.out.println("Registro completado. Cambiado primerUso a 'false'.");
-        Vista.dispose(); // Cerrar el formulario de registro
-        Loginjava.initLogin(); // Mostrar pantalla de login
-    } else {
-        System.out.println("Error al registrar el usuario.");
-    }
-
-    }
+    
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == Vista.btnAgregarUser) {
@@ -110,8 +90,6 @@ public static void finalizarRegistro() {
 
             modelo.InsertarUser();
             JOptionPane.showMessageDialog(null, "Usuario registrado con éxito", "Usuario registrado", JOptionPane.INFORMATION_MESSAGE);
-            establecerPrimerUso(false);
-            finalizarRegistro();
 
             // Abrir la ventana de inicio de sesión
             try {

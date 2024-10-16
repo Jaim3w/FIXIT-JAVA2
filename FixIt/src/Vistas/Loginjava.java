@@ -5,6 +5,7 @@ import Controlador.controladorLogin;
 import Modelo.Usuarios;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -27,6 +28,8 @@ public class Loginjava extends javax.swing.JFrame {
         
         // Configuramos el color de fondo y el layout
         setBackground(new Color(0, 0, 0, 0)); // Fondo transparente
+        
+setIconImage(new ImageIcon("C:\\Users\\Jaimew\\Desktop\\FIXIT-JAVA2\\FixIt\\src\\Vistas\\Imagenes\\LogitoFixit.png").getImage());
 
     }
     

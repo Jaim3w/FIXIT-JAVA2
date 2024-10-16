@@ -1,12 +1,10 @@
 package Vistas;
 
 import Controlador.ctrlReporte;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-/**
- *
- * @author jjove
- */
-public class frmReporte extends javax.swing.JPanel {
+public class frmReporte extends JPanel {
 
     /**
      * Creates new form frmReporte
@@ -14,8 +12,7 @@ public class frmReporte extends javax.swing.JPanel {
     public frmReporte() {
         initComponents();
         
-        frmReporte vista = this;
-        ctrlReporte ctrRep = new ctrlReporte(vista);
+        
     }
 
     /**

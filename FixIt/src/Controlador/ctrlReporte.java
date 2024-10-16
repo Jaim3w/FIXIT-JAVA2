@@ -2,7 +2,8 @@
 package Controlador;
 
 
-import Vistas.frmReporte;
+//import Vistas.frmReporte;
+import Vistas.frmReporteFram;
 import Modelo.Conexion;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -18,10 +19,10 @@ import net.sf.jasperreports.view.JasperViewer;
 
 
 public class ctrlReporte implements MouseListener{
-        frmReporte Vista;
+        frmReporteFram Vista;
         
         
-        public ctrlReporte(frmReporte vista) {
+        public ctrlReporte(frmReporteFram vista) {
 
         this.Vista = vista;
         
