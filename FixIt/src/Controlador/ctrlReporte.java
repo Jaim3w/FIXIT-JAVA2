@@ -27,6 +27,7 @@ public class ctrlReporte implements MouseListener{
         this.Vista = vista;
         
         Vista.btnReporte.addMouseListener(this);
+        Vista.btnCancelar.addMouseListener(this);
         
     }
 
@@ -59,6 +60,10 @@ public class ctrlReporte implements MouseListener{
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == Vista.btnReporte) {
         mostrarReporte();
+        
+        if (e.getSource() == Vista.btnCancelar) {
+            Vista.dispose();
+        }
     }
     }
 
