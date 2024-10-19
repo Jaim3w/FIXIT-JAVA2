@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controlador;
 
-/**
- *
- * @author Jaimew
- */
 import Modelo.ClientesCarro;
 import Modelo.ModeloCarro;
 import Modelo.mdlCarros;
@@ -158,7 +150,14 @@ public class ctrlCarros implements MouseListener, KeyListener {
 
             Modelo.setCliente(clienteSeleccionado.getDui_cliente());
             Modelo.setModelo(modeloSeleccionado.getUUID_modelo());
-            Modelo.setColor(Vista.txtColorCarro.getText());
+            
+            
+            String inputColor = Vista.txtColorCarro.getText();
+            if (inputColor.matches("^[a-zA-Z]+$")) {
+                Modelo.setColor(inputColor);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Por favor, ingrese solo letras.");
+                }
             Modelo.setAnoCarro(Vista.txtAnoCarro.getText());
             Modelo.setDescripcion(Vista.txtDescripcionCarro.getText());
             Modelo.setImagenSeleccionada(Modelo.getImagenSeleccionada());
