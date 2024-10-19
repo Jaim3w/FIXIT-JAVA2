@@ -5,6 +5,7 @@
 package Vistas;
 
 import Controlador.ctrlModelo;
+import Modelo.MarcasCarro;
 import Modelo.ModeloCarro;
 import Modelo.mdlModelo;
 import Vistas.elementosTwo.TransparenteRoundedPanel;
@@ -18,7 +19,7 @@ public class frmModelo extends JFrame{
         
         mdlModelo modelo = new mdlModelo();
         frmModelo vista = this;
-        ModeloCarro mMarca = new ModeloCarro(); 
+        MarcasCarro mMarca = new MarcasCarro(); 
         ctrlModelo controlador = new ctrlModelo(modelo, vista, mMarca);
         
         vista.setVisible(true);

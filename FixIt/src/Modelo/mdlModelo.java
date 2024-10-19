@@ -169,8 +169,8 @@ public class mdlModelo {
         String marcaTb = vista.tbModelos.getValueAt(filaSeleccionada, 0).toString();
         String modeloTb = vista.tbModelos.getValueAt(filaSeleccionada, 1).toString();
         
-        vista.txtNombre.setText(marcaTb);
-        vista.cmbMarca.setSelectedItem(modeloTb);
+        vista.txtNombre.setText(modeloTb);
+        vista.cmbMarca.setSelectedItem(marcaTb);
     }
 }
 }

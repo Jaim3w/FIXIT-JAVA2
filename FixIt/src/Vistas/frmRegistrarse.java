@@ -89,7 +89,7 @@ setIconImage(new ImageIcon("C:\\Users\\pc\\Desktop\\FIXIT-JAVA2\\FixIt\\src\\Vis
         jLabel12.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Correo");
-        blackRoundedPanelF1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 220, 110, -1));
+        blackRoundedPanelF1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 230, 110, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));

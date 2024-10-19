@@ -104,7 +104,7 @@ public class frmMarca extends JFrame {
         btnEliminar.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/icborraralojosue.png"))); // NOI18N
         getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 250, -1));
 
-        btnActualizar.setText("Editar");
+        btnActualizar.setText("Actualizar");
         btnActualizar.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Imagenes/iceditaralokevon.png"))); // NOI18N
         getContentPane().add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 250, -1));
 

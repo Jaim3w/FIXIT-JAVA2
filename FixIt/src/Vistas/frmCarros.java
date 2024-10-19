@@ -2,6 +2,7 @@ package Vistas;
 
 import Controlador.ctrlCarros;
 import Modelo.ClientesCarro;
+import Modelo.MarcasCarro;
 import Modelo.ModeloCarro;
 import Modelo.mdlCarros;
 import Vistas.elementosTwo.TransparenteRoundedPanel;

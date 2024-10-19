@@ -177,7 +177,7 @@
     </Component>
     <Component class="Vistas.elemetos.ButtonWI" name="btnActualizar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Editar"/>
+        <Property name="text" type="java.lang.String" value="Actualizar"/>
         <Property name="suffixIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Vistas/Imagenes/iceditaralokevon.png"/>
         </Property>

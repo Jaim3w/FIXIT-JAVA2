@@ -1,8 +1,7 @@
 
 package Controlador;
 
-import Modelo.ClientesCarro;
-import Modelo.ModeloCarro;
+import Modelo.MarcasCarro;
 import Modelo.mdlModelo;
 import Vistas.frmMarca;
 import Vistas.frmModelo;
@@ -18,9 +17,9 @@ import javax.swing.JOptionPane;
 public class ctrlModelo implements MouseListener, KeyListener {
     private mdlModelo modelo;
     private frmModelo vista;
-    private ModeloCarro mMarcas;
+    private MarcasCarro mMarcas;
     
-    public ctrlModelo(mdlModelo modelo, frmModelo vista, ModeloCarro mMarcas) {
+    public ctrlModelo(mdlModelo modelo, frmModelo vista, MarcasCarro mMarcas) {
         this.modelo = modelo;
         this.vista = vista;
         this.mMarcas = mMarcas;
@@ -37,7 +36,7 @@ public class ctrlModelo implements MouseListener, KeyListener {
         vista.cmbMarca.addActionListener(e -> {
             if (e.getSource() == vista.cmbMarca) {
                 System.out.println("ComboBox seleccionado");
-                ModeloCarro selectedItem = (ModeloCarro) vista.cmbMarca.getSelectedItem();
+                MarcasCarro selectedItem = (MarcasCarro) vista.cmbMarca.getSelectedItem();
                 if (selectedItem != null) {
                     String uuidMarca = selectedItem.getUuidMarca();
                     mMarcas.setUuidMarca(uuidMarca);
@@ -79,7 +78,7 @@ public class ctrlModelo implements MouseListener, KeyListener {
         }
         try {
             System.out.println("Guardando vehículo...");
-            ModeloCarro modeloSeleccionado = (ModeloCarro) vista.cmbMarca.getSelectedItem();
+            MarcasCarro modeloSeleccionado = (MarcasCarro) vista.cmbMarca.getSelectedItem();
 
             modelo.setNombre(vista.txtNombre.getText());
             modelo.setUuidMarca(modeloSeleccionado.getUuidMarca());
@@ -100,10 +99,10 @@ public class ctrlModelo implements MouseListener, KeyListener {
             JOptionPane.showMessageDialog(vista, "no puedes actualizar a datos vacios", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             try {
-                ModeloCarro modeloSeleccionado = (ModeloCarro) vista.cmbMarca.getSelectedItem();
+                MarcasCarro marcaSeleccionado = (MarcasCarro) vista.cmbMarca.getSelectedItem();
                 
                 modelo.setNombre(vista.txtNombre.getText());
-                modelo.setUuidMarca(modeloSeleccionado.getUuidMarca());
+                modelo.setUuidMarca(marcaSeleccionado.getUuidMarca());
 
                 modelo.Actualizar(vista.tbModelos);
                 modelo.Mostrar(vista.tbModelos);

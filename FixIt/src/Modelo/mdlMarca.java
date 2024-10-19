@@ -63,8 +63,11 @@ public class mdlMarca {
     public void Actualizar(JTable tabla) {
     Connection conexion = Conexion.getConexion();
     int filaSeleccionada = tabla.getSelectedRow();
+    
     if (filaSeleccionada != -1) {
+        // Obtener el UUID de la columna 0 de la tabla
         String uuid = tabla.getValueAt(filaSeleccionada, 0).toString();
+        
         try {
             String sql = "UPDATE Marca SET Nombre = ?, Descripcion = ? WHERE UUID_marca = ?";
             PreparedStatement updateMarca = conexion.prepareStatement(sql);
@@ -72,12 +75,18 @@ public class mdlMarca {
             updateMarca.setString(2, getDescripcion());
             updateMarca.setString(3, uuid);
             updateMarca.executeUpdate();
+            System.out.println("Intentando guardar la marca...");
+            
+            JOptionPane.showMessageDialog(null, "Marca actualizada correctamente");
+            
         } catch (SQLException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error al actualizar el carro: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al actualizar la marca: " + e.getMessage());
         }
-        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Por favor selecciona una fila para actualizar", "Error", JOptionPane.WARNING_MESSAGE);
     }
+}
     
     public void Eliminar(JTable tabla) {
         Connection conexion = Conexion.getConexion();
@@ -85,7 +94,7 @@ public class mdlMarca {
         String miId = tabla.getValueAt(filaSeleccionada, 0).toString();
         
         try {
-            String sql = "delete from Marca where Nombre = ?";
+            String sql = "delete from Marca where UUID_marca = ?";
             PreparedStatement deleteModelo = conexion.prepareStatement(sql);
             deleteModelo.setString(1, miId);
             deleteModelo.executeUpdate();
@@ -129,22 +138,29 @@ public class mdlMarca {
     public void Mostrar(JTable tabla) {
     Connection conexion = Conexion.getConexion();
     DefaultTableModel modelo = new DefaultTableModel();
-    modelo.setColumnIdentifiers(new Object[]{"Marca", "Descripcion"});
+    
+    // Incluye el UUID en el modelo de la tabla
+    modelo.setColumnIdentifiers(new Object[]{"UUID_marca", "Nombre", "Descripcion"});
     
     try {
         // Consulta a ejecutar
-        String query = "SELECT Nombre, Descripcion from Marca";
+        String query = "SELECT UUID_marca, Nombre, Descripcion from Marca";
         
         Statement statement = conexion.createStatement();
         ResultSet rs = statement.executeQuery(query);
         
         while (rs.next()) {
             modelo.addRow(new Object[]{
+                rs.getString("UUID_marca"),
                 rs.getString("Nombre"),
                 rs.getString("Descripcion"),
             });
         }
         tabla.setModel(modelo);
+        
+        tabla.getColumnModel().getColumn(0).setMinWidth(0);
+        tabla.getColumnModel().getColumn(0).setMaxWidth(0);
+        tabla.getColumnModel().getColumn(0).setWidth(0);
         
     } catch (Exception e) {
         System.out.println("Este es el error en el modelo, método mostrar: " + e);
@@ -155,8 +171,8 @@ public class mdlMarca {
     int filaSeleccionada = vista.tbMarcas.getSelectedRow();
     
     if (filaSeleccionada != -1) {
-        String marcaTb = vista.tbMarcas.getValueAt(filaSeleccionada, 0).toString();
-        String descripcionTb = vista.tbMarcas.getValueAt(filaSeleccionada, 1).toString();
+        String marcaTb = vista.tbMarcas.getValueAt(filaSeleccionada, 1).toString();
+        String descripcionTb = vista.tbMarcas.getValueAt(filaSeleccionada, 2).toString();
         
         vista.txtNombre.setText(marcaTb);
         vista.txtDescripcion.setText(descripcionTb);
